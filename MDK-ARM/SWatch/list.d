@@ -1,0 +1,12 @@
+swatch\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
+swatch\list.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdlib.h
+swatch\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+swatch\list.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\list.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\list.o: ../Core/Inc/FreeRTOSConfig.h
+swatch\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+swatch\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+swatch\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+swatch\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+swatch\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+swatch\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
