@@ -21,14 +21,18 @@ static void LCD_GPIO_Init(void)
 
 void LCD_SPI_SetBit(u8 bit)
 {
-	if(bit == 8)
-		hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
-	else if(bit == 16)
-		hspi1.Init.DataSize = SPI_DATASIZE_16BIT;
-	//HAL_SPI_DeInit(&hspi1);      
-	HAL_SPI_Init(&hspi1);
-}
 
+    if(bit == 8)
+		{
+        hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+				hspi1.Instance->CR1&=~SPI_CR1_DFF;
+		}
+    else if(bit == 16)
+		{		
+			  hspi1.Init.DataSize = SPI_DATASIZE_16BIT;
+				hspi1.Instance->CR1|=SPI_CR1_DFF;
+		}
+}
 
 /* 硬件SPI向ST7789发送一个字节*/
 static void LCD_Write_Byte(u8 data)
@@ -56,16 +60,18 @@ static void LCD_Write_Byte_Soft(u8 data)
 /* LCD向ST7789写命令*/
 void LCD_Write_Cmd(u8 data)
 {
-	LCD_DC_LOW();
+	LCD_DC_LOW(); // 切换为写命令
 	LCD_Write_Byte(data);
+	LCD_DC_HIGH();
 }
 
 /*LCD向ST7789写8bit数据*/
 void LCD_Write_Data8(u8 data)
 {
-	LCD_DC_HIGH();
+	LCD_DC_HIGH(); // 切换为写数据
 	LCD_Write_Byte(data);
 }
+
 /*LCD向ST7789写16bit数据*/
 void LCD_Write_Data16(u16 data)
 {
@@ -73,6 +79,7 @@ void LCD_Write_Data16(u16 data)
 	LCD_Write_Byte(data >> 8);
 	LCD_Write_Byte(data & 0xFF);
 }
+
 
 /**
  * @brief   设置LCD的显示窗口（起始和结束地址）

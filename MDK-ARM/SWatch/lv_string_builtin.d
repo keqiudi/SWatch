@@ -1,0 +1,16 @@
+swatch\lv_string_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\lv_string_builtin.c
+swatch\lv_string_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../../lv_conf_internal.h
+swatch\lv_string_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../../lv_conf_kconfig.h
+swatch\lv_string_builtin.o: ../Middlewares/lvgl/lv_conf.h
+swatch\lv_string_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../../misc/lv_assert.h
+swatch\lv_string_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../../misc/lv_log.h
+swatch\lv_string_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../../misc/lv_types.h
+swatch\lv_string_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\lv_string_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\lv_string_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdbool.h
+swatch\lv_string_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\inttypes.h
+swatch\lv_string_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\limits.h
+swatch\lv_string_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdarg.h
+swatch\lv_string_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../../misc/../stdlib/lv_mem.h
+swatch\lv_string_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../../misc/../stdlib/lv_string.h
+swatch\lv_string_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../../misc/lv_math.h

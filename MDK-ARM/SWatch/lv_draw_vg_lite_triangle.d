@@ -1,0 +1,15 @@
+swatch\lv_draw_vg_lite_triangle.o: ..\Middlewares\lvgl\src\draw\vg_lite\lv_draw_vg_lite_triangle.c
+swatch\lv_draw_vg_lite_triangle.o: ..\Middlewares\lvgl\src\draw\vg_lite\../../misc/lv_area_private.h
+swatch\lv_draw_vg_lite_triangle.o: ..\Middlewares\lvgl\src\draw\vg_lite\../../misc/lv_area.h
+swatch\lv_draw_vg_lite_triangle.o: ..\Middlewares\lvgl\src\draw\vg_lite\../../misc/../lv_conf_internal.h
+swatch\lv_draw_vg_lite_triangle.o: ..\Middlewares\lvgl\src\draw\vg_lite\../../misc/../lv_conf_kconfig.h
+swatch\lv_draw_vg_lite_triangle.o: ../Middlewares/lvgl/lv_conf.h
+swatch\lv_draw_vg_lite_triangle.o: ..\Middlewares\lvgl\src\draw\vg_lite\../../misc/lv_types.h
+swatch\lv_draw_vg_lite_triangle.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\lv_draw_vg_lite_triangle.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\lv_draw_vg_lite_triangle.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdbool.h
+swatch\lv_draw_vg_lite_triangle.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\inttypes.h
+swatch\lv_draw_vg_lite_triangle.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\limits.h
+swatch\lv_draw_vg_lite_triangle.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdarg.h
+swatch\lv_draw_vg_lite_triangle.o: ..\Middlewares\lvgl\src\draw\vg_lite\../../misc/lv_math.h
+swatch\lv_draw_vg_lite_triangle.o: ..\Middlewares\lvgl\src\draw\vg_lite\lv_draw_vg_lite.h

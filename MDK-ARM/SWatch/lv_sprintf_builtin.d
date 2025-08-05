@@ -1,0 +1,13 @@
+swatch\lv_sprintf_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\lv_sprintf_builtin.c
+swatch\lv_sprintf_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../../lv_conf_internal.h
+swatch\lv_sprintf_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../../lv_conf_kconfig.h
+swatch\lv_sprintf_builtin.o: ../Middlewares/lvgl/lv_conf.h
+swatch\lv_sprintf_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../lv_sprintf.h
+swatch\lv_sprintf_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../../misc/lv_types.h
+swatch\lv_sprintf_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\lv_sprintf_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\lv_sprintf_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdbool.h
+swatch\lv_sprintf_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\inttypes.h
+swatch\lv_sprintf_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\limits.h
+swatch\lv_sprintf_builtin.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdarg.h
+swatch\lv_sprintf_builtin.o: ..\Middlewares\lvgl\src\stdlib\builtin\../lv_string.h

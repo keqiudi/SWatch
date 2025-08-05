@@ -1,0 +1,17 @@
+swatch\lv_rb.o: ..\Middlewares\lvgl\src\misc\lv_rb.c
+swatch\lv_rb.o: ..\Middlewares\lvgl\src\misc\lv_rb_private.h
+swatch\lv_rb.o: ..\Middlewares\lvgl\src\misc\lv_rb.h
+swatch\lv_rb.o: ..\Middlewares\lvgl\src\misc\lv_types.h
+swatch\lv_rb.o: ..\Middlewares\lvgl\src\misc\../lv_conf_internal.h
+swatch\lv_rb.o: ..\Middlewares\lvgl\src\misc\../lv_conf_kconfig.h
+swatch\lv_rb.o: ../Middlewares/lvgl/lv_conf.h
+swatch\lv_rb.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\lv_rb.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\lv_rb.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdbool.h
+swatch\lv_rb.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\inttypes.h
+swatch\lv_rb.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\limits.h
+swatch\lv_rb.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdarg.h
+swatch\lv_rb.o: ..\Middlewares\lvgl\src\misc\lv_assert.h
+swatch\lv_rb.o: ..\Middlewares\lvgl\src\misc\lv_log.h
+swatch\lv_rb.o: ..\Middlewares\lvgl\src\misc\../stdlib/lv_mem.h
+swatch\lv_rb.o: ..\Middlewares\lvgl\src\misc\../stdlib/lv_string.h

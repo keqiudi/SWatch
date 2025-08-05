@@ -8,9 +8,7 @@
 
 
 void LCD_Fill(u16 xsta,u16 ysta,u16 xend,u16 yend,u16 color);
-
-
-
+void LCD_Fill_DMA(u16 x_start,u16 y_start,u16 x_end,u16 y_end,u16* color);
 
 void LCD_Set_Light(uint8_t duty);
 void LCD_Open_BackLight();

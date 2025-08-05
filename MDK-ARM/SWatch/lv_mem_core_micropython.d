@@ -1,0 +1,13 @@
+swatch\lv_mem_core_micropython.o: ..\Middlewares\lvgl\src\stdlib\micropython\lv_mem_core_micropython.c
+swatch\lv_mem_core_micropython.o: ..\Middlewares\lvgl\src\stdlib\micropython\../lv_mem.h
+swatch\lv_mem_core_micropython.o: ..\Middlewares\lvgl\src\stdlib\micropython\../../lv_conf_internal.h
+swatch\lv_mem_core_micropython.o: ..\Middlewares\lvgl\src\stdlib\micropython\../../lv_conf_kconfig.h
+swatch\lv_mem_core_micropython.o: ../Middlewares/lvgl/lv_conf.h
+swatch\lv_mem_core_micropython.o: ..\Middlewares\lvgl\src\stdlib\micropython\../lv_string.h
+swatch\lv_mem_core_micropython.o: ..\Middlewares\lvgl\src\stdlib\micropython\../../misc/lv_types.h
+swatch\lv_mem_core_micropython.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\lv_mem_core_micropython.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\lv_mem_core_micropython.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdbool.h
+swatch\lv_mem_core_micropython.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\inttypes.h
+swatch\lv_mem_core_micropython.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\limits.h
+swatch\lv_mem_core_micropython.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdarg.h
