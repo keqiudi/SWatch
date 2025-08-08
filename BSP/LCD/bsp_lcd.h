@@ -1,10 +1,8 @@
-#ifndef __LCD_H_
-#define __LCD_H_
+#ifndef __BSP_LCD_H_
+#define __BSP_LCD_H_
 
 
-#include "lcd_st7789.h"
-
-
+#include "bsp_lcd_st7789.h"
 
 
 void LCD_Fill(u16 xsta,u16 ysta,u16 xend,u16 yend,u16 color);

@@ -4,12 +4,13 @@
 
 
 /** 
- * 由于freeRTOS会自动初始化systick，所以一般可以不调用
- *
+ * 由于我们更换了HAL库的时基为TIM1,导致SysTick在FreeRTOS开始调度前都不会被初始化
+ * 如果我们需要使用该SysTick延时，就必须要初始化SysTick！！！
  **/
 void delay_init(void)
 {
 		HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK); //设置systick时钟源
+	
 		HAL_SYSTICK_Config(SystemCoreClock / (1000U / uwTickFreq)); // 设置systick中断为1ms
 }
 

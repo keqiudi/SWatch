@@ -1,5 +1,5 @@
 swatch\lcd_st7789.o: ..\BSP\LCD\lcd_st7789.c
-swatch\lcd_st7789.o: ../System/sys.h
+swatch\lcd_st7789.o: ../APP/User/System/sys.h
 swatch\lcd_st7789.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 swatch\lcd_st7789.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h
 swatch\lcd_st7789.o: ../Drivers/CMSIS/Include/core_cm4.h
@@ -34,5 +34,5 @@ swatch\lcd_st7789.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 swatch\lcd_st7789.o: ..\BSP\LCD\lcd_st7789.h
 swatch\lcd_st7789.o: ../Core/Inc/spi.h
 swatch\lcd_st7789.o: ../Core/Inc/main.h
-swatch\lcd_st7789.o: ../System/delay.h
+swatch\lcd_st7789.o: ../APP/User/System/delay.h
 swatch\lcd_st7789.o: ../Core/Inc/tim.h

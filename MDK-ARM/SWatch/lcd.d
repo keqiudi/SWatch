@@ -1,7 +1,7 @@
 swatch\lcd.o: ..\BSP\LCD\lcd.c
 swatch\lcd.o: ..\BSP\LCD\lcd.h
 swatch\lcd.o: ..\BSP\LCD\lcd_st7789.h
-swatch\lcd.o: ../System/sys.h
+swatch\lcd.o: ../APP/User/System/sys.h
 swatch\lcd.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 swatch\lcd.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h
 swatch\lcd.o: ../Drivers/CMSIS/Include/core_cm4.h
@@ -35,7 +35,7 @@ swatch\lcd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\lcd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 swatch\lcd.o: ../Core/Inc/spi.h
 swatch\lcd.o: ../Core/Inc/main.h
-swatch\lcd.o: ../System/delay.h
+swatch\lcd.o: ../APP/User/System/delay.h
 swatch\lcd.o: ../Core/Inc/tim.h
 swatch\lcd.o: ../Middlewares/lvgl/port/lv_port_disp.h
 swatch\lcd.o: ../Middlewares/lvgl/lvgl.h

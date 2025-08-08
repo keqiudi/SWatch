@@ -1,13 +1,6 @@
-#include "AHT20.h"
+#include "bsp_aht20.h"
 #include "i2c_hal.h"
 #include "delay.h"
-
-
-#define AHT20_CMD_READ 0x71
-#define AHT20_CMD_WRITE 0x70
-#define AHT20_CMD_INIT 0xBE
-#define AHT20_CMD_MEASURE 0xAC
-#define AHT20_CMD_SOFT_RESET 0xBA
 
 
 i2c_bus_t AHT20_bus = 
@@ -33,16 +26,6 @@ static uint8_t AHT20_read_status(void)
 	return status;
 }
 
-void AHT20_soft_reset(void)
-{
-	i2c_soft_start(&AHT20_bus);
-	i2c_soft_send_byte(&AHT20_bus,AHT20_CMD_WRITE);
-	i2c_soft_wait_ack(&AHT20_bus);
-	i2c_soft_send_byte(&AHT20_bus,AHT20_CMD_SOFT_RESET);
-	i2c_soft_wait_ack(&AHT20_bus);
-	i2c_soft_stop(&AHT20_bus);
-}
-
 uint8_t AHT20_init(void)
 {
 	i2c_init(&AHT20_bus);
@@ -66,6 +49,17 @@ uint8_t AHT20_init(void)
 	delay_ms(10);
 	
 	return 0;
+}
+
+
+void AHT20_soft_reset(void)
+{
+	i2c_soft_start(&AHT20_bus);
+	i2c_soft_send_byte(&AHT20_bus,AHT20_CMD_WRITE);
+	i2c_soft_wait_ack(&AHT20_bus);
+	i2c_soft_send_byte(&AHT20_bus,AHT20_CMD_SOFT_RESET);
+	i2c_soft_wait_ack(&AHT20_bus);
+	i2c_soft_stop(&AHT20_bus);
 }
 
 uint8_t AHT20_read(float* temperature,float* humidity)

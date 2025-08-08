@@ -22,16 +22,43 @@ Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 C:\Users\keqiu\myProjects\keilProjects\SWatch\MDK-ARM\SWatch.uvprojx
-Project File Date:  08/03/2025
+Project File Date:  08/08/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Users\keqiu\study\ARM\ARMCC\Bin'
 Build target 'SWatch'
-compiling freertos.c...
+compiling user_hw_init.c...
+../APP/User/Tasks/Inc/user_hw_init.h(7): warning:  #1295-D: Deprecated declaration User_Hw_Init - give arg types
+  void User_Hw_Init();
+../APP/User/Tasks/Inc/user_hw_init.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+../APP/User/Tasks/Inc/user_task_init.h(10): warning:  #1295-D: Deprecated declaration User_Tasks_Init - give arg types
+  void User_Tasks_Init();
+../APP/User/Tasks/Inc/user_task_init.h(12): warning:  #1-D: last line of file ends without a newline
+  #endif
+../BSP/LCD/bsp_lcd_st7789.h(60): warning:  #1-D: last line of file ends without a newline
+  #endif
+../BSP/LCD/bsp_lcd.h(12): warning:  #1295-D: Deprecated declaration LCD_Open_BackLight - give arg types
+  void LCD_Open_BackLight();
+../BSP/LCD/bsp_lcd.h(13): warning:  #1295-D: Deprecated declaration LCD_Close_BackLight - give arg types
+  void LCD_Close_BackLight();
+../BSP/LCD/bsp_lcd.h(39): warning:  #1-D: last line of file ends without a newline
+  #endif
+../BSP/CST816T/bsp_touch_cst816t.h(147): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Middlewares/lvgl/src/drivers/uefi/lv_uefi_context.h(71): warning:  #1-D: last line of file ends without a newline
+  #endif //__LV_UEFI_CONTEXT_H__
+../Middlewares/lvgl/src/drivers/uefi/lv_uefi_indev.h(108): warning:  #1-D: last line of file ends without a newline
+  #endif //__LV_UEFI_INDEV_H__
+../Middlewares/lvgl/src/drivers/uefi/lv_uefi_display.h(65): warning:  #1-D: last line of file ends without a newline
+  #endif //__LV_UEFI_DISPLAY_H__
+..\APP\User\Tasks\Src\user_hw_init.c(48): warning:  #1-D: last line of file ends without a newline
+  }	
+..\APP\User\Tasks\Src\user_hw_init.c: 13 warnings, 0 errors
 linking...
-Program Size: Code=194216 RO-data=18196 RW-data=244 ZI-data=113564  
+Program Size: Code=203884 RO-data=18256 RW-data=284 ZI-data=113564  
 FromELF: creating hex file...
-"SWatch\SWatch.axf" - 0 Error(s), 0 Warning(s).
+"SWatch\SWatch.axf" - 0 Error(s), 13 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -54,7 +81,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.2.0
-Build Time Elapsed:  00:00:09
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

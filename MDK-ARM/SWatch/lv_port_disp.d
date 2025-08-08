@@ -216,9 +216,9 @@ swatch\lv_port_disp.o: ../Middlewares/lvgl/src/lv_api_map_v8.h
 swatch\lv_port_disp.o: ../Middlewares/lvgl/src/lv_api_map_v9_0.h
 swatch\lv_port_disp.o: ../Middlewares/lvgl/src/lv_api_map_v9_1.h
 swatch\lv_port_disp.o: ../Middlewares/lvgl/src/lv_api_map_v9_2.h
-swatch\lv_port_disp.o: ../BSP/LCD/lcd.h
-swatch\lv_port_disp.o: ../BSP/LCD/lcd_st7789.h
-swatch\lv_port_disp.o: ../System/sys.h
+swatch\lv_port_disp.o: ../BSP/LCD/bsp_lcd.h
+swatch\lv_port_disp.o: ../BSP/LCD/bsp_lcd_st7789.h
+swatch\lv_port_disp.o: ../APP/User/System/sys.h
 swatch\lv_port_disp.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 swatch\lv_port_disp.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h
 swatch\lv_port_disp.o: ../Drivers/CMSIS/Include/core_cm4.h
@@ -250,5 +250,5 @@ swatch\lv_port_disp.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\lv_port_disp.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 swatch\lv_port_disp.o: ../Core/Inc/spi.h
 swatch\lv_port_disp.o: ../Core/Inc/main.h
-swatch\lv_port_disp.o: ../System/delay.h
+swatch\lv_port_disp.o: ../APP/User/System/delay.h
 swatch\lv_port_disp.o: ../Core/Inc/tim.h

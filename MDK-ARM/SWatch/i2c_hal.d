@@ -31,5 +31,5 @@ swatch\i2c_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 swatch\i2c_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\i2c_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\i2c_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
-swatch\i2c_hal.o: ../System/delay.h
-swatch\i2c_hal.o: ../System/sys.h
+swatch\i2c_hal.o: ../APP/User/System/delay.h
+swatch\i2c_hal.o: ../APP/User/System/sys.h

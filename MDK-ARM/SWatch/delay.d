@@ -1,6 +1,6 @@
-swatch\delay.o: ..\System\delay.c
-swatch\delay.o: ..\System\delay.h
-swatch\delay.o: ..\System\sys.h
+swatch\delay.o: ..\APP\User\System\delay.c
+swatch\delay.o: ..\APP\User\System\delay.h
+swatch\delay.o: ..\APP\User\System\sys.h
 swatch\delay.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 swatch\delay.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h
 swatch\delay.o: ../Drivers/CMSIS/Include/core_cm4.h

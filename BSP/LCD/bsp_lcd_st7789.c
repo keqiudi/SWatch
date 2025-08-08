@@ -1,5 +1,5 @@
 #include "sys.h"
-#include "lcd_st7789.h"
+#include "bsp_lcd_st7789.h"
 
 
 /* 我们这里使用硬件SPI，其他的CS/DC/RST引脚使用软件模拟*/
@@ -62,7 +62,7 @@ void LCD_Write_Cmd(u8 data)
 {
 	LCD_DC_LOW(); // 切换为写命令
 	LCD_Write_Byte(data);
-	LCD_DC_HIGH();
+	LCD_DC_HIGH(); 
 }
 
 /*LCD向ST7789写8bit数据*/
@@ -114,13 +114,15 @@ void LCD_Address_Set(u16 x1,u16 y1,u16 x2,u16 y2)
 /* LCD退出睡眠  */
 void LCD_ST7789_SleepOut(void)
 {
-	
+	LCD_Write_Cmd(0x10);
+	delay_ms(100);
 }
 
 /* LCD进入睡眠 */
 void LCD_ST7789_SleepIn(void)
 {
-	
+	LCD_Write_Cmd(0x11);
+	delay_ms(100);
 }
 
 void LCD_Init()

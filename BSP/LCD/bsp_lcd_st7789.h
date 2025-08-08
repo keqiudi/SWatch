@@ -1,5 +1,5 @@
-#ifndef __LCD_ST7789_H
-#define __LCD_ST7789_H
+#ifndef __BSP_LCD_ST7789_H
+#define __BSP_LCD_ST7789_H
 
 #include "sys.h"
 #include "spi.h"
@@ -14,14 +14,14 @@
 #define LCD_MOSI_PORT   GPIOB
 #define LCD_MOSI_PIN    GPIO_PIN_5
 
+#define LCD_CS_PORT     GPIOB
+#define LCD_CS_PIN      GPIO_PIN_8
+
 #define LCD_RST_PORT    GPIOB
 #define LCD_RST_PIN     GPIO_PIN_7
 
 #define LCD_DC_PORT  	  GPIOB
 #define LCD_DC_PIN 			GPIO_PIN_9
-
-#define LCD_CS_PORT     GPIOB
-#define LCD_CS_PIN      GPIO_PIN_8
 
 #define LCD_BLK_PORT    GPIOB
 #define LCD_BLK_PIN     GPIO_PIN_0
@@ -55,8 +55,6 @@ void LCD_Write_Data8(u8 data);
 void LCD_Write_Data16(u16 data);
 
 void LCD_Address_Set(u16 x1,u16 y1,u16 x2,u16 y2);
-
-
 
 
 #endif

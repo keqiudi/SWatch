@@ -1,7 +1,9 @@
-#include "lcd.h"
+#include "bsp_lcd.h"
 #include "lv_port_disp.h"
 
+
 #define OFFSET_Y 20 //显示区域为x:0~239 y:20~299
+#define OFFSET_X 0
 
 extern lv_display_t * disp; // lvgl显示对象
 
@@ -62,3 +64,5 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
 			  lv_display_flush_ready(disp);
 		}
 }
+
+/* 其余部分是厂家给的画点、画线等等LCD的驱动，我这里不使用就不移植了*/

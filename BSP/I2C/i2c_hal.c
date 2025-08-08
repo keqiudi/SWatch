@@ -126,6 +126,8 @@ void i2c_soft_send_byte(i2c_bus_t* sensor,uint8_t data)
 	 }
 	 	
 }
+
+
 uint8_t i2c_soft_read_byte(i2c_bus_t* sensor)
 {
 		uint8_t byte = 0x00;
@@ -148,6 +150,18 @@ uint8_t i2c_soft_read_byte(i2c_bus_t* sensor)
 		}
 		
 		return byte;
+}
+
+/*软件i2c读取多个字节*/
+
+uint8_t i2c_soft_read_multi_byte(i2c_bus_t* sensor,uint8_t byte[],int size)
+{
+	
+	for(int i=0;i<size;i++)
+	{
+		 byte[i] = i2c_soft_read_byte(sensor);
+	}
+	
 }
 
 void i2c_soft_send_ack(i2c_bus_t* sensor)

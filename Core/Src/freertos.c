@@ -25,11 +25,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "delay.h"
-#include "AHT20.h"
-#include "lcd.h"
-#include "lv_port_disp.h"
-#include "lvgl.h"
+#include "user_task_init.h"
+#include "user_hw_init.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -74,7 +71,10 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
   */
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
-
+	
+	/* 1. LCD初始化 */
+	User_Hw_Init();
+	User_Tasks_Init(); // 用户任务初始化
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -118,29 +118,10 @@ void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
-	
-	/* 1. LCD初始化 */
-	LCD_Init();
-	LCD_Fill(0,0,240,280,BLACK);
-	LCD_Open_BackLight();
-	LCD_Set_Light(50);
-	
-	/*2. lvgl初始化*/
-	lv_init();			  // lvgl系统初始化
-	lv_port_disp_init();  // lvgl显示接口初始化,放在lv_init()的后面
-	//lv_port_indev_init(); // lvgl输入接口初始化,放在lv_init()的后面
-	
-	/*3. 测试代码，画一个按钮*/
-	lv_obj_set_style_bg_color(lv_scr_act(), lv_color_hex(0xFFFFFF), LV_PART_MAIN); // 设置背景为白色
-	lv_obj_t* switch_obj = lv_switch_create(lv_scr_act());
-  lv_obj_set_size(switch_obj, 120, 50);
-  lv_obj_align(switch_obj, LV_ALIGN_CENTER, 0, 0);
 
   for(;;)
   {
-
-		lv_task_handler(); // 启动lvgl的事务处理
-		osDelay(1);
+		osDelay(1000);
   }
   /* USER CODE END StartDefaultTask */
 }
