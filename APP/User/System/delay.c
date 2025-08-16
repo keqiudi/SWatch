@@ -39,7 +39,7 @@ void delay_us(u32 us)
 			 if(tick_now<tick_old) // 计数器未重装载
 				  tick_cnt += tick_old - tick_now;
 			 else  // 处理计数器重装载时走过的tick
-					tick_cnt = tick_old + (auto_reload - tick_now);
+					tick_cnt += tick_old + (auto_reload - tick_now);
 			 
 			 tick_old = tick_now;
 		}

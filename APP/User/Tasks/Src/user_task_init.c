@@ -5,12 +5,12 @@
 #include "user_lvgl_handler.h"
 
 
-//osThreadId_t HwInitTaskHandle;
-//const osThreadAttr_t HwInitTask_attributes = {
-//  .name = "HwInitTask",
-//  .stack_size = 128 * 4,
-//  .priority = (osPriority_t)  osPriorityHigh,
-//};
+osThreadId_t HwInitTaskHandle;
+const osThreadAttr_t HwInitTask_attributes = {
+  .name = "HwInitTask",
+  .stack_size = 128 * 10,
+  .priority = (osPriority_t) osPriorityHigh,
+};
 
 
 osThreadId_t LvglHandlerTaskHandle;
@@ -25,7 +25,7 @@ const osThreadAttr_t LvglHandlerTask_attributes = {
 void User_Tasks_Init()
 {
 	
-//	HwInitTaskHandle      = osThreadNew(HwInitTask, NULL, &HwInitTask_attributes); // 硬件初始化
+	HwInitTaskHandle      = osThreadNew(HwInitTask, NULL, &HwInitTask_attributes); // 硬件初始化
 	LvglHandlerTaskHandle = osThreadNew(LvglHandlerTask, NULL, &LvglHandlerTask_attributes);
 
 }	

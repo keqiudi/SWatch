@@ -81,7 +81,7 @@
           </BeforeMake>
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
-            <RunUserProg2>1</RunUserProg2>
+            <RunUserProg2>0</RunUserProg2>
             <UserProg1Name></UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
@@ -138,7 +138,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2V8M.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -335,10 +335,10 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>--locale=english</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F411xE,LV_CONF_INCLUDE_SIMPLE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares;../Middlewares/lvgl;../Middlewares/lvgl/src;../Middlewares/lvgl/port;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../BSP/I2C;../BSP/AHT20;../BSP/MPU6050;../BSP/LCD;../BSP/CST816T;../APP/User/Tasks/Inc;../APP/User/System</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares;../Middlewares/lvgl;../Middlewares/lvgl/src;../Middlewares/lvgl/port;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../BSP/I2C;../BSP/AHT20;../BSP/MPU6050;../BSP/LCD;../BSP/CST816T;../APP/User/Tasks/Inc;../APP/User/System;../APP/User/UI/;../APP/User/UI/screens/Inc;../APP/User/Utils/Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -613,6 +613,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>App/User/User_Utils</GroupName>
+          <Files>
+            <File>
+              <FileName>page_manager.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\Utils\Src\page_manager.c</FilePath>
+            </File>
+            <File>
+              <FileName>page_manager.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\Utils\Inc\page_manager.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>App/User/User_Task</GroupName>
           <Files>
             <File>
@@ -651,6 +666,36 @@
           <GroupName>Drivers/User/BSP</GroupName>
           <Files>
             <File>
+              <FileName>bsp_touch_cst816t.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\CST816T\bsp_touch_cst816t.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_touch_cst816t.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\CST816T\bsp_touch_cst816t.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_lcd_st7789.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\LCD\bsp_lcd_st7789.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_lcd_st7789.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\LCD\bsp_lcd_st7789.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\LCD\bsp_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_lcd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\LCD\bsp_lcd.h</FilePath>
+            </File>
+            <File>
               <FileName>i2c_hal.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\I2C\i2c_hal.c</FilePath>
@@ -671,36 +716,6 @@
               <FilePath>..\BSP\AHT20\bsp_aht20.h</FilePath>
             </File>
             <File>
-              <FileName>bsp_touch_cst816t.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\BSP\CST816T\bsp_touch_cst816t.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_touch_cst816t.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\BSP\CST816T\bsp_touch_cst816t.h</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\BSP\LCD\bsp_lcd.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_lcd.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\BSP\LCD\bsp_lcd.h</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_lcd_st7789.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\BSP\LCD\bsp_lcd_st7789.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_lcd_st7789.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\BSP\LCD\bsp_lcd_st7789.h</FilePath>
-            </File>
-            <File>
               <FileName>bsp_mpu6050.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\MPU6050\bsp_mpu6050.c</FilePath>
@@ -709,6 +724,106 @@
               <FileName>bsp_mpu6050.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\BSP\MPU6050\bsp_mpu6050.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>App/User/UI</GroupName>
+          <Files>
+            <File>
+              <FileName>ui_events.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\UI\ui_events.h</FilePath>
+            </File>
+            <File>
+              <FileName>ui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\ui.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\UI\ui.h</FilePath>
+            </File>
+            <File>
+              <FileName>ui_helpers.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\ui_helpers.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_helpers.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\UI\ui_helpers.h</FilePath>
+            </File>
+            <File>
+              <FileName>ui_HomePage.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\screens\Src\ui_HomePage.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_HomePage.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\UI\screens\Inc\ui_HomePage.h</FilePath>
+            </File>
+            <File>
+              <FileName>ui_MenuPage.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\screens\Src\ui_MenuPage.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_MenuPage.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\UI\screens\Inc\ui_MenuPage.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>App/User/UI_Font</GroupName>
+          <Files>
+            <File>
+              <FileName>ui_font_FangZhengCuYuan20.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\fonts\ui_font_FangZhengCuYuan20.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_ALiDaKai20.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\fonts\ui_font_ALiDaKai20.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_ALIBABA12.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\fonts\ui_font_ALIBABA12.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_ALIBABA16.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\fonts\ui_font_ALIBABA16.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_MontserratBold16.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\fonts\ui_font_MontserratBold16.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_MontserratBold48.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\fonts\ui_font_MontserratBold48.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_HPiconfont20.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\fonts\ui_font_HPiconfont20.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_MPiconfont25.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\fonts\ui_font_MPiconfont25.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_MPiconfont30.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\UI\fonts\ui_font_MPiconfont30.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -71,10 +71,8 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
   */
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
-	
-	/* 1. LCD初始化 */
-	User_Hw_Init();
-	User_Tasks_Init(); // 用户任务初始化
+
+	 User_Tasks_Init(); // 用户任务初始化
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -121,7 +119,7 @@ void StartDefaultTask(void *argument)
 
   for(;;)
   {
-		osDelay(1000);
+		osDelay(10000);
   }
   /* USER CODE END StartDefaultTask */
 }

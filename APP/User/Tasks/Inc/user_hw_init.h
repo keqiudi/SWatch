@@ -4,6 +4,6 @@
 
 void HwInitTask(void *argument);
 
-void User_Hw_Init();
+//void User_Hw_Init();
 
 #endif

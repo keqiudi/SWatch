@@ -260,3 +260,10 @@ swatch\user_hw_init.o: ../Middlewares/lvgl/src/lv_api_map_v9_0.h
 swatch\user_hw_init.o: ../Middlewares/lvgl/src/lv_api_map_v9_1.h
 swatch\user_hw_init.o: ../Middlewares/lvgl/src/lv_api_map_v9_2.h
 swatch\user_hw_init.o: ../Middlewares/lvgl/port/lv_port_indev.h
+swatch\user_hw_init.o: ../APP/User/UI/ui.h
+swatch\user_hw_init.o: ../APP/User/UI/ui_helpers.h
+swatch\user_hw_init.o: ../APP/User/UI/ui.h
+swatch\user_hw_init.o: ../APP/User/UI/ui_events.h
+swatch\user_hw_init.o: ../APP/User/UI/../Utils/Inc/page_manager.h
+swatch\user_hw_init.o: ../APP/User/UI/screens/Inc/ui_HomePage.h
+swatch\user_hw_init.o: ../APP/User/UI/screens/Inc/ui_MenuPage.h

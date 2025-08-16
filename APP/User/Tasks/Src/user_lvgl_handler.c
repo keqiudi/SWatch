@@ -5,6 +5,7 @@
 void LvglHandlerTask(void *argument)
 {
 	
+	
 	while(1)
 	{
 		 lv_task_handler(); // 启动lvgl的事务处理
