@@ -4,6 +4,11 @@
 // Project name: MenuPage
 
 #include "ui_MenuPage.h"
+#include "ui_EnvironmentPage.h"
+#include "ui_HeartRatePage.h"
+#include "ui_SpO2MeasurePage.h"
+#include "ui_CalendarPage.h"
+#include "ui_TimerPage.h"
 
 lv_obj_t * ui_MenuPage = NULL;
 lv_obj_t * ui_MenuEnvPanel = NULL;
@@ -50,16 +55,66 @@ lv_obj_t * ui_MenuAboutPanel = NULL;
 lv_obj_t * ui_MenuAboutLabel = NULL;
 lv_obj_t * ui_MenuAboutButton = NULL;
 lv_obj_t * ui_AboutIconLabel = NULL;
+
 // event funtions
 
-
-page_t page_menu = 
+static void env_panel_event_cb(lv_event_t * e)
 {
-	 .init = ui_MenuPage_screen_init,
-	 .deinit = ui_MenuPage_screen_destroy,
-	 .page_obj = &ui_MenuPage
-};
+	lv_event_code_t event_code = lv_event_get_code(e); // 获取事件
+	lv_obj_t * target = lv_event_get_target(e);
+	
+	if(event_code == LV_EVENT_CLICKED)
+	{
+		page_load(&page_env);
+	}
+}
 
+static void hr_panel_event_cb(lv_event_t * e)
+{
+	lv_event_code_t event_code = lv_event_get_code(e);     //获取触发事件类型
+	lv_obj_t * target = lv_event_get_target(e);				//获取触发事件的对象(控件)
+	
+	if(event_code == LV_EVENT_CLICKED)
+	{
+		page_load(&page_hr);
+	}
+}
+
+static void o2_panel_event_cb(lv_event_t * e)
+{
+	lv_event_code_t event_code = lv_event_get_code(e);     //获取触发事件类型
+	lv_obj_t * target = lv_event_get_target(e);				//获取触发事件的对象(控件)
+	
+	if(event_code == LV_EVENT_CLICKED)
+	{
+		page_load(&page_SpO2);
+	}
+}
+
+
+static void calendar_panel_event_cb(lv_event_t * e)
+{
+	lv_event_code_t event_code = lv_event_get_code(e);     //获取触发事件类型
+	lv_obj_t * target = lv_event_get_target(e);				//获取触发事件的对象(控件)
+	
+	if(event_code == LV_EVENT_CLICKED)
+	{
+		page_load(&page_calendar);
+	}
+}
+
+
+
+static void timer_panel_event_cb(lv_event_t * e)
+{
+	lv_event_code_t event_code = lv_event_get_code(e);     //获取触发事件类型
+	lv_obj_t * target = lv_event_get_target(e);				//获取触发事件的对象(控件)
+	
+	if(event_code == LV_EVENT_CLICKED)
+	{
+		page_load(&page_timer);
+	}
+}
 
 
 
@@ -523,10 +578,96 @@ void ui_MenuPage_screen_init(void)
     lv_obj_set_align(ui_AboutIconLabel, LV_ALIGN_CENTER);
     lv_label_set_text(ui_AboutIconLabel, "");
     lv_obj_set_style_text_font(ui_AboutIconLabel, &ui_font_MPiconfont30, LV_PART_MAIN | LV_STATE_DEFAULT);
-
+		
+		lv_obj_add_event_cb(ui_MenuEnvPanel,env_panel_event_cb, LV_EVENT_CLICKED, NULL); // EnvPanel点击回调函数
+		lv_obj_add_event_cb(ui_MenuHeartRatePanel,hr_panel_event_cb, LV_EVENT_CLICKED, NULL); //HeartRatePanel点击回调函数
+		lv_obj_add_event_cb(ui_MenuO2Panel,o2_panel_event_cb, LV_EVENT_CLICKED, NULL); // SpO2Panel点击回调函数
+		lv_obj_add_event_cb(ui_MenuCalendarPanel,calendar_panel_event_cb, LV_EVENT_CLICKED, NULL); //CalendarPanel点击回调函数
+		lv_obj_add_event_cb(ui_MenuTimPanel,timer_panel_event_cb, LV_EVENT_CLICKED, NULL); // TimPanel点击回调函数
+		
 }
 
 void ui_MenuPage_screen_destroy(void)
 {
+    if(ui_MenuPage) lv_obj_del(ui_MenuPage);
+
+    // NULL screen variables
+    ui_MenuPage = NULL;
+    ui_MenuEnvPanel = NULL;
+    ui_MenuEnvLabel = NULL;
+    ui_MenuEnvButton = NULL;
+    ui_EnvIconLabel = NULL;
+    ui_MenuHeartRatePanel = NULL;
+    ui_MenuHeartRateLabel = NULL;
+    ui_MenuHeartRateButton = NULL;
+    ui_HeartRateIconLabel = NULL;
+    ui_MenuSportPanel = NULL;
+    ui_MenuSportLabel = NULL;
+    ui_MenuSportButton = NULL;
+    ui_SportIconLabel = NULL;
+    ui_MenuO2Panel = NULL;
+    ui_MenuO2Label = NULL;
+    ui_MenuO2Button = NULL;
+    ui_O2IconLabel = NULL;
+    ui_MenuCalendarPanel = NULL;
+    ui_MenuCalenderLabel = NULL;
+    ui_MenuCalenderButton = NULL;
+    ui_CalendarIconLabel = NULL;
+    ui_MenuTimPanel = NULL;
+    ui_MenuTimLabel = NULL;
+    ui_MenuTimButton = NULL;
+    ui_TimIconLabel = NULL;
+    ui_MenuCompassPanel = NULL;
+    ui_MenuCompassLabel = NULL;
+    ui_MenuCompassButton = NULL;
+    ui_CompassIconLabel = NULL;
+    ui_MenuGamePanel = NULL;
+    ui_MenuGameLabel = NULL;
+    ui_MenuGameButton = NULL;
+    ui_GameIconLabel = NULL;
+    ui_MenuCalculatorPanel = NULL;
+    ui_MenuCalculatorLabel = NULL;
+    ui_MenuCalculatorButton = NULL;
+    ui_CalculatorIconLabel = NULL;
+    ui_MenuSettingPanel = NULL;
+    ui_MenuSettingLabel = NULL;
+    ui_MenuSettingButton = NULL;
+    ui_SettingIconLabel = NULL;
+    ui_MenuAboutPanel = NULL;
+    ui_MenuAboutLabel = NULL;
+    ui_MenuAboutButton = NULL;
+    ui_AboutIconLabel = NULL;
+
+}
+
+
+static void menu_page_init()
+{
+	ui_MenuPage_screen_init();
 	
 }
+
+static void menu_page_deinit()
+{
+	ui_MenuPage_screen_destroy();
+}
+
+static void menu_page_resume() 
+{
+    // 保留：页面切换回来时刷新显示内容、重启动画、恢复定时器等。
+}
+
+
+static void menu_page_pause()
+{
+	  // 保留：页面切换离开时暂停动画、停止定时器、保存页面状态等。
+}
+
+page_t page_menu = 
+{
+	.page_obj = &ui_MenuPage,
+	.init = menu_page_init,
+	.deinit = menu_page_deinit,
+	.resume = menu_page_resume,
+	.pause = menu_page_pause,
+};

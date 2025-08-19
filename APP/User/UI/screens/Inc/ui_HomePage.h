@@ -17,24 +17,23 @@ extern "C" {
 extern void ui_HomePage_screen_init(void);
 extern void ui_HomePage_screen_destroy(void);
 extern lv_obj_t * ui_HomePage;
+extern lv_obj_t * ui_BatLabel;
+extern lv_obj_t * ui_StepNumLabel;
+extern lv_obj_t * ui_HRNumLabel;
+extern lv_obj_t * ui_BatNumLabel;
 extern lv_obj_t * ui_TimeHourLabel;
-extern lv_obj_t * ui_TimeColonLabel;
 extern lv_obj_t * ui_TimeMinuteLabel;
-extern lv_obj_t * ui_DayLabel;
-extern lv_obj_t * ui_DateLabel;
 extern lv_obj_t * ui_TempArc;
-extern lv_obj_t * ui_HumArc;
-extern lv_obj_t * ui_StepBar;
+extern lv_obj_t * ui_TempIconLabel;
+extern lv_obj_t * ui_StepArc;
+extern lv_obj_t * ui_StepIconLabel;
 extern lv_obj_t * ui_BatArc;
 extern lv_obj_t * ui_BatIconLabel;
-extern lv_obj_t * ui_BatNumLabel;
-extern lv_obj_t * ui_TempIconLabel;
-extern lv_obj_t * ui_TempNumLabel;
-extern lv_obj_t * ui_HumIconLabel;
-extern lv_obj_t * ui_HumNumLabel;
-extern lv_obj_t * ui_StepBarLabel;
-extern lv_obj_t * ui_StepIconLabel;
-extern lv_obj_t * ui_StepNumLabel;
+extern lv_obj_t * ui_DateButton;
+extern lv_obj_t * ui_DayLabel;
+extern lv_obj_t * ui_DateLabel;
+extern lv_obj_t * ui_StepsLabel;
+extern lv_obj_t * ui_HRBPMLabel;
 // CUSTOM VARIABLES
 
 extern page_t page_home; // 主页面对象

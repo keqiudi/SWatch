@@ -8,9 +8,12 @@
 
 typedef struct
 {
+	lv_obj_t **page_obj;
 	void (*init)(void);
 	void (*deinit)(void);
-	lv_obj_t **page_obj;
+	void (*resume)(void);
+	void (*pause)(void);
+	//uint8_t is_created; //Ò³ÃæÊÇ·ñinit
 }page_t;
 
 
@@ -23,12 +26,10 @@ typedef struct
 
 void pages_init();
 
-page_t* get_current_page(page_stack_t* page_stack);
-
 void page_load(page_t* new_page);
 
 void page_back();
 
-
+page_t* get_top_page(page_stack_t* page_stack);
 
 #endif 

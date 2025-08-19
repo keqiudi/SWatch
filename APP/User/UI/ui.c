@@ -34,7 +34,7 @@ void ui_init(void)
 		pages_init(&page_home); // 初始化Home页面
 	
     //ui____initial_actions0 = lv_obj_create(NULL);
-    lv_disp_load_scr(*page_home.page_obj); //显示Home页面
+	  //lv_disp_load_scr(*page_home.page_obj); //显示Home页面
 }
 
 //void ui_destroy(void)

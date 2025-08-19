@@ -28,15 +28,21 @@ extern "C" {
 //extern lv_obj_t * ui____initial_actions0;
 
 // FONTS£º ×¢²á×ÖÌå
-LV_FONT_DECLARE(ui_font_ALIBABA12);
-LV_FONT_DECLARE(ui_font_ALIBABA16);
-LV_FONT_DECLARE(ui_font_MontserratBold16);
-LV_FONT_DECLARE(ui_font_MontserratBold48);
-LV_FONT_DECLARE(ui_font_FangZhengCuYuan20);
 LV_FONT_DECLARE(ui_font_ALiDaKai20);
-LV_FONT_DECLARE(ui_font_HPiconfont20);
+LV_FONT_DECLARE(ui_font_CuYuan30);
+LV_FONT_DECLARE(ui_font_CuYuan45);
+LV_FONT_DECLARE(ui_font_CuYuan60);
+LV_FONT_DECLARE(ui_font_OpenSasnsBold24);
+LV_FONT_DECLARE(ui_font_OpenSasnsItalic15);
+LV_FONT_DECLARE(ui_font_OpenSasnsItalic100);
+
+LV_FONT_DECLARE(ui_font_HPiconfont25);
 LV_FONT_DECLARE(ui_font_MPiconfont25);
 LV_FONT_DECLARE(ui_font_MPiconfont30);
+LV_FONT_DECLARE(ui_font_EPiconfont30);
+LV_FONT_DECLARE(ui_font_HRPiconfont50);
+LV_FONT_DECLARE(ui_font_O2MPiconfont50);
+LV_FONT_DECLARE(ui_font_TMPiconfont30);
 // UI INIT
 void ui_init(void);
 //void ui_destroy(void);

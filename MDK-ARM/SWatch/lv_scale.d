@@ -4,7 +4,6 @@ swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\lv_scale.h
 swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../../lv_conf_internal.h
 swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../../lv_conf_kconfig.h
 swatch\lv_scale.o: ../Middlewares/lvgl/lv_conf.h
-swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../../core/lv_obj_private.h
 swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../../core/lv_obj.h
 swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../../core/../misc/lv_types.h
 swatch\lv_scale.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
@@ -66,4 +65,7 @@ swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../../core/lv_obj_prope
 swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../../core/lv_obj_event.h
 swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../../core/../indev/lv_indev.h
 swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../../core/../indev/../core/lv_group.h
+swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../line/lv_line.h
+swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../image/lv_image.h
+swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../../core/lv_obj_private.h
 swatch\lv_scale.o: ..\Middlewares\lvgl\src\widgets\scale\../../core/lv_obj_class_private.h

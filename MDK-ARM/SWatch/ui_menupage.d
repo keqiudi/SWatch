@@ -223,3 +223,8 @@ swatch\ui_menupage.o: ../APP/User/UI/screens/Inc/../../ui_events.h
 swatch\ui_menupage.o: ../APP/User/UI/screens/Inc/../../../Utils/Inc/page_manager.h
 swatch\ui_menupage.o: ../APP/User/UI/screens/Inc/../../screens/Inc/ui_HomePage.h
 swatch\ui_menupage.o: ../APP/User/UI/screens/Inc/../../screens/Inc/ui_MenuPage.h
+swatch\ui_menupage.o: ../APP/User/UI/screens/Inc/ui_EnvironmentPage.h
+swatch\ui_menupage.o: ../APP/User/UI/screens/Inc/ui_HeartRatePage.h
+swatch\ui_menupage.o: ../APP/User/UI/screens/Inc/ui_SpO2MeasurePage.h
+swatch\ui_menupage.o: ../APP/User/UI/screens/Inc/ui_CalendarPage.h
+swatch\ui_menupage.o: ../APP/User/UI/screens/Inc/ui_TimerPage.h
