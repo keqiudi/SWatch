@@ -1,0 +1,17 @@
+{
+  "codename": "O2MPiconfont50",
+  "ttf_path": "/assets/iconfont.ttf",
+  "bin_path": "/assets\\ui_font_O2MPiconfont50.bin",
+  "c_path": "/assets\\ui_font_O2MPiconfont50.c",
+  "cfg_path": "/assets\\ui_font_O2MPiconfont50.fcfg",
+  "size": 50,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [
+    "0xe72c",
+    "   0xe6bf"
+  ],
+  "symbols": "",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

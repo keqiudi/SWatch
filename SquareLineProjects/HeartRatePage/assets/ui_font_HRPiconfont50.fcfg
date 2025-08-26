@@ -1,0 +1,17 @@
+{
+  "codename": "HRPiconfont50",
+  "ttf_path": "/assets/iconfont.ttf",
+  "bin_path": "/assets\\ui_font_HRPiconfont50.bin",
+  "c_path": "/assets\\ui_font_HRPiconfont50.c",
+  "cfg_path": "/assets\\ui_font_HRPiconfont50.fcfg",
+  "size": 50,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [
+    "0xe600",
+    "  0xe72d"
+  ],
+  "symbols": "",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

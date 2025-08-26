@@ -1,0 +1,26 @@
+{
+  "codename": "MPiconfont30",
+  "ttf_path": "/assets/iconfont.ttf",
+  "bin_path": "/assets\\ui_font_MPiconfont30.bin",
+  "c_path": "/assets\\ui_font_MPiconfont30.c",
+  "cfg_path": "/assets\\ui_font_MPiconfont30.fcfg",
+  "size": 30,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [
+    "0xe62b",
+    "                0xe6e1",
+    "                0xe6e0",
+    "               0xe6eb",
+    "             0xe615",
+    "            0xe622",
+    "      0xe60a",
+    "    0xe69e",
+    "    0xe630",
+    "  0xe655",
+    " 0xe603"
+  ],
+  "symbols": "",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

@@ -1,0 +1,19 @@
+{
+  "codename": "TMPiconfont30",
+  "ttf_path": "/assets/iconfont.ttf",
+  "bin_path": "/assets\\ui_font_TMPiconfont30.bin",
+  "c_path": "/assets\\ui_font_TMPiconfont30.c",
+  "cfg_path": "/assets\\ui_font_TMPiconfont30.fcfg",
+  "size": 30,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [
+    "0xe623",
+    "     0xe65b",
+    "     0xe90d",
+    " 0xe693"
+  ],
+  "symbols": "",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

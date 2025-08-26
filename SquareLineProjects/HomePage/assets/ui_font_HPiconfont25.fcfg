@@ -1,0 +1,19 @@
+{
+  "codename": "HPiconfont25",
+  "ttf_path": "/assets/iconfont.ttf",
+  "bin_path": "/assets\\ui_font_HPiconfont25.bin",
+  "c_path": "/assets\\ui_font_HPiconfont25.c",
+  "cfg_path": "/assets\\ui_font_HPiconfont25.fcfg",
+  "size": 25,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [
+    "0xe605",
+    "      0xe848",
+    "     0xe600",
+    "   0xe995"
+  ],
+  "symbols": "",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

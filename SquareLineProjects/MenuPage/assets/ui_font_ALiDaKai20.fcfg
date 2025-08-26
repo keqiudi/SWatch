@@ -1,0 +1,16 @@
+{
+  "codename": "ALiDaKai20",
+  "ttf_path": "/assets/AlimamaDongFangDaKai-Regular.ttf",
+  "bin_path": "/assets\\ui_font_ALiDaKai20.bin",
+  "c_path": "/assets\\ui_font_ALiDaKai20.c",
+  "cfg_path": "/assets\\ui_font_ALiDaKai20.fcfg",
+  "size": 20,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [
+    "0x20"
+  ],
+  "symbols": "环境心率运动日历秒表血氧指南针游戏设置关于计算器温湿度次/分正在测量常亮时间熄屏日期抬腕密码秒同步AP年手表固件型号主控芯片操作系统图形界面版本.%",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

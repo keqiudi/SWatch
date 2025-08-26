@@ -1,0 +1,14 @@
+{
+  "codename": "OpenSasnsItalic100",
+  "ttf_path": "/assets/OpenSans-BoldItalic.ttf",
+  "bin_path": "/assets\\ui_font_OpenSasnsItalic100.bin",
+  "c_path": "/assets\\ui_font_OpenSasnsItalic100.c",
+  "cfg_path": "/assets\\ui_font_OpenSasnsItalic100.fcfg",
+  "size": 100,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [],
+  "symbols": "0123456789",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

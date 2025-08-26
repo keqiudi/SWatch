@@ -1,0 +1,14 @@
+{
+  "codename": "CuYuan40",
+  "ttf_path": "/assets/方正粗圆简体.TTF",
+  "bin_path": "/assets\\ui_font_CuYuan40.bin",
+  "c_path": "/assets\\ui_font_CuYuan40.c",
+  "cfg_path": "/assets\\ui_font_CuYuan40.fcfg",
+  "size": 40,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [],
+  "symbols": "0123456789:.",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

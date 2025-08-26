@@ -1,0 +1,17 @@
+{
+  "codename": "CPiconfont28",
+  "ttf_path": "/assets/iconfont.ttf",
+  "bin_path": "/assets\\ui_font_CPiconfont28.bin",
+  "c_path": "/assets\\ui_font_CPiconfont28.c",
+  "cfg_path": "/assets\\ui_font_CPiconfont28.fcfg",
+  "size": 28,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [
+    "0xe634",
+    "0xe60a"
+  ],
+  "symbols": "",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

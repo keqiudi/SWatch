@@ -1,0 +1,8 @@
+SET(SOURCES screens/ui_SettingMenuPage.c
+    ui.c
+    components/ui_comp_hook.c
+    ui_helpers.c
+    fonts/ui_font_ALiDaKai20.c
+    fonts/ui_font_SPiconfont30.c)
+
+add_library(ui ${SOURCES})

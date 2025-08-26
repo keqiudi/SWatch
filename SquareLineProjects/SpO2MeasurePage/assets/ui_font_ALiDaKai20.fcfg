@@ -1,0 +1,14 @@
+{
+  "codename": "ALiDaKai20",
+  "ttf_path": "/assets/AlimamaDongFangDaKai-Regular.ttf",
+  "bin_path": "/assets\\ui_font_ALiDaKai20.bin",
+  "c_path": "/assets\\ui_font_ALiDaKai20.c",
+  "cfg_path": "/assets\\ui_font_ALiDaKai20.fcfg",
+  "size": 20,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [],
+  "symbols": "%正在测量.",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

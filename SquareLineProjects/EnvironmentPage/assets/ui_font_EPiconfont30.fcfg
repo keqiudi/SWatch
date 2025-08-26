@@ -1,0 +1,17 @@
+{
+  "codename": "EPiconfont30",
+  "ttf_path": "/assets/iconfont.ttf",
+  "bin_path": "/assets\\ui_font_EPiconfont30.bin",
+  "c_path": "/assets\\ui_font_EPiconfont30.c",
+  "cfg_path": "/assets\\ui_font_EPiconfont30.fcfg",
+  "size": 30,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [
+    "0xe611",
+    "    0xe640"
+  ],
+  "symbols": "",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

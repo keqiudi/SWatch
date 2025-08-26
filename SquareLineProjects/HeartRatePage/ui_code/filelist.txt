@@ -1,0 +1,7 @@
+screens/ui_HeartRatePage.c
+ui.c
+components/ui_comp_hook.c
+ui_helpers.c
+fonts/ui_font_ALiDaKai20.c
+fonts/ui_font_CuYuan60.c
+fonts/ui_font_HRPiconfont50.c

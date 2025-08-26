@@ -1,0 +1,14 @@
+{
+  "codename": "CuYuan20",
+  "ttf_path": "/assets/方正粗圆简体.TTF",
+  "bin_path": "/assets\\ui_font_CuYuan20.bin",
+  "c_path": "/assets\\ui_font_CuYuan20.c",
+  "cfg_path": "/assets\\ui_font_CuYuan20.fcfg",
+  "size": 20,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [],
+  "symbols": "星期一二三四五六日0123456789/",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}
