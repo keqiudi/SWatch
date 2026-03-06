@@ -1,14 +1,14 @@
 #include "bsp_aht20.h"
 #include "i2c_hal.h"
 #include "delay.h"
-
+#include "SEGGER_RTT.h"
 
 i2c_bus_t AHT20_bus = 
 {
-	.I2C_SDA_PORT = GPIOB,
-	.I2C_SCL_PORT = GPIOB,
-  .I2C_SDA_PIN =  GPIO_PIN_13,
-	.I2C_SCL_PIN =  GPIO_PIN_14
+	.I2C_SDA_PORT = AHT20_SDA_PORT,
+	.I2C_SCL_PORT = AHT20_SCL_PORT,
+  .I2C_SDA_PIN =  AHT20_SDA_PIN,
+	.I2C_SCL_PIN =  AHT20_SCL_PIN
 };
 
 static uint8_t AHT20_read_status(void)
@@ -21,8 +21,9 @@ static uint8_t AHT20_read_status(void)
 	i2c_soft_wait_ack(&AHT20_bus);
 	status = i2c_soft_read_byte(&AHT20_bus);
   i2c_soft_send_not_ack(&AHT20_bus);
-	
 	i2c_soft_stop(&AHT20_bus);
+	
+	SEGGER_RTT_printf(0,"status: %x\n",status);
 	return status;
 }
 
@@ -32,9 +33,8 @@ uint8_t AHT20_init(void)
 	
 	delay_ms(40);
 	
-	if((AHT20_read_status() & 0x08) != 1) //statusµÄbit[3]²»Îª1
+	if((AHT20_read_status() & 0x08) != 0x08) //statusçš„bit[3]ä¸º1
 	{
-			
 		i2c_soft_start(&AHT20_bus);
 		i2c_soft_send_byte(&AHT20_bus,AHT20_CMD_WRITE);
 		i2c_soft_wait_ack(&AHT20_bus);
@@ -47,8 +47,8 @@ uint8_t AHT20_init(void)
 		i2c_soft_stop(&AHT20_bus);
 	}
 	delay_ms(10);
-	
-	return 0;
+		
+	return 1;
 }
 
 
@@ -65,9 +65,9 @@ void AHT20_soft_reset(void)
 uint8_t AHT20_read(float* temperature,float* humidity)
 {
     uint8_t timeout_cnt = 10;
-		uint8_t sensor_data[6];
-		uint32_t humidity_raw_data;
-	  uint32_t temperature_raw_data;
+		volatile uint8_t sensor_data[6];
+		volatile uint32_t humidity_raw_data;
+	  volatile uint32_t temperature_raw_data;
 	
 		i2c_soft_start(&AHT20_bus);
 		i2c_soft_send_byte(&AHT20_bus,AHT20_CMD_WRITE);
@@ -78,14 +78,16 @@ uint8_t AHT20_read(float* temperature,float* humidity)
 		i2c_soft_wait_ack(&AHT20_bus);
 		i2c_soft_send_byte(&AHT20_bus,0x00);
 		i2c_soft_wait_ack(&AHT20_bus);
-	  delay_ms(80);
+		i2c_soft_stop(&AHT20_bus);
 	
-		while((AHT20_read_status() & 0x80) && timeout_cnt) //µÈ´ıÉè±¸²âÁ¿Íê³É
+	  delay_ms(80); // æµ‹é‡ç­‰å¾…
+		while((AHT20_read_status()&0x80) == 0x80 && timeout_cnt) //æœ‰æ•ˆæ¬¡æ•°æµ‹é‡ç­‰å¾…
 		{
 			delay_ms(5);
 			timeout_cnt--;
-			if(!timeout_cnt)// ³¬Ê±µÈ´ı
-					return 1;
+			if(!timeout_cnt)// è¶…æ—¶ç›´æ¥é€€å‡º
+					return 0;
+			AHT20_read_status();
 		}
 		
 		i2c_soft_start(&AHT20_bus);
@@ -103,7 +105,7 @@ uint8_t AHT20_read(float* temperature,float* humidity)
 		sensor_data[4] = i2c_soft_read_byte(&AHT20_bus);
 		i2c_soft_send_ack(&AHT20_bus);
 		sensor_data[5] = i2c_soft_read_byte(&AHT20_bus);
-		i2c_soft_send_not_ack(&AHT20_bus); // ÎÒÕâÀï²»ĞèÒªCRCĞ£Ñé£¬ËùÒÔÖ±½Ó·¢ËÍNACK
+		i2c_soft_send_not_ack(&AHT20_bus); 
 		i2c_soft_stop(&AHT20_bus);
 		 
 		humidity_raw_data = ((uint32_t)sensor_data[1] << 12) + ((uint32_t)sensor_data[2] << 4) + ((uint32_t)sensor_data[3] >> 4);
@@ -112,7 +114,7 @@ uint8_t AHT20_read(float* temperature,float* humidity)
 		temperature_raw_data =  (((uint32_t)sensor_data[3] & 0x0F) << 16 ) + ((uint32_t)sensor_data[4] << 8) + (uint32_t)sensor_data[5];
 		*temperature = (temperature_raw_data * 200.0) / (1 << 20) -50;
 		
-		return 0;
+		return 1;
 }
 
 

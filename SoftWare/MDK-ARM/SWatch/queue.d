@@ -1,9 +1,9 @@
 swatch\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/queue.c
-swatch\queue.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdlib.h
-swatch\queue.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\string.h
+swatch\queue.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+swatch\queue.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 swatch\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-swatch\queue.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
-swatch\queue.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\queue.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\queue.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 swatch\queue.o: ../Core/Inc/FreeRTOSConfig.h
 swatch\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 swatch\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

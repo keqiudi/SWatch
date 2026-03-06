@@ -1,8 +1,8 @@
 swatch\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
-swatch\stream_buffer.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
-swatch\stream_buffer.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\string.h
+swatch\stream_buffer.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\stream_buffer.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 swatch\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-swatch\stream_buffer.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\stream_buffer.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 swatch\stream_buffer.o: ../Core/Inc/FreeRTOSConfig.h
 swatch\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 swatch\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

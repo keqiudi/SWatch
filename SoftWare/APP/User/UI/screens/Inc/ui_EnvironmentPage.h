@@ -25,7 +25,14 @@ extern lv_obj_t * ui_TempLabel;
 extern lv_obj_t * ui_HumLabel;
 // CUSTOM VARIABLES
 
+#define TEMP_RANGE_LOW -20
+#define TEMP_RANGE_HIGH 50
+
+#define HUM_RANGE_LOW 0
+#define HUM_RANGE_HIGH 100
+
 extern page_t page_env;
+
 
 
 #ifdef __cplusplus

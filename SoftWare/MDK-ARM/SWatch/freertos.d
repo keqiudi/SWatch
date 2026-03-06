@@ -1,7 +1,7 @@
 swatch\freertos.o: ../Core/Src/freertos.c
 swatch\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-swatch\freertos.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
-swatch\freertos.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\freertos.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\freertos.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 swatch\freertos.o: ../Core/Inc/FreeRTOSConfig.h
 swatch\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 swatch\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -44,7 +44,4 @@ swatch\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsi
 swatch\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 swatch\freertos.o: ../APP/User/Tasks/Inc/user_task_init.h
 swatch\freertos.o: ../APP/User/Tasks/Inc/user_hw_init.h
-swatch\freertos.o: ../SEGGER/SEGGER_RTT.h
-swatch\freertos.o: ../SEGGER/SEGGER_RTT_Conf.h
-swatch\freertos.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdlib.h
-swatch\freertos.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdarg.h
+swatch\freertos.o: ../BSP/MPU6050/bsp_mpu6050.h

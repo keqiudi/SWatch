@@ -1,0 +1,17 @@
+#ifndef __HW_AHT20_INTERFACE_H
+#define __HW_AHT20_INTERFACE_H
+
+#include "device.h"
+
+
+typedef struct{
+ 
+	device_status_t state;
+	float temperature;
+	float humidity;
+	int (*init)(void);
+	int (*read)(float* temperature,float* humidity);
+	
+}hw_aht20_interface_t;
+
+#endif

@@ -5,9 +5,9 @@ swatch\lv_mem_core_rtthread.o: ..\Middlewares\lvgl\src\stdlib\rtthread\../../lv_
 swatch\lv_mem_core_rtthread.o: ../Middlewares/lvgl/lv_conf.h
 swatch\lv_mem_core_rtthread.o: ..\Middlewares\lvgl\src\stdlib\rtthread\../lv_string.h
 swatch\lv_mem_core_rtthread.o: ..\Middlewares\lvgl\src\stdlib\rtthread\../../misc/lv_types.h
-swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
-swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
-swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdbool.h
-swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\inttypes.h
-swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\limits.h
-swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdarg.h
+swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+swatch\lv_mem_core_rtthread.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

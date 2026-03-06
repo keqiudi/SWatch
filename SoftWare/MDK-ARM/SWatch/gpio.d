@@ -8,7 +8,7 @@ swatch\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 swatch\gpio.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 swatch\gpio.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h
 swatch\gpio.o: ../Drivers/CMSIS/Include/core_cm4.h
-swatch\gpio.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\gpio.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 swatch\gpio.o: ../Drivers/CMSIS/Include/cmsis_version.h
 swatch\gpio.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 swatch\gpio.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -16,7 +16,7 @@ swatch\gpio.o: ../Drivers/CMSIS/Include/mpu_armv7.h
 swatch\gpio.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 swatch\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 swatch\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-swatch\gpio.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\gpio.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 swatch\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 swatch\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 swatch\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h

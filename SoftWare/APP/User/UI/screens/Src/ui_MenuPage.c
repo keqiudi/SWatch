@@ -696,6 +696,7 @@ static void menu_page_resume()
 
 static void menu_page_pause()
 {
+
 	  // 保留：页面切换离开时暂停动画、停止定时器、保存页面状态等。
 }
 

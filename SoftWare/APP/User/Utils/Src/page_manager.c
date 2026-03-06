@@ -79,16 +79,19 @@ void page_load(page_t* new_page)
 	}
 	
 	/* 当前页面处理 */
-//	page_t* cur_page = page_stack_top(&page_stack);
-//	if(cur_page)
-//	{
-//		 cur_page->pause(); //暂停当前页面定时器、动画等
-//	}
+	page_t* cur_page = page_stack_top(&page_stack);
+	if(cur_page){
+		 cur_page->pause(); //暂停当前页面定时器、动画等
+		 //cur_page->deinit(); // 使用动画加载需注释掉，否则会访问空指针
+	}
 	
+	/* 新页面处理 */
 	new_page->init(); // 新页面初始化
+	new_page->resume(); // 新页面启动定时器等
 	page_stack_push(&page_stack,new_page); // 新页面入栈
 	
-	lv_screen_load_anim(*new_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); //加载新页面(有动画),自动释放旧页面
+	//lv_scr_load(*new_page->page_obj);
+	lv_screen_load_anim(*new_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); //加载新页面(有动画),自动访问释放旧screen
 }
 
 
@@ -101,23 +104,30 @@ void page_back()
       return;
   }
 	
+	/*当前页面处理*/
+	page_t* cur_page = page_stack_top(&page_stack);
+	if(cur_page)
+	{
+		 cur_page->pause(); //暂停当前页面定时器、动画等
+		 //cur_page->deinit(); // 使用动画加载需注释掉，否则会访问空指针
+	}
 	page_stack_pop(&page_stack); // 弹出当前页面
 	
+	/* 新页面处理 */
 	page_t* previous_page = get_top_page(&page_stack);
-	
 	if(!previous_page){
 		 return ;
 	}
 	previous_page->init();
+	previous_page->resume();  // 启动当前页面定时器、动画等
 	
-	//prev->resume();  // 启动当前页面定时器、动画等
-	lv_screen_load_anim(*previous_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); //加载新页面(有动画),删除旧screen
-	
+	//lv_scr_load(*previous_page->page_obj); // 可以先释放旧页面,避免两个页面同时存在占用heap过高，只不过没有动画加载
+	lv_screen_load_anim(*previous_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); //加载新页面(有动画),自动访问释放旧screen
 }
 
 
-page_t* get_top_page(page_stack_t* page_stack)
+page_t* get_top_page()
 {
-		return page_stack_top(page_stack);
+		return page_stack_top(&page_stack);
 }
 

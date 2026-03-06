@@ -16,8 +16,8 @@
         <TargetCommonOption>
           <Device>STM32F411CEUx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.17.1</PackID>
-          <PackURL>https://www.keil.com/pack/</PackURL>
+          <PackID>Keil.STM32F4xx_DFP.2.14.0</PackID>
+          <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000-0x2001FFFF) IROM(0x8000000-0x807FFFF)  CLOCK(25000000) FPU2 CPUTYPE("Cortex-M4") TZ</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -338,7 +338,7 @@
               <MiscControls>--locale=english</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F411xE,LV_CONF_INCLUDE_SIMPLE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares;../Middlewares/lvgl;../Middlewares/lvgl/src;../Middlewares/lvgl/port;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../BSP/I2C;../BSP/AHT20;../BSP/MPU6050;../BSP/LCD;../BSP/CST816T;../APP/User/Tasks/Inc;../APP/User/System;../APP/User/UI/;../APP/User/UI/screens/Inc;../APP/User/Utils/Inc;../SEGGER</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares;../Middlewares/lvgl;../Middlewares/lvgl/src;../Middlewares/lvgl/port;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../BSP/I2C;../BSP/AHT20;../BSP/MPU6050;../BSP/LCD;../BSP/CST816T;../APP/User/Tasks/Inc;../APP/User/System;../APP/User/UI/;../APP/User/UI/screens/Inc;../APP/User/Utils/Inc;../APP/User/HWInterface/Inc;../Debug/RTT</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -660,6 +660,16 @@
               <FileType>5</FileType>
               <FilePath>..\APP\User\Tasks\Inc\user_lvgl_handler.h</FilePath>
             </File>
+            <File>
+              <FileName>user_sensor_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\Tasks\Src\user_sensor_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>user_sensor_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\Tasks\Inc\user_sensor_task.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -863,32 +873,47 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>SEGGER/RTT</GroupName>
+          <GroupName>App/User/HWInterface</GroupName>
           <Files>
             <File>
-              <FileName>SEGGER_RTT.c</FileName>
+              <FileName>hw_interface.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\SEGGER\SEGGER_RTT.c</FilePath>
+              <FilePath>..\APP\User\HWInterface\Src\hw_interface.c</FilePath>
             </File>
             <File>
-              <FileName>SEGGER_RTT.h</FileName>
+              <FileName>hw_interface.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\SEGGER\SEGGER_RTT.h</FilePath>
+              <FilePath>..\APP\User\HWInterface\Inc\hw_interface.h</FilePath>
             </File>
             <File>
-              <FileName>SEGGER_RTT_Conf.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\SEGGER\SEGGER_RTT_Conf.h</FilePath>
-            </File>
-            <File>
-              <FileName>SEGGER_RTT_printf.c</FileName>
+              <FileName>hw_aht20_interface.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\SEGGER\SEGGER_RTT_printf.c</FilePath>
+              <FilePath>..\APP\User\HWInterface\Src\hw_aht20_interface.c</FilePath>
+            </File>
+            <File>
+              <FileName>hw_aht20_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\HWInterface\Inc\hw_aht20_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>hw_mpu6050_interface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\HWInterface\Src\hw_mpu6050_interface.c</FilePath>
+            </File>
+            <File>
+              <FileName>hw_mpu6050_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\HWInterface\Inc\hw_mpu6050_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>device.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\HWInterface\Inc\device.h</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Drivers/User/BSP</GroupName>
+          <GroupName>Drivers/User/BSP_Drivers</GroupName>
           <Files>
             <File>
               <FileName>bsp_touch_cst816t.c</FileName>
@@ -1011,14 +1036,14 @@
           <GroupName>Middlewares/lvgl/conf</GroupName>
           <Files>
             <File>
-              <FileName>lv_conf.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Middlewares\lvgl\lv_conf.h</FilePath>
-            </File>
-            <File>
               <FileName>lv_version.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Middlewares\lvgl\lv_version.h</FilePath>
+            </File>
+            <File>
+              <FileName>lv_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Middlewares\lvgl\lv_conf.h</FilePath>
             </File>
             <File>
               <FileName>lvgl.h</FileName>
@@ -2886,6 +2911,31 @@
               <FileName>stm32f4xx_hal_tim_ex.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Debug/RTT</GroupName>
+          <Files>
+            <File>
+              <FileName>SEGGER_RTT.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Debug\RTT\SEGGER_RTT.c</FilePath>
+            </File>
+            <File>
+              <FileName>SEGGER_RTT.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Debug\RTT\SEGGER_RTT.h</FilePath>
+            </File>
+            <File>
+              <FileName>SEGGER_RTT_Conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Debug\RTT\SEGGER_RTT_Conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>SEGGER_RTT_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Debug\RTT\SEGGER_RTT_printf.c</FilePath>
             </File>
           </Files>
         </Group>

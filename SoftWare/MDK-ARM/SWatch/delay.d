@@ -4,7 +4,7 @@ swatch\delay.o: ..\APP\User\System\sys.h
 swatch\delay.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 swatch\delay.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h
 swatch\delay.o: ../Drivers/CMSIS/Include/core_cm4.h
-swatch\delay.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\delay.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 swatch\delay.o: ../Drivers/CMSIS/Include/cmsis_version.h
 swatch\delay.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 swatch\delay.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -16,7 +16,7 @@ swatch\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
 swatch\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 swatch\delay.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 swatch\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-swatch\delay.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\delay.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 swatch\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 swatch\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 swatch\delay.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h

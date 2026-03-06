@@ -30,6 +30,6 @@ void page_load(page_t* new_page);
 
 void page_back();
 
-page_t* get_top_page(page_stack_t* page_stack);
+page_t* get_top_page();
 
 #endif 

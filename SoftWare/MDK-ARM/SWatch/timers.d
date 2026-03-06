@@ -1,8 +1,8 @@
 swatch\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/timers.c
-swatch\timers.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdlib.h
+swatch\timers.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 swatch\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-swatch\timers.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
-swatch\timers.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\timers.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\timers.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 swatch\timers.o: ../Core/Inc/FreeRTOSConfig.h
 swatch\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 swatch\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

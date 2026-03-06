@@ -799,7 +799,7 @@ hold explicit before calling the code. */
 #endif
 
 #ifndef configUSE_STATS_FORMATTING_FUNCTIONS
-	#define configUSE_STATS_FORMATTING_FUNCTIONS 0
+	#define configUSE_STATS_FORMATTING_FUNCTIONS 1
 #endif
 
 #ifndef portASSERT_IF_INTERRUPT_PRIORITY_INVALID

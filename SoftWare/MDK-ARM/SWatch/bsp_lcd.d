@@ -5,7 +5,7 @@ swatch\bsp_lcd.o: ../APP/User/System/sys.h
 swatch\bsp_lcd.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 swatch\bsp_lcd.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h
 swatch\bsp_lcd.o: ../Drivers/CMSIS/Include/core_cm4.h
-swatch\bsp_lcd.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\bsp_lcd.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 swatch\bsp_lcd.o: ../Drivers/CMSIS/Include/cmsis_version.h
 swatch\bsp_lcd.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 swatch\bsp_lcd.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -17,7 +17,7 @@ swatch\bsp_lcd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
 swatch\bsp_lcd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 swatch\bsp_lcd.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 swatch\bsp_lcd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-swatch\bsp_lcd.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\bsp_lcd.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 swatch\bsp_lcd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 swatch\bsp_lcd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 swatch\bsp_lcd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h
@@ -45,10 +45,10 @@ swatch\bsp_lcd.o: ../Middlewares/lvgl/src/lv_conf_internal.h
 swatch\bsp_lcd.o: ../Middlewares/lvgl/src/lv_conf_kconfig.h
 swatch\bsp_lcd.o: ../Middlewares/lvgl/lv_conf.h
 swatch\bsp_lcd.o: ../Middlewares/lvgl/src/misc/lv_types.h
-swatch\bsp_lcd.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdbool.h
-swatch\bsp_lcd.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\inttypes.h
-swatch\bsp_lcd.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\limits.h
-swatch\bsp_lcd.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdarg.h
+swatch\bsp_lcd.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+swatch\bsp_lcd.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+swatch\bsp_lcd.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+swatch\bsp_lcd.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 swatch\bsp_lcd.o: ../Middlewares/lvgl/src/stdlib/lv_mem.h
 swatch\bsp_lcd.o: ../Middlewares/lvgl/src/stdlib/lv_string.h
 swatch\bsp_lcd.o: ../Middlewares/lvgl/src/stdlib/lv_sprintf.h

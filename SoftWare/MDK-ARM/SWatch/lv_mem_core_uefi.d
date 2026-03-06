@@ -5,9 +5,9 @@ swatch\lv_mem_core_uefi.o: ..\Middlewares\lvgl\src\stdlib\uefi\../../lv_conf_kco
 swatch\lv_mem_core_uefi.o: ../Middlewares/lvgl/lv_conf.h
 swatch\lv_mem_core_uefi.o: ..\Middlewares\lvgl\src\stdlib\uefi\../lv_string.h
 swatch\lv_mem_core_uefi.o: ..\Middlewares\lvgl\src\stdlib\uefi\../../misc/lv_types.h
-swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
-swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
-swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdbool.h
-swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\inttypes.h
-swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\limits.h
-swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdarg.h
+swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+swatch\lv_mem_core_uefi.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

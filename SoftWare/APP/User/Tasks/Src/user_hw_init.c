@@ -1,10 +1,8 @@
 
 
-
+#include "delay.h"
 #include "user_hw_init.h"
 #include "user_task_init.h"
-
-#include "delay.h"
 
 #include "bsp_lcd.h"
 #include "bsp_touch_cst816t.h"
@@ -15,12 +13,30 @@
 #include "lvgl.h"
 #include "ui.h"
 
+#include "device.h"
+#include "hw_interface.h"
+#include "bsp_mpu6050.h"
 #include "SEGGER_RTT.h"
 
 /* 保证该任务执行优先级最高，上电最先执行，同时不能在这里面分配堆栈，因为会释放*/
 void HwInitTask(void *argument)
 {
-   	delay_init();
+		int ret = 0;
+		
+		/* Systick 初始化才能使用delay */
+   		delay_init();
+	  
+		
+		//mpu6050_init();
+	
+		/* 传感器相关初始化 */
+		ret = hw_interface.hw_aht20_interface->init();
+	  	if(ret == ERR_SUCCESS)
+		{
+				hw_interface.hw_aht20_interface->state = DEVICE_STATUS_INITED;
+		}
+		
+
 		
 	  /* LCD 显示ST7789初始化*/
 		LCD_Init();
@@ -40,10 +56,6 @@ void HwInitTask(void *argument)
 		
 		vTaskDelete(NULL); // 初始化完成后直接删除任务
 	
-//		while(1)
-//		{
-//			osDelay(2000);
-//		}
 }	
 
 

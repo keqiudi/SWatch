@@ -436,5 +436,11 @@ void OS_SIM_LeaveCriticalSection(void);
   #endif
 #endif
 
+
+/* 浮点数打印支持 */
+#ifndef SEGGER_RTT_PRINT_FLOAT_ENABLE
+    #define SEGGER_RTT_PRINT_FLOAT_ENABLE   1
+#endif
+
 #endif
 /*************************** End of file ****************************/

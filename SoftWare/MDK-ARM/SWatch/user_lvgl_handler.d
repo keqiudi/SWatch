@@ -1,8 +1,8 @@
 swatch\user_lvgl_handler.o: ..\APP\User\Tasks\Src\user_lvgl_handler.c
 swatch\user_lvgl_handler.o: ../APP/User/Tasks/Inc/user_task_init.h
 swatch\user_lvgl_handler.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-swatch\user_lvgl_handler.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
-swatch\user_lvgl_handler.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\user_lvgl_handler.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\user_lvgl_handler.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 swatch\user_lvgl_handler.o: ../Core/Inc/FreeRTOSConfig.h
 swatch\user_lvgl_handler.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 swatch\user_lvgl_handler.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -21,10 +21,10 @@ swatch\user_lvgl_handler.o: ../Middlewares/lvgl/src/lv_conf_internal.h
 swatch\user_lvgl_handler.o: ../Middlewares/lvgl/src/lv_conf_kconfig.h
 swatch\user_lvgl_handler.o: ../Middlewares/lvgl/lv_conf.h
 swatch\user_lvgl_handler.o: ../Middlewares/lvgl/src/misc/lv_types.h
-swatch\user_lvgl_handler.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdbool.h
-swatch\user_lvgl_handler.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\inttypes.h
-swatch\user_lvgl_handler.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\limits.h
-swatch\user_lvgl_handler.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdarg.h
+swatch\user_lvgl_handler.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+swatch\user_lvgl_handler.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+swatch\user_lvgl_handler.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+swatch\user_lvgl_handler.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 swatch\user_lvgl_handler.o: ../Middlewares/lvgl/src/stdlib/lv_mem.h
 swatch\user_lvgl_handler.o: ../Middlewares/lvgl/src/stdlib/lv_string.h
 swatch\user_lvgl_handler.o: ../Middlewares/lvgl/src/stdlib/lv_sprintf.h
@@ -219,6 +219,6 @@ swatch\user_lvgl_handler.o: ../Middlewares/lvgl/src/lv_api_map_v8.h
 swatch\user_lvgl_handler.o: ../Middlewares/lvgl/src/lv_api_map_v9_0.h
 swatch\user_lvgl_handler.o: ../Middlewares/lvgl/src/lv_api_map_v9_1.h
 swatch\user_lvgl_handler.o: ../Middlewares/lvgl/src/lv_api_map_v9_2.h
-swatch\user_lvgl_handler.o: ../SEGGER/SEGGER_RTT.h
-swatch\user_lvgl_handler.o: ../SEGGER/SEGGER_RTT_Conf.h
-swatch\user_lvgl_handler.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdlib.h
+swatch\user_lvgl_handler.o: ../Debug/RTT/SEGGER_RTT.h
+swatch\user_lvgl_handler.o: ../Debug/RTT/SEGGER_RTT_Conf.h
+swatch\user_lvgl_handler.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

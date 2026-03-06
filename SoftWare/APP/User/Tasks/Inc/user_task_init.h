@@ -6,6 +6,17 @@
 #include "task.h"
 #include "cmsis_os.h"
 
-void User_Tasks_Init();
+
+typedef enum {
+    MSG_AHT20_MEASURE=0,
+    MSG_MPU6050_MEASURE,
+    MSG_EM7028_MEASURE,
+}sensor_msg_t;
+
+
+void user_tasks_init();
+
+
+extern osMessageQueueId_t SensorMsgQueue;
 
 #endif

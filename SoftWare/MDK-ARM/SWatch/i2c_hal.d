@@ -3,7 +3,7 @@ swatch\i2c_hal.o: ..\BSP\I2C\i2c_hal.h
 swatch\i2c_hal.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 swatch\i2c_hal.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h
 swatch\i2c_hal.o: ../Drivers/CMSIS/Include/core_cm4.h
-swatch\i2c_hal.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\i2c_hal.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 swatch\i2c_hal.o: ../Drivers/CMSIS/Include/cmsis_version.h
 swatch\i2c_hal.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 swatch\i2c_hal.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -15,7 +15,7 @@ swatch\i2c_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
 swatch\i2c_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 swatch\i2c_hal.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 swatch\i2c_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-swatch\i2c_hal.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\i2c_hal.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 swatch\i2c_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 swatch\i2c_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 swatch\i2c_hal.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h

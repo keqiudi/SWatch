@@ -14,6 +14,7 @@
 "swatch\user_task_init.o"
 "swatch\user_hw_init.o"
 "swatch\user_lvgl_handler.o"
+"swatch\user_sensor_task.o"
 "swatch\ui.o"
 "swatch\ui_helpers.o"
 "swatch\ui_homepage.o"
@@ -49,8 +50,9 @@
 "swatch\ui_font_ltsiconfont40.o"
 "swatch\ui_font_spiconfont30.o"
 "swatch\ui_img_compass_needle_png.o"
-"swatch\segger_rtt.o"
-"swatch\segger_rtt_printf.o"
+"swatch\hw_interface.o"
+"swatch\hw_aht20_interface.o"
+"swatch\hw_mpu6050_interface.o"
 "swatch\bsp_touch_cst816t.o"
 "swatch\bsp_lcd_st7789.o"
 "swatch\bsp_lcd.o"
@@ -408,6 +410,8 @@
 "swatch\stm32f4xx_hal_spi.o"
 "swatch\stm32f4xx_hal_tim.o"
 "swatch\stm32f4xx_hal_tim_ex.o"
+"swatch\segger_rtt.o"
+"swatch\segger_rtt_printf.o"
 --strict --scatter "SWatch\SWatch.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

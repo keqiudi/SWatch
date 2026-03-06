@@ -1,8 +1,8 @@
 swatch\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
-swatch\event_groups.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdlib.h
+swatch\event_groups.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 swatch\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-swatch\event_groups.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
-swatch\event_groups.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\event_groups.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\event_groups.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 swatch\event_groups.o: ../Core/Inc/FreeRTOSConfig.h
 swatch\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 swatch\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

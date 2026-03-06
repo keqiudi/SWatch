@@ -4,6 +4,9 @@
 // Project name: EnvironmentPage
 
 #include "ui_EnvironmentPage.h"
+#include "hw_interface.h"
+#include "stdio.h"
+#include "user_sensor_task.h"
 
 lv_obj_t * ui_EnvironmentPage = NULL;
 lv_obj_t * ui_EnvLabel = NULL;
@@ -14,6 +17,11 @@ lv_obj_t * ui_EnvHumIconLabel = NULL;
 lv_obj_t * ui_TempLabel = NULL;
 lv_obj_t * ui_HumLabel = NULL;
 // event funtions
+
+// 用户变量
+lv_timer_t* ui_EnvPageTimer = NULL;
+
+
 
 static void env_page_event_cb(lv_event_t * e)
 {
@@ -31,10 +39,33 @@ static void env_page_event_cb(lv_event_t * e)
 }
 
 
+
+
+static void env_page_timer_cb(lv_timer_t * timer)
+{
+	
+	 uint8_t disp_buffer[8];
+	 int ui_EnvPageTempValue = hw_interface.hw_aht20_interface->temperature;
+	 int ui_EnvPageHumValue = hw_interface.hw_aht20_interface->humidity;
+	
+	 lv_bar_set_value(ui_TempBar,ui_EnvPageTempValue,LV_ANIM_OFF);
+	 lv_bar_set_value(ui_HumBar,ui_EnvPageHumValue,LV_ANIM_OFF);
+	
+	 sprintf((char*)disp_buffer,"%d°",ui_EnvPageTempValue);
+	 lv_label_set_text(ui_TempLabel,(const char*)disp_buffer);
+	 sprintf((char*)disp_buffer,"%d%%",ui_EnvPageHumValue);
+	 lv_label_set_text(ui_HumLabel,(const char*)disp_buffer);
+	
+	 sensor_msg_t msg = MSG_AHT20_MEASURE;
+	 osMessageQueuePut(SensorMsgQueue, &msg, NULL, 0); //每次定时器触发一次测量
+}
+
 // build funtions
 
 void ui_EnvironmentPage_screen_init(void)
 {
+		uint8_t disp_buffer[8];
+	
     ui_EnvironmentPage = lv_obj_create(NULL);
     lv_obj_remove_flag(ui_EnvironmentPage, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
@@ -50,8 +81,8 @@ void ui_EnvironmentPage_screen_init(void)
     lv_obj_set_style_text_font(ui_EnvLabel, &ui_font_ALiDaKai20, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_TempBar = lv_bar_create(ui_EnvironmentPage);
-    lv_bar_set_range(ui_TempBar, -20, 50);
-    lv_bar_set_value(ui_TempBar, 25, LV_ANIM_OFF);
+    lv_bar_set_range(ui_TempBar, TEMP_RANGE_LOW, TEMP_RANGE_HIGH);
+    lv_bar_set_value(ui_TempBar, (int)hw_interface.hw_aht20_interface->temperature, LV_ANIM_OFF);
     lv_bar_set_start_value(ui_TempBar, 0, LV_ANIM_OFF);
     lv_obj_set_width(ui_TempBar, 20);
     lv_obj_set_height(ui_TempBar, 150);
@@ -68,7 +99,7 @@ void ui_EnvironmentPage_screen_init(void)
     if(lv_obj_get_style_pad_top(ui_TempBar, LV_PART_MAIN) > 0) lv_obj_set_style_pad_right(ui_TempBar,
                                                                                               lv_obj_get_style_pad_right(ui_TempBar, LV_PART_MAIN) + 1, LV_PART_MAIN);
     ui_HumBar = lv_bar_create(ui_EnvironmentPage);
-    lv_bar_set_value(ui_HumBar, 50, LV_ANIM_OFF);
+    lv_bar_set_value(ui_HumBar, (int)hw_interface.hw_aht20_interface->humidity, LV_ANIM_OFF);
     lv_bar_set_start_value(ui_HumBar, 0, LV_ANIM_OFF);
     lv_obj_set_width(ui_HumBar, 20);
     lv_obj_set_height(ui_HumBar, 150);
@@ -107,7 +138,8 @@ void ui_EnvironmentPage_screen_init(void)
     lv_obj_set_x(ui_TempLabel, -28);
     lv_obj_set_y(ui_TempLabel, 110);
     lv_obj_set_align(ui_TempLabel, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_TempLabel, "25°");
+		sprintf((char*)disp_buffer,"%d°",(int)hw_interface.hw_aht20_interface->temperature);
+	  lv_label_set_text(ui_TempLabel,(const char*)disp_buffer);
     lv_obj_set_style_text_font(ui_TempLabel, &ui_font_CuYuan30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_HumLabel = lv_label_create(ui_EnvironmentPage);
@@ -116,10 +148,12 @@ void ui_EnvironmentPage_screen_init(void)
     lv_obj_set_x(ui_HumLabel, 49);
     lv_obj_set_y(ui_HumLabel, 110);
     lv_obj_set_align(ui_HumLabel, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_HumLabel, "50%");
+    sprintf((char*)disp_buffer,"%d%%",(int)hw_interface.hw_aht20_interface->humidity);
+	  lv_label_set_text(ui_HumLabel,(const char*)disp_buffer);
     lv_obj_set_style_text_font(ui_HumLabel, &ui_font_CuYuan30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-		lv_obj_add_event_cb(ui_EnvironmentPage,env_page_event_cb, LV_EVENT_GESTURE, NULL); // 点击回调函数
+		lv_obj_add_event_cb(ui_EnvironmentPage,env_page_event_cb, LV_EVENT_GESTURE, NULL); // 回调函数
+
 }
 
 void ui_EnvironmentPage_screen_destroy(void)
@@ -150,15 +184,26 @@ static void env_page_deinit()
 	ui_EnvironmentPage_screen_destroy();
 }
 
-static void env_page_resume() 
+static void env_page_resume()  // 保留：页面切换回来时刷新显示内容、重启动画、恢复定时器等。
 {
-    // 保留：页面切换回来时刷新显示内容、重启动画、恢复定时器等。
+	
+	 if(ui_EnvPageTimer == NULL)     
+        ui_EnvPageTimer = lv_timer_create(env_page_timer_cb, 500, NULL);     
+   
+	 //立马触发一次测量
+	 sensor_msg_t msg = MSG_AHT20_MEASURE;
+	 osMessageQueuePut(SensorMsgQueue, &msg, NULL, 0); 
 }
 
 
 static void env_page_pause()
 {
-	  // 保留：页面切换离开时暂停动画、停止定时器、保存页面状态等。
+	
+	  if (ui_EnvPageTimer) {
+        lv_timer_del(ui_EnvPageTimer);   // 保留：页面切换离开时暂停动画、停止定时器、保存页面状态等。
+        ui_EnvPageTimer = NULL;
+    }
+	 
 }
 
 page_t page_env = 

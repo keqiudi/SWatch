@@ -22,8 +22,8 @@ void lvgl_log_cb(lv_log_level_t level, const char * buf) {
 
 void lv_mem_monitor_task(lv_timer_t * timer)
 {
-		lv_mem_monitor_t mon;
-    lv_mem_monitor(&mon); // 填充 mon 结构体
+	lv_mem_monitor_t mon;
+  lv_mem_monitor(&mon); 
 
     SEGGER_RTT_printf(0,
         "LVGL MEM: total=%lu Bytes, free=%lu Bytes, used=%u%%, max_used=%lu Bytes\n",
@@ -38,12 +38,13 @@ void lv_mem_monitor_task(lv_timer_t * timer)
 void LvglHandlerTask(void *argument)
 {
 	
-	lv_log_register_print_cb(lvgl_log_cb); // 注册日志输出回调
-	lv_timer_create(lv_mem_monitor_task, 1000, NULL); // 注册定时器每秒输出内存占用 
+	lv_log_register_print_cb(lvgl_log_cb);  
+  lv_timer_create(lv_mem_monitor_task, 1000, NULL); // 杈撳嚭lvgl鍐呭瓨姹犲崰鐢ㄦ儏鍐碉紝渚夸簬璋冭瘯
+
 	while(1)
 	{
-		 lv_task_handler(); // 启动lvgl的事务处理
-		 osDelay(1);
+		 lv_task_handler(); // lvgl浠诲姟澶勭悊
+		 osDelay(pdMS_TO_TICKS(1));
 	}
 	
 }
@@ -54,7 +55,7 @@ static void lvgl_tick_provide(void)
 		lv_tick_inc(1);
 }
 
-/* FreeRTOS Tick钩子*/
+/* FreeRTOS Tick閽╁瓙鍑芥暟锛岀敤浜庢彁渚沴vgl鏃跺熀*/
 void vApplicationTickHook( void )
 {
    /* This function will be called by each tick interrupt if

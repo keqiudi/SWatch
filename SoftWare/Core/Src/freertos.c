@@ -27,7 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "user_task_init.h"
 #include "user_hw_init.h"
-#include "SEGGER_RTT.h"
+#include "bsp_mpu6050.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,7 +52,7 @@
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 128 * 4,
+  .stack_size = 128 * 10,
   .priority = (osPriority_t) osPriorityNormal,
 };
 
@@ -73,7 +73,7 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
-	 User_Tasks_Init(); // 用户任务初始化
+	 user_tasks_init(); // 用户任务初始化
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -117,10 +117,15 @@ void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
+  //char taskListBuffer[512]; 
 
   for(;;)
   {
-		osDelay(1000);
+//		SEGGER_RTT_printf(0,"Task Name\tState\tPrio\tStack\tNum\n");
+//    vTaskList(taskListBuffer); 		 // 获取任务列表信息到缓冲区
+//    SEGGER_RTT_printf(0,"%s\n", taskListBuffer);    // 打印输出到串口/终端
+//		SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
+		osDelay(2000);
   }
   /* USER CODE END StartDefaultTask */
 }

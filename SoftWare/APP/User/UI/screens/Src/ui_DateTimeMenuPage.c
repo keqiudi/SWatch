@@ -250,7 +250,7 @@ page_t page_date_time_menu =
 {
 	.page_obj = &ui_DateTimeMenuPage,
 	.init = date_time_menu_page_init,
-	.deinit = date_time_menu_page_init,
-	.resume = date_time_menu_page_init,
-	.pause = date_time_menu_page_init,
+	.deinit = date_time_menu_page_deinit,
+	.resume = date_time_menu_page_resume,
+	.pause = date_time_menu_page_pause,
 };

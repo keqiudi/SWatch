@@ -15,16 +15,16 @@ lv_obj_t * ui_SOffTimeSetOKIconLabel = NULL;
 
 static void s_off_set_page_event_cb(lv_event_t* e)
 {
-    lv_event_code_t event_code = lv_event_get_code(e);
+  lv_event_code_t event_code = lv_event_get_code(e);
 	lv_obj_t * target = lv_event_get_target(e);
 	
 	if(event_code == LV_EVENT_GESTURE)
     {
 	    lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
-		if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
-        {
-			page_back();
-        }
+		  if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
+      {
+				page_back();
+      }
 	}
 }
 
@@ -158,7 +158,7 @@ page_t page_screen_off_time_set =
 {
 	.page_obj = &ui_SOffTimeSetPage,
 	.init = screen_off_time_set_page_init,
-	.deinit = screen_off_time_set_page_init,
-	.resume = screen_off_time_set_page_init,
-	.pause = screen_off_time_set_page_init,
+	.deinit = screen_off_time_set_page_deinit,
+	.resume = screen_off_time_set_page_resume,
+	.pause = screen_off_time_set_page_pause,
 };

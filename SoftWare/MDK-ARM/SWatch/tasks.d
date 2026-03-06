@@ -1,9 +1,9 @@
 swatch\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c
-swatch\tasks.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdlib.h
-swatch\tasks.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\string.h
+swatch\tasks.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+swatch\tasks.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 swatch\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-swatch\tasks.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
-swatch\tasks.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\tasks.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\tasks.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 swatch\tasks.o: ../Core/Inc/FreeRTOSConfig.h
 swatch\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 swatch\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -14,3 +14,4 @@ swatch\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 swatch\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 swatch\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 swatch\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/stack_macros.h
+swatch\tasks.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

@@ -1,0 +1,9 @@
+swatch\hw_mpu6050_interface.o: ..\APP\User\HWInterface\Src\hw_mpu6050_interface.c
+swatch\hw_mpu6050_interface.o: ../APP/User/HWInterface/Inc/hw_mpu6050_interface.h
+swatch\hw_mpu6050_interface.o: ../APP/User/HWInterface/Inc/device.h
+swatch\hw_mpu6050_interface.o: ../BSP/MPU6050/bsp_mpu6050.h
+swatch\hw_mpu6050_interface.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\hw_mpu6050_interface.o: ../Debug/RTT/SEGGER_RTT.h
+swatch\hw_mpu6050_interface.o: ../Debug/RTT/SEGGER_RTT_Conf.h
+swatch\hw_mpu6050_interface.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+swatch\hw_mpu6050_interface.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

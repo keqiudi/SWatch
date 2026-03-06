@@ -1,8 +1,8 @@
 swatch\cmsis_os2.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c
-swatch\cmsis_os2.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\string.h
+swatch\cmsis_os2.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 swatch\cmsis_os2.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
-swatch\cmsis_os2.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stdint.h
-swatch\cmsis_os2.o: C:\Users\keqiu\study\ARM\ARMCC\Bin\..\include\stddef.h
+swatch\cmsis_os2.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+swatch\cmsis_os2.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 swatch\cmsis_os2.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 swatch\cmsis_os2.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 swatch\cmsis_os2.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
