@@ -39,7 +39,7 @@ void LvglHandlerTask(void *argument)
 {
 	
 	lv_log_register_print_cb(lvgl_log_cb);  
-  lv_timer_create(lv_mem_monitor_task, 1000, NULL); // 输出lvgl内存池占用情况，便于调试
+  //lv_timer_create(lv_mem_monitor_task, 1000, NULL); // 输出lvgl内存池占用情况，便于调试
 
 	while(1)
 	{

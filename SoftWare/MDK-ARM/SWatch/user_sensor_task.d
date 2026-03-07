@@ -264,3 +264,5 @@ swatch\user_sensor_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr
 swatch\user_sensor_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\user_sensor_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\user_sensor_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\user_sensor_task.o: ../BSP/SPL06/bsp_spl06.h
+swatch\user_sensor_task.o: ../BSP/I2C/i2c_hal.h

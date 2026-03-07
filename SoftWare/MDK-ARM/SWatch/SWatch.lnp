@@ -59,6 +59,7 @@
 "swatch\i2c_hal.o"
 "swatch\bsp_aht20.o"
 "swatch\bsp_mpu6050.o"
+"swatch\bsp_spl06.o"
 "swatch\croutine.o"
 "swatch\event_groups.o"
 "swatch\list.o"

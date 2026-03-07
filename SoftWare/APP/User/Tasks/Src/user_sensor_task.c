@@ -9,6 +9,7 @@
 #include "SEGGER_RTT.h"
 #include "lvgl.h"
 #include "bsp_aht20.h"
+#include "bsp_spl06.h"
 
 void SensorDataUpdateTask(void *argument)
 {
@@ -48,9 +49,14 @@ void SensorDataUpdateTask(void *argument)
 					}
 				}
 		 }
-
-		 osDelay(pdMS_TO_TICKS(100));
-				
+		
+		float pressure = spl06_calculate_pressure();
+		float temperature = spl06_calculate_temp();
+		float altitude = spl06_calculate_altitude(pressure);
+		SEGGER_RTT_printf(0,"Pressure: %.2f hPa, Temperature: %.2f °„C, Altitude: %.2f m\n", pressure, temperature, altitude);
+		 
+		 //osDelay(pdMS_TO_TICKS(100));
+		osDelay(pdMS_TO_TICKS(1000));
 	}
 }
 	

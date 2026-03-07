@@ -338,7 +338,7 @@
               <MiscControls>--locale=english</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F411xE,LV_CONF_INCLUDE_SIMPLE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares;../Middlewares/lvgl;../Middlewares/lvgl/src;../Middlewares/lvgl/port;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../BSP/I2C;../BSP/AHT20;../BSP/MPU6050;../BSP/LCD;../BSP/CST816T;../APP/User/Tasks/Inc;../APP/User/System;../APP/User/UI/;../APP/User/UI/screens/Inc;../APP/User/Utils/Inc;../APP/User/HWInterface/Inc;../Debug/RTT</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares;../Middlewares/lvgl;../Middlewares/lvgl/src;../Middlewares/lvgl/port;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../BSP/I2C;../BSP/AHT20;../BSP/MPU6050;../BSP/LCD;../BSP/CST816T;../BSP/SPL06;../APP/User/Tasks/Inc;../APP/User/System;../APP/User/UI/;../APP/User/UI/screens/Inc;../APP/User/Utils/Inc;../APP/User/HWInterface/Inc;../Debug/RTT</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -974,6 +974,16 @@
               <FileName>bsp_mpu6050.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\BSP\MPU6050\bsp_mpu6050.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_spl06.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\SPL06\bsp_spl06.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_spl06.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\SPL06\bsp_spl06.h</FilePath>
             </File>
           </Files>
         </Group>
