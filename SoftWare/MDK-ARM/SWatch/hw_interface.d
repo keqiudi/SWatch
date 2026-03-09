@@ -4,3 +4,5 @@ swatch\hw_interface.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\in
 swatch\hw_interface.o: ../APP/User/HWInterface/Inc/hw_aht20_interface.h
 swatch\hw_interface.o: ../APP/User/HWInterface/Inc/device.h
 swatch\hw_interface.o: ../APP/User/HWInterface/Inc/hw_mpu6050_interface.h
+swatch\hw_interface.o: ../APP/User/HWInterface/Inc/hw_barometer_interface.h
+swatch\hw_interface.o: ../APP/User/HWInterface/Inc/hw_ecompass_interface.h

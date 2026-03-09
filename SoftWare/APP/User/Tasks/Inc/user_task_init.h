@@ -11,6 +11,7 @@ typedef enum {
     MSG_AHT20_MEASURE=0,
     MSG_MPU6050_MEASURE,
     MSG_EM7028_MEASURE,
+    MSG_COMPASS_MEASURE,
 }sensor_msg_t;
 
 

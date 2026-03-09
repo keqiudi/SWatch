@@ -33,7 +33,3 @@ swatch\bsp_spl06.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 swatch\bsp_spl06.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\bsp_spl06.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\bsp_spl06.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
-swatch\bsp_spl06.o: ../Debug/RTT/SEGGER_RTT.h
-swatch\bsp_spl06.o: ../Debug/RTT/SEGGER_RTT_Conf.h
-swatch\bsp_spl06.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-swatch\bsp_spl06.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

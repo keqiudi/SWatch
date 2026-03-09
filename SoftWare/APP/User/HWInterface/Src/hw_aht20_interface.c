@@ -9,9 +9,9 @@
 static int hw_aht20_init()
 {
 	int ret = AHT20_init();
-	if(ret == 0)
+	if(ret == 1)
 	{
-		SEGGER_RTT_printf(0,"aht20 init fail!");
+		//SEGGER_RTT_printf(0,"aht20 init fail!");
 		return ERR_FAILED;
 	}
 	
@@ -22,9 +22,9 @@ static int hw_aht20_init()
 static int hw_aht20_read(float* temperature,float* humidity)
 {
 	int ret = AHT20_read(temperature,humidity);
-	if(ret == 0)
+	if(ret == 1)
 	{
-		SEGGER_RTT_printf(0,"AHT20 read error!\n");
+		//SEGGER_RTT_printf(0,"AHT20 read error!\n");
 		return ERR_FAILED;
 	}
 	

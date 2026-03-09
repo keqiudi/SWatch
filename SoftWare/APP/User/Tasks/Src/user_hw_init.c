@@ -15,8 +15,7 @@
 
 #include "device.h"
 #include "hw_interface.h"
-#include "bsp_mpu6050.h"
-#include "bsp_spl06.h"
+
 #include "SEGGER_RTT.h"
 
 /* 保证该任务执行优先级最高，上电最先执行，同时不能在这里面分配堆栈，因为会释放*/
@@ -29,14 +28,26 @@ void HwInitTask(void *argument)
 	  
 		
 		//mpu6050_init();
-	
-	   spl06_init();
-	
+		
+		//lsm303dlhc_init();
+
 		/* 传感器相关初始化 */
 		ret = hw_interface.hw_aht20_interface->init();
 	  	if(ret == ERR_SUCCESS)
 		{
 			hw_interface.hw_aht20_interface->state = DEVICE_STATUS_INITED;
+		}
+		
+		ret = hw_interface.hw_barometer_interface->init();
+	  	if(ret == ERR_SUCCESS)
+		{
+			hw_interface.hw_barometer_interface->state = DEVICE_STATUS_INITED;
+		}
+
+		ret = hw_interface.hw_ecompass_interface->init();
+	  	if(ret == ERR_SUCCESS)
+		{
+			hw_interface.hw_ecompass_interface->state = DEVICE_STATUS_INITED;
 		}
 		
 

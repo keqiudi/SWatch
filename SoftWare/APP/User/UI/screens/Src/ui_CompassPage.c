@@ -4,6 +4,8 @@
 // Project name: CompassPage
 
 #include "ui_CompassPage.h"
+#include "hw_interface.h"
+#include "user_sensor_task.h"
 
 lv_obj_t * ui_CompassPage = NULL;
 lv_obj_t * ui_CompassPageImg = NULL;
@@ -18,6 +20,7 @@ lv_obj_t * ui_ui_AltitudeNum = NULL;
 
 lv_obj_t * compass_scale = NULL;
 
+lv_timer_t* ui_CompassPageTimer = NULL;
 
 // event funtions
 
@@ -30,10 +33,27 @@ static void compass_page_event_cb(lv_event_t* e)
 	{
 			lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
 			if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
-      {
+            {
 				 page_back();
-      }
+            }
 	}
+}
+
+static void compass_page_timer_cb(lv_timer_t* timer)
+{
+    uint8_t disp_buffer[6];
+
+    // 电子指南针指向设置，以及显示当前方向角度值
+    lv_image_set_rotation(ui_CompassPageImg,hw_interface.hw_ecompass_interface->direction * 10); // 原来的lv_img_set_angle()函数在lvgl 9.0后替换成了这个
+    sprintf(disp_buffer, "%d", hw_interface.hw_ecompass_interface->direction);
+    lv_label_set_text(ui_AngelNum, disp_buffer);
+
+    // 显示海拔
+    sprintf(disp_buffer,"%dm", hw_interface.hw_barometer_interface->altitude);
+    lv_label_set_text(ui_AltitudeColonIcon, disp_buffer);
+
+    sensor_msg_t msg = MSG_COMPASS_MEASURE;
+	osMessageQueuePut(SensorMsgQueue, &msg, NULL, 0); 
 }
 
 // build funtions
@@ -207,13 +227,23 @@ static void compass_page_deinit()
 
 static void compass_page_resume() 
 {
+    if(ui_CompassPageTimer == NULL)     
+        ui_CompassPageTimer = lv_timer_create(compass_page_timer_cb, 500, NULL);     
+   
+	 //立马触发一次测量
+	 sensor_msg_t msg = MSG_COMPASS_MEASURE;
+	 osMessageQueuePut(SensorMsgQueue, &msg, NULL, 0); 
     // 保留：页面切换回来时刷新显示内容、重启动画、恢复定时器等。
 }
 
 
 static void compass_page_pause()
 {
-	  // 保留：页面切换离开时暂停动画、停止定时器、保存页面状态等。
+    if (ui_CompassPageTimer) {
+        lv_timer_del(ui_CompassPageTimer); 
+        ui_CompassPageTimer = NULL;
+    }
+	// 保留：页面切换离开时暂停动画、停止定时器、保存页面状态等。
 }
 
 

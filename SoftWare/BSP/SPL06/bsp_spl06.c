@@ -1,6 +1,5 @@
 #include <math.h>
 #include "bsp_spl06.h"
-#include "SEGGER_RTT.h"
 
 int16_t c0,c1,c01,c11,c20,c21,c30;
 int32_t c00,c10;  
@@ -246,7 +245,6 @@ static int32_t spl06_get_raw_pressure()
 	return raw_pressure;
 }
 
-
 uint8_t spl06_init(void)
 {
 	i2c_init(&spl06_bus);
@@ -280,8 +278,6 @@ uint8_t spl06_init(void)
 	{
 		return 0; // 初始化成功
 	}
-
-
 
 }
 

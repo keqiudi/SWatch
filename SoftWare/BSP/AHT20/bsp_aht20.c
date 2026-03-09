@@ -33,7 +33,7 @@ uint8_t AHT20_init(void)
 	
 	delay_ms(40);
 	
-	if((AHT20_read_status() & 0x08) != 0x08) //status的bit[3]为1
+	if((AHT20_read_status() & 0x08) != 0x08) //status的bit[3]�?1
 	{
 		i2c_soft_start(&AHT20_bus);
 		i2c_soft_send_byte(&AHT20_bus,AHT20_CMD_WRITE);
@@ -48,7 +48,7 @@ uint8_t AHT20_init(void)
 	}
 	delay_ms(10);
 		
-	return 1;
+	return 0;
 }
 
 
@@ -85,8 +85,8 @@ uint8_t AHT20_read(float* temperature,float* humidity)
 		{
 			delay_ms(5);
 			timeout_cnt--;
-			if(!timeout_cnt)// 超时直接退出
-					return 0;
+			if(!timeout_cnt)// 超时直接退�?
+					return 1;
 			AHT20_read_status();
 		}
 		
@@ -114,7 +114,7 @@ uint8_t AHT20_read(float* temperature,float* humidity)
 		temperature_raw_data =  (((uint32_t)sensor_data[3] & 0x0F) << 16 ) + ((uint32_t)sensor_data[4] << 8) + (uint32_t)sensor_data[5];
 		*temperature = (temperature_raw_data * 200.0) / (1 << 20) -50;
 		
-		return 1;
+		return 0;
 }
 
 

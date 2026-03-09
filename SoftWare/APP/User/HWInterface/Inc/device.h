@@ -4,6 +4,7 @@
 #define ERR_SUCCESS 1
 #define ERR_FAILED 0
 
+#include <stdint.h>
 
 typedef enum{
 	
