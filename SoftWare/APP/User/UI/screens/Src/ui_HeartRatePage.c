@@ -4,6 +4,7 @@
 // Project name: HeartRatePage
 
 #include "ui_HeartRatePage.h"
+#include "hw_interface.h"
 
 lv_obj_t * ui_HeartRatePage = NULL;
 lv_obj_t * ui_HeartRateIcon = NULL;
@@ -12,6 +13,7 @@ lv_obj_t * ui_HeartRateNumLabel = NULL;
 lv_obj_t * ui_MeasureLabel = NULL;
 // event funtions
 
+lv_timer_t * ui_HRPageTimer;
 
 static void hr_page_event_cb(lv_event_t* e)
 {
@@ -26,6 +28,14 @@ static void hr_page_event_cb(lv_event_t* e)
 				 page_back();
       }
 	}
+}
+
+static void HRPage_timer_cb(lv_timer_t * timer)
+{
+    uint8_t value_strbuf[6];
+    //set text
+    sprintf(value_strbuf, "%d", hw_interface.hw_hrsensor_interface->hr_rate);
+    lv_label_set_text(ui_HeartRateNumLabel, value_strbuf);
 }
 
 
@@ -78,7 +88,9 @@ void ui_HeartRatePage_screen_init(void)
     lv_obj_set_style_text_opa(ui_MeasureLabel, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_MeasureLabel, &ui_font_ALiDaKai20, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-		lv_obj_add_event_cb(ui_HeartRatePage,hr_page_event_cb, LV_EVENT_GESTURE, NULL); // 回调函数
+	lv_obj_add_event_cb(ui_HeartRatePage,hr_page_event_cb, LV_EVENT_GESTURE, NULL); // 回调函数
+
+
 }
 
 void ui_HeartRatePage_screen_destroy(void)
@@ -106,12 +118,18 @@ static void heart_rate_page_deinit()
 
 static void heart_rate_page_resume() 
 {
+    if(ui_HRPageTimer == NULL)
+        ui_HRPageTimer = lv_timer_create(HRPage_timer_cb, 50,  NULL);
     // 保留：页面切换回来时刷新显示内容、重启动画、恢复定时器等。
 }
 
 
 static void heart_rate_page_pause()
 {
+    if(ui_HRPageTimer) {
+        lv_timer_del(ui_HRPageTimer);
+        ui_HRPageTimer = NULL;
+    }
 	  // 保留：页面切换离开时暂停动画、停止定时器、保存页面状态等。
 }
 

@@ -6,7 +6,7 @@
 #include "hw_aht20_interface.h"
 #include	"SEGGER_RTT.h"
 
-static int hw_aht20_init()
+static uint8_t hw_aht20_init()
 {
 	int ret = AHT20_init();
 	if(ret == 1)
@@ -19,7 +19,7 @@ static int hw_aht20_init()
 }
 
 
-static int hw_aht20_read(float* temperature,float* humidity)
+static uint8_t hw_aht20_read(float* temperature,float* humidity)
 {
 	int ret = AHT20_read(temperature,humidity);
 	if(ret == 1)

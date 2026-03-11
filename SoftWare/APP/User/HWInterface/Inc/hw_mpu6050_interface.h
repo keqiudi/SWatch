@@ -8,7 +8,7 @@ typedef struct{
  
 	device_status_t state;
 
-	int (*init)(void);
+	uint8_t (*init)(void);
 
 }hw_mpu6050_interface_t;
 

@@ -7,8 +7,8 @@ typedef struct{
  
 	device_status_t state;
 	uint16_t direction;
-	int (*init)(void);
-  void (*sleep)(void);
+	uint8_t (*init)(void);
+  	void (*sleep)(void);
 }hw_ecompass_interface_t;
 
 

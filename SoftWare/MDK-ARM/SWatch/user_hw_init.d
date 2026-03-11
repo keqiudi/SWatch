@@ -273,6 +273,7 @@ swatch\user_hw_init.o: ../APP/User/HWInterface/Inc/hw_aht20_interface.h
 swatch\user_hw_init.o: ../APP/User/HWInterface/Inc/hw_mpu6050_interface.h
 swatch\user_hw_init.o: ../APP/User/HWInterface/Inc/hw_barometer_interface.h
 swatch\user_hw_init.o: ../APP/User/HWInterface/Inc/hw_ecompass_interface.h
+swatch\user_hw_init.o: ../APP/User/HWInterface/Inc/hw_hrsensor_interface.h
 swatch\user_hw_init.o: ../Debug/RTT/SEGGER_RTT.h
 swatch\user_hw_init.o: ../Debug/RTT/SEGGER_RTT_Conf.h
 swatch\user_hw_init.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

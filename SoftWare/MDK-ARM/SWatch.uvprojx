@@ -338,7 +338,7 @@
               <MiscControls>--locale=english</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F411xE,LV_CONF_INCLUDE_SIMPLE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares;../Middlewares/lvgl;../Middlewares/lvgl/src;../Middlewares/lvgl/port;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../BSP/I2C;../BSP/AHT20;../BSP/MPU6050;../BSP/LCD;../BSP/CST816T;../BSP/SPL06;../BSP/LSM303DLHC;../APP/User/Tasks/Inc;../APP/User/System;../APP/User/UI/;../APP/User/UI/screens/Inc;../APP/User/Utils/Inc;../APP/User/HWInterface/Inc;../Debug/RTT</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares;../Middlewares/lvgl;../Middlewares/lvgl/src;../Middlewares/lvgl/port;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../BSP/I2C;../BSP/AHT20;../BSP/MPU6050;../BSP/LCD;../BSP/CST816T;../BSP/SPL06;../BSP/LSM303DLHC;../BSP/EM7028;../APP/User/Tasks/Inc;../APP/User/System;../APP/User/UI/;../APP/User/UI/screens/Inc;../APP/User/Utils/Inc;../APP/User/HWInterface/Inc;../Debug/RTT</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -930,6 +930,16 @@
               <FileType>5</FileType>
               <FilePath>..\APP\User\HWInterface\Inc\hw_ecompass_interface.h</FilePath>
             </File>
+            <File>
+              <FileName>hw_hrsensor_interface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\HWInterface\Src\hw_hrsensor_interface.c</FilePath>
+            </File>
+            <File>
+              <FileName>hw_hrsensor_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\HWInterface\Inc\hw_hrsensor_interface.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1014,6 +1024,36 @@
               <FileName>bsp_lsm303dlhc.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\BSP\LSM303DLHC\bsp_lsm303dlhc.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_em7028.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\EM7028\bsp_em7028.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_em7028.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\EM7028\bsp_em7028.h</FilePath>
+            </File>
+            <File>
+              <FileName>my_queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\EM7028\my_queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>my_queue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\EM7028\my_queue.h</FilePath>
+            </File>
+            <File>
+              <FileName>hr_algorithm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\EM7028\hr_algorithm.c</FilePath>
+            </File>
+            <File>
+              <FileName>hr_algorithm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\EM7028\hr_algorithm.h</FilePath>
             </File>
           </Files>
         </Group>

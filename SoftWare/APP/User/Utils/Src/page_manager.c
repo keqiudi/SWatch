@@ -5,11 +5,11 @@
 
 
 
-page_stack_t page_stack; // Õû¸öÒ³ÃæµÄÕ»
+page_stack_t page_stack; // ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½Õ»
 
 
 
-/* ------------------------------------Õ»µÄ»ù´¡²Ù×÷------------------------------------ */
+/* ------------------------------------Õ»ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½------------------------------------ */
 
 static void page_stack_init(page_stack_t* page_stack)
 {
@@ -60,38 +60,38 @@ static uint8_t page_stack_empty(page_stack_t* page_stack)
 }
 
 
-/* ------------------------------------ Ò³Ãæ¹ÜÀí¶ÔÍâ½Ó¿Ú ------------------------------------*/
+/* ------------------------------------ Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ ------------------------------------*/
 
 void pages_init(page_t* page_home)
 {
-		page_stack_init(&page_stack); // ³õÊ¼»¯Ò³ÃæÕ»
-		page_home->init(); //³õÊ¼»¯Ö÷Ò³
-		page_stack_push(&page_stack,page_home); // Ö÷Ò³ÈëÕ»
-		lv_disp_load_scr(*page_home->page_obj); //ÏÔÊ¾HomeÒ³Ãæ
+		page_stack_init(&page_stack); // ï¿½ï¿½Ê¼ï¿½ï¿½Ò³ï¿½ï¿½Õ»
+		page_home->init(); //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ò³
+		page_stack_push(&page_stack,page_home); // ï¿½ï¿½Ò³ï¿½ï¿½Õ»
+		lv_disp_load_scr(*page_home->page_obj); //ï¿½ï¿½Ê¾HomeÒ³ï¿½ï¿½
 }
 
 void page_load(page_t* new_page)
 {
-	//¼ì²é¶ÑÕ»ÊÇ·ñÂú
+	//ï¿½ï¿½ï¿½ï¿½Õ»ï¿½Ç·ï¿½ï¿½ï¿½
 	if(page_stack.top>= MAX_PAGES)
 	{
 			return;
 	}
 	
-	/* µ±Ç°Ò³Ãæ´¦Àí */
+	/* ï¿½ï¿½Ç°Ò³ï¿½æ´¦ï¿½ï¿½ */
 	page_t* cur_page = page_stack_top(&page_stack);
 	if(cur_page){
-		 cur_page->pause(); //ÔÝÍ£µ±Ç°Ò³Ãæ¶¨Ê±Æ÷¡¢¶¯»­µÈ
-		 //cur_page->deinit(); // Ê¹ÓÃ¶¯»­¼ÓÔØÐè×¢ÊÍµô£¬·ñÔò»á·ÃÎÊ¿ÕÖ¸Õë
+		 cur_page->pause(); //ï¿½ï¿½Í£ï¿½ï¿½Ç°Ò³ï¿½æ¶¨Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		 //cur_page->deinit(); // Ê¹ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¿ï¿½Ö¸ï¿½ï¿½
 	}
 	
-	/* ÐÂÒ³Ãæ´¦Àí */
-	new_page->init(); // ÐÂÒ³Ãæ³õÊ¼»¯
-	new_page->resume(); // ÐÂÒ³ÃæÆô¶¯¶¨Ê±Æ÷µÈ
-	page_stack_push(&page_stack,new_page); // ÐÂÒ³ÃæÈëÕ»
+	/* ï¿½ï¿½Ò³ï¿½æ´¦ï¿½ï¿½ */
+	new_page->init(); // ï¿½ï¿½Ò³ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½
+	new_page->resume(); // ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+	page_stack_push(&page_stack,new_page); // ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Õ»
 	
 	//lv_scr_load(*new_page->page_obj);
-	lv_screen_load_anim(*new_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); //¼ÓÔØÐÂÒ³Ãæ(ÓÐ¶¯»­),×Ô¶¯·ÃÎÊÊÍ·Å¾Éscreen
+	lv_screen_load_anim(*new_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½(ï¿½Ð¶ï¿½ï¿½ï¿½),ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·Å¾ï¿½screen
 }
 
 
@@ -100,34 +100,34 @@ void page_back()
 
   if(page_stack.top <= 1) 
 	{
-        //×î¶à»Øµ½Ê×Ò³
+        //ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ò³
       return;
   }
 	
-	/*µ±Ç°Ò³Ãæ´¦Àí*/
+	/*ï¿½ï¿½Ç°Ò³ï¿½æ´¦ï¿½ï¿½*/
 	page_t* cur_page = page_stack_top(&page_stack);
 	if(cur_page)
 	{
-		 cur_page->pause(); //ÔÝÍ£µ±Ç°Ò³Ãæ¶¨Ê±Æ÷¡¢¶¯»­µÈ
-		 //cur_page->deinit(); // Ê¹ÓÃ¶¯»­¼ÓÔØÐè×¢ÊÍµô£¬·ñÔò»á·ÃÎÊ¿ÕÖ¸Õë
+		 cur_page->pause(); //ï¿½ï¿½Í£ï¿½ï¿½Ç°Ò³ï¿½æ¶¨Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		 //cur_page->deinit(); // Ê¹ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¿ï¿½Ö¸ï¿½ï¿½
 	}
-	page_stack_pop(&page_stack); // µ¯³öµ±Ç°Ò³Ãæ
+	page_stack_pop(&page_stack); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ò³ï¿½ï¿½
 	
-	/* ÐÂÒ³Ãæ´¦Àí */
+	/* ï¿½ï¿½Ò³ï¿½æ´¦ï¿½ï¿½ */
 	page_t* previous_page = get_top_page(&page_stack);
 	if(!previous_page){
 		 return ;
 	}
 	previous_page->init();
-	previous_page->resume();  // Æô¶¯µ±Ç°Ò³Ãæ¶¨Ê±Æ÷¡¢¶¯»­µÈ
+	previous_page->resume();  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ò³ï¿½æ¶¨Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	//lv_scr_load(*previous_page->page_obj); // ¿ÉÒÔÏÈÊÍ·Å¾ÉÒ³Ãæ,±ÜÃâÁ½¸öÒ³ÃæÍ¬Ê±´æÔÚÕ¼ÓÃheap¹ý¸ß£¬Ö»²»¹ýÃ»ÓÐ¶¯»­¼ÓÔØ
-	lv_screen_load_anim(*previous_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); //¼ÓÔØÐÂÒ³Ãæ(ÓÐ¶¯»­),×Ô¶¯·ÃÎÊÊÍ·Å¾Éscreen
+	//lv_scr_load(*previous_page->page_obj); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·Å¾ï¿½Ò³ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½heapï¿½ï¿½ï¿½ß£ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	lv_screen_load_anim(*previous_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½(ï¿½Ð¶ï¿½ï¿½ï¿½),ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·Å¾ï¿½screen
 }
 
 
 page_t* get_top_page()
 {
-		return page_stack_top(&page_stack);
+	return page_stack_top(&page_stack);
 }
 

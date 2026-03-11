@@ -19,7 +19,7 @@ const osThreadAttr_t HwInitTask_attributes = {
 osThreadId_t LvglHandlerTaskHandle;
 const osThreadAttr_t LvglHandlerTask_attributes = {
   .name = "LvglHandlerTaskHandle",
-  .stack_size = 1024 * 4, // 官方处理任务栈空间至少2K，推荐>8KB。 这里3K会溢出
+  .stack_size = 1024 * 4, // 官方处理任务栈空间至少2K，推荐>8KB。 经测试这里3K不够
   .priority = (osPriority_t) osPriorityLow1,
 };
 
@@ -32,6 +32,13 @@ const osThreadAttr_t SensorDataUpdateTask_attributes = {
 };
 
 
+osThreadId_t HRDataTaskHandle;
+const osThreadAttr_t HRDataTask_attributes = {
+  .name = "HRDataTask",
+  .stack_size = 128 * 5,
+  .priority = (osPriority_t) osPriorityLow1,
+};
+
 
 osMessageQueueId_t SensorMsgQueue;
 
@@ -39,24 +46,26 @@ osMessageQueueId_t SensorMsgQueue;
 void user_tasks_init()
 {
 	
-
 	SensorMsgQueue = osMessageQueueNew(1, 1, NULL);
 	
-	HwInitTaskHandle      = osThreadNew(HwInitTask, NULL, &HwInitTask_attributes); // 硬件初始化任务
-	if(HwInitTaskHandle == NULL)
-		SEGGER_RTT_printf(0,"HwInitTask Create Failed");
+	 HwInitTaskHandle      = osThreadNew(HwInitTask, NULL, &HwInitTask_attributes); // 硬件初始化任务
+	 if(HwInitTaskHandle == NULL)
+	 	SEGGER_RTT_printf(0,"HwInitTask Create Failed");
 	  
 	LvglHandlerTaskHandle = osThreadNew(LvglHandlerTask, NULL, &LvglHandlerTask_attributes); // lvgl任务处理任务
-	if(LvglHandlerTaskHandle == NULL)
-		SEGGER_RTT_printf(0,"LvglHandlerTask Create Failed");
+	 if(LvglHandlerTaskHandle == NULL)
+	 	SEGGER_RTT_printf(0,"LvglHandlerTask Create Failed");
 	
 	SensorDataUpdateTaskHandle			= osThreadNew(SensorDataUpdateTask,NULL,&SensorDataUpdateTask_attributes); //传感器数据更新任务
-	if(SensorDataUpdateTaskHandle == NULL)
-		SEGGER_RTT_printf(0,"SensorDataUpdateTask Create Failed");
+	 if(SensorDataUpdateTaskHandle == NULL)
+	 	SEGGER_RTT_printf(0,"SensorDataUpdateTask Create Failed");
 	
+   HRDataTaskHandle      = osThreadNew(HRDataTask, NULL, &HRDataTask_attributes); // 心率数据处理任务
+     if(HRDataTaskHandle == NULL)
+         SEGGER_RTT_printf(0,"HRDataTask Create Failed");
+
    // 打印剩余 heap
    SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
-	
 }	
 
 

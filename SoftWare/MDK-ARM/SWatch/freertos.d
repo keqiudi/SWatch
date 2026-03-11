@@ -44,4 +44,7 @@ swatch\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsi
 swatch\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 swatch\freertos.o: ../APP/User/Tasks/Inc/user_task_init.h
 swatch\freertos.o: ../APP/User/Tasks/Inc/user_hw_init.h
-swatch\freertos.o: ../BSP/MPU6050/bsp_mpu6050.h
+swatch\freertos.o: ../Debug/RTT/SEGGER_RTT.h
+swatch\freertos.o: ../Debug/RTT/SEGGER_RTT_Conf.h
+swatch\freertos.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+swatch\freertos.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

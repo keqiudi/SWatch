@@ -7,7 +7,7 @@ typedef struct{
  
 	device_status_t state;
 	int16_t altitude;
-	int (*init)(void);
+	uint8_t (*init)(void);
 }hw_barometer_interface_t;
 
 

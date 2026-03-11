@@ -18,20 +18,16 @@
 
 #include "SEGGER_RTT.h"
 
-/* ±£Ö¤¸ÃÈÎÎñÖ´ÐÐÓÅÏÈ¼¶×î¸ß£¬ÉÏµç×îÏÈÖ´ÐÐ£¬Í¬Ê±²»ÄÜÔÚÕâÀïÃæ·ÖÅä¶ÑÕ»£¬ÒòÎª»áÊÍ·Å*/
+/* ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½ß£ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Í·ï¿½*/
 void HwInitTask(void *argument)
 {
 		int ret = 0;
 		
-		/* Systick ³õÊ¼»¯²ÅÄÜÊ¹ÓÃdelay */
+		/* Systick ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½delay */
    		delay_init();
 	  
 		
-		//mpu6050_init();
-		
-		//lsm303dlhc_init();
-
-		/* ´«¸ÐÆ÷Ïà¹Ø³õÊ¼»¯ */
+		/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø³ï¿½Ê¼ï¿½ï¿½ */
 		ret = hw_interface.hw_aht20_interface->init();
 	  	if(ret == ERR_SUCCESS)
 		{
@@ -49,26 +45,33 @@ void HwInitTask(void *argument)
 		{
 			hw_interface.hw_ecompass_interface->state = DEVICE_STATUS_INITED;
 		}
+
+		ret = hw_interface.hw_hrsensor_interface->init();
+	  	if(ret == ERR_SUCCESS)
+		{
+			hw_interface.hw_hrsensor_interface->state = DEVICE_STATUS_INITED;
+			hw_interface.hw_hrsensor_interface->diable();
+		}
 		
 
 		
-	  /* LCD ÏÔÊ¾ST7789³õÊ¼»¯*/
+	  /* LCD ï¿½ï¿½Ê¾ST7789ï¿½ï¿½Ê¼ï¿½ï¿½*/
 		LCD_Init();
 		LCD_Fill(0,0,240,280,BLACK);
 		LCD_Open_BackLight();
 		LCD_Set_Light(50);
 		
-	  /* LCD ´¥ÃþCST816T³õÊ¼»¯*/
+	  /* LCD ï¿½ï¿½ï¿½ï¿½CST816Tï¿½ï¿½Ê¼ï¿½ï¿½*/
 		CST816T_Init();
 		CST816T_Reset();
 		
-		/*2. lvgl³õÊ¼»¯*/
-		lv_init();			  // lvglÏµÍ³³õÊ¼»¯
-		lv_port_disp_init();  // lvglÏÔÊ¾½Ó¿Ú³õÊ¼»¯
-		lv_port_indev_init(); // lvglÊäÈë½Ó¿Ú³õÊ¼»¯
+		/*2. lvglï¿½ï¿½Ê¼ï¿½ï¿½*/
+		lv_init();			  // lvglÏµÍ³ï¿½ï¿½Ê¼ï¿½ï¿½
+		lv_port_disp_init();  // lvglï¿½ï¿½Ê¾ï¿½Ó¿Ú³ï¿½Ê¼ï¿½ï¿½
+		lv_port_indev_init(); // lvglï¿½ï¿½ï¿½ï¿½Ó¿Ú³ï¿½Ê¼ï¿½ï¿½
 		ui_init();
 		
-		vTaskDelete(NULL); // ³õÊ¼»¯Íê³ÉºóÖ±½ÓÉ¾³ýÈÎÎñ
+		vTaskDelete(NULL); // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Éºï¿½Ö±ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
 }	
 

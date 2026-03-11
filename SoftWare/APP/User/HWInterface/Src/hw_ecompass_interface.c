@@ -1,7 +1,7 @@
 #include "hw_ecompass_interface.h"
 #include "bsp_lsm303dlhc.h"
 
-static int hw_ecompass_init()
+static uint8_t hw_ecompass_init()
 {
     int ret = lsm303dlhc_init();
     if(ret == 1)

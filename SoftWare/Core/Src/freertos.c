@@ -27,7 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "user_task_init.h"
 #include "user_hw_init.h"
-#include "bsp_mpu6050.h"
+#include "SEGGER_RTT.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -73,7 +73,7 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
-	 user_tasks_init(); // ÓÃ»§ÈÎÎñ³õÊ¼»¯
+	 user_tasks_init(); // ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -121,10 +121,10 @@ void StartDefaultTask(void *argument)
 
   for(;;)
   {
-//		SEGGER_RTT_printf(0,"Task Name\tState\tPrio\tStack\tNum\n");
-//    vTaskList(taskListBuffer); 		 // »ñÈ¡ÈÎÎñÁÐ±íÐÅÏ¢µ½»º³åÇø
-//    SEGGER_RTT_printf(0,"%s\n", taskListBuffer);    // ´òÓ¡Êä³öµ½´®¿Ú/ÖÕ¶Ë
-//		SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
+		//SEGGER_RTT_printf(0,"Task Name\tState\tPrio\tStack\tNum\n");
+    //vTaskList(taskListBuffer); 		 // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //SEGGER_RTT_printf(0,"%s\n", taskListBuffer);    // ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½Õ¶ï¿½
+		//SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
 		osDelay(2000);
   }
   /* USER CODE END StartDefaultTask */

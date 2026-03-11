@@ -223,3 +223,10 @@ swatch\ui_heartratepage.o: ../APP/User/UI/screens/Inc/../../ui_events.h
 swatch\ui_heartratepage.o: ../APP/User/UI/screens/Inc/../../../Utils/Inc/page_manager.h
 swatch\ui_heartratepage.o: ../APP/User/UI/screens/Inc/../../screens/Inc/ui_HomePage.h
 swatch\ui_heartratepage.o: ../APP/User/UI/screens/Inc/../../screens/Inc/ui_MenuPage.h
+swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/hw_interface.h
+swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/device.h
+swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/hw_aht20_interface.h
+swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/hw_mpu6050_interface.h
+swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/hw_barometer_interface.h
+swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/hw_ecompass_interface.h
+swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/hw_hrsensor_interface.h

@@ -13,6 +13,7 @@ swatch\user_lvgl_handler.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/t
 swatch\user_lvgl_handler.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 swatch\user_lvgl_handler.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 swatch\user_lvgl_handler.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+swatch\user_lvgl_handler.o: ../APP/User/Tasks/Inc/user_sensor_task.h
 swatch\user_lvgl_handler.o: ../APP/User/Tasks/Inc/user_lvgl_handler.h
 swatch\user_lvgl_handler.o: ../Middlewares/lvgl/lvgl.h
 swatch\user_lvgl_handler.o: ../Middlewares/lvgl/lv_version.h

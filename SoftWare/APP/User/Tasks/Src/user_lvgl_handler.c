@@ -1,5 +1,6 @@
 
 #include "user_task_init.h"
+#include "user_sensor_task.h"
 #include "user_lvgl_handler.h"
 #include "SEGGER_RTT.h"
 #include "lvgl.h"
@@ -39,7 +40,7 @@ void LvglHandlerTask(void *argument)
 {
 	
 	lv_log_register_print_cb(lvgl_log_cb);  
-  //lv_timer_create(lv_mem_monitor_task, 1000, NULL); // 输出lvgl内存池占用情况，便于调试
+  lv_timer_create(lv_mem_monitor_task, 1000, NULL); // 输出lvgl内存池占用情况，便于调试
 
 	while(1)
 	{
@@ -65,4 +66,6 @@ void vApplicationTickHook( void )
    functions can be used (those that end in FromISR()). */
 	
 	lvgl_tick_provide();
+
+  user_HR_timecount += 1; // 心率算法时间计数
 }

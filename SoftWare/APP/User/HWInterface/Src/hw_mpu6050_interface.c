@@ -3,7 +3,7 @@
 #include "bsp_mpu6050.h"
 #include "SEGGER_RTT.h"
 
-int hw_mpu6050_init()
+static uint8_t hw_mpu6050_init()
 {
 	int ret = mpu6050_init();
 	if(ret == 1)

@@ -2,7 +2,7 @@
 #include "hw_barometer_interface.h"
 
 
-static int hw_barometer_init()
+static uint8_t hw_barometer_init()
 {
     int ret = spl06_init();
     if(ret == 1)

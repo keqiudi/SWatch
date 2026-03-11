@@ -9,8 +9,8 @@ typedef struct{
 	device_status_t state;
 	float temperature;
 	float humidity;
-	int (*init)(void);
-	int (*read)(float* temperature,float* humidity);
+	uint8_t (*init)(void);
+	uint8_t (*read)(float* temperature,float* humidity);
 	
 }hw_aht20_interface_t;
 
