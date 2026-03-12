@@ -190,4 +190,25 @@ void DMA2_Stream2_IRQHandler(void)
 
 /* USER CODE BEGIN 1 */
 
+/**
+  * @brief This function handles EXTI line4 interrupt.Key2 interrupt
+  */
+void EXTI4_IRQHandler(void)
+{
+
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
+  
+}
+
+
+/**
+  * @brief This function handles EXTI line[9:5] interrupts.Key1 interrupt
+  */
+void EXTI9_5_IRQHandler(void)
+{
+  
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
+
+}
+
 /* USER CODE END 1 */

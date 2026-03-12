@@ -13,4 +13,6 @@ typedef struct{
     
 }hw_hrsensor_interface_t;
 
+extern hw_hrsensor_interface_t hw_em7028_interface;
+
 #endif // HW_HRSENSOR_INTERFACE_

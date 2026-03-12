@@ -7,6 +7,7 @@
 #include "bsp_lcd.h"
 #include "bsp_touch_cst816t.h"
 #include "bsp_aht20.h"
+#include "bsp_key.h"
 
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
@@ -25,7 +26,9 @@ void HwInitTask(void *argument)
 		
 		/* Systick ��ʼ������ʹ��delay */
    		delay_init();
-	  
+
+		key_gpio_init(); // 按键GPIO初始化，配置为外部中断模式
+		
 		
 		/* ��������س�ʼ�� */
 		ret = hw_interface.hw_aht20_interface->init();

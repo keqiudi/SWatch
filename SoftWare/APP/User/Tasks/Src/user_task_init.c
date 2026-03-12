@@ -1,12 +1,14 @@
 
 
 #include "user_task_init.h"
+#include "user_key_task.h"
 #include "user_hw_init.h"
 #include "user_lvgl_handler.h"
 #include "user_sensor_task.h"
 #include "SEGGER_RTT.h"
 #include "FreeRTOS.h"
 #include "task.h"
+
 
 osThreadId_t HwInitTaskHandle;
 const osThreadAttr_t HwInitTask_attributes = {
@@ -19,7 +21,7 @@ const osThreadAttr_t HwInitTask_attributes = {
 osThreadId_t LvglHandlerTaskHandle;
 const osThreadAttr_t LvglHandlerTask_attributes = {
   .name = "LvglHandlerTaskHandle",
-  .stack_size = 1024 * 4, // ¹Ù·½´¦ÀíÈÎÎñÕ»¿Õ¼äÖÁÉÙ2K£¬ÍÆ¼ö>8KB¡£ ¾­²âÊÔÕâÀï3K²»¹»
+  .stack_size = 1024 * 4, // ï¿½Ù·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½2Kï¿½ï¿½ï¿½Æ¼ï¿½>8KBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3Kï¿½ï¿½ï¿½ï¿½
   .priority = (osPriority_t) osPriorityLow1,
 };
 
@@ -39,6 +41,12 @@ const osThreadAttr_t HRDataTask_attributes = {
   .priority = (osPriority_t) osPriorityLow1,
 };
 
+osThreadId_t KeyTaskHandle;
+const osThreadAttr_t KeyTask_attributes = {
+  .name = "KeyScanTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 osMessageQueueId_t SensorMsgQueue;
 
@@ -48,34 +56,36 @@ void user_tasks_init()
 	
 	SensorMsgQueue = osMessageQueueNew(1, 1, NULL);
 	
-	 HwInitTaskHandle      = osThreadNew(HwInitTask, NULL, &HwInitTask_attributes); // Ó²¼ş³õÊ¼»¯ÈÎÎñ
+	 HwInitTaskHandle      = osThreadNew(HwInitTask, NULL, &HwInitTask_attributes); // Ó²ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 if(HwInitTaskHandle == NULL)
 	 	SEGGER_RTT_printf(0,"HwInitTask Create Failed");
 	  
-	LvglHandlerTaskHandle = osThreadNew(LvglHandlerTask, NULL, &LvglHandlerTask_attributes); // lvglÈÎÎñ´¦ÀíÈÎÎñ
+	LvglHandlerTaskHandle = osThreadNew(LvglHandlerTask, NULL, &LvglHandlerTask_attributes); // lvglï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 if(LvglHandlerTaskHandle == NULL)
 	 	SEGGER_RTT_printf(0,"LvglHandlerTask Create Failed");
 	
-	SensorDataUpdateTaskHandle			= osThreadNew(SensorDataUpdateTask,NULL,&SensorDataUpdateTask_attributes); //´«¸ĞÆ÷Êı¾İ¸üĞÂÈÎÎñ
+	SensorDataUpdateTaskHandle			= osThreadNew(SensorDataUpdateTask,NULL,&SensorDataUpdateTask_attributes); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 if(SensorDataUpdateTaskHandle == NULL)
 	 	SEGGER_RTT_printf(0,"SensorDataUpdateTask Create Failed");
 	
-   HRDataTaskHandle      = osThreadNew(HRDataTask, NULL, &HRDataTask_attributes); // ĞÄÂÊÊı¾İ´¦ÀíÈÎÎñ
+   HRDataTaskHandle      = osThreadNew(HRDataTask, NULL, &HRDataTask_attributes); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      if(HRDataTaskHandle == NULL)
          SEGGER_RTT_printf(0,"HRDataTask Create Failed");
 
-   // ´òÓ¡Ê£Óà heap
+   KeyTaskHandle = osThreadNew(KeyTask, NULL, &KeyTask_attributes); // æŒ‰é”®æ‰«æä»»åŠ¡
+
+   // ï¿½ï¿½Ó¡Ê£ï¿½ï¿½ heap
    SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
 }	
 
 
 
 
-/* FreeRTOS¶ÑÕ»Òç³ö¹³×Ó£¬¶ÑÕ»Òç³ö¼ì²é»áÔö¼ÓÉÏÏÂÎÄÇĞ»»µÄ¿ªÏú£¬Òò´Ë½¨ÒéÖ»ÔÚ¿ª·¢»ò²âÊÔ½×¶ÎÊ¹ÓÃ´Ë¼ì²é */
+/* FreeRTOSï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ»ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë½ï¿½ï¿½ï¿½Ö»ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô½×¶ï¿½Ê¹ï¿½Ã´Ë¼ï¿½ï¿½ */
 void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
 {
     SEGGER_RTT_printf(0, RTT_CTRL_TEXT_BRIGHT_RED"Stack overflow in task: %s\r\n", pcTaskName);
-    // ÆäËûÈç¸´Î»¡¢ÉÁµÆ¡¢ËÀÑ­»·µÈ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ç¸´Î»ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½
     while(1)
 		{
 			

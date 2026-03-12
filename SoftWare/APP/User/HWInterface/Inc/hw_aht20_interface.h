@@ -14,4 +14,6 @@ typedef struct{
 	
 }hw_aht20_interface_t;
 
+extern hw_aht20_interface_t hw_aht20_interface;
+
 #endif

@@ -158,8 +158,12 @@
 
 // MPU6050���API
 
+void mpu6050_i2c_pin_init();
 uint8_t mpu6050_init();
 uint8_t mpu6050_reset();
+
+uint8_t mpu6050_read_len(uint8_t addr,uint8_t reg_addr,uint8_t len,uint8_t* buf);
+uint8_t mpu6050_write_len(uint8_t addr,uint8_t reg_addr,uint8_t len,uint8_t* buf);
 
 /**
  * @brief  ����MPU6050�Ĳ�����

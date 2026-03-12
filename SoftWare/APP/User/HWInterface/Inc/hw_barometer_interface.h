@@ -10,6 +10,6 @@ typedef struct{
 	uint8_t (*init)(void);
 }hw_barometer_interface_t;
 
-
+extern hw_barometer_interface_t hw_spl06_interface;
 
 #endif 

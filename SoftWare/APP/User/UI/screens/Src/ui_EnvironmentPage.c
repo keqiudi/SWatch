@@ -56,8 +56,6 @@ static void env_page_timer_cb(lv_timer_t * timer)
 	 sprintf((char*)disp_buffer,"%d%%",ui_EnvPageHumValue);
 	 lv_label_set_text(ui_HumLabel,(const char*)disp_buffer);
 	
-	 sensor_msg_t msg = MSG_AHT20_MEASURE;
-	 osMessageQueuePut(SensorMsgQueue, &msg, NULL, 0); //每次定时器触发一次测量
 }
 
 // build funtions
@@ -190,9 +188,6 @@ static void env_page_resume()  // 保留：页面切换回来时刷新显示内�
 	 if(ui_EnvPageTimer == NULL)     
         ui_EnvPageTimer = lv_timer_create(env_page_timer_cb, 500, NULL);     
    
-	 //立马触发一次测量
-	 sensor_msg_t msg = MSG_AHT20_MEASURE;
-	 osMessageQueuePut(SensorMsgQueue, &msg, NULL, 0); 
 }
 
 

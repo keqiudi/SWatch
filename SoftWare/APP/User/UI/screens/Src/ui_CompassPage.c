@@ -52,8 +52,6 @@ static void compass_page_timer_cb(lv_timer_t* timer)
     sprintf(disp_buffer,"%dm", hw_interface.hw_barometer_interface->altitude);
     lv_label_set_text(ui_AltitudeColonIcon, disp_buffer);
 
-    sensor_msg_t msg = MSG_COMPASS_MEASURE;
-	osMessageQueuePut(SensorMsgQueue, &msg, NULL, 0); 
 }
 
 // build funtions
@@ -229,10 +227,6 @@ static void compass_page_resume()
 {
     if(ui_CompassPageTimer == NULL)     
         ui_CompassPageTimer = lv_timer_create(compass_page_timer_cb, 500, NULL);     
-   
-	 //立马触发一次测量
-	 sensor_msg_t msg = MSG_COMPASS_MEASURE;
-	 osMessageQueuePut(SensorMsgQueue, &msg, NULL, 0); 
     // 保留：页面切换回来时刷新显示内容、重启动画、恢复定时器等。
 }
 

@@ -53,6 +53,7 @@ swatch\user_hw_init.o: ../Core/Inc/tim.h
 swatch\user_hw_init.o: ../BSP/CST816T/bsp_touch_cst816t.h
 swatch\user_hw_init.o: ../BSP/I2C/i2c_hal.h
 swatch\user_hw_init.o: ../BSP/AHT20/bsp_aht20.h
+swatch\user_hw_init.o: ../BSP/KEY/bsp_key.h
 swatch\user_hw_init.o: ../Middlewares/lvgl/port/lv_port_disp.h
 swatch\user_hw_init.o: ../Middlewares/lvgl/lvgl.h
 swatch\user_hw_init.o: ../Middlewares/lvgl/lv_version.h

@@ -19,7 +19,7 @@ typedef struct{
 	hw_barometer_interface_t* hw_barometer_interface;
 	hw_ecompass_interface_t* hw_ecompass_interface;
 	hw_hrsensor_interface_t* hw_hrsensor_interface;
-	
+
 }hw_interface_t;
 
 
