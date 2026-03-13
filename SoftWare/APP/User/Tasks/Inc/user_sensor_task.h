@@ -10,5 +10,6 @@ void SensorDataUpdateTask(void *argument);
 
 void HRDataTask(void *argument);
 
+void WristWakeCheckTask(void *argument);
 
 #endif

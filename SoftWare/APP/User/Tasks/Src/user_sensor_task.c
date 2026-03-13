@@ -18,9 +18,45 @@
 #include "ui_EnvironmentPage.h"
 #include "ui_HeartRatePage.h"
 #include "ui_CompassPage.h"
+#include "ui_SpO2MeasurePage.h"
 
 
-uint32_t user_HR_timecount=0;
+uint32_t user_HR_timecount=0; // 心率计算时间计数, 每1ms增加1，单位为ms
+
+
+
+void WristWakeCheckTask(void *argument)
+{
+    while(1)
+    {
+
+        if(hw_interface.hw_mpu6050_interface->wrist_is_enabled)
+        {
+
+            if(mpu6050_is_horizontal()) // 判断当前是否水平放置，水平放置则认为是抬腕状态
+            {
+                hw_interface.hw_mpu6050_interface->wrist_state = WRIST_UP;
+            }
+            else
+            {
+                if(hw_interface.hw_mpu6050_interface->wrist_state == WRIST_UP) // 只有从手腕抬起到放下的状态变化才触发
+                {
+                    hw_interface.hw_mpu6050_interface->wrist_state = WRIST_DOWN;
+                
+                }
+            }
+
+        }
+            // float yaw,pitch, roll;
+            // mpu6050_accel_get_angles(&yaw, &pitch, &roll); 
+            // SEGGER_RTT_printf(0,"wrist_state: %s, yaw: %.2f, pitch: %.2f, roll: %.2f\n", 
+            //     (hw_interface.hw_mpu6050_interface->wrist_state == WRIST_UP) ? "UP" : "DOWN", yaw, pitch, roll);
+
+        osDelay(pdMS_TO_TICKS(200));
+    }
+}
+
+
 
 
 void HRDataTask(void *argument)
@@ -32,14 +68,14 @@ void HRDataTask(void *argument)
 		if(get_top_page()->page_obj == &ui_HeartRatePage)
 		{
 
-			em7028_hrs_enable(); // �������ʴ���������
+			em7028_hrs_enable(); // 启动心率传感器测量
 
 			if(hw_interface.hw_hrsensor_interface->state == DEVICE_STATUS_INITED)
 			{
-				//vTaskSuspendAll(); ���Բ�����ͣ������ȱ�������
+				//vTaskSuspendAll();  可以不用暂停任务调度保护数据
 				hr_rate = HR_Calculate(em7028_get_hrs1(), user_HR_timecount);
 				//xTaskResumeAll();
-				if(hr_rate > 0 && hr_rate < 220) // ���ʺ�����Χ
+				if(hr_rate > 0 && hr_rate < 220) 
 				{
 					hw_interface.hw_hrsensor_interface->hr_rate = hr_rate;
 				}
@@ -56,6 +92,21 @@ void SensorDataUpdateTask(void *argument)
 
 	while(1)
 	{	
+
+		/*Home page：battery、steps、heartrate*/
+		uint8_t msg_home_update;
+		if(osMessageQueueGet(HomeUpdataMsgQueue,&msg_home_update,NULL,0) == osOK) // 更新HOME页面数据
+        {
+			// 电量更新
+			
+
+			// 步数更新
+
+
+			// 心率更新
+
+
+		}
 
 		 /* Environment page: AHT20 */
         if(get_top_page()->page_obj == &ui_EnvironmentPage)
@@ -100,6 +151,16 @@ void SensorDataUpdateTask(void *argument)
                 hw_interface.hw_barometer_interface->altitude = (int16_t)altitude;
             }
         }
+
+		/*SPO2 page */
+		 else if(get_top_page()->page_obj == &ui_SpO2MeasurePage)
+		 {
+			// 保留
+		 }
+
+
+
+
 
 
 		osDelay(pdMS_TO_TICKS(100));

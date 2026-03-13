@@ -123,7 +123,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68611277)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68611277)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h)(0x68611221)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h)(0x68611221)
-I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B26DE9)
+I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B3F0BC)
 I (../APP/User/Tasks/Inc/user_hw_init.h)(0x68AF1163)
 I (../Debug/RTT/SEGGER_RTT.h)(0x68A5A0A8)
 I (../Debug/RTT/SEGGER_RTT_Conf.h)(0x68B69DEF)
@@ -575,8 +575,8 @@ I (../Middlewares/lvgl/src/lv_api_map_v9_0.h)(0x68877470)
 I (../Middlewares/lvgl/src/lv_api_map_v9_1.h)(0x68877470)
 I (../Middlewares/lvgl/src/lv_api_map_v9_2.h)(0x68877470)
 F (..\APP\User\Utils\Inc\page_manager.h)(0x68AEFA1C)()
-F (..\APP\User\Tasks\Src\user_task_init.c)(0x69B2EA3C)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\user_task_init.o --omf_browse swatch\user_task_init.crf --depend swatch\user_task_init.d)
-I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B26DE9)
+F (..\APP\User\Tasks\Src\user_task_init.c)(0x69B41709)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\user_task_init.o --omf_browse swatch\user_task_init.crf --depend swatch\user_task_init.d)
+I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B3F0BC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x68AF3E3E)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -795,12 +795,12 @@ I (../Middlewares/lvgl/src/lv_api_map_v8.h)(0x68877470)
 I (../Middlewares/lvgl/src/lv_api_map_v9_0.h)(0x68877470)
 I (../Middlewares/lvgl/src/lv_api_map_v9_1.h)(0x68877470)
 I (../Middlewares/lvgl/src/lv_api_map_v9_2.h)(0x68877470)
-I (../APP/User/Tasks/Inc/user_sensor_task.h)(0x69B14DE2)
+I (../APP/User/Tasks/Inc/user_sensor_task.h)(0x69B3F18D)
 I (../Debug/RTT/SEGGER_RTT.h)(0x68A5A0A8)
 I (../Debug/RTT/SEGGER_RTT_Conf.h)(0x68B69DEF)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
-F (..\APP\User\Tasks\Inc\user_task_init.h)(0x69B26DE9)()
-F (..\APP\User\Tasks\Src\user_hw_init.c)(0x69B2CDFB)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\user_hw_init.o --omf_browse swatch\user_hw_init.crf --depend swatch\user_hw_init.d)
+F (..\APP\User\Tasks\Inc\user_task_init.h)(0x69B3F0BC)()
+F (..\APP\User\Tasks\Src\user_hw_init.c)(0x69B3EBB3)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\user_hw_init.o --omf_browse swatch\user_hw_init.crf --depend swatch\user_hw_init.d)
 I (../APP/User/System/delay.h)(0x687B3A91)
 I (../APP/User/System/sys.h)(0x68AECB1F)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x68611273)
@@ -834,7 +834,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x68611277)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68611277)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68611277)
 I (../APP/User/Tasks/Inc/user_hw_init.h)(0x68AF1163)
-I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B26DE9)
+I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B3F0BC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x68AF3E3E)
 I (../Core/Inc/FreeRTOSConfig.h)(0x68AFEC96)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x68611221)
@@ -1068,7 +1068,7 @@ I (../APP/User/UI/screens/Inc/ui_MenuPage.h)(0x68A4972F)
 I (../APP/User/HWInterface/Inc/device.h)(0x69AED519)
 I (../APP/User/HWInterface/Inc/hw_interface.h)(0x69B2BC02)
 I (../APP/User/HWInterface/Inc/hw_aht20_interface.h)(0x69B2BBF2)
-I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B2BBDD)
+I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B41241)
 I (../APP/User/HWInterface/Inc/hw_barometer_interface.h)(0x69B2BBE2)
 I (../APP/User/HWInterface/Inc/hw_ecompass_interface.h)(0x69B2BBE5)
 I (../APP/User/HWInterface/Inc/hw_hrsensor_interface.h)(0x69B2BBE9)
@@ -1077,7 +1077,7 @@ I (../Debug/RTT/SEGGER_RTT_Conf.h)(0x68B69DEF)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 F (..\APP\User\Tasks\Inc\user_hw_init.h)(0x68AF1163)()
 F (..\APP\User\Tasks\Src\user_lvgl_handler.c)(0x69B14D05)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\user_lvgl_handler.o --omf_browse swatch\user_lvgl_handler.crf --depend swatch\user_lvgl_handler.d)
-I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B26DE9)
+I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B3F0BC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x68AF3E3E)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -1091,7 +1091,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x68611221)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x68611221)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h)(0x68611221)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h)(0x68611221)
-I (../APP/User/Tasks/Inc/user_sensor_task.h)(0x69B14DE2)
+I (../APP/User/Tasks/Inc/user_sensor_task.h)(0x69B3F18D)
 I (../APP/User/Tasks/Inc/user_lvgl_handler.h)(0x68AB0706)
 I (../Middlewares/lvgl/lvgl.h)(0x69AED867)
 I (../Middlewares/lvgl/lv_version.h)(0x68877470)
@@ -1299,7 +1299,7 @@ I (../Debug/RTT/SEGGER_RTT.h)(0x68A5A0A8)
 I (../Debug/RTT/SEGGER_RTT_Conf.h)(0x68B69DEF)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 F (..\APP\User\Tasks\Inc\user_lvgl_handler.h)(0x68AB0706)()
-F (..\APP\User\Tasks\Src\user_sensor_task.c)(0x69B2CE46)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\user_sensor_task.o --omf_browse swatch\user_sensor_task.crf --depend swatch\user_sensor_task.d)
+F (..\APP\User\Tasks\Src\user_sensor_task.c)(0x69B4340C)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\user_sensor_task.o --omf_browse swatch\user_sensor_task.crf --depend swatch\user_sensor_task.d)
 I (../Debug/RTT/SEGGER_RTT.h)(0x68A5A0A8)
 I (../Debug/RTT/SEGGER_RTT_Conf.h)(0x68B69DEF)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
@@ -1308,12 +1308,12 @@ I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
 I (../APP/User/HWInterface/Inc/hw_interface.h)(0x69B2BC02)
 I (../APP/User/HWInterface/Inc/device.h)(0x69AED519)
 I (../APP/User/HWInterface/Inc/hw_aht20_interface.h)(0x69B2BBF2)
-I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B2BBDD)
+I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B41241)
 I (../APP/User/HWInterface/Inc/hw_barometer_interface.h)(0x69B2BBE2)
 I (../APP/User/HWInterface/Inc/hw_ecompass_interface.h)(0x69B2BBE5)
 I (../APP/User/HWInterface/Inc/hw_hrsensor_interface.h)(0x69B2BBE9)
-I (../APP/User/Tasks/Inc/user_sensor_task.h)(0x69B14DE2)
-I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B26DE9)
+I (../APP/User/Tasks/Inc/user_sensor_task.h)(0x69B3F18D)
+I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B3F0BC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x68AF3E3E)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (../Core/Inc/FreeRTOSConfig.h)(0x68AFEC96)
@@ -1574,9 +1574,10 @@ I (../APP/User/UI/screens/Inc/../../screens/Inc/ui_HomePage.h)(0x68AF065F)
 I (../APP/User/UI/screens/Inc/../../screens/Inc/ui_MenuPage.h)(0x68A4972F)
 I (../APP/User/UI/screens/Inc/ui_HeartRatePage.h)(0x68A49730)
 I (../APP/User/UI/screens/Inc/ui_CompassPage.h)(0x68AC3487)
-F (..\APP\User\Tasks\Inc\user_sensor_task.h)(0x69B14DE2)()
-F (..\APP\User\Tasks\Src\user_key_task.c)(0x69B2EED4)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\user_key_task.o --omf_browse swatch\user_key_task.crf --depend swatch\user_key_task.d)
-I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B26DE9)
+I (../APP/User/UI/screens/Inc/ui_SpO2MeasurePage.h)(0x68A49730)
+F (..\APP\User\Tasks\Inc\user_sensor_task.h)(0x69B3F18D)()
+F (..\APP\User\Tasks\Src\user_key_task.c)(0x69B3EB06)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\user_key_task.o --omf_browse swatch\user_key_task.crf --depend swatch\user_key_task.d)
+I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B3F0BC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x68AF3E3E)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -2744,13 +2745,13 @@ I (../APP/User/UI/screens/Inc/../../screens/Inc/ui_MenuPage.h)(0x68A4972F)
 I (../APP/User/HWInterface/Inc/hw_interface.h)(0x69B2BC02)
 I (../APP/User/HWInterface/Inc/device.h)(0x69AED519)
 I (../APP/User/HWInterface/Inc/hw_aht20_interface.h)(0x69B2BBF2)
-I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B2BBDD)
+I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B41241)
 I (../APP/User/HWInterface/Inc/hw_barometer_interface.h)(0x69B2BBE2)
 I (../APP/User/HWInterface/Inc/hw_ecompass_interface.h)(0x69B2BBE5)
 I (../APP/User/HWInterface/Inc/hw_hrsensor_interface.h)(0x69B2BBE9)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
-I (../APP/User/Tasks/Inc/user_sensor_task.h)(0x69B14DE2)
-I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B26DE9)
+I (../APP/User/Tasks/Inc/user_sensor_task.h)(0x69B3F18D)
+I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B3F0BC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h)(0x68611221)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h)(0x68611221)
 F (..\APP\User\UI\screens\Src\ui_HeartRatePage.c)(0x69B13F2F)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\ui_heartratepage.o --omf_browse swatch\ui_heartratepage.crf --depend swatch\ui_heartratepage.d)
@@ -2977,7 +2978,7 @@ I (../APP/User/UI/screens/Inc/../../screens/Inc/ui_MenuPage.h)(0x68A4972F)
 I (../APP/User/HWInterface/Inc/hw_interface.h)(0x69B2BC02)
 I (../APP/User/HWInterface/Inc/device.h)(0x69AED519)
 I (../APP/User/HWInterface/Inc/hw_aht20_interface.h)(0x69B2BBF2)
-I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B2BBDD)
+I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B41241)
 I (../APP/User/HWInterface/Inc/hw_barometer_interface.h)(0x69B2BBE2)
 I (../APP/User/HWInterface/Inc/hw_ecompass_interface.h)(0x69B2BBE5)
 I (../APP/User/HWInterface/Inc/hw_hrsensor_interface.h)(0x69B2BBE9)
@@ -3868,15 +3869,15 @@ I (../APP/User/UI/screens/Inc/../../screens/Inc/ui_MenuPage.h)(0x68A4972F)
 I (../APP/User/HWInterface/Inc/hw_interface.h)(0x69B2BC02)
 I (../APP/User/HWInterface/Inc/device.h)(0x69AED519)
 I (../APP/User/HWInterface/Inc/hw_aht20_interface.h)(0x69B2BBF2)
-I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B2BBDD)
+I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B41241)
 I (../APP/User/HWInterface/Inc/hw_barometer_interface.h)(0x69B2BBE2)
 I (../APP/User/HWInterface/Inc/hw_ecompass_interface.h)(0x69B2BBE5)
 I (../APP/User/HWInterface/Inc/hw_hrsensor_interface.h)(0x69B2BBE9)
-I (../APP/User/Tasks/Inc/user_sensor_task.h)(0x69B14DE2)
-I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B26DE9)
+I (../APP/User/Tasks/Inc/user_sensor_task.h)(0x69B3F18D)
+I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B3F0BC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h)(0x68611221)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h)(0x68611221)
-F (..\APP\User\UI\screens\Src\ui_SettingMenuPage.c)(0x68AD8DFC)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\ui_settingmenupage.o --omf_browse swatch\ui_settingmenupage.crf --depend swatch\ui_settingmenupage.d)
+F (..\APP\User\UI\screens\Src\ui_SettingMenuPage.c)(0x69B3E436)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\ui_settingmenupage.o --omf_browse swatch\ui_settingmenupage.crf --depend swatch\ui_settingmenupage.d)
 I (../APP/User/UI/screens/Inc/ui_SettingMenuPage.h)(0x68AD7088)
 I (../APP/User/UI/screens/Inc/../../ui.h)(0x68ADC05C)
 I (../Middlewares/lvgl/lvgl.h)(0x69AED867)
@@ -4100,6 +4101,13 @@ I (../APP/User/UI/screens/Inc/../../screens/Inc/ui_MenuPage.h)(0x68A4972F)
 I (../APP/User/UI/screens/Inc/ui_DateTimeMenuPage.h)(0x68AD7D93)
 I (../APP/User/UI/screens/Inc/ui_SOffTimeSetPage.h)(0x68AD7CDE)
 I (../APP/User/UI/screens/Inc/ui_LTSetPage.h)(0x68AD7CD1)
+I (../APP/User/HWInterface/Inc/hw_interface.h)(0x69B2BC02)
+I (../APP/User/HWInterface/Inc/device.h)(0x69AED519)
+I (../APP/User/HWInterface/Inc/hw_aht20_interface.h)(0x69B2BBF2)
+I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B41241)
+I (../APP/User/HWInterface/Inc/hw_barometer_interface.h)(0x69B2BBE2)
+I (../APP/User/HWInterface/Inc/hw_ecompass_interface.h)(0x69B2BBE5)
+I (../APP/User/HWInterface/Inc/hw_hrsensor_interface.h)(0x69B2BBE9)
 F (..\APP\User\UI\screens\Src\ui_LTSetPage.c)(0x68AD84CF)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\ui_ltsetpage.o --omf_browse swatch\ui_ltsetpage.crf --depend swatch\ui_ltsetpage.d)
 I (../APP/User/UI/screens/Inc/ui_LTSetPage.h)(0x68AD7CD1)
 I (../APP/User/UI/screens/Inc/../../ui.h)(0x68ADC05C)
@@ -9394,7 +9402,7 @@ I (../APP/User/HWInterface/Inc/hw_interface.h)(0x69B2BC02)
 I (../APP/User/HWInterface/Inc/device.h)(0x69AED519)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
 I (../APP/User/HWInterface/Inc/hw_aht20_interface.h)(0x69B2BBF2)
-I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B2BBDD)
+I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B41241)
 I (../APP/User/HWInterface/Inc/hw_barometer_interface.h)(0x69B2BBE2)
 I (../APP/User/HWInterface/Inc/hw_ecompass_interface.h)(0x69B2BBE5)
 I (../APP/User/HWInterface/Inc/hw_hrsensor_interface.h)(0x69B2BBE9)
@@ -9439,7 +9447,7 @@ I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5CEB79E4)
 F (..\APP\User\HWInterface\Inc\hw_aht20_interface.h)(0x69B2BBF2)()
 F (..\APP\User\HWInterface\Src\hw_mpu6050_interface.c)(0x69B2BC48)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\hw_mpu6050_interface.o --omf_browse swatch\hw_mpu6050_interface.crf --depend swatch\hw_mpu6050_interface.d)
-I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B2BBDD)
+I (../APP/User/HWInterface/Inc/hw_mpu6050_interface.h)(0x69B41241)
 I (../APP/User/HWInterface/Inc/device.h)(0x69AED519)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
 I (../BSP/MPU6050/bsp_mpu6050.h)(0x69B2B22C)
@@ -9449,7 +9457,7 @@ I (../Debug/RTT/SEGGER_RTT.h)(0x68A5A0A8)
 I (../Debug/RTT/SEGGER_RTT_Conf.h)(0x68B69DEF)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5CEB79E4)
-F (..\APP\User\HWInterface\Inc\hw_mpu6050_interface.h)(0x69B2BBDD)()
+F (..\APP\User\HWInterface\Inc\hw_mpu6050_interface.h)(0x69B41241)()
 F (..\APP\User\HWInterface\Src\hw_barometer_interface.c)(0x69B119CF)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\hw_barometer_interface.o --omf_browse swatch\hw_barometer_interface.crf --depend swatch\hw_barometer_interface.d)
 I (../BSP/SPL06/bsp_spl06.h)(0x69AC35F1)
 I (../BSP/I2C/i2c_hal.h)(0x6885E6E4)
@@ -9958,7 +9966,7 @@ I (../Debug/RTT/SEGGER_RTT_Conf.h)(0x68B69DEF)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5CEB79E4)
 F (..\BSP\AHT20\bsp_aht20.h)(0x68B46BF2)()
-F (..\BSP\MPU6050\bsp_mpu6050.c)(0x69B2B38C)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\bsp_mpu6050.o --omf_browse swatch\bsp_mpu6050.crf --depend swatch\bsp_mpu6050.d)
+F (..\BSP\MPU6050\bsp_mpu6050.c)(0x69B43365)(--c99 -c --cpu Cortex-M4.fp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares -I ../Middlewares/lvgl -I ../Middlewares/lvgl/src -I ../Middlewares/lvgl/port -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../BSP/I2C -I ../BSP/AHT20 -I ../BSP/MPU6050 -I ../BSP/LCD -I ../BSP/CST816T -I ../BSP/SPL06 -I ../BSP/LSM303DLHC -I ../BSP/EM7028 -I ../BSP/MPU6050/eMPL -I ../BSP/KEY -I ../APP/User/Tasks/Inc -I ../APP/User/System -I ../APP/User/UI/ -I ../APP/User/UI/screens/Inc -I ../APP/User/Utils/Inc -I ../APP/User/HWInterface/Inc -I ../Debug/RTT --locale=english-I.\RTE\_SWatch-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F411xE -DUSE_HAL_DRIVER -DSTM32F411xE -DLV_CONF_INCLUDE_SIMPLE-o swatch\bsp_mpu6050.o --omf_browse swatch\bsp_mpu6050.crf --depend swatch\bsp_mpu6050.d)
 I (..\BSP\MPU6050\bsp_mpu6050.h)(0x69B2B22C)
 I (C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
 I (../APP/User/System/delay.h)(0x687B3A91)
@@ -10136,7 +10144,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x68611277)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x68611277)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x68611277)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x68611277)
-I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B26DE9)
+I (../APP/User/Tasks/Inc/user_task_init.h)(0x69B3F0BC)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x68AF3E3E)
 I (../Core/Inc/FreeRTOSConfig.h)(0x68AFEC96)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x68611221)

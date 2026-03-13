@@ -7,6 +7,7 @@
 #include "ui_DateTimeMenuPage.h"
 #include "ui_SOffTimeSetPage.h"
 #include "ui_LTSetPage.h"
+#include "hw_interface.h"
 
 lv_obj_t * ui_SettingMenuPage = NULL;
 lv_obj_t * ui_MenuLightTimePanel = NULL;
@@ -92,6 +93,24 @@ static void date_time_panel_event_cb(lv_event_t* e)
 //     }
 // }
 
+
+static void wrist_switch_button_event_cb(lv_event_t* e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e); // 获取事件
+    lv_obj_t * target = lv_event_get_target(e);
+    
+    if(event_code == LV_EVENT_VALUE_CHANGED)
+    {
+        if(lv_obj_has_state(ui_WristUpSwitch, LV_STATE_CHECKED)) // 开关打开
+        {
+            hw_interface.hw_mpu6050_interface->wrist_enable(); // 启用抬腕亮屏
+        }
+        else // 开关关闭
+        {
+            hw_interface.hw_mpu6050_interface->wrist_disable(); // 禁用抬腕亮屏
+        }
+    }
+}
 // build funtions
 
 void ui_SettingMenuPage_screen_init(void)
@@ -236,7 +255,7 @@ void ui_SettingMenuPage_screen_init(void)
     lv_obj_set_style_bg_color(ui_MenuWristUpPanel, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_PRESSED);
     lv_obj_set_style_bg_opa(ui_MenuWristUpPanel, 255, LV_PART_MAIN | LV_STATE_PRESSED);
 
-    ui_WristUpButton = lv_button_create(ui_MenuWristUpPanel);
+    ui_WristUpButton = lv_button_create(ui_MenuWristUpPanel); // 图标装饰按钮
     lv_obj_set_width(ui_WristUpButton, 40);
     lv_obj_set_height(ui_WristUpButton, 40);
     lv_obj_set_align(ui_WristUpButton, LV_ALIGN_LEFT_MID);
@@ -261,10 +280,14 @@ void ui_SettingMenuPage_screen_init(void)
     lv_label_set_text(ui_WristUpLabel, "抬腕亮屏");
     lv_obj_set_style_text_font(ui_WristUpLabel, &ui_font_ALiDaKai20, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_WristUpSwitch = lv_switch_create(ui_MenuWristUpPanel);
+    ui_WristUpSwitch = lv_switch_create(ui_MenuWristUpPanel); // 抬腕亮屏开关按钮
     lv_obj_set_width(ui_WristUpSwitch, 60);
     lv_obj_set_height(ui_WristUpSwitch, 30);
     lv_obj_set_align(ui_WristUpSwitch, LV_ALIGN_RIGHT_MID);
+    if(hw_interface.hw_mpu6050_interface->wrist_is_enabled)
+        lv_obj_add_state(ui_WristUpSwitch, LV_STATE_CHECKED); // 根据当前设置状态设置开关初始状态
+    else
+        lv_obj_clear_state(ui_WristUpSwitch, LV_STATE_CHECKED);
 
     ui_MenuPwdSetPanel = lv_obj_create(ui_SettingMenuPage);
     lv_obj_set_width(ui_MenuPwdSetPanel, 240);
@@ -310,6 +333,8 @@ void ui_SettingMenuPage_screen_init(void)
     lv_obj_add_event_cb(ui_MenuScrrenOffPanel, screen_off_panel_event_cb, LV_EVENT_CLICKED, NULL); // 熄屏时间设置页面
     lv_obj_add_event_cb(ui_MenuDataTimePanel, date_time_panel_event_cb, LV_EVENT_CLICKED, NULL); // 时间日期设置页面
     //lv_obj_add_event_cb(ui_MenuPwdSetPanel, pwd_set_panel_event_cb, LV_EVENT_CLICKED, NULL);
+
+    lv_obj_add_event_cb(ui_WristUpSwitch, wrist_switch_button_event_cb, LV_EVENT_ALL, NULL); // 抬腕亮屏开关事件
 
 }
 

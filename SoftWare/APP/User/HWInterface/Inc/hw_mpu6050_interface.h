@@ -4,7 +4,7 @@
 #include "device.h"
 
 // 手腕状态定义
-#define WRIST_IP 1
+#define WRIST_UP 1
 #define WRIST_DOWN 0
 
 typedef struct{

@@ -248,19 +248,19 @@ uint8_t mpu6050_init()
 	//锟斤拷锟矫硷拷锟劫度硷拷锟斤拷锟斤拷锟教ｏ拷锟斤拷8g
 	mpu6050_set_accel_full_scale(AFS_SEL_8G);
 	
-//	uint8_t res = mpu6050_get_id();
-//	if(res == MPU6050_I2C_ADDRESS)
-//	{
-//		 
-//	}
+	uint8_t res = mpu6050_get_id();
+	if(res == MPU6050_I2C_ADDRESS)
+	{
+		 
+	}
 	
 	//锟斤拷锟斤拷锟叫讹拷锟斤拷锟�
-	//mpu6050_write_reg(MPU6050_REG_INT_ENABLE,0x40); //锟剿讹拷锟叫断硷拷锟绞癸拷锟�
-	//mpu6050_write_reg(MPU6050_REG_INT_PIN_CFG,0x90); // 锟斤拷锟斤拷INT锟斤拷锟脚低碉拷平锟斤拷效锟斤拷锟轿何讹拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟絀NT_STATUS位
-	//mpu6050_int_pin_init(); // mpu6050锟斤拷INT锟斤拷锟脚筹拷始锟斤拷
+	mpu6050_write_reg(MPU6050_REG_INT_ENABLE,0x40); //锟剿讹拷锟叫断硷拷锟绞癸拷锟�
+	mpu6050_write_reg(MPU6050_REG_INT_PIN_CFG,0x90); // 锟斤拷锟斤拷INT锟斤拷锟脚低碉拷平锟斤拷效锟斤拷锟轿何讹拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟絀NT_STATUS位
+	mpu6050_int_pin_init(); // mpu6050锟斤拷INT锟斤拷锟脚筹拷始锟斤拷
 	
 	// mpu6050锟剿讹拷锟斤拷锟斤拷锟截筹拷始锟斤拷
-	//mpu6050_motion_init(); 
+	mpu6050_motion_init(); 
 	
 	return 0;
 }
@@ -427,10 +427,15 @@ uint8_t mpu6050_accel_get_angles(float* yaw,float* pitch,float* roll)
 	
 	mpu6050_read_accel(&ax,&ay,&az);
 	
-	// 通锟斤拷锟斤拷锟劫度计的诧拷锟斤拷锟斤拷锟斤拷锟斤拷锟脚凤拷锟斤拷锟�
-	*yaw = 0.0f; // 锟斤拷锟节硷拷锟劫度硷拷锟睫凤拷锟斤拷锟斤拷偏锟斤拷锟角ｏ拷锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷为0
-	*pitch  = atan2(ay,az) / 3.1415927f * 180; // 锟斤拷锟斤拷锟斤拷转锟斤拷为锟角讹拷
-	*roll = atan2(ax,az) / 3.1415927f * 180; // 锟斤拷锟斤拷锟斤拷转锟斤拷为锟角讹拷
+	/* 区分正反面：角度在-180°~180间变化，水平时角度可能是0°也可能是-180°(正反面) */
+	// *yaw = 0.0f; // 
+	// *pitch  = atan2f(ay,az) / 3.1415927f * 180; // 
+	// *roll = atan2f(ax,az) / 3.1415927f * 180; // 
+    
+	/*不区分正反面，限制在-90-90°间，无论正反面使水平时角度都在0°左右，而不是-180°左右*/
+	*yaw = 0.0f;
+	*pitch = atan2f((float)ay, sqrtf((float)ax * ax + (float)az * az)) * 57.29578f;
+	*roll  = atan2f((float)ax, sqrtf((float)ay * ay + (float)az * az)) * 57.29578f;
 	
 	return 0;
 }
@@ -440,14 +445,14 @@ uint8_t mpu6050_is_horizontal()
 {
 	float yaw,pitch,roll;
 	mpu6050_accel_get_angles(&yaw,&pitch,&roll);
-
-	if(pitch<=3.0f && pitch >= -3.0f && roll <= 3.0f && roll >= -3.0f)
+	
+	if((pitch<=3.0f && pitch >= -3.0f) && (roll <=3.0f && roll >= -3.0f))
 	{
 		return 1; // 水平
 	}
 	else
 	{
-		return 0; // 锟斤拷水平
+		return 0; // 非水平
 	}
 }
 

@@ -19,37 +19,44 @@
 
 #include "SEGGER_RTT.h"
 
-/* ��֤������ִ�����ȼ���ߣ��ϵ�����ִ�У�ͬʱ����������������ջ����Ϊ���ͷ�*/
+
+/* 保证该任务执行优先级最高，上电最先执行，同时不能在这里面分配堆栈，因为会释放*/
 void HwInitTask(void *argument)
 {
 		int ret = 0;
 		
-		/* Systick ��ʼ������ʹ��delay */
+		/* Systick 初始化才能使用delay */
    		delay_init();
-
-		key_gpio_init(); // 按键GPIO初始化，配置为外部中断模式
+		/* 按键GPIO初始化，配置为外部中断模式 */
+		key_gpio_init(); 
 		
 		
-		/* ��������س�ʼ�� */
-		ret = hw_interface.hw_aht20_interface->init();
+		/* 传感器相关初始化 */
+		ret = hw_interface.hw_aht20_interface->init(); // AHT20温湿度传感器初始化
 	  	if(ret == ERR_SUCCESS)
 		{
 			hw_interface.hw_aht20_interface->state = DEVICE_STATUS_INITED;
 		}
 		
-		ret = hw_interface.hw_barometer_interface->init();
+		ret = hw_interface.hw_mpu6050_interface->init(); // MPU6050 DMP库初始化初始化
+	  	if(ret == ERR_SUCCESS)
+		{
+			hw_interface.hw_mpu6050_interface->state = DEVICE_STATUS_INITED;
+		}
+
+		ret = hw_interface.hw_barometer_interface->init(); // SPL06气压计初始化
 	  	if(ret == ERR_SUCCESS)
 		{
 			hw_interface.hw_barometer_interface->state = DEVICE_STATUS_INITED;
 		}
 
-		ret = hw_interface.hw_ecompass_interface->init();
+		ret = hw_interface.hw_ecompass_interface->init(); // LSM303DLHC电子罗盘初始化
 	  	if(ret == ERR_SUCCESS)
 		{
 			hw_interface.hw_ecompass_interface->state = DEVICE_STATUS_INITED;
 		}
 
-		ret = hw_interface.hw_hrsensor_interface->init();
+		ret = hw_interface.hw_hrsensor_interface->init(); // EM7028心率传感器初始化
 	  	if(ret == ERR_SUCCESS)
 		{
 			hw_interface.hw_hrsensor_interface->state = DEVICE_STATUS_INITED;
@@ -58,24 +65,23 @@ void HwInitTask(void *argument)
 		
 
 		
-	  /* LCD ��ʾST7789��ʼ��*/
+	  /* LCD 显示ST7789初始化 */
 		LCD_Init();
 		LCD_Fill(0,0,240,280,BLACK);
 		LCD_Open_BackLight();
 		LCD_Set_Light(50);
 		
-	  /* LCD ����CST816T��ʼ��*/
+	  /* LCD 触摸CST816T初始化 */
 		CST816T_Init();
 		CST816T_Reset();
 		
-		/*2. lvgl��ʼ��*/
-		lv_init();			  // lvglϵͳ��ʼ��
-		lv_port_disp_init();  // lvgl��ʾ�ӿڳ�ʼ��
-		lv_port_indev_init(); // lvgl����ӿڳ�ʼ��
-		ui_init();
+		/*2. lvgl初始化*/
+		lv_init();			  // lvgl初始化
+		lv_port_disp_init();  // lvgl显示初始化
+		lv_port_indev_init(); // lvgl触摸初始化
+		ui_init();            // UI界面初始化
 		
-		vTaskDelete(NULL); // ��ʼ����ɺ�ֱ��ɾ������
-	
+		vTaskDelete(NULL); // 删除当前任务，释放资源
 }	
 
 

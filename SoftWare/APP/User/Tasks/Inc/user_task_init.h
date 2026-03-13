@@ -7,11 +7,8 @@
 #include "cmsis_os.h"
 
 
-
+extern osMessageQueueId_t HomeUpdataMsgQueue;
 
 void user_tasks_init();
-
-
-extern osMessageQueueId_t SensorMsgQueue;
 
 #endif

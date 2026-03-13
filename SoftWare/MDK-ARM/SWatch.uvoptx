@@ -156,34 +156,66 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>15</LineNumber>
+          <LineNumber>43</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134227384</Address>
+          <Address>134231374</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\APP\User\Tasks\Src\user_key_task.c</Filename>
+          <Filename>..\APP\User\Tasks\Src\user_sensor_task.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SWatch\../APP/User/Tasks/Src/user_key_task.c\15</Expression>
+          <Expression>\\SWatch\../APP/User/Tasks/Src/user_sensor_task.c\43</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>19</LineNumber>
+          <LineNumber>37</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134227388</Address>
+          <Address>134231360</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\APP\User\Tasks\Src\user_key_task.c</Filename>
+          <Filename>..\APP\User\Tasks\Src\user_sensor_task.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SWatch\../APP/User/Tasks/Src/user_key_task.c\19</Expression>
+          <Expression>\\SWatch\../APP/User/Tasks/Src/user_sensor_task.c\37</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>106</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134524554</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\APP\User\UI\screens\Src\ui_SettingMenuPage.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\SWatch\../APP/User/UI/screens/Src/ui_SettingMenuPage.c\106</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>110</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134524566</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\APP\User\UI\screens\Src\ui_SettingMenuPage.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\SWatch\../APP/User/UI/screens/Src/ui_SettingMenuPage.c\110</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -483,7 +515,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>2</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>../Core/Src/main.c</PathWithFileName>

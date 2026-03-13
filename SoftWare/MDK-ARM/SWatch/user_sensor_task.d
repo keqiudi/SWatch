@@ -278,3 +278,4 @@ swatch\user_sensor_task.o: ../APP/User/UI/screens/Inc/../../screens/Inc/ui_HomeP
 swatch\user_sensor_task.o: ../APP/User/UI/screens/Inc/../../screens/Inc/ui_MenuPage.h
 swatch\user_sensor_task.o: ../APP/User/UI/screens/Inc/ui_HeartRatePage.h
 swatch\user_sensor_task.o: ../APP/User/UI/screens/Inc/ui_CompassPage.h
+swatch\user_sensor_task.o: ../APP/User/UI/screens/Inc/ui_SpO2MeasurePage.h
