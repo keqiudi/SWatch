@@ -14,6 +14,7 @@ swatch\user_task_init.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list
 swatch\user_task_init.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 swatch\user_task_init.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 swatch\user_task_init.o: ../APP/User/Tasks/Inc/user_key_task.h
+swatch\user_task_init.o: ../APP/User/Tasks/Inc/user_wdog_task.h
 swatch\user_task_init.o: ../APP/User/Tasks/Inc/user_hw_init.h
 swatch\user_task_init.o: ../APP/User/Tasks/Inc/user_lvgl_handler.h
 swatch\user_task_init.o: ../Middlewares/lvgl/lvgl.h

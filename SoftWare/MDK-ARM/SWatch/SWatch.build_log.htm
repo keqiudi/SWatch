@@ -21,88 +21,28 @@ Target DLL:      Segger\JL2CM3.dll V2.99.36.0
 Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
-c:\Users\keqiu\study\code\myProjects\keilProjects\SWatch\SoftWare\MDK-ARM\SWatch.uvprojx
-Project File Date:  03/12/2026
+C:\Users\keqiu\study\code\SWatch\SoftWare\MDK-ARM\SWatch.uvprojx
+Project File Date:  03/18/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin'
 Build target 'SWatch'
-compiling user_sensor_task.c...
-../APP/User/HWInterface/Inc/device.h(19): warning:  #1-D: last line of file ends without a newline
-  #endif
-../APP/User/HWInterface/Inc/hw_aht20_interface.h(19): warning:  #1-D: last line of file ends without a newline
-  #endif
-../APP/User/HWInterface/Inc/hw_mpu6050_interface.h(26): warning:  #1-D: last line of file ends without a newline
-  #endif
-../APP/User/HWInterface/Inc/hw_barometer_interface.h(15): warning:  #1-D: last line of file ends without a newline
-  #endif 
-../APP/User/HWInterface/Inc/hw_ecompass_interface.h(16): warning:  #1-D: last line of file ends without a newline
-  #endif // __HW_ECOMPASS_INTERFACE_H
-../APP/User/HWInterface/Inc/hw_hrsensor_interface.h(18): warning:  #1-D: last line of file ends without a newline
-  #endif // HW_HRSENSOR_INTERFACE_
-../APP/User/HWInterface/Inc/hw_interface.h(29): warning:  #1-D: last line of file ends without a newline
-  #endif
+compiling user_wdog_task.c...
+../APP/User/Tasks/Inc/user_wdog_task.h(14): warning:  #1-D: last line of file ends without a newline
+  #endif /* USER_WDOG_TASK_H */
+../BSP/WDOG/bsp_wdog.h(15): warning:  #1-D: last line of file ends without a newline
+  #endif // BSP_WDOG_H
 ../APP/User/Tasks/Inc/user_task_init.h(12): warning:  #1295-D: Deprecated declaration user_tasks_init - give arg types
   void user_tasks_init();
 ../APP/User/Tasks/Inc/user_task_init.h(14): warning:  #1-D: last line of file ends without a newline
   #endif
-../APP/User/Tasks/Inc/user_sensor_task.h(15): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Middlewares/lvgl/src/drivers/uefi/lv_uefi_context.h(71): warning:  #1-D: last line of file ends without a newline
-  #endif //__LV_UEFI_CONTEXT_H__
-../Middlewares/lvgl/src/drivers/uefi/lv_uefi_indev.h(108): warning:  #1-D: last line of file ends without a newline
-  #endif //__LV_UEFI_INDEV_H__
-../Middlewares/lvgl/src/drivers/uefi/lv_uefi_display.h(65): warning:  #1-D: last line of file ends without a newline
-  #endif //__LV_UEFI_DISPLAY_H__
-../APP/User/Utils/Inc/page_manager.h(27): warning:  #1295-D: Deprecated declaration pages_init - give arg types
-  void pages_init();
-../APP/User/Utils/Inc/page_manager.h(31): warning:  #1295-D: Deprecated declaration page_back - give arg types
-  void page_back();
-../APP/User/Utils/Inc/page_manager.h(33): warning:  #1295-D: Deprecated declaration get_top_page - give arg types
-  page_t* get_top_page();
-../APP/User/Utils/Inc/page_manager.h(35): warning:  #1-D: last line of file ends without a newline
-  #endif 
-../BSP/EM7028/my_queue.h(26): warning:  #1-D: last line of file ends without a newline
-  #endif
-../BSP/EM7028/hr_algorithm.h(14): warning:  #1-D: last line of file ends without a newline
-  #endif
-../BSP/SPL06/bsp_spl06.h(117): warning:  #1295-D: Deprecated declaration spl06_sleep - give arg types
-  void spl06_sleep();
-../BSP/SPL06/bsp_spl06.h(118): warning:  #1295-D: Deprecated declaration spl06_wakeup - give arg types
-  void spl06_wakeup();
-../BSP/SPL06/bsp_spl06.h(119): warning:  #1295-D: Deprecated declaration spl006_get_id - give arg types
-  uint8_t spl006_get_id();
-../BSP/SPL06/bsp_spl06.h(121): warning:  #1295-D: Deprecated declaration spl06_calculate_pressure - give arg types
-  float spl06_calculate_pressure();
-../BSP/SPL06/bsp_spl06.h(122): warning:  #1295-D: Deprecated declaration spl06_calculate_temp - give arg types
-  float spl06_calculate_temp();
-../BSP/SPL06/bsp_spl06.h(123): warning:  #1295-D: Deprecated declaration spl06_calculate_altitude - give arg types
-  float spl06_calculate_altitude();
-../BSP/MPU6050/bsp_mpu6050.h(161): warning:  #1295-D: Deprecated declaration mpu6050_i2c_pin_init - give arg types
-  void mpu6050_i2c_pin_init();
-../BSP/MPU6050/bsp_mpu6050.h(162): warning:  #1295-D: Deprecated declaration mpu6050_init - give arg types
-  uint8_t mpu6050_init();
-../BSP/MPU6050/bsp_mpu6050.h(163): warning:  #1295-D: Deprecated declaration mpu6050_reset - give arg types
-  uint8_t mpu6050_reset();
-../BSP/MPU6050/bsp_mpu6050.h(274): warning:  #1295-D: Deprecated declaration mpu6050_get_id - give arg types
-  uint8_t mpu6050_get_id();
-../BSP/MPU6050/bsp_mpu6050.h(304): warning:  #1295-D: Deprecated declaration mpu6050_is_horizontal - give arg types
-  uint8_t mpu6050_is_horizontal();
-../BSP/MPU6050/bsp_mpu6050.h(306): warning:  #1-D: last line of file ends without a newline
-  #endif
-../BSP/LSM303DLHC/bsp_lsm303dlhc.h(79): warning:  #1-D: last line of file ends without a newline
-  #endif
-../BSP/EM7028/bsp_em7028.h(60): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\APP\User\Tasks\Src\user_sensor_task.c(64): warning:  #177-D: variable "spo2"  was declared but never referenced
-  	uint8_t hr_rate,spo2;
-..\APP\User\Tasks\Src\user_sensor_task.c(169): warning:  #1-D: last line of file ends without a newline
-  	
-..\APP\User\Tasks\Src\user_sensor_task.c: 35 warnings, 0 errors
+..\..\..\myProjects\keilProjects\SWatch\SoftWare\APP\User\Tasks\Src\user_wdog_task.c(14): warning:  #1-D: last line of file ends without a newline
+  }
+..\..\..\myProjects\keilProjects\SWatch\SoftWare\APP\User\Tasks\Src\user_wdog_task.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=311164 RO-data=116108 RW-data=1672 ZI-data=115952  
+Program Size: Code=311188 RO-data=116160 RW-data=1676 ZI-data=115956  
 FromELF: creating hex file...
-"SWatch\SWatch.axf" - 0 Error(s), 35 Warning(s).
+"SWatch\SWatch.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -125,7 +65,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.2.0
-Build Time Elapsed:  00:00:14
+Build Time Elapsed:  00:00:10
 </pre>
 </body>
 </html>

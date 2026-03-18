@@ -1,0 +1,22 @@
+# Keil MDK-ARM Build Outputs and Temporaries
+*.o
+*.d
+*.d.update
+*.crf
+*.lnp
+*.axf
+*.htm
+*.build_log.htm
+*.dep
+*.map
+*.lst
+*.sct
+*.hex
+*.bin
+*.elf
+*.iex
+*.obj
+*.lib
+*.bak
+*.scvd
+*.pack

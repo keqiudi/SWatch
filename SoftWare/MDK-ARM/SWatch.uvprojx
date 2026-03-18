@@ -338,7 +338,7 @@
               <MiscControls>--locale=english</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F411xE,LV_CONF_INCLUDE_SIMPLE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares;../Middlewares/lvgl;../Middlewares/lvgl/src;../Middlewares/lvgl/port;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../BSP/I2C;../BSP/AHT20;../BSP/MPU6050;../BSP/LCD;../BSP/CST816T;../BSP/SPL06;../BSP/LSM303DLHC;../BSP/EM7028;../BSP/MPU6050/eMPL;../BSP/KEY;../APP/User/Tasks/Inc;../APP/User/System;../APP/User/UI/;../APP/User/UI/screens/Inc;../APP/User/Utils/Inc;../APP/User/HWInterface/Inc;../Debug/RTT</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares;../Middlewares/lvgl;../Middlewares/lvgl/src;../Middlewares/lvgl/port;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../BSP/I2C;../BSP/AHT20;../BSP/MPU6050;../BSP/LCD;../BSP/CST816T;../BSP/SPL06;../BSP/LSM303DLHC;../BSP/EM7028;../BSP/MPU6050/eMPL;../BSP/KEY;../BSP/WDOG;../APP/User/Tasks/Inc;../APP/User/System;../APP/User/UI/;../APP/User/UI/screens/Inc;../APP/User/Utils/Inc;../APP/User/HWInterface/Inc;../Debug/RTT</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -679,6 +679,16 @@
               <FileName>user_key_task.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\APP\User\Tasks\Inc\user_key_task.h</FilePath>
+            </File>
+            <File>
+              <FileName>user_wdog_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\myProjects\keilProjects\SWatch\SoftWare\APP\User\Tasks\Src\user_wdog_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>user_wdog_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\myProjects\keilProjects\SWatch\SoftWare\APP\User\Tasks\Inc\user_wdog_task.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1094,6 +1104,16 @@
               <FileName>inv_mpu_dmp_motion_driver.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\BSP\MPU6050\eMPL\inv_mpu_dmp_motion_driver.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_wdog.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\myProjects\keilProjects\SWatch\SoftWare\BSP\WDOG\bsp_wdog.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_wdog.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\myProjects\keilProjects\SWatch\SoftWare\BSP\WDOG\bsp_wdog.h</FilePath>
             </File>
           </Files>
         </Group>

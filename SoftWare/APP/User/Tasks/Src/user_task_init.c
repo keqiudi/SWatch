@@ -2,6 +2,7 @@
 
 #include "user_task_init.h"
 #include "user_key_task.h"
+#include "user_wdog_task.h"
 #include "user_hw_init.h"
 #include "user_lvgl_handler.h"
 #include "user_sensor_task.h"
@@ -56,6 +57,13 @@ const osThreadAttr_t WristWakeCheckTask_attributes = {
   .priority = (osPriority_t) osPriorityLow2,
 };
 
+//WDOG Feed task
+osThreadId_t WDOGFeedTaskHandle;
+const osThreadAttr_t WDOGFeedTask_attributes = {
+  .name = "WDOGFeedTask",
+  .stack_size = 128 * 1,
+  .priority = (osPriority_t) osPriorityHigh2,
+};   
 
 /* 定义消息队列句柄 */
 osMessageQueueId_t HomeUpdataMsgQueue; // 用于HOME页面更新数据
@@ -89,7 +97,9 @@ void user_tasks_init()
     // if(WristWakeCheckTaskHandle == NULL)
     //     SEGGER_RTT_printf(0,"WristWakeCheckTask Create Failed");
 
-
+	 WDOGFeedTaskHandle = osThreadNew(WDOGFeedTask, NULL, &WDOGFeedTask_attributes); // 看门狗喂狗任务
+   // if(WDOGFeedTaskHandle == NULL)
+   //     SEGGER_RTT_printf(0,"WDOGFeedTask Create Failed");
 
 
    // 打印剩余FreeRTOS堆内存大小，调试用
