@@ -63,25 +63,28 @@ void HwInitTask(void *argument)
 			hw_interface.hw_hrsensor_interface->diable();
 		}
 		
-
+		/* BLE模块初始化 */
+		hw_interface.hw_ble_interface->init();
+		hw_interface.hw_ble_interface->disable();
 		
-	  /* LCD 显示ST7789初始化 */
-		LCD_Init();
-		LCD_Fill(0,0,240,280,BLACK);
-		LCD_Open_BackLight();
-		LCD_Set_Light(50);
 		
-	  /* LCD 触摸CST816T初始化 */
-		CST816T_Init();
-		CST816T_Reset();
-		
-		/*2. lvgl初始化*/
-		lv_init();			  // lvgl初始化
-		lv_port_disp_init();  // lvgl显示初始化
-		lv_port_indev_init(); // lvgl触摸初始化
-		ui_init();            // UI界面初始化
-		
-		vTaskDelete(NULL); // 删除当前任务，释放资源
+		/* LCD 显示ST7789初始化 */
+			LCD_Init();
+			LCD_Fill(0,0,240,280,BLACK);
+			LCD_Open_BackLight();
+			LCD_Set_Light(50);
+			
+		/* LCD 触摸CST816T初始化 */
+			CST816T_Init();
+			CST816T_Reset();
+			
+			/*2. lvgl初始化*/
+			lv_init();			  // lvgl初始化
+			lv_port_disp_init();  // lvgl显示初始化
+			lv_port_indev_init(); // lvgl触摸初始化
+			ui_init();            // UI界面初始化
+			
+			vTaskDelete(NULL); // 删除当前任务，释放资源
 }	
 
 

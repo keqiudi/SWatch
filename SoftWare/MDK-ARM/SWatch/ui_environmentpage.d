@@ -230,6 +230,7 @@ swatch\ui_environmentpage.o: ../APP/User/HWInterface/Inc/hw_mpu6050_interface.h
 swatch\ui_environmentpage.o: ../APP/User/HWInterface/Inc/hw_barometer_interface.h
 swatch\ui_environmentpage.o: ../APP/User/HWInterface/Inc/hw_ecompass_interface.h
 swatch\ui_environmentpage.o: ../APP/User/HWInterface/Inc/hw_hrsensor_interface.h
+swatch\ui_environmentpage.o: ../APP/User/HWInterface/Inc/hw_ble_interface.h
 swatch\ui_environmentpage.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 swatch\ui_environmentpage.o: ../APP/User/Tasks/Inc/user_sensor_task.h
 swatch\ui_environmentpage.o: ../APP/User/Tasks/Inc/user_task_init.h

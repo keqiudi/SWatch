@@ -31,6 +31,7 @@ swatch\hw_aht20_interface.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_p
 swatch\hw_aht20_interface.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\hw_aht20_interface.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\hw_aht20_interface.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\hw_aht20_interface.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\hw_aht20_interface.o: ../APP/User/HWInterface/Inc/hw_aht20_interface.h
 swatch\hw_aht20_interface.o: ../APP/User/HWInterface/Inc/device.h
 swatch\hw_aht20_interface.o: ../Debug/RTT/SEGGER_RTT.h

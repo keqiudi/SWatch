@@ -30,3 +30,4 @@ swatch\stm32f4xx_hal_exti.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_p
 swatch\stm32f4xx_hal_exti.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\stm32f4xx_hal_exti.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\stm32f4xx_hal_exti.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\stm32f4xx_hal_exti.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h

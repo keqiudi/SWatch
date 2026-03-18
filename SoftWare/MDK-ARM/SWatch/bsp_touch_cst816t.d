@@ -32,5 +32,6 @@ swatch\bsp_touch_cst816t.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pw
 swatch\bsp_touch_cst816t.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\bsp_touch_cst816t.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\bsp_touch_cst816t.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\bsp_touch_cst816t.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\bsp_touch_cst816t.o: ../APP/User/System/delay.h
 swatch\bsp_touch_cst816t.o: ../APP/User/System/sys.h

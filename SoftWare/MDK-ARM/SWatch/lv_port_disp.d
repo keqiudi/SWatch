@@ -248,6 +248,7 @@ swatch\lv_port_disp.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.
 swatch\lv_port_disp.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\lv_port_disp.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\lv_port_disp.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\lv_port_disp.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\lv_port_disp.o: ../Core/Inc/spi.h
 swatch\lv_port_disp.o: ../Core/Inc/main.h
 swatch\lv_port_disp.o: ../APP/User/System/delay.h

@@ -34,3 +34,4 @@ swatch\hw_ecompass_interface.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ha
 swatch\hw_ecompass_interface.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\hw_ecompass_interface.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\hw_ecompass_interface.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\hw_ecompass_interface.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h

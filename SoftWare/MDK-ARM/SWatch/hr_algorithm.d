@@ -32,6 +32,7 @@ swatch\hr_algorithm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.
 swatch\hr_algorithm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\hr_algorithm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\hr_algorithm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\hr_algorithm.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\hr_algorithm.o: ..\BSP\EM7028\my_queue.h
 swatch\hr_algorithm.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 swatch\hr_algorithm.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

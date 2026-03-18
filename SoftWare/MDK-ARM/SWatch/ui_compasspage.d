@@ -230,6 +230,7 @@ swatch\ui_compasspage.o: ../APP/User/HWInterface/Inc/hw_mpu6050_interface.h
 swatch\ui_compasspage.o: ../APP/User/HWInterface/Inc/hw_barometer_interface.h
 swatch\ui_compasspage.o: ../APP/User/HWInterface/Inc/hw_ecompass_interface.h
 swatch\ui_compasspage.o: ../APP/User/HWInterface/Inc/hw_hrsensor_interface.h
+swatch\ui_compasspage.o: ../APP/User/HWInterface/Inc/hw_ble_interface.h
 swatch\ui_compasspage.o: ../APP/User/Tasks/Inc/user_sensor_task.h
 swatch\ui_compasspage.o: ../APP/User/Tasks/Inc/user_task_init.h
 swatch\ui_compasspage.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h

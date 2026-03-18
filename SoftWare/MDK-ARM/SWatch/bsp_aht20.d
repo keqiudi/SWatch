@@ -31,6 +31,7 @@ swatch\bsp_aht20.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 swatch\bsp_aht20.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\bsp_aht20.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\bsp_aht20.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\bsp_aht20.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\bsp_aht20.o: ../BSP/I2C/i2c_hal.h
 swatch\bsp_aht20.o: ../APP/User/System/delay.h
 swatch\bsp_aht20.o: ../APP/User/System/sys.h

@@ -31,6 +31,7 @@ swatch\bsp_lcd_st7789.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_e
 swatch\bsp_lcd_st7789.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\bsp_lcd_st7789.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\bsp_lcd_st7789.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\bsp_lcd_st7789.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\bsp_lcd_st7789.o: ..\BSP\LCD\bsp_lcd_st7789.h
 swatch\bsp_lcd_st7789.o: ../Core/Inc/spi.h
 swatch\bsp_lcd_st7789.o: ../Core/Inc/main.h

@@ -11,6 +11,7 @@ swatch\user_sensor_task.o: ../APP/User/HWInterface/Inc/hw_mpu6050_interface.h
 swatch\user_sensor_task.o: ../APP/User/HWInterface/Inc/hw_barometer_interface.h
 swatch\user_sensor_task.o: ../APP/User/HWInterface/Inc/hw_ecompass_interface.h
 swatch\user_sensor_task.o: ../APP/User/HWInterface/Inc/hw_hrsensor_interface.h
+swatch\user_sensor_task.o: ../APP/User/HWInterface/Inc/hw_ble_interface.h
 swatch\user_sensor_task.o: ../APP/User/Tasks/Inc/user_sensor_task.h
 swatch\user_sensor_task.o: ../APP/User/Tasks/Inc/user_task_init.h
 swatch\user_sensor_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
@@ -261,6 +262,7 @@ swatch\user_sensor_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr
 swatch\user_sensor_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\user_sensor_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\user_sensor_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\user_sensor_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\user_sensor_task.o: ../BSP/EM7028/my_queue.h
 swatch\user_sensor_task.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 swatch\user_sensor_task.o: ../BSP/AHT20/bsp_aht20.h

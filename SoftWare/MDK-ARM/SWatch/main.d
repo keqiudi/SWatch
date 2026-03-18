@@ -31,6 +31,7 @@ swatch\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 swatch\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 swatch\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 swatch\main.o: ../Core/Inc/FreeRTOSConfig.h
@@ -45,4 +46,5 @@ swatch\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os
 swatch\main.o: ../Core/Inc/dma.h
 swatch\main.o: ../Core/Inc/spi.h
 swatch\main.o: ../Core/Inc/tim.h
+swatch\main.o: ../Core/Inc/usart.h
 swatch\main.o: ../Core/Inc/gpio.h

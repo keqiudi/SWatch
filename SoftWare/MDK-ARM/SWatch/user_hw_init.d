@@ -32,6 +32,7 @@ swatch\user_hw_init.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.
 swatch\user_hw_init.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\user_hw_init.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\user_hw_init.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\user_hw_init.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\user_hw_init.o: ../APP/User/Tasks/Inc/user_hw_init.h
 swatch\user_hw_init.o: ../APP/User/Tasks/Inc/user_task_init.h
 swatch\user_hw_init.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
@@ -275,6 +276,7 @@ swatch\user_hw_init.o: ../APP/User/HWInterface/Inc/hw_mpu6050_interface.h
 swatch\user_hw_init.o: ../APP/User/HWInterface/Inc/hw_barometer_interface.h
 swatch\user_hw_init.o: ../APP/User/HWInterface/Inc/hw_ecompass_interface.h
 swatch\user_hw_init.o: ../APP/User/HWInterface/Inc/hw_hrsensor_interface.h
+swatch\user_hw_init.o: ../APP/User/HWInterface/Inc/hw_ble_interface.h
 swatch\user_hw_init.o: ../Debug/RTT/SEGGER_RTT.h
 swatch\user_hw_init.o: ../Debug/RTT/SEGGER_RTT_Conf.h
 swatch\user_hw_init.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

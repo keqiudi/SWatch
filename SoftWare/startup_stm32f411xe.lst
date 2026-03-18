@@ -744,11 +744,12 @@ ARM Macro Assembler    Page 12
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=swatch\startup_stm32f411xe.d -oswatch\startup_stm32f411xe.o -I.
-./Core/Inc -I.\RTE\_SWatch -IC:\Users\keqiu\study\software\Keil_v5\ARM\PACK\ARM
-\CMSIS\5.5.1\CMSIS\Core\Include -IC:\Users\keqiu\study\software\Keil_v5\ARM\PAC
-K\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefi
-ne="__UVISION_VERSION SETA 528" --predefine="_RTE_ SETA 1" --predefine="STM32F4
-11xE SETA 1" --list=..\startup_stm32f411xe.lst startup_stm32f411xe.s
+./Core/Inc -I../Drivers/CMSIS/Include -I.\RTE\_SWatch -IC:\Users\keqiu\study\so
+ftware\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include -IC:\Users\keqiu\stu
+dy\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\
+STM32F4xx\Include --predefine="__UVISION_VERSION SETA 528" --predefine="_RTE_ S
+ETA 1" --predefine="STM32F411xE SETA 1" --list=..\startup_stm32f411xe.lst start
+up_stm32f411xe.s
 
 
 

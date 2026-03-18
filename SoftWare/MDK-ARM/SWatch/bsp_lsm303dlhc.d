@@ -32,6 +32,7 @@ swatch\bsp_lsm303dlhc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_e
 swatch\bsp_lsm303dlhc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\bsp_lsm303dlhc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\bsp_lsm303dlhc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\bsp_lsm303dlhc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\bsp_lsm303dlhc.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 swatch\bsp_lsm303dlhc.o: ../APP/User/System/delay.h
 swatch\bsp_lsm303dlhc.o: ../APP/User/System/sys.h

@@ -230,3 +230,4 @@ swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/hw_mpu6050_interface.h
 swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/hw_barometer_interface.h
 swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/hw_ecompass_interface.h
 swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/hw_hrsensor_interface.h
+swatch\ui_heartratepage.o: ../APP/User/HWInterface/Inc/hw_ble_interface.h

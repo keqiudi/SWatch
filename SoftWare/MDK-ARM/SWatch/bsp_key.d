@@ -32,6 +32,7 @@ swatch\bsp_key.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 swatch\bsp_key.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\bsp_key.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\bsp_key.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\bsp_key.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\bsp_key.o: ../APP/User/Tasks/Inc/user_task_init.h
 swatch\bsp_key.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 swatch\bsp_key.o: ../Core/Inc/FreeRTOSConfig.h

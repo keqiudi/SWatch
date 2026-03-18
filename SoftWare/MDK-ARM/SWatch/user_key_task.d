@@ -45,6 +45,7 @@ swatch\user_key_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex
 swatch\user_key_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 swatch\user_key_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 swatch\user_key_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+swatch\user_key_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 swatch\user_key_task.o: ../Debug/RTT/SEGGER_RTT.h
 swatch\user_key_task.o: ../Debug/RTT/SEGGER_RTT_Conf.h
 swatch\user_key_task.o: C:\Users\keqiu\study\software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
