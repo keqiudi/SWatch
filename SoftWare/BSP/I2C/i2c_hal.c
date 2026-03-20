@@ -16,16 +16,16 @@ static void SCL_Output(i2c_bus_t* sensor, uint16_t value)
  */
 
 
-/*Ö±½Ó²Ù×÷¼Ä´æÆ÷£¬¸ü¾«×¼¿ØÖÆÊ±Ðò*/
+/*ç›´æŽ¥æ“ä½œå¯„å­˜å™¨ï¼Œæ›´ç²¾å‡†æŽ§åˆ¶æ—¶åº*/
 static void SDA_Output(i2c_bus_t* sensor, uint16_t bit_value)
 {
 		if(bit_value)  
 		{
-			sensor->I2C_SDA_PORT->BSRR = sensor->I2C_SDA_PIN;  //BSRRºó16bitÎªÉèÖÃ¶ÔÓ¦µÄODRyÎ»(IOµçÆ½)£¬1¿ÉÒÔÉèÖÃ£¬0²»»áÓ°Ïì£¬¾ßÌå¼ûÊÖ²á¼Ä´æÆ÷ÃèÊö
+			sensor->I2C_SDA_PORT->BSRR = sensor->I2C_SDA_PIN;  //BSRRåŽ16bitä¸ºè®¾ç½®å¯¹åº”çš„ODRyä½(IOç”µå¹³)ï¼Œ1å¯ä»¥è®¾ç½®ï¼Œ0ä¸ä¼šå½±å“ï¼Œå…·ä½“è§æ‰‹å†Œå¯„å­˜å™¨æè¿°
 		}
 		else
 		{
-			sensor->I2C_SDA_PORT->BSRR = (uint32_t)sensor->I2C_SDA_PIN << 16U; //BSRRÇ°16bitÎªÇå³ý¶ÔÓ¦µÄODRyÎ»(IOµçÆ½)£¬1¿ÉÒÔÇå³ý£¬0²»»áÓ°Ïì
+			sensor->I2C_SDA_PORT->BSRR = (uint32_t)sensor->I2C_SDA_PIN << 16U; //BSRRå‰16bitä¸ºæ¸…é™¤å¯¹åº”çš„ODRyä½(IOç”µå¹³)ï¼Œ1å¯ä»¥æ¸…é™¤ï¼Œ0ä¸ä¼šå½±å“
 		}
 }
 
@@ -33,11 +33,11 @@ static void SCL_Output(i2c_bus_t* sensor, uint16_t bit_value)
 {
 		if(bit_value)  
 		{
-			sensor->I2C_SCL_PORT->BSRR = sensor->I2C_SCL_PIN;  //BSRRºó16bitÎªÉèÖÃ¶ÔÓ¦µÄODRyÎ»(IOµçÆ½)£¬1¿ÉÒÔÉèÖÃ£¬0²»»áÓ°Ïì£¬¾ßÌå¼ûÊÖ²á¼Ä´æÆ÷ÃèÊö
+			sensor->I2C_SCL_PORT->BSRR = sensor->I2C_SCL_PIN;  //BSRRåŽ16bitä¸ºè®¾ç½®å¯¹åº”çš„ODRyä½(IOç”µå¹³)ï¼Œ1å¯ä»¥è®¾ç½®ï¼Œ0ä¸ä¼šå½±å“ï¼Œå…·ä½“è§æ‰‹å†Œå¯„å­˜å™¨æè¿°
 		}
 		else
 		{
-			sensor->I2C_SCL_PORT->BSRR = (uint32_t)sensor->I2C_SCL_PIN << 16U; //BSRRÇ°16bitÎªÇå³ý¶ÔÓ¦µÄODRyÎ»(IOµçÆ½)£¬1¿ÉÒÔÇå³ý£¬0²»»áÓ°Ïì
+			sensor->I2C_SCL_PORT->BSRR = (uint32_t)sensor->I2C_SCL_PIN << 16U; //BSRRå‰16bitä¸ºæ¸…é™¤å¯¹åº”çš„ODRyä½(IOç”µå¹³)ï¼Œ1å¯ä»¥æ¸…é™¤ï¼Œ0ä¸ä¼šå½±å“
 		}
 }
 
@@ -66,14 +66,14 @@ static uint8_t SCL_Input(i2c_bus_t* sensor)
 void i2c_init(i2c_bus_t* sensor)
 {
 	
-	 __HAL_RCC_GPIOB_CLK_ENABLE();//¿ªÆôÊ±ÖÓ
+	 __HAL_RCC_GPIOB_CLK_ENABLE();//å¼€å¯æ—¶é’Ÿ
 	
-	//SCL¡¢SDAÒý½Å³õÊ¼»¯
+	//SCLã€SDAå¼•è„šåˆå§‹åŒ–
 	GPIO_InitTypeDef GPIO_InitStruct;
 	GPIO_InitStruct.Pin = sensor->I2C_SCL_PIN | sensor->I2C_SDA_PIN;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD; //¿ªÂ©Êä³ö
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD; //å¼€æ¼è¾“å‡º
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH; //50Mhz×óÓÒ¼´¿É
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH; //50Mhzå·¦å³å³å¯
 	HAL_GPIO_Init(sensor->I2C_SCL_PORT,&GPIO_InitStruct);
 	
 }
@@ -81,12 +81,12 @@ void i2c_init(i2c_bus_t* sensor)
 
 void i2c_soft_start(i2c_bus_t* sensor)
 {
-	/*±£Ö¤sclºÍsda¶¼ÊÇ¸ßµçÆ½£¬ÄÜ¹»²úÉúÏÂ½µÑØ*/
-	SDA_Output(sensor,1); //±£ÏÕÆð¼û£¬Ó¦¸ÃÏÈÀ­¸ßSDA£¬ÄÜ¹»¼æÈÝÖØ¸´ÆðÊ¼Ìõ¼þ£¬±ÜÃâSCL´¦ÓÚ¸ßµçÆ½Ê±Ê±£¬SDAÎªµÍ±»À­¸ß²úÉúÉÏÉýÑØ£¬¾Í±»ÎóÅÐÎªÍ£Ö¹ÐÅºÅ
+	/*ä¿è¯sclå’Œsdaéƒ½æ˜¯é«˜ç”µå¹³ï¼Œèƒ½å¤Ÿäº§ç”Ÿä¸‹é™æ²¿*/
+	SDA_Output(sensor,1); //ä¿é™©èµ·è§ï¼Œåº”è¯¥å…ˆæ‹‰é«˜SDAï¼Œèƒ½å¤Ÿå…¼å®¹é‡å¤èµ·å§‹æ¡ä»¶ï¼Œé¿å…SCLå¤„äºŽé«˜ç”µå¹³æ—¶æ—¶ï¼ŒSDAä¸ºä½Žè¢«æ‹‰é«˜äº§ç”Ÿä¸Šå‡æ²¿ï¼Œå°±è¢«è¯¯åˆ¤ä¸ºåœæ­¢ä¿¡å·
 	SCL_Output(sensor,1);
-	delay_us(I2C_DELAY_TIME);//±£Ö¤SDAÎª¸ßÒ»¶ÎÊ±¼ä
+	delay_us(I2C_DELAY_TIME);//ä¿è¯SDAä¸ºé«˜ä¸€æ®µæ—¶é—´
 	
-	//ÆðÊ¼ÐÅºÅ£¬SCLÎª¸ßµçÆ½£¬SDA²úÉúÏÂ½µÑØ
+	//èµ·å§‹ä¿¡å·ï¼ŒSCLä¸ºé«˜ç”µå¹³ï¼ŒSDAäº§ç”Ÿä¸‹é™æ²¿
 	SDA_Output(sensor,0);
 	delay_us(I2C_DELAY_TIME);
 	SCL_Output(sensor,0);
@@ -95,12 +95,12 @@ void i2c_soft_start(i2c_bus_t* sensor)
 
 void i2c_soft_stop(i2c_bus_t* sensor)
 {
-	/*±£Ö¤sclºÍsda¶¼ÊÇµÍµçÆ½,ÄÜ¹»²úÉúÉÏÉýÑØ*/
+	/*ä¿è¯sclå’Œsdaéƒ½æ˜¯ä½Žç”µå¹³,èƒ½å¤Ÿäº§ç”Ÿä¸Šå‡æ²¿*/
 	SCL_Output(sensor,0);
 	SDA_Output(sensor,0);
-	delay_us(I2C_DELAY_TIME); // ÎÈ¶¨Ò»¶ÎÊ±¼ä
+	delay_us(I2C_DELAY_TIME); // ç¨³å®šä¸€æ®µæ—¶é—´
 	
-	//½áÊøÐÅºÅ£¬SCLÏÈÀ­¸ß£¬ÔÙ½«SDAÀ­¸ß²úÉúÉÏÉýÑØ
+	//ç»“æŸä¿¡å·ï¼ŒSCLå…ˆæ‹‰é«˜ï¼Œå†å°†SDAæ‹‰é«˜äº§ç”Ÿä¸Šå‡æ²¿
 	SCL_Output(sensor,1);
 	delay_us(I2C_DELAY_TIME);
 	SDA_Output(sensor,1);
@@ -112,16 +112,16 @@ void i2c_soft_send_byte(i2c_bus_t* sensor,uint8_t data)
 {
 	
 //	  SCL_Output(sensor,0);
-//	  delay_us(I2C_DELAY_TIME);  ÕâÀïÈ·±£SCLÎªµÍ£¬µ«Êµ¼ÊÉÏÓÉÓÚSCLÊÇÖ÷»ú¿ØÖÆ£¬Ã¿´Î½áÊøºóSCL¶¼±»À­µÍÁË£¬Õý³£SCL¶¼ÎªµÍ£¬ËùÒÔ¿ÉÒÔÊ¡ÂÔ£¬±£ÏÕÆð¼û¿ÉÒÔ¼ÓÉÏ
+//	  delay_us(I2C_DELAY_TIME);  è¿™é‡Œç¡®ä¿SCLä¸ºä½Žï¼Œä½†å®žé™…ä¸Šç”±äºŽSCLæ˜¯ä¸»æœºæŽ§åˆ¶ï¼Œæ¯æ¬¡ç»“æŸåŽSCLéƒ½è¢«æ‹‰ä½Žäº†ï¼Œæ­£å¸¸SCLéƒ½ä¸ºä½Žï¼Œæ‰€ä»¥å¯ä»¥çœç•¥ï¼Œä¿é™©èµ·è§å¯ä»¥åŠ ä¸Š
 	
 	 for(uint8_t i=0;i<8;i++)
 	 {
-			SDA_Output(sensor, data & (0x80 >> i)); // ÒÀ´Î·¢ËÍdataµÄÃ¿Ò»Î»
+			SDA_Output(sensor, data & (0x80 >> i)); // ä¾æ¬¡å‘é€dataçš„æ¯ä¸€ä½
 		  delay_us(I2C_DELAY_TIME);
 		 
 		  SCL_Output(sensor,1);
 		 	delay_us(I2C_DELAY_TIME);
-		 	SCL_Output(sensor,0); // À­µÍ×¼±¸ÏÂ´Î·¢ËÍ
+		 	SCL_Output(sensor,0); // æ‹‰ä½Žå‡†å¤‡ä¸‹æ¬¡å‘é€
 			delay_us(I2C_DELAY_TIME);
 	 }
 	 	
@@ -132,14 +132,14 @@ uint8_t i2c_soft_read_byte(i2c_bus_t* sensor)
 {
 		uint8_t byte = 0x00;
 	
-		SDA_Output(sensor,1); // Ö÷»úÊÍ·ÅSDA,£¨»òÕß¸ü×¼È·µØËµ£¬ÉèÖÃSDAÎªÊäÈë/¸ß×è£©£¬²»ÔÙÇý¶¯SDAÏß¡£ÕâÑùSDAÏßÉÏÓÉ´Ó»ú¾ö¶¨µçÆ½£¬Ö÷»ú²ÅÄÜÕýÈ·²ÉÑù´Ó»ú·¢³öµÄÊý¾Ý¡£
-	                              // ¶ÔÓ¦ÇÐ»»ÎªÊäÈëÄ£Ê½Ç°ÐèÒªÏÈ½«IOÊä³ö¸ßµçÆ½£¬±ÜÃâIOËøËÀÔÚµÍµçÆ½
+		SDA_Output(sensor,1); // ä¸»æœºé‡Šæ”¾SDA,ï¼ˆæˆ–è€…æ›´å‡†ç¡®åœ°è¯´ï¼Œè®¾ç½®SDAä¸ºè¾“å…¥/é«˜é˜»ï¼‰ï¼Œä¸å†é©±åŠ¨SDAçº¿ã€‚è¿™æ ·SDAçº¿ä¸Šç”±ä»Žæœºå†³å®šç”µå¹³ï¼Œä¸»æœºæ‰èƒ½æ­£ç¡®é‡‡æ ·ä»Žæœºå‘å‡ºçš„æ•°æ®ã€‚
+	                              // å¯¹åº”åˆ‡æ¢ä¸ºè¾“å…¥æ¨¡å¼å‰éœ€è¦å…ˆå°†IOè¾“å‡ºé«˜ç”µå¹³ï¼Œé¿å…IOé”æ­»åœ¨ä½Žç”µå¹³
 	  for(uint8_t i=0;i<8;i++)
 		{
 			 SCL_Output(sensor,0);
 			 delay_us(I2C_DELAY_TIME);
 			
-			 SCL_Output(sensor,1);//SCL¸ßµçÆ½Ö÷»ú¶ÁÈ¡
+			 SCL_Output(sensor,1);//SCLé«˜ç”µå¹³ä¸»æœºè¯»å–
 			 if(SDA_Input(sensor))
 			 {
 				 byte |= (0x80 >> i);
@@ -152,7 +152,7 @@ uint8_t i2c_soft_read_byte(i2c_bus_t* sensor)
 		return byte;
 }
 
-/*Èí¼þi2c¶ÁÈ¡¶à¸ö×Ö½Ú*/
+/*è½¯ä»¶i2cè¯»å–å¤šä¸ªå­—èŠ‚*/
 
 uint8_t i2c_soft_read_multi_byte(i2c_bus_t* sensor,uint8_t byte[],int size)
 {
@@ -167,7 +167,7 @@ uint8_t i2c_soft_read_multi_byte(i2c_bus_t* sensor,uint8_t byte[],int size)
 void i2c_soft_send_ack(i2c_bus_t* sensor)
 {
 //	SCL_Output(sensor,0);
-//	delay_us(I2C_DELAY_TIME); ÕâÀïÈ·±£SCLÎªµÍ£¬µ«Êµ¼ÊÉÏÓÉÓÚSCLÊÇÖ÷»ú¿ØÖÆ£¬Ã¿´Î½áÊøºóSCL¶¼±»À­µÍÁË£¬Õý³£SCL¶¼ÎªµÍ£¬ËùÒÔ¿ÉÒÔÊ¡ÂÔ£¬±£ÏÕÆð¼û¿ÉÒÔ¼ÓÉÏ
+//	delay_us(I2C_DELAY_TIME); è¿™é‡Œç¡®ä¿SCLä¸ºä½Žï¼Œä½†å®žé™…ä¸Šç”±äºŽSCLæ˜¯ä¸»æœºæŽ§åˆ¶ï¼Œæ¯æ¬¡ç»“æŸåŽSCLéƒ½è¢«æ‹‰ä½Žäº†ï¼Œæ­£å¸¸SCLéƒ½ä¸ºä½Žï¼Œæ‰€ä»¥å¯ä»¥çœç•¥ï¼Œä¿é™©èµ·è§å¯ä»¥åŠ ä¸Š
 	
 	SDA_Output(sensor,0);
 	delay_us(I2C_DELAY_TIME);
@@ -182,7 +182,7 @@ void i2c_soft_send_ack(i2c_bus_t* sensor)
 void i2c_soft_send_not_ack(i2c_bus_t* sensor)
 {
 	//	SCL_Output(sensor,0);
-	//	delay_us(I2C_DELAY_TIME); ÕâÀïÈ·±£SCLÎªµÍ£¬µ«Êµ¼ÊÉÏÓÉÓÚSCLÊÇÖ÷»ú¿ØÖÆ£¬Ã¿´Î½áÊøºóSCL¶¼±»À­µÍÁË£¬Õý³£SCL¶¼ÎªµÍ£¬ËùÒÔ¿ÉÒÔÊ¡ÂÔ£¬±£ÏÕÆð¼û¿ÉÒÔ¼ÓÉÏ
+	//	delay_us(I2C_DELAY_TIME); è¿™é‡Œç¡®ä¿SCLä¸ºä½Žï¼Œä½†å®žé™…ä¸Šç”±äºŽSCLæ˜¯ä¸»æœºæŽ§åˆ¶ï¼Œæ¯æ¬¡ç»“æŸåŽSCLéƒ½è¢«æ‹‰ä½Žäº†ï¼Œæ­£å¸¸SCLéƒ½ä¸ºä½Žï¼Œæ‰€ä»¥å¯ä»¥çœç•¥ï¼Œä¿é™©èµ·è§å¯ä»¥åŠ ä¸Š
 	SDA_Output(sensor,1);
 	delay_us(I2C_DELAY_TIME);
 	
@@ -197,7 +197,7 @@ uint8_t i2c_soft_wait_ack(i2c_bus_t* sensor)
 {
 		uint8_t ack = 0;
 	
-		SDA_Output(sensor,1); // Ö÷»úÊÍ·ÅSDA,£¨»òÕß¸ü×¼È·µØËµ£¬ÉèÖÃSDAÎªÊäÈë/¸ß×è£©£¬²»ÔÙÇý¶¯SDAÏß¡£ÕâÑùSDAÏßÉÏÓÉ´Ó»ú¾ö¶¨µçÆ½£¬Ö÷»ú²ÅÄÜÕýÈ·²ÉÑù´Ó»ú·¢³öµÄÊý¾Ý¡£
+		SDA_Output(sensor,1); // ä¸»æœºé‡Šæ”¾SDA,ï¼ˆæˆ–è€…æ›´å‡†ç¡®åœ°è¯´ï¼Œè®¾ç½®SDAä¸ºè¾“å…¥/é«˜é˜»ï¼‰ï¼Œä¸å†é©±åŠ¨SDAçº¿ã€‚è¿™æ ·SDAçº¿ä¸Šç”±ä»Žæœºå†³å®šç”µå¹³ï¼Œä¸»æœºæ‰èƒ½æ­£ç¡®é‡‡æ ·ä»Žæœºå‘å‡ºçš„æ•°æ®ã€‚
 		delay_us(I2C_DELAY_TIME);
 	
 		SCL_Output(sensor,1);

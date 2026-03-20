@@ -1192,6 +1192,16 @@
               <FilePath>..\..\..\myProjects\keilProjects\SWatch\SoftWare\BSP\BL24C02\bsp_bl24c02.h</FilePath>
             </File>
             <File>
+              <FileName>data_save.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\BL24C02\data_save.c</FilePath>
+            </File>
+            <File>
+              <FileName>data_save.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\BL24C02\data_save.h</FilePath>
+            </File>
+            <File>
               <FileName>bsp_kt6368.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\KT6368\bsp_kt6368.c</FilePath>

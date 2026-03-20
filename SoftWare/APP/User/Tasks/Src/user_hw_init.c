@@ -8,6 +8,7 @@
 #include "bsp_touch_cst816t.h"
 #include "bsp_aht20.h"
 #include "bsp_key.h"
+#include "data_save.h"
 
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
@@ -63,7 +64,15 @@ void HwInitTask(void *argument)
 			hw_interface.hw_hrsensor_interface->diable();
 		}
 		
-		/* BLE模块初始化 */
+
+		/* eeprom 初始化*/
+		eeprom_init();
+		if(!eeprom_check())
+		{
+			
+		}
+
+		/* BLE 初始化 */
 		hw_interface.hw_ble_interface->init();
 		hw_interface.hw_ble_interface->disable();
 		

@@ -1,5 +1,5 @@
 Load "SWatch\\SWatch.axf" 
-Set JLink Project File to "c:\Users\keqiu\study\code\myProjects\keilProjects\SWatch\SoftWare\MDK-ARM\JLinkSettings.ini"* JLink Info: Device "STM32F411CE" selected.
+Set JLink Project File to "c:\Users\keqiu\study\code\SWatch\SoftWare\MDK-ARM\JLinkSettings.ini"* JLink Info: Device "STM32F411CE" selected.
 
 JLink info:
 ------------
@@ -12,7 +12,7 @@ Feature(s) : RDI, GDB, FlashDL, FlashBP, JFlash
 * JLink Info: InitTarget() start
 * JLink Info: SWD selected. Executing JTAG -> SWD switching sequence.
 * JLink Info: DAP initialized successfully.
-* JLink Info: InitTarget() end - Took 13.5ms
+* JLink Info: InitTarget() end - Took 13.7ms
 * JLink Info: Found SW-DP with ID 0x2BA01477
 * JLink Info: DPIDR: 0x2BA01477
 * JLink Info: CoreSight SoC-400 or earlier
@@ -41,7 +41,7 @@ ROMTableAddr = 0xE00FF000
 Target info:
 ------------
 Device: STM32F411CEUx
-VTarget = 3.290V
+VTarget = 3.287V
 State of Pins: TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 0
 Hardware-Breakpoints: 6
 Software-Breakpoints: 8192
@@ -57,4 +57,4 @@ Erase Done.Programming Done.Verify OK.* JLink Info: Memory map 'before startup c
 Application running ...
 * JLink Info: OnDisconnectTarget() start
 * JLink Info: OnDisconnectTarget() end - Took 1.19ms
-Flash Load finished at 23:59:13
+Flash Load finished at 20:55:35
