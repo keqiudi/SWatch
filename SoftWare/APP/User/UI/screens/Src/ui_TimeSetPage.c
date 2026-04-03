@@ -4,6 +4,8 @@
 // Project name: LightTimePage
 
 #include "ui_TimeSetPage.h"
+#include "ui_HomePage.h"
+#include "hw_interface.h"
 
 lv_obj_t * ui_TimeSetPage = NULL;
 lv_obj_t * ui_HourNumRoller = NULL;
@@ -38,7 +40,15 @@ static void set_ok_button_event_cb(lv_event_t* e)
     
     if(event_code == LV_EVENT_CLICKED)
     {
+        /* 获取设置的时分秒 */
+        uint8_t hour_set    = lv_roller_get_selected(ui_HourNumRoller); //索引转换为实际小时
+        uint8_t minute_set  = lv_roller_get_selected(ui_MinuteNumRoller); //索引转换为实际分钟
+        uint8_t second_set  = lv_roller_get_selected(ui_SecondNumRoller); //索引转换为实际秒数
+        hw_interface.hw_rtc_interface->set_time(hour_set, minute_set, second_set); // 设置RTC时间
 
+        ui_TimeHourValue = hour_set; // 更新home页显示
+        ui_TimeMinuteValue = minute_set; // 更新home页显示
+        
         page_back();
     }
 

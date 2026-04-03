@@ -3,7 +3,7 @@
 #include "user_key_task.h"
 #include "bsp_key.h"
 #include "SEGGER_RTT.h"
-
+#include "page_manager.h"
 
 void KeyTask(void *argument)
 {
@@ -12,11 +12,11 @@ void KeyTask(void *argument)
         switch(key_scan(0))
         {
             case 1: // key1按键事件
-                SEGGER_RTT_printf(0,"Key1 Pressed\n");
+                //SEGGER_RTT_printf(0,"Key1 Pressed\n");
       
                 break;
             case 2: // 这里得有电池才会触发key2按键事件，实际为wake引脚被电源拉高的事件
-                SEGGER_RTT_printf(0,"Key2 Pressed\n");
+                //SEGGER_RTT_printf(0,"Key2 Pressed\n");
         
                 break;
             default:

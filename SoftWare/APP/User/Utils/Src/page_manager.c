@@ -5,11 +5,11 @@
 
 
 
-page_stack_t page_stack; // ����ҳ���ջ
+page_stack_t page_stack; // 整个页面的栈
 
 
 
-/* ------------------------------------ջ�Ļ�������------------------------------------ */
+/* ------------------------------------栈的基础操作------------------------------------ */
 
 static void page_stack_init(page_stack_t* page_stack)
 {
@@ -60,38 +60,37 @@ static uint8_t page_stack_empty(page_stack_t* page_stack)
 }
 
 
-/* ------------------------------------ ҳ���������ӿ� ------------------------------------*/
-
+/* ------------------------------------ 页面管理对外接口 ------------------------------------*/
 void pages_init(page_t* page_home)
 {
-		page_stack_init(&page_stack); // ��ʼ��ҳ��ջ
-		page_home->init(); //��ʼ����ҳ
-		page_stack_push(&page_stack,page_home); // ��ҳ��ջ
-		lv_disp_load_scr(*page_home->page_obj); //��ʾHomeҳ��
+	page_stack_init(&page_stack); // 初始化页面栈
+	page_home->init(); //初始化主页
+	page_stack_push(&page_stack,page_home); // 主页入栈
+	lv_disp_load_scr(*page_home->page_obj); //显示Home页面
 }
 
 void page_load(page_t* new_page)
 {
-	//����ջ�Ƿ���
+	//检查堆栈是否满
 	if(page_stack.top>= MAX_PAGES)
 	{
 			return;
 	}
 	
-	/* ��ǰҳ�洦�� */
+	/* 当前页面处理 */
 	page_t* cur_page = page_stack_top(&page_stack);
 	if(cur_page){
-		 cur_page->pause(); //��ͣ��ǰҳ�涨ʱ����������
-		 //cur_page->deinit(); // ʹ�ö���������ע�͵����������ʿ�ָ��
+		 cur_page->pause(); //暂停当前页面定时器、动画等
+		 //cur_page->deinit(); // 使用动画加载需注释掉，否则会访问空指针
 	}
 	
-	/* ��ҳ�洦�� */
-	new_page->init(); // ��ҳ���ʼ��
-	new_page->resume(); // ��ҳ��������ʱ����
-	page_stack_push(&page_stack,new_page); // ��ҳ����ջ
+	/* 新页面处理 */
+	new_page->init(); // 新页面初始化
+	new_page->resume(); // 新页面恢复(启动定时器、动画等)
+	page_stack_push(&page_stack,new_page); // 新页面入栈
 	
 	//lv_scr_load(*new_page->page_obj);
-	lv_screen_load_anim(*new_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); //������ҳ��(�ж���),�Զ������ͷž�screen
+	lv_screen_load_anim(*new_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); //加载新页面(有动画),自动释放旧页面
 }
 
 
@@ -99,30 +98,30 @@ void page_back()
 {	
 
   if(page_stack.top <= 1) 
-	{
-        //���ص���ҳ
+{
+      // 栈中只有一个页面（主页），无法返回上一页
       return;
   }
 	
-	/*��ǰҳ�洦��*/
+	/* */
 	page_t* cur_page = page_stack_top(&page_stack);
 	if(cur_page)
 	{
-		 cur_page->pause(); //��ͣ��ǰҳ�涨ʱ����������
-		 //cur_page->deinit(); // ʹ�ö���������ע�͵����������ʿ�ָ��
+		 cur_page->pause(); // 暂停当前页面定时器、动画等
+		 //cur_page->deinit();  // 使用动画加载需注释掉，否则会访问空指针
 	}
-	page_stack_pop(&page_stack); // ������ǰҳ��
+	page_stack_pop(&page_stack); // 当前页面出栈
 	
-	/* ��ҳ�洦�� */
+	/**/
 	page_t* previous_page = get_top_page(&page_stack);
 	if(!previous_page){
 		 return ;
 	}
 	previous_page->init();
-	previous_page->resume();  // ������ǰҳ�涨ʱ����������
+	previous_page->resume();  // 恢复上一页面定时器、动画等
 	
-	//lv_scr_load(*previous_page->page_obj); // �������ͷž�ҳ��,��������ҳ��ͬʱ����ռ��heap���ߣ�ֻ����û�ж�������
-	lv_screen_load_anim(*previous_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); //������ҳ��(�ж���),�Զ������ͷž�screen
+	//lv_scr_load(*previous_page->page_obj); // // 可以先释放旧页面,避免两个页面同时存在占用heap过高，只不过没有动画加载
+	lv_screen_load_anim(*previous_page->page_obj, LV_SCREEN_LOAD_ANIM_MOVE_RIGHT, 200, 0, true); // //加载新页面(有动画),自动访问释放旧screen
 }
 
 

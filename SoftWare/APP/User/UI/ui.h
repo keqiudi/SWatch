@@ -27,7 +27,7 @@ extern "C" {
 
 //extern lv_obj_t * ui____initial_actions0;
 
-// FONTS£º ×¢²á×ÖÌå
+// FONTSï¼š æ³¨å†Œå­—ä½“
 LV_FONT_DECLARE(ui_font_ALiDaKai20);
 LV_FONT_DECLARE(ui_font_CuYuan20);
 LV_FONT_DECLARE(ui_font_CuYuan30);
@@ -46,6 +46,7 @@ LV_FONT_DECLARE(ui_font_TMPiconfont30);
 LV_FONT_DECLARE(ui_font_CPiconfont28);
 LV_FONT_DECLARE(ui_font_SPiconfont30);
 LV_FONT_DECLARE(ui_font_LTSiconfont40);
+LV_FONT_DECLARE(ui_font_iconfont34);
 
 // UI INIT
 void ui_init(void);

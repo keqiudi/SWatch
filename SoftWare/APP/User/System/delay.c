@@ -4,14 +4,14 @@
 
 
 /** 
- * ÓÉÓÚÎÒÃÇ¸ü»»ÁËHAL¿âµÄÊ±»ùÎªTIM1,µ¼ÖÂSysTickÔÚFreeRTOS¿ªÊ¼µ÷¶ÈÇ°¶¼²»»á±»³õÊ¼»¯
- * Èç¹ûÎÒÃÇÐèÒªÔÚÆô¶¯FreeRTOSµ÷¶ÈÇ°Ê¹ÓÃSysTickÑÓÊ±£¬¾Í±ØÐëÒªÏÈ³õÊ¼»¯SysTick
+ * ç”±äºŽæˆ‘ä»¬æ›´æ¢äº†HALåº“çš„æ—¶åŸºä¸ºTIM1,å¯¼è‡´SysTickåœ¨FreeRTOSå¼€å§‹è°ƒåº¦å‰éƒ½ä¸ä¼šè¢«åˆå§‹åŒ–
+ * å¦‚æžœæˆ‘ä»¬éœ€è¦åœ¨å¯åŠ¨FreeRTOSè°ƒåº¦å‰ä½¿ç”¨SysTickå»¶æ—¶ï¼Œå°±å¿…é¡»è¦å…ˆåˆå§‹åŒ–SysTick
  **/
 void delay_init(void)
 {
-		HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK); //ÉèÖÃsystickÊ±ÖÓÔ´
+		HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK); //è®¾ç½®systickæ—¶é’Ÿæº
 	
-		HAL_SYSTICK_Config(SystemCoreClock / (1000U / uwTickFreq)); // ÉèÖÃsystickÖÐ¶ÏÎª1ms
+		HAL_SYSTICK_Config(SystemCoreClock / (1000U / uwTickFreq)); // è®¾ç½®systickä¸­æ–­ä¸º1ms
 }
 
 
@@ -19,33 +19,33 @@ void delay_us(u32 us)
 {
 	
 	u32 tick_old=0,tick_now=0,tick_cnt=0;
-  u32 need_ticks=0; // Ã¿usËùÐèÒªµÄ×ÜTicks
-	u32 auto_reload=0; //SysTickÖØ×°ÔØÖµ
+  u32 need_ticks=0; // æ¯usæ‰€éœ€è¦çš„æ€»Ticks
+	u32 auto_reload=0; //SysTické‡è£…è½½å€¼
 	
-	auto_reload = SysTick->LOAD; // »ñÈ¡ÖØ×°ÔØÖµ
+	auto_reload = SysTick->LOAD; // èŽ·å–é‡è£…è½½å€¼
 	
-// SysTickµÄÊ±ÖÓÀ´×ÔÓÚÏµÍ³Ö÷Æµ£¬ÎÒÃÇÉèÖÃµÄ100MHZ£¬1¸ötick(1/100MHZ) = 1us / 100£¬ËùÒÔ1us = 100 tick
-	u32 ticks_per_us = SystemCoreClock / 1000000;//Ã¿1usËùÐèÒªµÄtickÊýÎª100
-	need_ticks = us * ticks_per_us; //ÑÓÊ±Ö¸¶¨usÐèÒªµÄ×ÜTickÊý
+// SysTickçš„æ—¶é’Ÿæ¥è‡ªäºŽç³»ç»Ÿä¸»é¢‘ï¼Œæˆ‘ä»¬è®¾ç½®çš„100MHZï¼Œ1ä¸ªtick(1/100MHZ) = 1us / 100ï¼Œæ‰€ä»¥1us = 100 tick
+	u32 ticks_per_us = SystemCoreClock / 1000000;//æ¯1usæ‰€éœ€è¦çš„tickæ•°ä¸º100
+	need_ticks = us * ticks_per_us; //å»¶æ—¶æŒ‡å®šuséœ€è¦çš„æ€»Tickæ•°
 	
-	tick_old = SysTick->VAL; // ¿ªÊ¼¼ÆÊ±µÄSysTickµÄ¼ÆÊýÆ÷Öµ
+	tick_old = SysTick->VAL; // å¼€å§‹è®¡æ—¶çš„SysTickçš„è®¡æ•°å™¨å€¼
 	
-	while(tick_cnt < need_ticks) //½«Ã¿´ÎÑ­»·½«×ß¹ýµÄtickÀÛ¼Óµ½tick_cntÖÐ£¬Ö±µ½tick_cntµÈÓÚÐèÒªµÄÖ¸¶¨usµÄtickÊý
+	while(tick_cnt < need_ticks) //å°†æ¯æ¬¡å¾ªçŽ¯å°†èµ°è¿‡çš„tickç´¯åŠ åˆ°tick_cntä¸­ï¼Œç›´åˆ°tick_cntç­‰äºŽéœ€è¦çš„æŒ‡å®šusçš„tickæ•°
 	{
-		tick_now = SysTick->VAL; // ÏÖÔÚµÄSysTickµÄ¼ÆÊýÖµ
+		tick_now = SysTick->VAL; // çŽ°åœ¨çš„SysTickçš„è®¡æ•°å€¼
 		
 		if(tick_now != tick_old)
 		{
-			 if(tick_now<tick_old) // ¼ÆÊýÆ÷Î´ÖØ×°ÔØ
+			 if(tick_now<tick_old) // è®¡æ•°å™¨æœªé‡è£…è½½
 				  tick_cnt += tick_old - tick_now;
-			 else  // ´¦Àí¼ÆÊýÆ÷ÖØ×°ÔØÊ±×ß¹ýµÄtick
+			 else  // å¤„ç†è®¡æ•°å™¨é‡è£…è½½æ—¶èµ°è¿‡çš„tick
 					tick_cnt += tick_old + (auto_reload - tick_now);
 			 
 			 tick_old = tick_now;
 		}
 	}
-	/*SysTick µÄ tick Ã¿¾­¹ýÒ»¸öÊ±ÖÓÖÜÆÚ¾Í¼ÆÊýÒ»´Î£¬±ÈÈçÖ÷ÆµÎª 100MHz Ê±£¬SysTick Ã¿ 0.01 Î¢Ãë¼ÆÒ»´ÎÊý¡£
-	 *¶ø while Ñ­»·ÌåÖ´ÐÐÒ»´Î£¬CPU ÐèÒª´¦Àí¶àÌõÖ¸Áî£¨Èç¶ÁÈ¡¼Ä´æÆ÷¡¢ÅÐ¶Ï¡¢ÀÛ¼ÓµÈ£©£¬ÕâÍ¨³£ÒªÏûºÄ¼¸Ê®ÉõÖÁÉÏ°Ù¸öÊ±ÖÓÖÜÆÚ(tick)¡£*/
+	/*SysTick çš„ tick æ¯ç»è¿‡ä¸€ä¸ªæ—¶é’Ÿå‘¨æœŸå°±è®¡æ•°ä¸€æ¬¡ï¼Œæ¯”å¦‚ä¸»é¢‘ä¸º 100MHz æ—¶ï¼ŒSysTick æ¯ 0.01 å¾®ç§’è®¡ä¸€æ¬¡æ•°ã€‚
+	 *è€Œ while å¾ªçŽ¯ä½“æ‰§è¡Œä¸€æ¬¡ï¼ŒCPU éœ€è¦å¤„ç†å¤šæ¡æŒ‡ä»¤ï¼ˆå¦‚è¯»å–å¯„å­˜å™¨ã€åˆ¤æ–­ã€ç´¯åŠ ç­‰ï¼‰ï¼Œè¿™é€šå¸¸è¦æ¶ˆè€—å‡ åç”šè‡³ä¸Šç™¾ä¸ªæ—¶é’Ÿå‘¨æœŸ(tick)ã€‚*/
 }
 
 

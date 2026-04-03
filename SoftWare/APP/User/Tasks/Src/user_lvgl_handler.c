@@ -26,7 +26,7 @@ void lv_mem_monitor_task(lv_timer_t * timer)
 	lv_mem_monitor_t mon;
   lv_mem_monitor(&mon); 
 
-    SEGGER_RTT_printf(0,
+  SEGGER_RTT_printf(0,
         "LVGL MEM: total=%lu Bytes, free=%lu Bytes, used=%u%%, max_used=%lu Bytes\n",
         (unsigned long)mon.total_size,
         (unsigned long)mon.free_size,

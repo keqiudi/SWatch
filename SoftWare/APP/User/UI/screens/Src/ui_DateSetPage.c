@@ -4,6 +4,8 @@
 // Project name: LightTimePage
 
 #include "ui_DateSetPage.h"
+#include "hw_interface.h"
+#include "ui_HomePage.h"
 
 lv_obj_t * ui_DateSetPage = NULL;
 lv_obj_t * ui_YearNumRoller = NULL;
@@ -37,6 +39,16 @@ static void set_ok_button_event_cb(lv_event_t* e)
     
     if(event_code == LV_EVENT_CLICKED)
     {
+        /* 获取设置的年月日 */
+        uint8_t year_set   = lv_roller_get_selected(ui_YearNumRoller) + 25; //索引转换为实际年份
+        uint8_t month_set  = lv_roller_get_selected(ui_MonthNumRoller) + 1; //索引从0~11, 转换为实际月份+1
+        uint8_t date_set   = lv_roller_get_selected(ui_DayNumRoller) + 1; //索引从0~11, 转换为实际日期+1
+        hw_interface.hw_rtc_interface->set_date(year_set, month_set, date_set); // 设置RTC日期
+
+        /* 更新home页显示 */
+        ui_DateMonthValue = month_set;  
+        ui_DateDayValue = date_set;
+        ui_DataWeekdayValue = hw_interface.hw_rtc_interface->calculate_weekday(year_set,month_set,date_set,20); // 计算星期几，世纪数c为20表示2000年以后的年份
 
         page_back();
     }

@@ -125,7 +125,10 @@ void StartDefaultTask(void *argument)
     //vTaskList(taskListBuffer); 		 // ��ȡ�����б���Ϣ��������
     //SEGGER_RTT_printf(0,"%s\n", taskListBuffer);    // ��ӡ���������/�ն�
 		//SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
-		osDelay(2000);
+		
+		// 打印剩余FreeRTOS堆内存大小，调试用
+		SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
+		osDelay(1000);
   }
   /* USER CODE END StartDefaultTask */
 }

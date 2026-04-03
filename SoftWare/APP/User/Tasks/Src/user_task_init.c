@@ -3,6 +3,7 @@
 #include "user_task_init.h"
 #include "user_key_task.h"
 #include "user_wdog_task.h"
+#include "user_chargeCheck_task.h"
 #include "user_hw_init.h"
 #include "user_lvgl_handler.h"
 #include "user_sensor_task.h"
@@ -31,7 +32,7 @@ const osThreadAttr_t LvglHandlerTask_attributes = {
 osThreadId_t SensorDataUpdateTaskHandle;
 const osThreadAttr_t SensorDataUpdateTask_attributes = {
   .name = "SensorDataUpdateTask",
-  .stack_size = 128 * 10,
+  .stack_size = 128 * 5,
   .priority = (osPriority_t) osPriorityLow,
 };
 
@@ -46,7 +47,7 @@ const osThreadAttr_t HRDataTask_attributes = {
 osThreadId_t KeyTaskHandle;
 const osThreadAttr_t KeyTask_attributes = {
   .name = "KeyScanTask",
-  .stack_size = 128 * 4,
+  .stack_size = 128 * 2,
   .priority = (osPriority_t) osPriorityNormal,
 };
 
@@ -61,9 +62,17 @@ const osThreadAttr_t WristWakeCheckTask_attributes = {
 osThreadId_t WDOGFeedTaskHandle;
 const osThreadAttr_t WDOGFeedTask_attributes = {
   .name = "WDOGFeedTask",
-  .stack_size = 128 * 1,
+  .stack_size = 128 * 2,
   .priority = (osPriority_t) osPriorityHigh2,
 };   
+
+//Charge Check task
+osThreadId_t ChargeCheckTaskHandle;
+const osThreadAttr_t ChargeCheckTask_attributes = {
+  .name = "ChargeCheckTask",
+  .stack_size = 128 * 10,    // 给少了会任务会溢出
+  .priority = (osPriority_t) osPriorityLow1,
+};
 
 /* 定义消息队列句柄 */
 osMessageQueueId_t HomeUpdataMsgQueue; // 用于HOME页面更新数据
@@ -101,9 +110,12 @@ void user_tasks_init()
    // if(WDOGFeedTaskHandle == NULL)
    //     SEGGER_RTT_printf(0,"WDOGFeedTask Create Failed");
 
+   ChargeCheckTaskHandle = osThreadNew(ChargeCheckTask, NULL, &ChargeCheckTask_attributes); // 充电检测任务
+   // if(ChargeCheckTaskHandle == NULL)
+   //     SEGGER_RTT_printf(0,"ChargeCheckTask Create Failed");
 
    // 打印剩余FreeRTOS堆内存大小，调试用
-   SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
+   //SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
 }	
 
 

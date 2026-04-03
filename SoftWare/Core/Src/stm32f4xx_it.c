@@ -56,11 +56,14 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern RTC_HandleTypeDef hrtc;
 extern DMA_HandleTypeDef hdma_spi1_tx;
 extern DMA_HandleTypeDef hdma_usart1_rx;
 extern DMA_HandleTypeDef hdma_usart1_tx;
 extern UART_HandleTypeDef huart1;
 extern TIM_HandleTypeDef htim1;
+
+uint8_t hard_int_charge_flag=0; // 充电检测标志位，0表示未检测到充电事件，1表示检测到充电事件
 
 /* USER CODE BEGIN EV */
 
@@ -166,6 +169,20 @@ void DebugMon_Handler(void)
 /******************************************************************************/
 
 /**
+  * @brief This function handles RTC wake-up interrupt through EXTI line 22.
+  */
+void RTC_WKUP_IRQHandler(void)
+{
+  /* USER CODE BEGIN RTC_WKUP_IRQn 0 */
+
+  /* USER CODE END RTC_WKUP_IRQn 0 */
+  HAL_RTCEx_WakeUpTimerIRQHandler(&hrtc);
+  /* USER CODE BEGIN RTC_WKUP_IRQn 1 */
+
+  /* USER CODE END RTC_WKUP_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM1 update interrupt and TIM10 global interrupt.
   */
 void TIM1_UP_TIM10_IRQHandler(void)
@@ -236,6 +253,16 @@ void DMA2_Stream7_IRQHandler(void)
 }
 
 /* USER CODE BEGIN 1 */
+
+void EXTI2_IRQHandler(void)
+{
+
+  hard_int_charge_flag = 1; //充电状态变化就设置标志位，后续在ChargeCheckTask中处理充电事件
+
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
+
+}
+
 
 /**
   * @brief This function handles EXTI line4 interrupt.Key2 interrupt

@@ -1,0 +1,20 @@
+{
+  "codename": "iconfont34",
+  "ttf_path": "/assets/iconfont_zhaji.ttf",
+  "bin_path": "/assets\\ui_font_iconfont34.bin",
+  "c_path": "/assets\\ui_font_iconfont34.c",
+  "cfg_path": "/assets\\ui_font_iconfont34.fcfg",
+  "size": 34,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [
+    "0xE986",
+    "     0xE607",
+    "           0xE62C",
+    "           0xE600",
+    "           0xE67A"
+  ],
+  "symbols": "",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

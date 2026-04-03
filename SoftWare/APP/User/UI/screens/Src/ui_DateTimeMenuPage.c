@@ -28,14 +28,14 @@ static void dt_menu_page_event_cb(lv_event_t* e)
     lv_event_code_t event_code = lv_event_get_code(e);
 	  lv_obj_t * target = lv_event_get_target(e);
 	
-	  if(event_code == LV_EVENT_GESTURE)
-    {
-	     lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
-		   if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
-       {
+	if(event_code == LV_EVENT_GESTURE)
+    {   
+	    lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
+		if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
+        {
 					page_back();
-       }
-		}
+        }
+	}
 }
 
 static void date_set_panel_event_cb(lv_event_t* e)

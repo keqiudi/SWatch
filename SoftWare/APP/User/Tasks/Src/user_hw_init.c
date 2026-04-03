@@ -9,6 +9,7 @@
 #include "bsp_aht20.h"
 #include "bsp_key.h"
 #include "data_save.h"
+#include "bsp_power.h"
 
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
@@ -26,13 +27,15 @@ void HwInitTask(void *argument)
 {
 		int ret = 0;
 		
-		/* Systick 初始化才能使用delay */
+ 		/* Systick 初始化才能使用delay */
    		delay_init();
 		/* 按键GPIO初始化，配置为外部中断模式 */
 		key_gpio_init(); 
 		
+		hw_interface.hw_power_interface->init(); // 电源管理初始化，配置电池检测引脚和充电状态检测引脚
+		//hw_interface.hw_power_interface->shutdown(); // 关闭电源输出，进入低功耗待机状态，等待按键事件唤醒
 		
-		/* 传感器相关初始化 */
+		/* 传感器相关初始化 */ 
 		ret = hw_interface.hw_aht20_interface->init(); // AHT20温湿度传感器初始化
 	  	if(ret == ERR_SUCCESS)
 		{
@@ -78,22 +81,22 @@ void HwInitTask(void *argument)
 		
 		
 		/* LCD 显示ST7789初始化 */
-			LCD_Init();
-			LCD_Fill(0,0,240,280,BLACK);
-			LCD_Open_BackLight();
-			LCD_Set_Light(50);
+		LCD_Init();
+		LCD_Fill(0,0,240,280,BLACK);
+		LCD_Open_BackLight();
+		LCD_Set_Light(50);
 			
 		/* LCD 触摸CST816T初始化 */
-			CST816T_Init();
-			CST816T_Reset();
+		CST816T_Init();
+		CST816T_Reset();
 			
-			/*2. lvgl初始化*/
-			lv_init();			  // lvgl初始化
-			lv_port_disp_init();  // lvgl显示初始化
-			lv_port_indev_init(); // lvgl触摸初始化
-			ui_init();            // UI界面初始化
+		/*2. lvgl初始化*/
+		lv_init();			  // lvgl初始化
+		lv_port_disp_init();  // lvgl显示初始化
+		lv_port_indev_init(); // lvgl触摸初始化
+		ui_init();            // UI界面初始化
 			
-			vTaskDelete(NULL); // 删除当前任务，释放资源
+		vTaskDelete(NULL); // 删除当前任务，释放资源
 }	
 
 

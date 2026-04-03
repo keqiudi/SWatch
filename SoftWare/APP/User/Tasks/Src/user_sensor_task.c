@@ -13,6 +13,7 @@
 #include "bsp_mpu6050.h"
 #include "bsp_lsm303dlhc.h"
 #include "bsp_em7028.h"
+#include "bsp_power.h"
 
 #include "lvgl.h"
 #include "ui_EnvironmentPage.h"
@@ -94,19 +95,47 @@ void SensorDataUpdateTask(void *argument)
 	{	
 
 		/*Home page：battery、steps、heartrate*/
-		uint8_t msg_home_update;
-		if(osMessageQueueGet(HomeUpdataMsgQueue,&msg_home_update,NULL,0) == osOK) // 更新HOME页面数据
+		// uint8_t msg_home_update;
+		// if(osMessageQueueGet(HomeUpdataMsgQueue,&msg_home_update,NULL,0) == osOK) // 更新HOME页面数据
+        // {
+        //     uint8_t buffer[5];
+        //     uint8_t power = 0;
+
+        //     // 电量更新
+        //     power = hw_interface.hw_power_interface->bat_caluculate();
+        //     if(power > 0 && power <= 100)
+        //     {
+        //         hw_interface.hw_power_interface->remain_power = power;
+        //     }
+        //     else
+        //     {
+        //         hw_interface.hw_power_interface->remain_power = 0;
+        //     }
+
+		// 	// 步数更新
+
+		// 	// 心率更新
+
+		// }
+
+        if(get_top_page()->page_obj == &ui_HomePage)
         {
-			// 电量更新
-			
+            uint8_t buffer[5];
+            uint8_t power = 0;
 
-			// 步数更新
+            // 电量更新
+            power = hw_interface.hw_power_interface->bat_caluculate();
+            if(power > 0 && power <= 100)
+            {
+                hw_interface.hw_power_interface->remain_power = power;
+            }
+            else
+            {
+                hw_interface.hw_power_interface->remain_power = 0;
+            }
 
+        }
 
-			// 心率更新
-
-
-		}
 
 		 /* Environment page: AHT20 */
         if(get_top_page()->page_obj == &ui_EnvironmentPage)

@@ -13,7 +13,7 @@ typedef struct
 	void (*deinit)(void);
 	void (*resume)(void);
 	void (*pause)(void);
-	//uint8_t is_created; //Ò³ÃæÊÇ·ñinit
+	//uint8_t is_created; 
 }page_t;
 
 

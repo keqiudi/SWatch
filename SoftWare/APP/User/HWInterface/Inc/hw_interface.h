@@ -10,6 +10,8 @@
 #include "hw_ecompass_interface.h"
 #include "hw_hrsensor_interface.h"
 #include "hw_ble_interface.h"
+#include "hw_rtc_interface.h"
+#include "hw_power_interface.h"
 
 
 typedef struct{
@@ -20,6 +22,8 @@ typedef struct{
 	hw_ecompass_interface_t* hw_ecompass_interface;
 	hw_hrsensor_interface_t* hw_hrsensor_interface;
 	hw_ble_interface_t* hw_ble_interface;
+	hw_rtc_interface_t* hw_rtc_interface;
+	hw_power_interface_t* hw_power_interface;
 }hw_interface_t;
 
 

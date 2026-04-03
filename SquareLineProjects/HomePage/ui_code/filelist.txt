@@ -1,8 +1,11 @@
 screens/ui_HomePage.c
+screens/ui_ChargePage.c
 ui.c
 components/ui_comp_hook.c
 ui_helpers.c
+fonts/ui_font_CuYuan20.c
 fonts/ui_font_HPiconfont25.c
+fonts/ui_font_iconfont34.c
+fonts/ui_font_OpenSasnsBold24.c
 fonts/ui_font_OpenSasnsItalic100.c
 fonts/ui_font_OpenSasnsItalic15.c
-fonts/ui_font_CuYuan20.c

@@ -36,7 +36,15 @@ extern lv_obj_t * ui_StepsLabel;
 extern lv_obj_t * ui_HRBPMLabel;
 // CUSTOM VARIABLES
 
-extern page_t page_home; // ÷˜“≥√Ê∂‘œÛ
+
+extern uint8_t ui_TimeHourValue;
+extern uint8_t ui_TimeMinuteValue;
+extern uint8_t ui_DateMonthValue;   
+extern uint8_t ui_DateDayValue;
+extern uint8_t ui_DataWeekdayValue;
+extern uint8_t ui_BatArcValue;
+
+extern page_t page_home; // ‰∏ªÈ°µÈù¢
 
 #ifdef __cplusplus
 } /*extern "C"*/

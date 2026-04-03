@@ -60,6 +60,23 @@ lv_obj_t * ui_MenuAboutButton = NULL;
 lv_obj_t * ui_AboutIconLabel = NULL;
 
 // event funtions
+static void menu_page_event_cb(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+	lv_obj_t * target = lv_event_get_target(e);
+	
+	if(event_code == LV_EVENT_GESTURE)
+	{
+	    lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
+		if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
+        {
+			page_back();
+        }
+	}
+}
+
+
+
 
 static void env_panel_event_cb(lv_event_t * e)
 {
@@ -612,15 +629,16 @@ void ui_MenuPage_screen_init(void)
     lv_label_set_text(ui_AboutIconLabel, "");
     lv_obj_set_style_text_font(ui_AboutIconLabel, &ui_font_MPiconfont30, LV_PART_MAIN | LV_STATE_DEFAULT);
 		
-		lv_obj_add_event_cb(ui_MenuEnvPanel,env_panel_event_cb, LV_EVENT_CLICKED, NULL); // EnvPanel点击回调函数
-		lv_obj_add_event_cb(ui_MenuHeartRatePanel,hr_panel_event_cb, LV_EVENT_CLICKED, NULL); //HeartRatePanel点击回调函数
-		lv_obj_add_event_cb(ui_MenuO2Panel,o2_panel_event_cb, LV_EVENT_CLICKED, NULL); // SpO2Panel点击回调函数
-		lv_obj_add_event_cb(ui_MenuCalendarPanel,calendar_panel_event_cb, LV_EVENT_CLICKED, NULL); //CalendarPanel点击回调函数
-		lv_obj_add_event_cb(ui_MenuTimPanel,timer_panel_event_cb, LV_EVENT_CLICKED, NULL); // TimPanel点击回调函数
-		lv_obj_add_event_cb(ui_MenuCompassPanel,compass_panel_event_cb, LV_EVENT_CLICKED, NULL); // CompassPanel点击回调函数
+	lv_obj_add_event_cb(ui_MenuEnvPanel,env_panel_event_cb, LV_EVENT_CLICKED, NULL); // EnvPanel点击回调函数
+	lv_obj_add_event_cb(ui_MenuHeartRatePanel,hr_panel_event_cb, LV_EVENT_CLICKED, NULL); //HeartRatePanel点击回调函数
+	lv_obj_add_event_cb(ui_MenuO2Panel,o2_panel_event_cb, LV_EVENT_CLICKED, NULL); // SpO2Panel点击回调函数
+	lv_obj_add_event_cb(ui_MenuCalendarPanel,calendar_panel_event_cb, LV_EVENT_CLICKED, NULL); //CalendarPanel点击回调函数
+	lv_obj_add_event_cb(ui_MenuTimPanel,timer_panel_event_cb, LV_EVENT_CLICKED, NULL); // TimPanel点击回调函数
+	lv_obj_add_event_cb(ui_MenuCompassPanel,compass_panel_event_cb, LV_EVENT_CLICKED, NULL); // CompassPanel点击回调函数
     lv_obj_add_event_cb(ui_MenuSettingPanel,setting_panel_event_cb, LV_EVENT_CLICKED, NULL); // SettingPanel点击回调函数
     lv_obj_add_event_cb(ui_MenuAboutPanel,about_panel_event_cb, LV_EVENT_CLICKED, NULL); // SettingPanel点击回调函数
 		
+    lv_obj_add_event_cb(ui_MenuPage,menu_page_event_cb, LV_EVENT_GESTURE, NULL); // SportPanel点击回调函数
 }
 
 void ui_MenuPage_screen_destroy(void)
