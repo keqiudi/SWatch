@@ -33,7 +33,7 @@ void HwInitTask(void *argument)
 		key_gpio_init(); 
 		
 		hw_interface.hw_power_interface->init(); // 电源管理初始化，配置电池检测引脚和充电状态检测引脚
-		//hw_interface.hw_power_interface->shutdown(); // 关闭电源输出，进入低功耗待机状态，等待按键事件唤醒
+		hw_interface.hw_power_interface->shutdown(); // 关闭电源输出，进入低功耗待机状态，等待按键事件唤醒
 		
 		/* 传感器相关初始化 */ 
 		ret = hw_interface.hw_aht20_interface->init(); // AHT20温湿度传感器初始化

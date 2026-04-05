@@ -4,6 +4,7 @@
 #include "user_lvgl_handler.h"
 #include "SEGGER_RTT.h"
 #include "lvgl.h"
+#include "ui_TimerPage.h"
 
 
 void lvgl_log_cb(lv_log_level_t level, const char * buf) {
@@ -68,4 +69,33 @@ void vApplicationTickHook( void )
 	lvgl_tick_provide();
 
   user_HR_timecount += 1; // 心率算法时间计数
+
+
+  /* 定时器页面计数 */
+  if(timer_running_flag)
+  {
+     timer_ms += 1;
+     if(timer_ms >= 10)
+     {
+          timer_ms = 0;
+          timer_10ms += 1;
+     }
+
+     if(timer_10ms >= 100)
+     {
+          timer_10ms = 0;
+          timer_sec += 1;
+
+     }
+     if(timer_sec >= 60)
+     {
+          timer_sec = 0;
+          timer_min += 1;
+     }
+     if(timer_min >= 60)
+     {
+          timer_min = 0;
+     }
+  }
+
 }

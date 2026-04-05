@@ -134,6 +134,11 @@ void SensorDataUpdateTask(void *argument)
                 hw_interface.hw_power_interface->remain_power = 0;
             }
 
+            if(hw_interface.hw_mpu6050_interface->state == DEVICE_STATUS_INITED)
+            {
+                hw_interface.hw_mpu6050_interface->steps = hw_interface.hw_mpu6050_interface->get_steps();
+            }
+
         }
 
 

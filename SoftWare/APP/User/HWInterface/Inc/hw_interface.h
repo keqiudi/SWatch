@@ -12,7 +12,7 @@
 #include "hw_ble_interface.h"
 #include "hw_rtc_interface.h"
 #include "hw_power_interface.h"
-
+#include "hw_lcd_interface.h"
 
 typedef struct{
 	
@@ -24,6 +24,8 @@ typedef struct{
 	hw_ble_interface_t* hw_ble_interface;
 	hw_rtc_interface_t* hw_rtc_interface;
 	hw_power_interface_t* hw_power_interface;
+	hw_lcd_interface_t* hw_lcd_interface;
+
 }hw_interface_t;
 
 

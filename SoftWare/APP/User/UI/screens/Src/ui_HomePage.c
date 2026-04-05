@@ -5,6 +5,7 @@
 
 #include "ui_HomePage.h"
 #include "ui_MenuPage.h"
+#include "ui_SettingMenuPage.h"
 #include "hw_interface.h"
 #include "page_manager.h"
 #include "SEGGER_RTT.h"
@@ -52,6 +53,11 @@ uint8_t ui_DateDayValue = 8;
 uint8_t ui_DataWeekdayValue = 2;
 
 uint8_t ui_BatArcValue = 80;
+uint16_t ui_StepNumValue = 0;
+uint8_t ui_LightSliderValue = 50;
+
+uint8_t ui_HomePageBleEnFlag = 0; // 蓝牙按钮事件使能标志，0表示未使能，1表示已使能
+uint8_t ui_HomePageNfcEnFlag = 0; // NFC按钮事件使能标志，0表示未使能，1表示已使能
 
 
 // event functions
@@ -110,13 +116,90 @@ static void home_page_timer_cb(lv_timer_t * timer)
             sprintf((char*)value_buffer, "%d%%",ui_BatArcValue);
             lv_label_set_text(ui_BatNumLabel, (const char*)value_buffer); // 更新电量百分比显示
         }
+
+        if (ui_StepNumValue != hw_interface.hw_mpu6050_interface->steps)
+        {
+            ui_StepNumValue = hw_interface.hw_mpu6050_interface->steps;
+            sprintf(value_buffer, "%d",ui_StepNumValue);
+            lv_label_set_text(ui_StepNumLabel, value_buffer); // 更新步数显示
+        }
         
     }
 }
-	
-	
 
+static void home_page_nfc_button_cb(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e); //获取触发事件类型
+    lv_obj_t * event_target = lv_event_get_target(e);  //获取触发事件的对象(控件)
 
+    if(event_code == LV_EVENT_VALUE_CHANGED)
+    {
+        if(lv_obj_has_state(event_target, LV_STATE_CHECKED)) 
+        {
+            ui_HomePageNfcEnFlag = 1; 
+        }
+        else 
+        {
+            ui_HomePageNfcEnFlag = 0; 
+        }
+
+    }
+}
+
+static void home_page_ble_button_cb(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e); //获取触发事件类型
+    lv_obj_t * event_target = lv_event_get_target(e);  //获取触发事件的对象(控件)
+
+    if(event_code == LV_EVENT_VALUE_CHANGED)
+    {
+        if(lv_obj_has_state(event_target, LV_STATE_CHECKED)) // 如果蓝牙按钮被选中
+        {
+            hw_interface.hw_ble_interface->enable(); 
+            ui_HomePageBleEnFlag = 1; 
+        }
+        else // 如果蓝牙按钮被取消
+        {
+            hw_interface.hw_ble_interface->disable(); 
+            ui_HomePageBleEnFlag = 0; 
+        }
+
+    }
+}
+
+static void home_page_power_button_cb(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e); //获取触发事件类型
+    lv_obj_t * event_target = lv_event_get_target(e);  //获取触发事件的对象(控件)
+
+    if(event_code == LV_EVENT_CLICKED)
+    {
+        //page_load(&page_power);
+    }
+}
+
+static void hoome_page_set_button_cb(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e); //获取触发事件类型
+    lv_obj_t * event_target = lv_event_get_target(e);  //获取触发事件的对象(控件)
+
+    if(event_code == LV_EVENT_CLICKED)
+    {
+       page_load(&page_setting_menu);
+    }
+}
+
+static void home_page_light_slider_cb(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e); //获取触发事件类型
+    lv_obj_t * event_target = lv_event_get_target(e);  //获取触发事件的对象(控件)
+
+    if(event_code == LV_EVENT_VALUE_CHANGED)
+    {
+        ui_LightSliderValue = lv_slider_get_value(event_target);
+        hw_interface.hw_lcd_interface->set_light(ui_LightSliderValue);
+    }
+}
 
 // build funtions
 
@@ -144,7 +227,8 @@ void ui_HomePage_screen_init(void)
     lv_obj_set_x(ui_StepNumLabel, -28);
     lv_obj_set_y(ui_StepNumLabel, -10);
     lv_obj_set_align(ui_StepNumLabel, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_StepNumLabel, "7256");
+    sprintf(value_buffer, "%d",ui_StepNumValue);
+    lv_label_set_text(ui_StepNumLabel,value_buffer); // 初始步数显示
     lv_obj_set_style_text_font(ui_StepNumLabel, &ui_font_OpenSasnsItalic15, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_HRNumLabel = lv_label_create(ui_HomePage);
@@ -374,6 +458,11 @@ void ui_HomePage_screen_init(void)
     //将选中状态的背景颜色从红色设置为蓝色，并保持不透明
     lv_obj_set_style_bg_color(ui_NFCButton, lv_color_hex(0x3264C8), LV_PART_MAIN | LV_STATE_CHECKED);
     lv_obj_set_style_bg_opa(ui_NFCButton, 255, LV_PART_MAIN | LV_STATE_CHECKED);
+    if(ui_HomePageNfcEnFlag)
+    {
+        lv_obj_add_state(ui_NFCButton, LV_STATE_CHECKED); // 根据标志位设置初始状态
+    }
+
 
     ui_NFCLabel = lv_label_create(ui_NFCButton);
     lv_obj_set_width(ui_NFCLabel, LV_SIZE_CONTENT);   /// 1
@@ -396,6 +485,10 @@ void ui_HomePage_screen_init(void)
     //将选中状态的背景颜色从红色设置为蓝色，并保持不透明
     lv_obj_set_style_bg_color(ui_BLEButton, lv_color_hex(0x3264C8), LV_PART_MAIN | LV_STATE_CHECKED);
     lv_obj_set_style_bg_opa(ui_BLEButton, 255, LV_PART_MAIN | LV_STATE_CHECKED);
+    if(ui_HomePageBleEnFlag)
+    {
+        lv_obj_add_state(ui_BLEButton, LV_STATE_CHECKED); // 根据标志位设置初始状态
+    }
 
     ui_BLELabel = lv_label_create(ui_BLEButton);
     lv_obj_set_width(ui_BLELabel, LV_SIZE_CONTENT);   /// 1
@@ -447,7 +540,7 @@ void ui_HomePage_screen_init(void)
     lv_obj_set_style_text_font(ui_SetLabel, &ui_font_iconfont34, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_LightSlider = lv_slider_create(ui_DropDownPanel);
-    lv_slider_set_value(ui_LightSlider, 50, LV_ANIM_OFF);
+    lv_slider_set_value(ui_LightSlider, ui_LightSliderValue, LV_ANIM_OFF);
     if(lv_slider_get_mode(ui_LightSlider) == LV_SLIDER_MODE_RANGE) lv_slider_set_left_value(ui_LightSlider, 0, LV_ANIM_OFF);
     lv_obj_set_width(ui_LightSlider, 50);
     lv_obj_set_height(ui_LightSlider, 110);
@@ -493,8 +586,13 @@ void ui_HomePage_screen_init(void)
     lv_obj_set_style_border_opa(ui_DownBGPanel, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
 	lv_obj_add_event_cb(ui_HomePage, home_page_event_cb, LV_EVENT_GESTURE, NULL); // home页面事件回调函数
-		
-	ui_HomePageTimer = lv_timer_create(home_page_timer_cb,500,NULL);
+    lv_obj_add_event_cb(ui_NFCButton, home_page_nfc_button_cb, LV_EVENT_ALL, NULL); // NFC按钮事件回调函数
+    lv_obj_add_event_cb(ui_BLEButton, home_page_ble_button_cb, LV_EVENT_ALL, NULL); // 蓝牙按钮事件回调函数
+    lv_obj_add_event_cb(ui_PowerButton, home_page_power_button_cb, LV_EVENT_ALL, NULL); // 电源按钮事件回调函数
+    lv_obj_add_event_cb(ui_SetButton, hoome_page_set_button_cb, LV_EVENT_ALL, NULL); // 设置按钮事件回调函数
+	lv_obj_add_event_cb(ui_LightSlider, home_page_light_slider_cb, LV_EVENT_ALL, NULL); // 亮度滑块事件回调函数
+
+    ui_HomePageTimer = lv_timer_create(home_page_timer_cb,500,NULL);
 }
 
 void ui_HomePage_screen_destroy(void)

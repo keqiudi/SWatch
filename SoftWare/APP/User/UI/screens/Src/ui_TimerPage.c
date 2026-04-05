@@ -17,7 +17,81 @@ lv_obj_t * ui_TimerPointLabel = NULL;
 lv_obj_t * ui_TimerMilSecLabel = NULL;
 
 lv_obj_t*  scale = NULL; //刻度盘
+
+
+lv_timer_t * ui_TimerPageTimer; // 定时器
+uint8_t timer_running_flag = 0; // 定时器运行状态标志，0表示未运行，1表示运行
+uint8_t timer_min = 0;
+uint8_t timer_sec = 0;
+uint8_t timer_10ms = 0;
+uint8_t timer_ms = 0;
+
+static void ui_TimerPage_timer_clear()
+{
+    timer_running_flag = 0; // 定时器运行状态标志，0表示未运行，1表示运行
+    timer_min = 0;
+    timer_sec = 0;
+    timer_10ms = 0;
+    timer_ms = 0;
+}
+
 // event funtions
+
+
+static void timer_refresh_cb(lv_timer_t* timer)
+{
+   uint8_t buffer[2];
+
+   sprintf((char*)buffer, "%02d", timer_min);
+   lv_label_set_text(ui_TimerMinLabel, (const char*)buffer);
+   sprintf((char*)buffer, "%02d", timer_sec);
+   lv_label_set_text(ui_TimerSecLabel, (const char*)buffer);
+   sprintf((char*)buffer, "%02d", timer_10ms);
+   lv_label_set_text(ui_TimerMilSecLabel, (const char*)buffer);
+
+}
+
+/* 启动按钮回调函数 */
+static void start_btn_event_cb(lv_event_t* e)
+{
+	lv_event_code_t event_code = lv_event_get_code(e);
+	lv_obj_t * target = lv_event_get_target(e);
+	
+	if(event_code == LV_EVENT_VALUE_CHANGED) // 检测到
+	{
+		 if(lv_obj_has_state(target,LV_STATE_CHECKED))
+		 {
+        timer_running_flag = 1; // 设置定时器运行标志
+        lv_timer_resume(ui_TimerPageTimer); // 恢复定时器，开始计时
+				lv_label_set_text(ui_StartIconLabel, ""); // 按下后变为暂停图标
+		 }
+		 else
+		 {
+        timer_running_flag = 0; // 清除定时器运行标志
+        lv_timer_pause(ui_TimerPageTimer); // 暂停定时器，停止计时
+			  lv_label_set_text(ui_StartIconLabel, ""); // 按下后变为启动图标
+		 }
+	}
+}
+
+/* 刷新按钮回调函数 */
+static void refresh_btn_event_cb(lv_event_t* e)
+{
+	lv_event_code_t event_code = lv_event_get_code(e);
+	lv_obj_t * target = lv_event_get_target(e);
+	
+	if(event_code == LV_EVENT_CLICKED && !lv_obj_has_state(ui_StartButton, LV_STATE_CHECKED)) // 只有在定时器未运行时才允许刷新
+	{
+        lv_timer_pause(ui_TimerPageTimer);
+        lv_label_set_text(ui_TimerMinLabel, "00");
+        lv_label_set_text(ui_TimerSecLabel, "00");
+        lv_label_set_text(ui_TimerMilSecLabel, "00");
+        timer_min = 0;
+        timer_sec = 0;
+        timer_10ms = 0;
+        timer_ms = 0;
+	}
+}
 
 /* 页面回调函数 */
 static void timer_page_event_cb(lv_event_t* e)
@@ -35,44 +109,11 @@ static void timer_page_event_cb(lv_event_t* e)
 	}
 }
 
-/* 启动按钮回调函数 */
-static void start_btn_event_cb(lv_event_t* e)
-{
-	lv_event_code_t event_code = lv_event_get_code(e);
-	lv_obj_t * target = lv_event_get_target(e);
-	
-	if(event_code == LV_EVENT_VALUE_CHANGED) // 检测到
-	{
-		 if(lv_obj_has_state(target,LV_STATE_CHECKED))
-		 {
-				lv_label_set_text(ui_StartIconLabel, ""); // 按下后变为暂停图标
-		 }
-		 else
-		 {
-			  lv_label_set_text(ui_StartIconLabel, ""); // 按下后变为启动图标
-		 }
-	}
-}
-
-/* 刷新按钮回调函数 */
-static void refresh_btn_event_cb(lv_event_t* e)
-{
-	lv_event_code_t event_code = lv_event_get_code(e);
-	lv_obj_t * target = lv_event_get_target(e);
-	
-	if(event_code == LV_EVENT_GESTURE)
-	{
-			lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
-			if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
-      {
-				 page_back();
-      }
-	}
-}
-
 // build funtions
 void ui_TimerPage_screen_init(void)
 {
+    ui_TimerPage_timer_clear(); // 清零显示
+
     ui_TimerPage = lv_obj_create(NULL);
     lv_obj_remove_flag(ui_TimerPage, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
@@ -194,9 +235,10 @@ void ui_TimerPage_screen_init(void)
     lv_obj_set_style_text_font(ui_TimerMilSecLabel, &ui_font_CuYuan40, LV_PART_MAIN | LV_STATE_DEFAULT);
 		
 		lv_obj_add_event_cb(ui_TimerPage,timer_page_event_cb,LV_EVENT_GESTURE,NULL);
-		
-    lv_obj_add_event_cb(ui_StartButton, start_btn_event_cb, LV_EVENT_VALUE_CHANGED, NULL);
-    lv_obj_add_event_cb(ui_ReButton, refresh_btn_event_cb, LV_EVENT_VALUE_CHANGED, NULL);
+	
+    lv_obj_add_event_cb(ui_StartButton, start_btn_event_cb, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_ReButton, refresh_btn_event_cb, LV_EVENT_ALL, NULL);
+
 }
 
 void ui_TimerPage_screen_destroy(void)
@@ -230,13 +272,20 @@ static void timer_page_deinit()
 
 static void timer_page_resume() 
 {
-    // 保留：页面切换回来时刷新显示内容、重启动画、恢复定时器等。
+    if(ui_TimerPageTimer == NULL)
+    {
+        ui_TimerPageTimer = lv_timer_create(timer_refresh_cb, 10, NULL);  // 每10ms刷新一次显示，对应10ms的计时精度
+        lv_timer_pause(ui_TimerPageTimer); // 暂停定时器，等待点击开始按钮后再恢复
+    }
 }
 
 
 static void timer_page_pause()
 {
-	  // 保留：页面切换离开时暂停动画、停止定时器、保存页面状态等。
+    if(ui_TimerPageTimer) {
+        timer_running_flag = 0; // 清除定时器运行标志
+        lv_timer_pause(ui_TimerPageTimer); // 暂停定时器，停止计时
+    }
 }
 
 page_t page_timer = 

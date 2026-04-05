@@ -2,16 +2,16 @@
 #include "lv_port_disp.h"
 
 
-#define DISPLAY_OFFSET_X 0 //ÏÔÊ¾ÇøÓòÎªx:0~239 y:20~299
+#define DISPLAY_OFFSET_X 0 //æ˜¾ç¤ºåŒºåŸŸä¸ºx:0~239 y:20~299
 #define DISPLAY_OFFSET_Y 20
 
-extern lv_display_t * disp; // lvglÏÔÊ¾¶ÔÏó
+extern lv_display_t * disp; // lvglæ˜¾ç¤ºå¯¹è±¡
 
 
 void LCD_Fill(u16 x_start,u16 y_start,u16 x_end,u16 y_end,u16 color)
 {          
 	u16 i,j; 
-	LCD_Address_Set(x_start,y_start+DISPLAY_OFFSET_Y,x_end-1,y_end+DISPLAY_OFFSET_Y-1);//ÉèÖÃÏÔÊ¾·¶Î§
+	LCD_Address_Set(x_start,y_start+DISPLAY_OFFSET_Y,x_end-1,y_end+DISPLAY_OFFSET_Y-1);//è®¾ç½®æ˜¾ç¤ºèŒƒå›´
 	for(i=y_start;i<y_end;i++)
 	{		
 		for(j=x_start;j<x_end;j++)
@@ -28,31 +28,32 @@ void LCD_Fill_DMA(u16 x_start,u16 y_start,u16 x_end,u16 y_end,u16* color)
 	u32 size;
 	width = x_end-x_start+1;
 	height = y_end-y_start+1;
-	size = width * height; // ÇøÓò×ÜÏñËØ¸öÊı
+	size = width * height; // åŒºåŸŸæ€»åƒç´ ä¸ªæ•°
 	
 	LCD_Address_Set(x_start,y_start+DISPLAY_OFFSET_Y,x_end,y_end+DISPLAY_OFFSET_Y);
   LCD_SPI_SetBit(16);
 	
-	HAL_SPI_Transmit_DMA(&hspi1,(uint8_t*)color,size); // Ã¿¸öÏñËØ16bit
+	HAL_SPI_Transmit_DMA(&hspi1,(uint8_t*)color,size); // æ¯ä¸ªåƒç´ 16bit
 }
 
-/*ÉèÖÃLCD±³¹âÔ´ÁÁ¶È*/
+/*è®¾ç½®LCDèƒŒå…‰æºäº®åº¦*/
 void LCD_Set_Light(uint8_t duty)
 {
 	if(duty >=5 && duty <=100)
-	__HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_3,duty*320/100);
+	__HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_3,duty*(99+1)/100); // è‡ªåŠ¨é‡è£…è½½å¯„å­˜å™¨ARR = 99+1ï¼Œæ¯”è¾ƒå¯„å­˜å™¨CCRå–å€¼èŒƒå›´0~99ï¼Œå¯¹åº”0%~100%å ç©ºæ¯”
 }
 
-/*¿ªÆôLCD±³¹â*/
+/*å¼€å¯LCDèƒŒå…‰*/
 void LCD_Open_BackLight()
 {
 	HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_3);
 }
 
-/*¹Ø±ÕLCD±³¹â*/
+/*å…³é—­LCDèƒŒå…‰*/
 void LCD_Close_BackLight()
 {
-	HAL_TIM_PWM_Stop(&htim3,TIM_CHANNEL_3);
+	__HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_3,0); 
+	// HAL_TIM_PWM_Stop(&htim3,TIM_CHANNEL_3); å¦‚æœæƒ³è¦æ›´ä½åŠŸè€—å¯ä»¥é‡‡å–è¿™ä¸ª
 }
 
 
@@ -65,4 +66,4 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
 		}
 }
 
-/* ÆäÓà²¿·ÖÊÇ³§¼Ò¸øµÄ»­µã¡¢»­ÏßµÈµÈLCDµÄÇı¶¯£¬ÎÒÕâÀï²»Ê¹ÓÃ¾Í²»ÒÆÖ²ÁË*/
+/* å…¶ä½™éƒ¨åˆ†æ˜¯å‚å®¶ç»™çš„ç”»ç‚¹ã€ç”»çº¿ç­‰ç­‰LCDçš„é©±åŠ¨ï¼Œæˆ‘è¿™é‡Œä¸ä½¿ç”¨å°±ä¸ç§»æ¤äº†*/

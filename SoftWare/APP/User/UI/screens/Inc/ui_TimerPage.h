@@ -29,6 +29,12 @@ extern lv_obj_t*  scale;
 // CUSTOM VARIABLES
 	
 extern page_t page_timer;	
+
+extern uint8_t timer_running_flag; 
+extern uint8_t timer_min;
+extern uint8_t timer_sec;
+extern uint8_t timer_10ms;
+extern uint8_t timer_ms;
 	
 #ifdef __cplusplus
 } /*extern "C"*/

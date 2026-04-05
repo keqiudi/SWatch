@@ -1178,6 +1178,16 @@
               <FileType>1</FileType>
               <FilePath>..\APP\User\HWInterface\Src\hw_power_interface.c</FilePath>
             </File>
+            <File>
+              <FileName>hw_lcd_interface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\HWInterface\Src\hw_lcd_interface.c</FilePath>
+            </File>
+            <File>
+              <FileName>hw_lcd_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\HWInterface\Inc\hw_lcd_interface.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -31,7 +31,7 @@ static void hw_mpu6050_wrist_disable()
 static uint16_t hw_mpu6050_get_steps()
 {
 	unsigned long STEPS = 0;
-	if(hw_mpu6050_interface.state == DEVICE_STATUS_INITED )
+	if(hw_mpu6050_interface.state == DEVICE_STATUS_INITED)
 	{
 		dmp_get_pedometer_step_count(&STEPS);
 		return (uint16_t)STEPS;
