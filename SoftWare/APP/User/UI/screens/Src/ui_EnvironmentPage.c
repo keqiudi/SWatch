@@ -23,20 +23,20 @@ lv_timer_t* ui_EnvPageTimer = NULL;
 
 
 
-static void env_page_event_cb(lv_event_t * e)
-{
-	lv_event_code_t event_code = lv_event_get_code(e);
-	lv_obj_t * target = lv_event_get_target(e);
+// static void env_page_event_cb(lv_event_t * e)
+// {
+// 	lv_event_code_t event_code = lv_event_get_code(e);
+// 	lv_obj_t * target = lv_event_get_target(e);
 	
-	if(event_code == LV_EVENT_GESTURE)
-  {
-			lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
-			if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
-      {
-				 page_back();
-      }
-	}
-}
+// 	if(event_code == LV_EVENT_GESTURE)
+//   {
+// 			lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
+// 			if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
+//       {
+// 				 page_back();
+//       }
+// 	}
+// }
 
 
 
@@ -150,7 +150,7 @@ void ui_EnvironmentPage_screen_init(void)
 	  lv_label_set_text(ui_HumLabel,(const char*)disp_buffer);
     lv_obj_set_style_text_font(ui_HumLabel, &ui_font_CuYuan30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-		lv_obj_add_event_cb(ui_EnvironmentPage,env_page_event_cb, LV_EVENT_GESTURE, NULL); // 回调函数
+		//lv_obj_add_event_cb(ui_EnvironmentPage,env_page_event_cb, LV_EVENT_GESTURE, NULL); // 回调函数
 
 }
 

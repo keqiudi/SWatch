@@ -868,6 +868,16 @@
               <FileType>5</FileType>
               <FilePath>..\APP\User\Tasks\Inc\user_chargeCheck_task.h</FilePath>
             </File>
+            <File>
+              <FileName>user_runMode_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\Tasks\Src\user_runMode_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>user_runMode_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\Tasks\Inc\user_runMode_task.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -17,6 +17,11 @@ static void hw_ecompass_sleep()
     lsm303dlhc_sleep();
 }
 
+static void hw_ecompass_wakeup()
+{
+    lsm303dlhc_wakeup();
+}
+
 
 
 
@@ -25,4 +30,5 @@ hw_ecompass_interface_t hw_lsm303dlhc_interface = {
     .direction = 0,
     .init = hw_ecompass_init, // 这里需要实现初始化函数
     .sleep = hw_ecompass_sleep, // 这里需要实现睡眠函数
+    .wakeup = hw_ecompass_wakeup // 这里需要实现唤醒函数
 };

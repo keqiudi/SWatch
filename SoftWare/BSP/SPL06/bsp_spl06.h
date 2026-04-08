@@ -10,106 +10,106 @@
 #define SPL06_SCL_PIN  GPIO_PIN_14
 
 #define SPL06_CHIP_ID		    0X10
-#define SPL06_CHIP_ADDRESS		0x76 //SDIOÒı½Å±»ÏÂÀ­ÁË
+#define SPL06_CHIP_ADDRESS		0x76 //SDIOå¼•è„šè¢«ä¸‹æ‹‰äº†
 
-/* ==================== SPL06-001 ¼Ä´æÆ÷µØÖ·¶¨Òå ==================== */
+/* ==================== SPL06-001 å¯„å­˜å™¨åœ°å€å®šä¹‰ ==================== */
 
-/* Ñ¹Á¦Êı¾İ¼Ä´æÆ÷ (24Î») */
-#define SPL_PRS_B2                  0x00    // Ñ¹Á¦Êı¾İ [23:16]
-#define SPL_PRS_B1                  0x01    // Ñ¹Á¦Êı¾İ [15:8]
-#define SPL_PRS_B0                  0x02    // Ñ¹Á¦Êı¾İ [7:0]
+/* å‹åŠ›æ•°æ®å¯„å­˜å™¨ (24ä½) */
+#define SPL_PRS_B2                  0x00    // å‹åŠ›æ•°æ® [23:16]
+#define SPL_PRS_B1                  0x01    // å‹åŠ›æ•°æ® [15:8]
+#define SPL_PRS_B0                  0x02    // å‹åŠ›æ•°æ® [7:0]
 
-/* ÎÂ¶ÈÊı¾İ¼Ä´æÆ÷ (24Î») */
-#define SPL_TMP_B2                  0x03    // ÎÂ¶ÈÊı¾İ [23:16]
-#define SPL_TMP_B1                  0x04    // ÎÂ¶ÈÊı¾İ [15:8]
-#define SPL_TMP_B0                  0x05    // ÎÂ¶ÈÊı¾İ [7:0]
+/* æ¸©åº¦æ•°æ®å¯„å­˜å™¨ (24ä½) */
+#define SPL_TMP_B2                  0x03    // æ¸©åº¦æ•°æ® [23:16]
+#define SPL_TMP_B1                  0x04    // æ¸©åº¦æ•°æ® [15:8]
+#define SPL_TMP_B0                  0x05    // æ¸©åº¦æ•°æ® [7:0]
 
-/* ÅäÖÃ¼Ä´æÆ÷ */
-#define SPL_PRS_CFG                 0x06    // Ñ¹Á¦²âÁ¿ÅäÖÃ
-#define SPL_TMP_CFG                 0x07    // ÎÂ¶È²âÁ¿ÅäÖÃ
-#define SPL_MEAS_CFG                0x08    // ²âÁ¿¿ØÖÆºÍÄ£Ê½ÅäÖÃ
-#define SPL_CFG_REG                 0x09    // ÖĞ¶ÏºÍFIFOÅäÖÃ
+/* é…ç½®å¯„å­˜å™¨ */
+#define SPL_PRS_CFG                 0x06    // å‹åŠ›æµ‹é‡é…ç½®
+#define SPL_TMP_CFG                 0x07    // æ¸©åº¦æµ‹é‡é…ç½®
+#define SPL_MEAS_CFG                0x08    // æµ‹é‡æ§åˆ¶å’Œæ¨¡å¼é…ç½®
+#define SPL_CFG_REG                 0x09    // ä¸­æ–­å’ŒFIFOé…ç½®
 
-/* ×´Ì¬¼Ä´æÆ÷ */
-#define SPL_INT_STS                 0x0A    // ÖĞ¶Ï×´Ì¬
-#define SPL_FIFO_STS                0x0B    // FIFO×´Ì¬
+/* çŠ¶æ€å¯„å­˜å™¨ */
+#define SPL_INT_STS                 0x0A    // ä¸­æ–­çŠ¶æ€
+#define SPL_FIFO_STS                0x0B    // FIFOçŠ¶æ€
 
-/* ¸´Î»ºÍID¼Ä´æÆ÷ */
-#define SPL_RESET_REG               0x0C    // Èí¸´Î»¼Ä´æÆ÷
-#define SPL_ID_REG                  0x0D    // Ğ¾Æ¬ID (0x10)
+/* å¤ä½å’ŒIDå¯„å­˜å™¨ */
+#define SPL_RESET_REG               0x0C    // è½¯å¤ä½å¯„å­˜å™¨
+#define SPL_ID_REG                  0x0D    // èŠ¯ç‰‡ID (0x10)
 
-/* Ğ£×¼ÏµÊı¼Ä´æÆ÷(²¹Âë) */
-#define SPL_COEF_C0                 0x10    // C0 ÏµÊı [11:4]
+/* æ ¡å‡†ç³»æ•°å¯„å­˜å™¨(è¡¥ç ) */
+#define SPL_COEF_C0                 0x10    // C0 ç³»æ•° [11:4]
 #define SPL_COEF_C0_C1              0x11    // C0[3:0] | C1[11:8]
-#define SPL_COEF_C1                 0x12    // C1 ÏµÊı [7:0]
-#define SPL_COEF_C00_H              0x13    // C00 ÏµÊı [19:12]
-#define SPL_COEF_C00_M              0x14    // C00 ÏµÊı [11:4]
+#define SPL_COEF_C1                 0x12    // C1 ç³»æ•° [7:0]
+#define SPL_COEF_C00_H              0x13    // C00 ç³»æ•° [19:12]
+#define SPL_COEF_C00_M              0x14    // C00 ç³»æ•° [11:4]
 #define SPL_COEF_C00_C10            0x15    // C00[3:0] | C10[19:16]
-#define SPL_COEF_C10_M              0x16    // C10 ÏµÊı [15:8]
-#define SPL_COEF_C10_L              0x17    // C10 ÏµÊı [7:0]
-#define SPL_COEF_C01_H              0x18    // C01 ÏµÊı [15:8]
-#define SPL_COEF_C01_L              0x19    // C01 ÏµÊı [7:0]
-#define SPL_COEF_C11_H              0x1A    // C11 ÏµÊı [15:8]
-#define SPL_COEF_C11_L              0x1B    // C11 ÏµÊı [7:0]
-#define SPL_COEF_C20_H              0x1C    // C20 ÏµÊı [15:8]
-#define SPL_COEF_C20_L              0x1D    // C20 ÏµÊı [7:0]
-#define SPL_COEF_C21_H              0x1E    // C21 ÏµÊı [15:8]
-#define SPL_COEF_C21_L              0x1F    // C21 ÏµÊı [7:0]
-#define SPL_COEF_C30_H              0x20    // C30 ÏµÊı [15:8]
-#define SPL_COEF_C30_L              0x21    // C30 ÏµÊı [7:0]
+#define SPL_COEF_C10_M              0x16    // C10 ç³»æ•° [15:8]
+#define SPL_COEF_C10_L              0x17    // C10 ç³»æ•° [7:0]
+#define SPL_COEF_C01_H              0x18    // C01 ç³»æ•° [15:8]
+#define SPL_COEF_C01_L              0x19    // C01 ç³»æ•° [7:0]
+#define SPL_COEF_C11_H              0x1A    // C11 ç³»æ•° [15:8]
+#define SPL_COEF_C11_L              0x1B    // C11 ç³»æ•° [7:0]
+#define SPL_COEF_C20_H              0x1C    // C20 ç³»æ•° [15:8]
+#define SPL_COEF_C20_L              0x1D    // C20 ç³»æ•° [7:0]
+#define SPL_COEF_C21_H              0x1E    // C21 ç³»æ•° [15:8]
+#define SPL_COEF_C21_L              0x1F    // C21 ç³»æ•° [7:0]
+#define SPL_COEF_C30_H              0x20    // C30 ç³»æ•° [15:8]
+#define SPL_COEF_C30_L              0x21    // C30 ç³»æ•° [7:0]
 
 
-/* ==================== Ñ¹Á¦²âÁ¿ÅäÖÃ ==================== */
+/* ==================== å‹åŠ›æµ‹é‡é…ç½® ==================== */
 
-/* ²âÁ¿ËÙÂÊ (Measurement Rate) */
-#define SPL_PM_RATE1                0x00       // 1 ´Î/Ãë
-#define SPL_PM_RATE2                0x01       // 2 ´Î/Ãë
-#define SPL_PM_RATE3                0x02       // 4 ´Î/Ãë
-#define SPL_PM_RATE4                0x03       // 8 ´Î/Ãë
-#define SPL_PM_RATE5                0x04       // 16 ´Î/Ãë
-#define SPL_PM_RATE6                0x05       // 32 ´Î/Ãë
-#define SPL_PM_RATE7                0x06       // 64 ´Î/Ãë
-#define SPL_PM_RATE8                0x07       // 128 ´Î/Ãë
+/* æµ‹é‡é€Ÿç‡ (Measurement Rate) */
+#define SPL_PM_RATE1                0x00       // 1 æ¬¡/ç§’
+#define SPL_PM_RATE2                0x01       // 2 æ¬¡/ç§’
+#define SPL_PM_RATE3                0x02       // 4 æ¬¡/ç§’
+#define SPL_PM_RATE4                0x03       // 8 æ¬¡/ç§’
+#define SPL_PM_RATE5                0x04       // 16 æ¬¡/ç§’
+#define SPL_PM_RATE6                0x05       // 32 æ¬¡/ç§’
+#define SPL_PM_RATE7                0x06       // 64 æ¬¡/ç§’
+#define SPL_PM_RATE8                0x07       // 128 æ¬¡/ç§’
 
-/* ¹ı²ÉÑùÂÊ (Oversampling Rate) */
-#define SPL_PM_PRC1                 0x00       // µ¥´Î²âÁ¿
-#define SPL_PM_PRC2                 0x01       // 2 ±¶¹ı²ÉÑù (µÍ¹¦ºÄ)
-#define SPL_PM_PRC3                 0x02       // 4 ±¶¹ı²ÉÑù
-#define SPL_PM_PRC4                 0x03       // 8 ±¶¹ı²ÉÑù (±ê×¼)
-#define SPL_PM_PRC5                 0x04       // 16 ±¶¹ı²ÉÑù (ĞèÔÚCFG_REGÅäÖÃÒÆÎ»)
-#define SPL_PM_PRC6                 0x05       // 32 ±¶¹ı²ÉÑù (ĞèÔÚCFG_REGÅäÖÃÒÆÎ»)
-#define SPL_PM_PRC7                 0x06       // 64 ±¶¹ı²ÉÑù (¸ß¾«¶È, ĞèÔÚCFG_REGÅäÖÃÒÆÎ»)
-#define SPL_PM_PRC8                 0x07       // 128 ±¶¹ı²ÉÑù (ĞèÔÚCFG_REGÅäÖÃÒÆÎ»)
+/* è¿‡é‡‡æ ·ç‡ (Oversampling Rate) */
+#define SPL_PM_PRC1                 0x00       // å•æ¬¡æµ‹é‡
+#define SPL_PM_PRC2                 0x01       // 2 å€è¿‡é‡‡æ · (ä½åŠŸè€—)
+#define SPL_PM_PRC3                 0x02       // 4 å€è¿‡é‡‡æ ·
+#define SPL_PM_PRC4                 0x03       // 8 å€è¿‡é‡‡æ · (æ ‡å‡†)
+#define SPL_PM_PRC5                 0x04       // 16 å€è¿‡é‡‡æ · (éœ€åœ¨CFG_REGé…ç½®ç§»ä½)
+#define SPL_PM_PRC6                 0x05       // 32 å€è¿‡é‡‡æ · (éœ€åœ¨CFG_REGé…ç½®ç§»ä½)
+#define SPL_PM_PRC7                 0x06       // 64 å€è¿‡é‡‡æ · (é«˜ç²¾åº¦, éœ€åœ¨CFG_REGé…ç½®ç§»ä½)
+#define SPL_PM_PRC8                 0x07       // 128 å€è¿‡é‡‡æ · (éœ€åœ¨CFG_REGé…ç½®ç§»ä½)
 
 
-/* ==================== ÎÂ¶È²âÁ¿ÅäÖÃ ==================== */
+/* ==================== æ¸©åº¦æµ‹é‡é…ç½® ==================== */
 
-/* ÎÂ¶È´«¸ĞÆ÷Ñ¡Ôñ */
+/* æ¸©åº¦ä¼ æ„Ÿå™¨é€‰æ‹© */
 #define SPL_TMP_INT                 0       // Internal sensor (in ASIC) 
 #define SPL_TMP_EXT                 1       //  External sensor (in pressure sensor MEMS element) 
 
-/* ²âÁ¿ËÙÂÊ (Measurement Rate) */
-#define SPL_TMP_RATE1               0x00    // 1 ´Î/Ãë
-#define SPL_TMP_RATE2               0x01    // 2 ´Î/Ãë
-#define SPL_TMP_RATE3               0x02    // 4 ´Î/Ãë
-#define SPL_TMP_RATE4               0x03    // 8 ´Î/Ãë
-#define SPL_TMP_RATE5               0x04    // 16 ´Î/Ãë
-#define SPL_TMP_RATE6               0x05    // 32 ´Î/Ãë
-#define SPL_TMP_RATE7               0x06    // 64 ´Î/Ãë
-#define SPL_TMP_RATE8               0x07    // 128 ´Î/Ãë
+/* æµ‹é‡é€Ÿç‡ (Measurement Rate) */
+#define SPL_TMP_RATE1               0x00    // 1 æ¬¡/ç§’
+#define SPL_TMP_RATE2               0x01    // 2 æ¬¡/ç§’
+#define SPL_TMP_RATE3               0x02    // 4 æ¬¡/ç§’
+#define SPL_TMP_RATE4               0x03    // 8 æ¬¡/ç§’
+#define SPL_TMP_RATE5               0x04    // 16 æ¬¡/ç§’
+#define SPL_TMP_RATE6               0x05    // 32 æ¬¡/ç§’
+#define SPL_TMP_RATE7               0x06    // 64 æ¬¡/ç§’
+#define SPL_TMP_RATE8               0x07    // 128 æ¬¡/ç§’
 
-/* ¹ı²ÉÑùÂÊ (Oversampling Rate) */
-#define SPL_TMP_PRC1                0x00    // µ¥´Î²âÁ¿
-#define SPL_TMP_PRC2                0x01    // 2 ±¶¹ı²ÉÑù
-#define SPL_TMP_PRC3                0x02    // 4 ±¶¹ı²ÉÑù
-#define SPL_TMP_PRC4                0x03    // 8 ±¶¹ı²ÉÑù
-#define SPL_TMP_PRC5                0x04    // 16 ±¶¹ı²ÉÑù
-#define SPL_TMP_PRC6                0x05    // 32 ±¶¹ı²ÉÑù
-#define SPL_TMP_PRC7                0x06    // 64 ±¶¹ı²ÉÑù
-#define SPL_TMP_PRC8                0x07    // 128 ±¶¹ı²ÉÑù
+/* è¿‡é‡‡æ ·ç‡ (Oversampling Rate) */
+#define SPL_TMP_PRC1                0x00    // å•æ¬¡æµ‹é‡
+#define SPL_TMP_PRC2                0x01    // 2 å€è¿‡é‡‡æ ·
+#define SPL_TMP_PRC3                0x02    // 4 å€è¿‡é‡‡æ ·
+#define SPL_TMP_PRC4                0x03    // 8 å€è¿‡é‡‡æ ·
+#define SPL_TMP_PRC5                0x04    // 16 å€è¿‡é‡‡æ ·
+#define SPL_TMP_PRC6                0x05    // 32 å€è¿‡é‡‡æ ·
+#define SPL_TMP_PRC7                0x06    // 64 å€è¿‡é‡‡æ ·
+#define SPL_TMP_PRC8                0x07    // 128 å€è¿‡é‡‡æ ·
 
-#define KT 524288 // ÎÂ¶È²¹³¥ÏµÊı£¬ÓëÎÂ¶È²ÉÑùÂÊÓĞ¹Ø£¬¹Ì¶¨ÖµÏê¼ûÊı¾İÊÖ²á
-#define KP 1572864 // Ñ¹Á¦²¹³¥ÏµÊı£¬ÓëÑ¹Á¦²ÉÑùÂÊÓĞ¹Ø£¬¹Ì¶¨ÖµÏê¼ûÊı¾İÊÖ²á
+#define KT 524288 // æ¸©åº¦è¡¥å¿ç³»æ•°ï¼Œä¸æ¸©åº¦é‡‡æ ·ç‡æœ‰å…³ï¼Œå›ºå®šå€¼è¯¦è§æ•°æ®æ‰‹å†Œ
+#define KP 1572864 // å‹åŠ›è¡¥å¿ç³»æ•°ï¼Œä¸å‹åŠ›é‡‡æ ·ç‡æœ‰å…³ï¼Œå›ºå®šå€¼è¯¦è§æ•°æ®æ‰‹å†Œ
 
 
 

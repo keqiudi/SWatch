@@ -93,21 +93,21 @@ static void refresh_btn_event_cb(lv_event_t* e)
 	}
 }
 
-/* 页面回调函数 */
-static void timer_page_event_cb(lv_event_t* e)
-{
-	lv_event_code_t event_code = lv_event_get_code(e);
-	lv_obj_t * target = lv_event_get_target(e);
+// /* 滑动回调函数 */
+// static void timer_page_event_cb(lv_event_t* e)
+// {
+// 	lv_event_code_t event_code = lv_event_get_code(e);
+// 	lv_obj_t * target = lv_event_get_target(e);
 	
-	if(event_code == LV_EVENT_GESTURE)
-	{
-			lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
-			if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
-      {
-				 page_back();
-      }
-	}
-}
+// 	if(event_code == LV_EVENT_GESTURE)
+// 	{
+// 			lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
+// 			if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
+//       {
+// 				 page_back();
+//       }
+// 	}
+// }
 
 // build funtions
 void ui_TimerPage_screen_init(void)
@@ -117,7 +117,7 @@ void ui_TimerPage_screen_init(void)
     ui_TimerPage = lv_obj_create(NULL);
     lv_obj_remove_flag(ui_TimerPage, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-		scale = lv_scale_create(ui_TimerPage);
+	scale = lv_scale_create(ui_TimerPage);
     lv_obj_set_size(scale, 240, 240);
     lv_obj_center(scale); //居中到父对象
 
@@ -234,7 +234,7 @@ void ui_TimerPage_screen_init(void)
     lv_label_set_text(ui_TimerMilSecLabel, "00");
     lv_obj_set_style_text_font(ui_TimerMilSecLabel, &ui_font_CuYuan40, LV_PART_MAIN | LV_STATE_DEFAULT);
 		
-		lv_obj_add_event_cb(ui_TimerPage,timer_page_event_cb,LV_EVENT_GESTURE,NULL);
+	//lv_obj_add_event_cb(ui_TimerPage,timer_page_event_cb,LV_EVENT_GESTURE,NULL);
 	
     lv_obj_add_event_cb(ui_StartButton, start_btn_event_cb, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_ReButton, refresh_btn_event_cb, LV_EVENT_ALL, NULL);

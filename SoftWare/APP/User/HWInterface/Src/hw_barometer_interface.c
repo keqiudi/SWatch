@@ -13,8 +13,14 @@ static uint8_t hw_barometer_init()
     return ERR_SUCCESS;
 }
 
+static void hw_barometer_sleep()
+{
+    spl06_sleep();
+}
+
 hw_barometer_interface_t hw_spl06_interface = {
     .state = DEVICE_STATUS_UNINIT,
     .altitude = 0,
     .init = hw_barometer_init,
+    .sleep = hw_barometer_sleep
 };

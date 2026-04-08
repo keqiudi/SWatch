@@ -9,20 +9,20 @@ lv_obj_t * ui_CalendarPage = NULL;
 lv_obj_t * ui_Calendar = NULL;
 // event funtions
 
-static void calendar_page_event_cb(lv_event_t* e)
-{
-	lv_event_code_t event_code = lv_event_get_code(e);
-	lv_obj_t * target = lv_event_get_target(e);
+// static void calendar_page_event_cb(lv_event_t* e)
+// {
+// 	lv_event_code_t event_code = lv_event_get_code(e);
+// 	lv_obj_t * target = lv_event_get_target(e);
 	
-	if(event_code == LV_EVENT_GESTURE)
-	{
-			lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
-			if(dir == LV_DIR_RIGHT) // ´ÓÊäÈë¼ì²âÊÖÊÆÏòÓÒ»¬¶¯
-      {
-				 page_back();
-      }
-	}
-}
+// 	if(event_code == LV_EVENT_GESTURE)
+// 	{
+// 			lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
+// 			if(dir == LV_DIR_RIGHT) // ä»è¾“å…¥æ£€æµ‹æ‰‹åŠ¿å‘å³æ»‘åŠ¨
+//       {
+// 				 page_back();
+//       }
+// 	}
+// }
 
 // build funtions
 
@@ -40,7 +40,7 @@ void ui_CalendarPage_screen_init(void)
     lv_obj_set_align(ui_Calendar, LV_ALIGN_CENTER);
     lv_obj_remove_flag(ui_Calendar, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 		
-	  lv_obj_add_event_cb(ui_CalendarPage,calendar_page_event_cb,LV_EVENT_GESTURE,NULL); // »Øµ÷º¯Êı
+	//lv_obj_add_event_cb(ui_CalendarPage,calendar_page_event_cb,LV_EVENT_GESTURE,NULL); // å›è°ƒå‡½æ•°
 }
 
 void ui_CalendarPage_screen_destroy(void)
@@ -65,13 +65,13 @@ static void calendar_page_deinit()
 
 static void calendar_page_resume() 
 {
-    // ±£Áô£ºÒ³ÃæÇĞ»»»ØÀ´Ê±Ë¢ĞÂÏÔÊ¾ÄÚÈİ¡¢ÖØÆô¶¯»­¡¢»Ö¸´¶¨Ê±Æ÷µÈ¡£
+    // ä¿ç•™ï¼šé¡µé¢åˆ‡æ¢å›æ¥æ—¶åˆ·æ–°æ˜¾ç¤ºå†…å®¹ã€é‡å¯åŠ¨ç”»ã€æ¢å¤å®šæ—¶å™¨ç­‰ã€‚
 }
 
 
 static void calendar_page_pause()
 {
-	  // ±£Áô£ºÒ³ÃæÇĞ»»Àë¿ªÊ±ÔİÍ£¶¯»­¡¢Í£Ö¹¶¨Ê±Æ÷¡¢±£´æÒ³Ãæ×´Ì¬µÈ¡£
+	  // ä¿ç•™ï¼šé¡µé¢åˆ‡æ¢ç¦»å¼€æ—¶æš‚åœåŠ¨ç”»ã€åœæ­¢å®šæ—¶å™¨ã€ä¿å­˜é¡µé¢çŠ¶æ€ç­‰ã€‚
 }
 
 page_t page_calendar = 

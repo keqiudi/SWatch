@@ -24,8 +24,8 @@ void lvgl_log_cb(lv_log_level_t level, const char * buf) {
 
 void lv_mem_monitor_task(lv_timer_t * timer)
 {
-	lv_mem_monitor_t mon;
-  lv_mem_monitor(&mon); 
+    lv_mem_monitor_t mon;
+    lv_mem_monitor(&mon); 
 
   SEGGER_RTT_printf(0,
         "LVGL MEM: total=%lu Bytes, free=%lu Bytes, used=%u%%, max_used=%lu Bytes\n",
@@ -40,13 +40,17 @@ void lv_mem_monitor_task(lv_timer_t * timer)
 void LvglHandlerTask(void *argument)
 {
 	
-	lv_log_register_print_cb(lvgl_log_cb);  
-  lv_timer_create(lv_mem_monitor_task, 1000, NULL); // 输出lvgl内存池占用情况，便于调试
-
+   lv_log_register_print_cb(lvgl_log_cb);  
+   lv_timer_create(lv_mem_monitor_task, 1000, NULL); // 输出lvgl内存池占用情况，便于调试
+     uint8_t msg_idle_break = 0;
 	while(1)
 	{
-		 lv_task_handler(); // lvgl任务处理
-		 osDelay(pdMS_TO_TICKS(1));
+          if(lv_disp_get_inactive_time(NULL) < 1000)
+          {
+               osMessageQueuePut(IdleModeBreakMsgQueue, &msg_idle_break, 0, 0); // 上一次交互时间小于1秒认为是活跃状态，退出idle状态
+          }
+		lv_task_handler(); // lvgl任务处理
+		osDelay(pdMS_TO_TICKS(1));
 	}
 	
 }
@@ -85,7 +89,8 @@ void vApplicationTickHook( void )
      {
           timer_10ms = 0;
           timer_sec += 1;
-
+          uint8_t msg_idle_break = 0;
+          osMessageQueuePut(IdleModeBreakMsgQueue, &msg_idle_break, 0, 0); // 定时器页面，不进入idle模式
      }
      if(timer_sec >= 60)
      {

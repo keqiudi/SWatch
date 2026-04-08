@@ -18,20 +18,20 @@ lv_obj_t * ui_ChargPageBatIcon = NULL;
 
 lv_timer_t * ui_ChargePageTimer = NULL;
 
-static void charge_page_event_cb(lv_event_t* e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
+// static void charge_page_event_cb(lv_event_t* e)
+// {
+//     lv_event_code_t event_code = lv_event_get_code(e);
+//     lv_obj_t * target = lv_event_get_target(e);
 
-    if(event_code == LV_EVENT_GESTURE)
-    {
-        lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
-        if(dir == LV_DIR_RIGHT)
-        {
-            page_back();
-        }
-    }
-}
+//     if(event_code == LV_EVENT_GESTURE)
+//     {
+//         lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
+//         if(dir == LV_DIR_RIGHT)
+//         {
+//             page_back();
+//         }
+//     }
+// }
 
 static void charge_page_timer_cb(lv_timer_t * timer)
 {
@@ -87,7 +87,7 @@ void ui_ChargePage_screen_init(void)
     lv_obj_set_x(ui_ChargPageBatNum, -70);
     lv_obj_set_y(ui_ChargPageBatNum, -23);
     lv_obj_set_align(ui_ChargPageBatNum, LV_ALIGN_CENTER);
-    sprintf((char*)buffer, "%2d%%",ui_BatArcValue);
+    sprintf((char*)buffer, "%d%%",ui_BatArcValue);
     lv_label_set_text(ui_ChargPageBatNum, buffer); // 初始电量百分比显示
     lv_obj_set_style_text_color(ui_ChargPageBatNum, lv_color_hex(0x00FF7F), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_ChargPageBatNum, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -162,7 +162,7 @@ void ui_ChargePage_screen_init(void)
     lv_obj_set_style_text_opa(ui_ChargPageBatIcon, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_ChargPageBatIcon, &ui_font_HPiconfont25, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    lv_obj_add_event_cb(ui_ChargePage, charge_page_event_cb, LV_EVENT_GESTURE, NULL); // 注册事件回调
+    //lv_obj_add_event_cb(ui_ChargePage, charge_page_event_cb, LV_EVENT_GESTURE, NULL); // 注册事件回调
 }
 
 void ui_ChargePage_screen_destroy(void)

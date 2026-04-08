@@ -1,7 +1,6 @@
 #include "bsp_lcd.h"
 #include "lv_port_disp.h"
 
-
 #define DISPLAY_OFFSET_X 0 //显示区域为x:0~239 y:20~299
 #define DISPLAY_OFFSET_Y 20
 

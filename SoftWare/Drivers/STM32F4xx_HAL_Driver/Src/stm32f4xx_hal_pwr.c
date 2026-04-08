@@ -431,8 +431,8 @@ void HAL_PWR_EnterSLEEPMode(uint32_t Regulator, uint8_t SLEEPEntry)
   *         is higher although the startup time is reduced.    
   * @param Regulator Specifies the regulator state in Stop mode.
   *          This parameter can be one of the following values:
-  *            @arg PWR_MAINREGULATOR_ON: Stop mode with regulator ON
   *            @arg PWR_LOWPOWERREGULATOR_ON: Stop mode with low power regulator ON
+  *            @arg PWR_MAINREGULATOR_ON: Stop mode with regulator ON
   * @param STOPEntry Specifies if Stop mode in entered with WFI or WFE instruction.
   *          This parameter can be one of the following values:
   *            @arg PWR_STOPENTRY_WFI              : Enter Stop mode with WFI instruction 

@@ -1,5 +1,5 @@
 
-
+#include "rtc.h"
 #include "delay.h"
 #include "user_hw_init.h"
 #include "user_task_init.h"
@@ -27,13 +27,20 @@ void HwInitTask(void *argument)
 {
 		int ret = 0;
 		
+		// 如果备份寄存器被写过，就不会执行配置RTC唤醒的代码，就需要我们手动配置RTC唤醒
+		if(HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 2000, RTC_WAKEUPCLOCK_RTCCLK_DIV16) != HAL_OK)
+		{
+		Error_Handler();
+		}
+
+
  		/* Systick 初始化才能使用delay */
    		delay_init();
 		/* 按键GPIO初始化，配置为外部中断模式 */
 		key_gpio_init(); 
 		
 		hw_interface.hw_power_interface->init(); // 电源管理初始化，配置电池检测引脚和充电状态检测引脚
-		hw_interface.hw_power_interface->shutdown(); // 关闭电源输出，进入低功耗待机状态，等待按键事件唤醒
+		//hw_interface.hw_power_interface->shutdown(); // 关闭电源输出，进入低功耗待机状态，等待按键事件唤醒
 		
 		/* 传感器相关初始化 */ 
 		ret = hw_interface.hw_aht20_interface->init(); // AHT20温湿度传感器初始化

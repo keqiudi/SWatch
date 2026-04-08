@@ -1,5 +1,4 @@
 
-
 #include "bsp_mpu6050.h"                // Device header
 #include "delay.h"
 #include "i2c_hal.h"
@@ -444,9 +443,18 @@ uint8_t mpu6050_accel_get_angles(float* yaw,float* pitch,float* roll)
 uint8_t mpu6050_is_horizontal()
 {
 	float yaw,pitch,roll;
-	mpu6050_accel_get_angles(&yaw,&pitch,&roll);
+	mpu6050_accel_get_angles(&yaw,&pitch,&roll); //用加速度计计算角度判断水平状态，因为要低功耗考虑，而手册上显示陀螺仪更耗电
 	
-	if((pitch<=3.0f && pitch >= -3.0f) && (roll <=3.0f && roll >= -3.0f))
+	// if((pitch<=3.0f && pitch >= -3.0f) && (roll <=3.0f && roll >= -3.0f))
+	// {
+	// 	return 1; // 水平
+	// }
+	// else
+	// {
+	// 	return 0; // 非水平
+	// }
+
+	if((pitch<=7.0f && pitch >= -7.0f) && (roll <=7.0f && roll >= -7.0f))
 	{
 		return 1; // 水平
 	}

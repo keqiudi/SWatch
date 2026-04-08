@@ -8,6 +8,10 @@
 
 
 extern osMessageQueueId_t HomeUpdataMsgQueue;
+extern osMessageQueueId_t IdleModeMsgQueue;
+extern osMessageQueueId_t IdleModeBreakMsgQueue;
+extern osMessageQueueId_t StopModeMsgQueue;
+extern osMessageQueueId_t KeyMsgQueue;
 
 void user_tasks_init();
 

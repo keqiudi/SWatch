@@ -7,7 +7,7 @@ extern "C" {
 
 void KeyTask(void *argument);
 
-
+void KeyEventTask(void *argument);
 
 #ifdef __cplusplus
 }

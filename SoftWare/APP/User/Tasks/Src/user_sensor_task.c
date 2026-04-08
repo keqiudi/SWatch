@@ -38,12 +38,19 @@ void WristWakeCheckTask(void *argument)
             {
                 hw_interface.hw_mpu6050_interface->wrist_state = WRIST_UP;
             }
-            else
+            else  
             {
                 if(hw_interface.hw_mpu6050_interface->wrist_state == WRIST_UP) // 只有从手腕抬起到放下的状态变化才触发
                 {
                     hw_interface.hw_mpu6050_interface->wrist_state = WRIST_DOWN;
-                
+
+                    if(get_top_page()->page_obj == &ui_HomePage || 
+                        get_top_page()->page_obj == &ui_MenuPage ) // 只有在主页才触发抬腕事件，其他页面不受影响
+                    {
+                        uint8_t msg_stop = 0;
+                        osMessageQueuePut(StopModeMsgQueue, &msg_stop, 0, 1); // 通过消息队列通知进入Stop模式
+                        
+                    }
                 }
             }
 
@@ -63,11 +70,14 @@ void WristWakeCheckTask(void *argument)
 void HRDataTask(void *argument)
 {
 	uint8_t hr_rate,spo2;
+    uint8_t msg_idle_break = 0;
 	while(1)
 	{
 		
 		if(get_top_page()->page_obj == &ui_HeartRatePage)
 		{
+
+            osMessageQueuePut(IdleModeBreakMsgQueue, &msg_idle_break, 0, 1); // 避免进入idle状态
 
 			em7028_hrs_enable(); // 启动心率传感器测量
 
@@ -90,35 +100,14 @@ void HRDataTask(void *argument)
 
 void SensorDataUpdateTask(void *argument)
 {
+    uint8_t msg_idle_break = 0;
 
 	while(1)
 	{	
 
 		/*Home page：battery、steps、heartrate*/
-		// uint8_t msg_home_update;
-		// if(osMessageQueueGet(HomeUpdataMsgQueue,&msg_home_update,NULL,0) == osOK) // 更新HOME页面数据
-        // {
-        //     uint8_t buffer[5];
-        //     uint8_t power = 0;
-
-        //     // 电量更新
-        //     power = hw_interface.hw_power_interface->bat_caluculate();
-        //     if(power > 0 && power <= 100)
-        //     {
-        //         hw_interface.hw_power_interface->remain_power = power;
-        //     }
-        //     else
-        //     {
-        //         hw_interface.hw_power_interface->remain_power = 0;
-        //     }
-
-		// 	// 步数更新
-
-		// 	// 心率更新
-
-		// }
-
-        if(get_top_page()->page_obj == &ui_HomePage)
+		uint8_t msg_home_update;
+		if(osMessageQueueGet(HomeUpdataMsgQueue,&msg_home_update,NULL,0) == osOK) // 更新HOME页面数据
         {
             uint8_t buffer[5];
             uint8_t power = 0;
@@ -134,17 +123,24 @@ void SensorDataUpdateTask(void *argument)
                 hw_interface.hw_power_interface->remain_power = 0;
             }
 
+			// 步数更新
+            
             if(hw_interface.hw_mpu6050_interface->state == DEVICE_STATUS_INITED)
             {
                 hw_interface.hw_mpu6050_interface->steps = hw_interface.hw_mpu6050_interface->get_steps();
             }
 
-        }
+			// 心率更新
+            
+            // 保存数据到EEPROM
 
+		}
 
 		 /* Environment page: AHT20 */
         if(get_top_page()->page_obj == &ui_EnvironmentPage)
         {
+            osMessageQueuePut(IdleModeBreakMsgQueue, &msg_idle_break, 0, 1); // 避免进入idle状态
+
             if(hw_interface.hw_aht20_interface->state == DEVICE_STATUS_INITED)
             {
                 float temp, hum;
@@ -158,9 +154,13 @@ void SensorDataUpdateTask(void *argument)
             }
         }
 
-        /* Compass page: eCompass + barometer */
+        /* Compass page: Compass + barometer */
         else if(get_top_page()->page_obj == &ui_CompassPage)
         {
+            osMessageQueuePut(IdleModeBreakMsgQueue, &msg_idle_break, 0, 1);
+
+            hw_interface.hw_ecompass_interface->wakeup(); //唤醒指南针
+
             if(hw_interface.hw_ecompass_interface->state == DEVICE_STATUS_INITED)
             {
                 int16_t ax, ay, az, mx, my, mz;
@@ -189,13 +189,9 @@ void SensorDataUpdateTask(void *argument)
 		/*SPO2 page */
 		 else if(get_top_page()->page_obj == &ui_SpO2MeasurePage)
 		 {
+            osMessageQueuePut(IdleModeBreakMsgQueue, &msg_idle_break, 0, 1);
 			// 保留
 		 }
-
-
-
-
-
 
 		osDelay(pdMS_TO_TICKS(100));
 	}

@@ -94,7 +94,7 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* creation of defaultTask */
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+  //defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -127,7 +127,7 @@ void StartDefaultTask(void *argument)
 		//SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
 		
 		// 打印剩余FreeRTOS堆内存大小，调试用
-		SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
+		//SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
 		osDelay(1000);
   }
   /* USER CODE END StartDefaultTask */

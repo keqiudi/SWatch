@@ -32,7 +32,7 @@ static void compass_page_event_cb(lv_event_t* e)
 	if(event_code == LV_EVENT_GESTURE)
 	{
 			lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
-			if(dir == LV_DIR_RIGHT) // ´ÓÊäÈë¼ì²âÊÖÊÆÏòÓÒ»¬¶¯
+			if(dir == LV_DIR_RIGHT) // ä»è¾“å…¥æ£€æµ‹æ‰‹åŠ¿å‘å³æ»‘åŠ¨
             {
 				 page_back();
             }
@@ -43,12 +43,12 @@ static void compass_page_timer_cb(lv_timer_t* timer)
 {
     uint8_t disp_buffer[6];
 
-    // µç×ÓÖ¸ÄÏÕëÖ¸ÏòÉèÖÃ£¬ÒÔ¼°ÏÔÊ¾µ±Ç°·½Ïò½Ç¶ÈÖµ
-    lv_image_set_rotation(ui_CompassPageImg,hw_interface.hw_ecompass_interface->direction * 10); // Ô­À´µÄlv_img_set_angle()º¯ÊıÔÚlvgl 9.0ºóÌæ»»³ÉÁËÕâ¸ö
+    // ç”µå­æŒ‡å—é’ˆæŒ‡å‘è®¾ç½®ï¼Œä»¥åŠæ˜¾ç¤ºå½“å‰æ–¹å‘è§’åº¦å€¼
+    lv_image_set_rotation(ui_CompassPageImg,hw_interface.hw_ecompass_interface->direction * 10); // åŸæ¥çš„lv_img_set_angle()å‡½æ•°åœ¨lvgl 9.0åæ›¿æ¢æˆäº†è¿™ä¸ª
     sprintf(disp_buffer, "%d", hw_interface.hw_ecompass_interface->direction);
     lv_label_set_text(ui_AngelNum, disp_buffer);
 
-    // ÏÔÊ¾º£°Î
+    // æ˜¾ç¤ºæµ·æ‹”
     sprintf(disp_buffer,"%dm", hw_interface.hw_barometer_interface->altitude);
     lv_label_set_text(ui_AltitudeColonIcon, disp_buffer);
 
@@ -61,46 +61,46 @@ void ui_CompassPage_screen_init(void)
     ui_CompassPage = lv_obj_create(NULL);
     lv_obj_remove_flag(ui_CompassPage, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     
-    /* ÊÖ¶¯ÊµÏÖ¿Ì¶ÈÅÌ*/
+    /* æ‰‹åŠ¨å®ç°åˆ»åº¦ç›˜*/
     compass_scale = lv_scale_create(ui_CompassPage);
     lv_obj_set_size(compass_scale, 240, 240);
-    lv_obj_align(compass_scale, LV_ALIGN_TOP_MID, 0, 2); // ¿Ì¶ÈÎª¶¥²¿¾ÓÖĞ
+    lv_obj_align(compass_scale, LV_ALIGN_TOP_MID, 0, 2); // åˆ»åº¦ä¸ºé¡¶éƒ¨å±…ä¸­
 
-    // ÉèÖÃÔ²»¡ÑùÊ½£ºÒş²ØÖ÷»¡ÏßÓëÍâÈ¦£¨È¥µô¿Ì¶ÈĞÎ³ÉµÄ¡°°×È¦¡±£©
-    lv_obj_set_style_arc_width(compass_scale, 0, LV_PART_MAIN); // Ö÷»¡Ïß¿í¶ÈÎª0
-    lv_obj_set_style_arc_opa(compass_scale, LV_OPA_TRANSP, LV_PART_MAIN); // Í¸Ã÷¶È£ºÖ÷»¡ÏßÍ¸Ã÷
-    lv_obj_set_style_border_width(compass_scale, 0, LV_PART_MAIN); // ÎŞ±ß¿ò 
-    lv_obj_set_style_outline_opa(compass_scale, LV_OPA_TRANSP, LV_PART_MAIN); // ÎŞÂÖÀª
-    lv_obj_set_style_shadow_opa(compass_scale, LV_OPA_TRANSP, LV_PART_MAIN); // ÎŞÒõÓ°
+    // è®¾ç½®åœ†å¼§æ ·å¼ï¼šéšè—ä¸»å¼§çº¿ä¸å¤–åœˆï¼ˆå»æ‰åˆ»åº¦å½¢æˆçš„â€œç™½åœˆâ€ï¼‰
+    lv_obj_set_style_arc_width(compass_scale, 0, LV_PART_MAIN); // ä¸»å¼§çº¿å®½åº¦ä¸º0
+    lv_obj_set_style_arc_opa(compass_scale, LV_OPA_TRANSP, LV_PART_MAIN); // é€æ˜åº¦ï¼šä¸»å¼§çº¿é€æ˜
+    lv_obj_set_style_border_width(compass_scale, 0, LV_PART_MAIN); // æ— è¾¹æ¡† 
+    lv_obj_set_style_outline_opa(compass_scale, LV_OPA_TRANSP, LV_PART_MAIN); // æ— è½®å»“
+    lv_obj_set_style_shadow_opa(compass_scale, LV_OPA_TRANSP, LV_PART_MAIN); // æ— é˜´å½±
 
-    // ÉèÖÃ¿Ì¶ÈÅÌÑùÊ½:LV_PART_MAIN
+    // è®¾ç½®åˆ»åº¦ç›˜æ ·å¼:LV_PART_MAIN
     lv_obj_set_style_bg_opa(compass_scale, LV_OPA_COVER, LV_PART_MAIN);
-    lv_obj_set_style_bg_color(compass_scale, lv_color_hex(0x292831), LV_PART_MAIN); //»ÒÉ«±³¾°
+    lv_obj_set_style_bg_color(compass_scale, lv_color_hex(0x292831), LV_PART_MAIN); //ç°è‰²èƒŒæ™¯
     lv_obj_set_style_radius(compass_scale, LV_RADIUS_CIRCLE, LV_PART_MAIN);
-    lv_obj_set_style_clip_corner(compass_scale, true, LV_PART_MAIN); // Ô²½Ç²Ã¼ô
-    lv_obj_set_style_pad_all(compass_scale, 10, LV_PART_MAIN); // Ô²ÏòÍâÌî³ä£¬Ê¹¿Ì¶ÈÏß²»Ìù½ü
+    lv_obj_set_style_clip_corner(compass_scale, true, LV_PART_MAIN); // åœ†è§’è£å‰ª
+    lv_obj_set_style_pad_all(compass_scale, 10, LV_PART_MAIN); // åœ†å‘å¤–å¡«å……ï¼Œä½¿åˆ»åº¦çº¿ä¸è´´è¿‘
 
-    // ¿Ì¶ÈÏßÔÚÄÚ²¿
+    // åˆ»åº¦çº¿åœ¨å†…éƒ¨
     lv_scale_set_mode(compass_scale, LV_SCALE_MODE_ROUND_INNER);
 
-    // ¿Ì¶ÈÉèÖÃ£º61¸ö¿Ì¶È£¬12¸öÖ÷¿Ì¶È
-    lv_scale_set_total_tick_count(compass_scale, 61);   // ÉèÖÃ¿Ì¶È×ÜÊı(´óĞ¡¿Ì¶È¶¼°üÀ¨)£º0..60,¹²61¸ö¿Ì¶È
-    lv_scale_set_major_tick_every(compass_scale, 5);  // Ã¿5¸ö¿Ì¶ÈÒ»¸öÖ÷¿Ì¶È
-    lv_scale_set_label_show(compass_scale, true);      // ¿Ì¶ÈÏÔÊ¾Êı×Ö
-    lv_scale_set_angle_range(compass_scale, 360);       // È«Ô²
-    lv_scale_set_rotation(compass_scale, 270);          // ´Ó 12 µã·½Ïò¿ªÊ¼£¨0¡ã ÔÚÕıÉÏ·½£©
+    // åˆ»åº¦è®¾ç½®ï¼š61ä¸ªåˆ»åº¦ï¼Œ12ä¸ªä¸»åˆ»åº¦
+    lv_scale_set_total_tick_count(compass_scale, 61);   // è®¾ç½®åˆ»åº¦æ€»æ•°(å¤§å°åˆ»åº¦éƒ½åŒ…æ‹¬)ï¼š0..60,å…±61ä¸ªåˆ»åº¦
+    lv_scale_set_major_tick_every(compass_scale, 5);  // æ¯5ä¸ªåˆ»åº¦ä¸€ä¸ªä¸»åˆ»åº¦
+    lv_scale_set_label_show(compass_scale, true);      // åˆ»åº¦æ˜¾ç¤ºæ•°å­—
+    lv_scale_set_angle_range(compass_scale, 360);       // å…¨åœ†
+    lv_scale_set_rotation(compass_scale, 270);          // ä» 12 ç‚¹æ–¹å‘å¼€å§‹ï¼ˆ0Â° åœ¨æ­£ä¸Šæ–¹ï¼‰
     
     static const char * compass_labels[] = {"0", "30", "60", "90", "120", "150", "180", "210", "240", "270", "300", "330", NULL};
-    lv_scale_set_text_src(compass_scale, compass_labels); // ĞŞ¸Ä12¸öÖ÷¿Ì¶È±êÇ©µÄÖµ·Ö±ğÎª 0..330
+    lv_scale_set_text_src(compass_scale, compass_labels); // ä¿®æ”¹12ä¸ªä¸»åˆ»åº¦æ ‡ç­¾çš„å€¼åˆ†åˆ«ä¸º 0..330
 
-    // ¿Ì¶ÈÏßÑùÊ½£º
-    // ÉèÖÃ·ÇÖ÷¿Ì¶È(minor)Ê¹ÓÃ LV_PART_ITEMS
+    // åˆ»åº¦çº¿æ ·å¼ï¼š
+    // è®¾ç½®éä¸»åˆ»åº¦(minor)ä½¿ç”¨ LV_PART_ITEMS
     lv_obj_set_style_line_color(compass_scale, lv_color_white(), LV_PART_ITEMS);
     lv_obj_set_style_line_width(compass_scale, 1, LV_PART_ITEMS);
     lv_obj_set_style_line_opa(compass_scale, LV_OPA_COVER, LV_PART_ITEMS);
     lv_obj_set_style_length(compass_scale, 10, LV_PART_ITEMS);
 
-    // ÉèÖÃÖ÷¿Ì¶È(major)ÔÚ LVGL v9 Ê¹ÓÃ LV_PART_INDICATOR
+    // è®¾ç½®ä¸»åˆ»åº¦(major)åœ¨ LVGL v9 ä½¿ç”¨ LV_PART_INDICATOR
     lv_obj_set_style_line_color(compass_scale, lv_color_white(), LV_PART_INDICATOR);
     lv_obj_set_style_line_width(compass_scale, 2, LV_PART_INDICATOR);
     lv_obj_set_style_line_opa(compass_scale, LV_OPA_COVER, LV_PART_INDICATOR);
@@ -132,7 +132,7 @@ void ui_CompassPage_screen_init(void)
     lv_obj_set_x(ui_AngleIconLabel, -30);
     lv_obj_set_y(ui_AngleIconLabel, 0);
     lv_obj_set_align(ui_AngleIconLabel, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_AngleIconLabel, "\xEE\x98\x8A"); // ÕâÀïÊ¹ÓÃ×ªÒÆ×Ö·ûÊä³öUTF-8±àÂë£¬²»ÖªµÀÎªÊ²Ã´×Ö·ûÏÔÊ¾²»³öÀ´
+    lv_label_set_text(ui_AngleIconLabel, "\xEE\x98\x8A"); // è¿™é‡Œä½¿ç”¨è½¬ç§»å­—ç¬¦è¾“å‡ºUTF-8ç¼–ç ï¼Œä¸çŸ¥é“ä¸ºä»€ä¹ˆå­—ç¬¦æ˜¾ç¤ºä¸å‡ºæ¥
     lv_obj_set_style_text_font(ui_AngleIconLabel, &ui_font_CPiconfont28, LV_PART_MAIN | LV_STATE_DEFAULT);
 		
     ui_AngelColonIcon = lv_label_create(ui_CompassAngleBtn);
@@ -150,7 +150,7 @@ void ui_CompassPage_screen_init(void)
     lv_obj_set_x(ui_AngelNum, 25);
     lv_obj_set_y(ui_AngelNum, 0);
     lv_obj_set_align(ui_AngelNum, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_AngelNum, "360¡ã");
+    lv_label_set_text(ui_AngelNum, "360Â°");
     lv_obj_set_style_text_font(ui_AngelNum, &ui_font_CuYuan20, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_CompassAltitudeBtn = lv_button_create(ui_CompassPage);
@@ -171,7 +171,7 @@ void ui_CompassPage_screen_init(void)
     lv_obj_set_x(ui_AltitudeIconLabel, -30);
     lv_obj_set_y(ui_AltitudeIconLabel, 0);
     lv_obj_set_align(ui_AltitudeIconLabel, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_AltitudeIconLabel, "\xEE\x98\xB4"); //ÕâÀïÊ¹ÓÃ×ªÒÆ×Ö·ûÊä³öUTF-8±àÂë£¬²»ÖªµÀÎªÊ²Ã´×Ö·ûÏÔÊ¾²»³öÀ´
+    lv_label_set_text(ui_AltitudeIconLabel, "\xEE\x98\xB4"); //è¿™é‡Œä½¿ç”¨è½¬ç§»å­—ç¬¦è¾“å‡ºUTF-8ç¼–ç ï¼Œä¸çŸ¥é“ä¸ºä»€ä¹ˆå­—ç¬¦æ˜¾ç¤ºä¸å‡ºæ¥
     lv_obj_set_style_text_font(ui_AltitudeIconLabel, &ui_font_CPiconfont28, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_AltitudeColonIcon = lv_label_create(ui_CompassAltitudeBtn);
@@ -227,7 +227,7 @@ static void compass_page_resume()
 {
     if(ui_CompassPageTimer == NULL)     
         ui_CompassPageTimer = lv_timer_create(compass_page_timer_cb, 500, NULL);     
-    // ±£Áô£ºÒ³ÃæÇĞ»»»ØÀ´Ê±Ë¢ĞÂÏÔÊ¾ÄÚÈİ¡¢ÖØÆô¶¯»­¡¢»Ö¸´¶¨Ê±Æ÷µÈ¡£
+    // ä¿ç•™ï¼šé¡µé¢åˆ‡æ¢å›æ¥æ—¶åˆ·æ–°æ˜¾ç¤ºå†…å®¹ã€é‡å¯åŠ¨ç”»ã€æ¢å¤å®šæ—¶å™¨ç­‰ã€‚
 }
 
 
@@ -237,7 +237,7 @@ static void compass_page_pause()
         lv_timer_del(ui_CompassPageTimer); 
         ui_CompassPageTimer = NULL;
     }
-	// ±£Áô£ºÒ³ÃæÇĞ»»Àë¿ªÊ±ÔİÍ£¶¯»­¡¢Í£Ö¹¶¨Ê±Æ÷¡¢±£´æÒ³Ãæ×´Ì¬µÈ¡£
+	// ä¿ç•™ï¼šé¡µé¢åˆ‡æ¢ç¦»å¼€æ—¶æš‚åœåŠ¨ç”»ã€åœæ­¢å®šæ—¶å™¨ã€ä¿å­˜é¡µé¢çŠ¶æ€ç­‰ã€‚
 }
 
 

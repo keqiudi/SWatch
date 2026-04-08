@@ -7,16 +7,17 @@
 #include "user_hw_init.h"
 #include "user_lvgl_handler.h"
 #include "user_sensor_task.h"
+#include "user_runMode_task.h"
 #include "SEGGER_RTT.h"
 #include "FreeRTOS.h"
 #include "task.h"
 
 
-// 定义任务句柄和属性
+/* 定义任务句柄和属性 */
 osThreadId_t HwInitTaskHandle;   
 const osThreadAttr_t HwInitTask_attributes = {
   .name = "HwInitTask",
-  .stack_size = 1024 * 2,
+  .stack_size = 128 * 10,
   .priority = (osPriority_t) osPriorityHigh,
 };
 
@@ -24,8 +25,8 @@ const osThreadAttr_t HwInitTask_attributes = {
 osThreadId_t LvglHandlerTaskHandle;
 const osThreadAttr_t LvglHandlerTask_attributes = {
   .name = "LvglHandlerTaskHandle",
-  .stack_size = 1024 * 4, // 官方处理任务栈空间至少2K，推荐>8KB。 我的项目中3K不够
-  .priority = (osPriority_t) osPriorityLow1,
+  .stack_size = 128 * 30, // 官方处理任务栈空间至少2K，推荐>8KB。 这里给2.5K是我测试后极限的结果
+  .priority = (osPriority_t) osPriorityLow,
 };
 
 
@@ -42,13 +43,6 @@ const osThreadAttr_t HRDataTask_attributes = {
   .name = "HRDataTask",
   .stack_size = 128 * 5,
   .priority = (osPriority_t) osPriorityLow1,
-};
-
-osThreadId_t KeyTaskHandle;
-const osThreadAttr_t KeyTask_attributes = {
-  .name = "KeyScanTask",
-  .stack_size = 128 * 2,
-  .priority = (osPriority_t) osPriorityNormal,
 };
 
 osThreadId_t WristWakeCheckTaskHandle;
@@ -74,18 +68,67 @@ const osThreadAttr_t ChargeCheckTask_attributes = {
   .priority = (osPriority_t) osPriorityLow1,
 };
 
-/* 定义消息队列句柄 */
+osThreadId_t KeyTaskHandle;
+const osThreadAttr_t KeyTask_attributes = {
+  .name = "KeyScanTask",
+  .stack_size = 128 * 2,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+
+osThreadId_t KeyEventTaskHandle;
+const osThreadAttr_t KeyEventTask_attributes = {
+  .name = "KeyEventTask",
+  .stack_size = 128 * 10,
+  .priority = (osPriority_t) osPriorityLow1,
+};
+
+
+// Idle模式判断任务
+osThreadId_t IdleEnterTaskHandle;
+const osThreadAttr_t IdleEnterTask_attributes = {
+  .name = "IdleEnterTask",
+  .stack_size = 128 * 2,
+  .priority = (osPriority_t) osPriorityHigh,
+};
+
+// Stop模式判断任务
+osThreadId_t StopEnterTaskHandle;
+const osThreadAttr_t StopEnterTask_attributes = {
+  .name = "StopEnterTask",
+  .stack_size = 128 * 10,
+  .priority = (osPriority_t) osPriorityHigh1,
+};
+
+
+/* 定时器定义 */
+osTimerId_t IdleTimerHandle;
+
+/* 定义消息队列句柄 */  
+osMessageQueueId_t KeyMsgQueue; // 用于按键事件通知
+osMessageQueueId_t IdleModeMsgQueue; // 用于Idle模式判断
+osMessageQueueId_t IdleModeBreakMsgQueue; // 用于刷新Idle判断
+osMessageQueueId_t StopModeMsgQueue; // 用于Stop模式判断
 osMessageQueueId_t HomeUpdataMsgQueue; // 用于HOME页面更新数据
 
 void user_tasks_init()
 {
 	
+  IdleTimerHandle = osTimerNew(IdleTimerCallback, osTimerPeriodic, NULL, NULL); // 进入Idle模式定时器，周期性检测是否满足进入Idle模式的条件
+  osTimerStart(IdleTimerHandle, pdMS_TO_TICKS(100)); // 启动定时器，定时器周期设置为100ms
+
+  KeyMsgQueue = osMessageQueueNew(1, 1, NULL);
+  IdleModeMsgQueue = osMessageQueueNew(1, 1, NULL);
+  IdleModeBreakMsgQueue = osMessageQueueNew(1, 1, NULL);
+  StopModeMsgQueue = osMessageQueueNew(1, 1, NULL);
   HomeUpdataMsgQueue  = osMessageQueueNew(1, 1, NULL);
 	
+
+ /* 任务初始化 */
+
 	HwInitTaskHandle      = osThreadNew(HwInitTask, NULL, &HwInitTask_attributes); // 硬件初始化任务，优先级较高，确保在其他任务之前完成硬件初始化
 	//  if(HwInitTaskHandle == NULL)
 	//  	SEGGER_RTT_printf(0,"HwInitTask Create Failed");
-	  
+
 	LvglHandlerTaskHandle   = osThreadNew(LvglHandlerTask, NULL, &LvglHandlerTask_attributes); // lvgl处理任务，优先级较低，确保在硬件初始化完成后再运行
 	// if(LvglHandlerTaskHandle == NULL)
   // 	SEGGER_RTT_printf(0,"LvglHandlerTask Create Failed");
@@ -94,31 +137,41 @@ void user_tasks_init()
 	//  if(SensorDataUpdateTaskHandle == NULL)
 	//  	SEGGER_RTT_printf(0,"SensorDataUpdateTask Create Failed");
 	
-   HRDataTaskHandle      = osThreadNew(HRDataTask, NULL, &HRDataTask_attributes); // 心率数据处理任务，优先级较低，确保在硬件初始化完成后再运行
-    //  if(HRDataTaskHandle == NULL)
-    //      SEGGER_RTT_printf(0,"HRDataTask Create Failed");
+  HRDataTaskHandle      = osThreadNew(HRDataTask, NULL, &HRDataTask_attributes); // 心率数据处理任务，优先级较低，确保在硬件初始化完成后再运行
+  //  if(HRDataTaskHandle == NULL)
+  //      SEGGER_RTT_printf(0,"HRDataTask Create Failed");
 
-   KeyTaskHandle = osThreadNew(KeyTask, NULL, &KeyTask_attributes); // 按键扫描任务
-    // if(KeyTaskHandle == NULL)
-    //     SEGGER_RTT_printf(0,"KeyTask Create Failed");
+  WristWakeCheckTaskHandle =  osThreadNew(WristWakeCheckTask, NULL, &WristWakeCheckTask_attributes); // 手腕唤醒检测任务
+  // if(WristWakeCheckTaskHandle == NULL)
+  //     SEGGER_RTT_printf(0,"WristWakeCheckTask Create Failed");
 
-   WristWakeCheckTaskHandle =  osThreadNew(WristWakeCheckTask, NULL, &WristWakeCheckTask_attributes); // 手腕唤醒检测任务
-    // if(WristWakeCheckTaskHandle == NULL)
-    //     SEGGER_RTT_printf(0,"WristWakeCheckTask Create Failed");
+	WDOGFeedTaskHandle = osThreadNew(WDOGFeedTask, NULL, &WDOGFeedTask_attributes); // 看门狗喂狗任务
+  // if(WDOGFeedTaskHandle == NULL)
+  //     SEGGER_RTT_printf(0,"WDOGFeedTask Create Failed");
 
-	 WDOGFeedTaskHandle = osThreadNew(WDOGFeedTask, NULL, &WDOGFeedTask_attributes); // 看门狗喂狗任务
-   // if(WDOGFeedTaskHandle == NULL)
-   //     SEGGER_RTT_printf(0,"WDOGFeedTask Create Failed");
+  ChargeCheckTaskHandle = osThreadNew(ChargeCheckTask, NULL, &ChargeCheckTask_attributes); // 充电检测任务
+  // if(ChargeCheckTaskHandle == NULL)
+  //     SEGGER_RTT_printf(0,"ChargeCheckTask Create Failed");
+  
+  KeyTaskHandle = osThreadNew(KeyTask, NULL, &KeyTask_attributes); // 按键扫描任务
+  // if(KeyTaskHandle == NULL)
+  //     SEGGER_RTT_printf(0,"KeyTask Create Failed");
 
-   ChargeCheckTaskHandle = osThreadNew(ChargeCheckTask, NULL, &ChargeCheckTask_attributes); // 充电检测任务
-   // if(ChargeCheckTaskHandle == NULL)
-   //     SEGGER_RTT_printf(0,"ChargeCheckTask Create Failed");
+  KeyEventTaskHandle = osThreadNew(KeyEventTask, NULL, &KeyEventTask_attributes); // 按键事件处理任务
+  // if(KeyEventTaskHandle == NULL) 
+  //     SEGGER_RTT_printf(0,"KeyEventTask Create Failed");
 
-   // 打印剩余FreeRTOS堆内存大小，调试用
-   //SEGGER_RTT_printf(0, "Free heap: %uByte\n", xPortGetFreeHeapSize());
+  IdleEnterTaskHandle = osThreadNew(IdleEnterTask, NULL, &IdleEnterTask_attributes); // 进入Idle模式空闲任务
+  // if(IdleEnterTaskHandle == NULL)
+  //     SEGGER_RTT_printf(0,"IdleEnterTask Create Failed");
+
+  StopEnterTaskHandle = osThreadNew(StopEnterTask, NULL, &StopEnterTask_attributes); // 进入Stop模式任务
+  // if(StopEnterTaskHandle == NULL)
+  //     SEGGER_RTT_printf(0,"StopEnterTask Create Failed");
+
+  uint8_t msg_update_home = 0;
+  osMessageQueuePut(HomeUpdataMsgQueue, &msg_update_home, 0, 0); // 启动时先更新一次HOME页面数据
 }	
-
-
 
 
 /* FreeRTOS堆栈溢出钩子，堆栈溢出检查会增加上下文开销，建议只在开发阶段使用 */

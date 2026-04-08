@@ -4,6 +4,7 @@
 // Project name: LightTimePage
 
 #include "ui_LTSetPage.h"
+#include "user_runMode_task.h"
 
 lv_obj_t * ui_LTSetPage = NULL;
 lv_obj_t * ui_LTimeNumRoller = NULL;
@@ -13,6 +14,12 @@ lv_obj_t * ui_LTimeSetOKButton = NULL;
 lv_obj_t * ui_LTimeSetOKIconLabel = NULL;
 // event funtions
 
+const uint8_t light_time_options[6] = {10, 15, 20, 30, 45, 60}; // 可选的常亮时间选项，单位为秒
+uint8_t light_time_roller_index = 0; // 当前常亮时间选项的索引，默认为0，对应10秒
+uint8_t light_time_value = 10; // 当前选择的常亮时间值，默认为10秒
+
+
+
 static void lt_set_page_event_cb(lv_event_t* e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -20,7 +27,7 @@ static void lt_set_page_event_cb(lv_event_t* e)
 	
 	if(event_code == LV_EVENT_GESTURE)
     {
-	    lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
+	    lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());  
 		if(dir == LV_DIR_RIGHT) // 从输入检测手势向右滑动
         {
 			page_back();
@@ -37,7 +44,8 @@ static void set_ok_button_event_cb(lv_event_t* e)
     
     if(event_code == LV_EVENT_CLICKED)
     {
-
+        light_time_roller_index = lv_roller_get_selected(ui_LTimeNumRoller); // 获取滚轮当前选项的索引
+        light_time_value = light_time_options[light_time_roller_index]; // 根据索引获取对应的常亮时间值
         page_back();
     }
 

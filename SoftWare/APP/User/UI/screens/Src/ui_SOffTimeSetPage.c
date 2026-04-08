@@ -4,6 +4,7 @@
 // Project name: LightTimePage
 
 #include "ui_SOffTimeSetPage.h"
+#include "user_runMode_task.h"
 
 lv_obj_t * ui_SOffTimeSetPage = NULL;
 lv_obj_t * ui_SOffTimeNumRoller = NULL;
@@ -12,6 +13,12 @@ lv_obj_t * ui_SOffTimeIconLabel = NULL;
 lv_obj_t * ui_SOffTimeSetOKButton = NULL;
 lv_obj_t * ui_SOffTimeSetOKIconLabel = NULL;
 // event funtions
+
+
+const uint8_t scrren_off_time_options[6] = {10, 15, 20, 30, 45, 60}; // 可选的息屏时间选项，单位为秒
+uint8_t scrren_off_time_roller_index = 0; // 当前息屏时间选项的索引，默认为0，对应10秒
+uint8_t scrren_off_time_value = 15; // 当前选择的息屏时间值，默认为15秒
+
 
 static void s_off_set_page_event_cb(lv_event_t* e)
 {
@@ -35,7 +42,8 @@ static void set_ok_button_event_cb(lv_event_t* e)
     
     if(event_code == LV_EVENT_CLICKED)
     {
-
+        scrren_off_time_roller_index = lv_roller_get_selected(ui_SOffTimeNumRoller); // 获取滚轮当前选项的索引
+        scrren_off_time_value = scrren_off_time_options[scrren_off_time_roller_index]; // 根据索引获取对应的息屏时间值
         page_back();
     }
 

@@ -46,6 +46,9 @@ extern uint8_t ui_BatArcValue;
 
 extern page_t page_home; // 主页面
 
+// 全局变量
+extern uint8_t ui_LightSliderValue;
+
 #ifdef __cplusplus
 } /*extern "C"*/
 #endif

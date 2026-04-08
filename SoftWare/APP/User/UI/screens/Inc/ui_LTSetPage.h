@@ -25,6 +25,8 @@ extern lv_obj_t * ui_LTimeSetOKIconLabel;
 
 extern page_t page_light_time_set_page;
 
+extern uint8_t light_time_value; // 全局变量，保存当前选择的常亮时间值，单位为秒
+
 #ifdef __cplusplus
 } /*extern "C"*/
 #endif

@@ -139,17 +139,18 @@ static void disp_flush(lv_display_t * disp_drv, const lv_area_t * area, uint8_t 
 //        uint16_t *color_p = (uint16_t *)px_map;
 //        for (y = area->y1; y <= area->y2; y++) {
 //            for (x = area->x1; x <= area->x2; x++) {
-//                LCD_Fill(x, y, x+1, y+1, *color_p); // ÔÚ(x, y)µãĞ´ÈëÒ»¸öÏñËØ
+//                LCD_Fill(x, y, x+1, y+1, *color_p); // åœ¨(x, y)ç‚¹å†™å…¥ä¸€ä¸ªåƒç´ 
 //                color_p++;
 //            }
 //        }
 				
 				LCD_Fill_DMA(area->x1,area->y1,area->x2,area->y2,(uint16_t*)px_map);
+                
     }
 
     /*IMPORTANT!!!
      *Inform the graphics library that you are ready with the flushing*/
-		/* ÎÒÃÇÕâÀïÊ¹ÓÃµÄÊÇSPI DMA£¬ËùÒÔÓ¦¸ÃÔÚDMA´«ÊäÍê³ÉÖĞ¶ÏÖĞµ÷ÓÃ¸Ãº¯Êı */
+		/* æˆ‘ä»¬è¿™é‡Œä½¿ç”¨çš„æ˜¯SPI DMAï¼Œæ‰€ä»¥åº”è¯¥åœ¨DMAä¼ è¾“å®Œæˆä¸­æ–­ä¸­è°ƒç”¨è¯¥å‡½æ•° */
 		//lv_display_flush_ready(disp_drv);
 	
 }

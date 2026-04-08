@@ -24,6 +24,8 @@ extern lv_obj_t * ui_SOffTimeSetOKIconLabel;
 // CUSTOM VARIABLES
 
 extern page_t page_screen_off_time_set;
+extern uint8_t scrren_off_time_value; // 全局变量，保存当前选择的息屏时间值，单位为秒
+
 
 #ifdef __cplusplus
 } /*extern "C"*/
