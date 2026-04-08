@@ -1,4 +1,3 @@
-
 #include "rtc.h"
 #include "delay.h"
 #include "user_hw_init.h"
@@ -25,6 +24,7 @@
 /* 保证该任务执行优先级最高，上电最先执行，同时不能在这里面分配堆栈，因为会释放*/
 void HwInitTask(void *argument)
 {
+		
 		int ret = 0;
 		
 		// 如果备份寄存器被写过，就不会执行配置RTC唤醒的代码，就需要我们手动配置RTC唤醒
@@ -36,11 +36,12 @@ void HwInitTask(void *argument)
 
  		/* Systick 初始化才能使用delay */
    		delay_init();
+		
+		// /* 启动电源 */
+		hw_interface.hw_power_interface->init(); // 电源管理初始化，配置电池检测引脚和充电状态检测引脚
+
 		/* 按键GPIO初始化，配置为外部中断模式 */
 		key_gpio_init(); 
-		
-		hw_interface.hw_power_interface->init(); // 电源管理初始化，配置电池检测引脚和充电状态检测引脚
-		//hw_interface.hw_power_interface->shutdown(); // 关闭电源输出，进入低功耗待机状态，等待按键事件唤醒
 		
 		/* 传感器相关初始化 */ 
 		ret = hw_interface.hw_aht20_interface->init(); // AHT20温湿度传感器初始化
@@ -82,7 +83,7 @@ void HwInitTask(void *argument)
 			
 		}
 
-		/* BLE 初始化 */
+		/* BLE KT6328 初始化 */
 		hw_interface.hw_ble_interface->init();
 		hw_interface.hw_ble_interface->disable();
 		
@@ -92,7 +93,11 @@ void HwInitTask(void *argument)
 		LCD_Fill(0,0,240,280,BLACK);
 		LCD_Open_BackLight();
 		LCD_Set_Light(50);
-			
+		LCD_ShowString(34, 280/2, (uint8_t*)"SWatch Welcome!", WHITE, BLACK, 24, 0);
+		delay_ms(1000);
+		LCD_Fill(0,0,240,280,BLACK); 
+
+
 		/* LCD 触摸CST816T初始化 */
 		CST816T_Init();
 		CST816T_Reset();

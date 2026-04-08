@@ -4,6 +4,7 @@
 // Project name: CalendarPage
 
 #include "ui_CalendarPage.h"
+#include "hw_interface.h"
 
 lv_obj_t * ui_CalendarPage = NULL;
 lv_obj_t * ui_Calendar = NULL;
@@ -28,13 +29,16 @@ lv_obj_t * ui_Calendar = NULL;
 
 void ui_CalendarPage_screen_init(void)
 {
+    hw_date_time_t date_time;
+    hw_interface.hw_rtc_interface->get_time_date(&date_time); // 从RTC获取
+
     ui_CalendarPage = lv_obj_create(NULL);
     lv_obj_remove_flag(ui_CalendarPage, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
     ui_Calendar = lv_calendar_create(ui_CalendarPage);
-    lv_calendar_set_today_date(ui_Calendar, 2025, 8, 15);
-    lv_calendar_set_showed_date(ui_Calendar, 2025, 8);
-    lv_obj_t * ui_Calendar_header = lv_calendar_header_arrow_create(ui_Calendar);
+    lv_calendar_set_today_date(ui_Calendar, 2000 + date_time.year, date_time.month, date_time.date); // 设置日历的今天日期，年份需要加上2000转换为实际年份
+    lv_calendar_set_showed_date(ui_Calendar, 2000 + date_time.year, date_time.month); // 设置日历默认显示的年月为当前年月
+    lv_obj_t * ui_CalendarPageCalendar_header = lv_calendar_header_arrow_create(ui_Calendar);
     lv_obj_set_width(ui_Calendar, 240);
     lv_obj_set_height(ui_Calendar, 280);
     lv_obj_set_align(ui_Calendar, LV_ALIGN_CENTER);

@@ -18,14 +18,14 @@ osThreadId_t HwInitTaskHandle;
 const osThreadAttr_t HwInitTask_attributes = {
   .name = "HwInitTask",
   .stack_size = 128 * 10,
-  .priority = (osPriority_t) osPriorityHigh,
+  .priority = (osPriority_t) osPriorityHigh3, //这里优先级必须给所有任务最高, 之前我优先级小于看门狗任务，导致关机后无法正常开机
 };
 
 
 osThreadId_t LvglHandlerTaskHandle;
 const osThreadAttr_t LvglHandlerTask_attributes = {
   .name = "LvglHandlerTaskHandle",
-  .stack_size = 128 * 30, // 官方处理任务栈空间至少2K，推荐>8KB。 这里给2.5K是我测试后极限的结果
+  .stack_size = 128 * 30, // 官方处理任务栈空间至少2K，推荐>8KB。 这里给128*30是我测试后极限的结果
   .priority = (osPriority_t) osPriorityLow,
 };
 

@@ -12,6 +12,10 @@ void LCD_Set_Light(uint8_t duty);
 void LCD_Open_BackLight();
 void LCD_Close_BackLight();
 
+/* 移植厂家给出的部分函数 */
+void LCD_ShowChar(u16 x,u16 y,u8 num,u16 fc,u16 bc,u8 sizey,u8 mode);
+void LCD_ShowString(u16 x,u16 y,const u8 *p,u16 fc,u16 bc,u8 sizey,u8 mode);
+void LCD_DrawPoint(u16 x,u16 y,u16 color);
 
 //每个16bit像素对应的颜色显示
 #define WHITE         	 0xFFFF

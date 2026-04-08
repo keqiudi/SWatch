@@ -10,6 +10,7 @@
 #include "page_manager.h"
 #include "SEGGER_RTT.h"
 
+// HomePage
 lv_obj_t * ui_HomePage = NULL;
 lv_obj_t * ui_BatLabel = NULL;
 lv_obj_t * ui_StepNumLabel = NULL;
@@ -59,6 +60,10 @@ uint8_t ui_LightSliderValue = 50;
 uint8_t ui_HomePageBleEnFlag = 0; // 蓝牙按钮事件使能标志，0表示未使能，1表示已使能
 uint8_t ui_HomePageNfcEnFlag = 0; // NFC按钮事件使能标志，0表示未使能，1表示已使能
 
+//PowerOffPage
+lv_obj_t * ui_PowerOffPage;
+lv_obj_t * ui_PowerOffSlider;
+lv_obj_t * ui_PowerDownLabel;
 
 // event functions
 static void home_page_event_cb(lv_event_t * e)
@@ -174,11 +179,11 @@ static void home_page_power_button_cb(lv_event_t * e)
 
     if(event_code == LV_EVENT_CLICKED)
     {
-        //page_load(&page_power);
+        page_load(&page_power_off); // 加载关机页面
     }
 }
 
-static void hoome_page_set_button_cb(lv_event_t * e)
+static void home_page_set_button_cb(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e); //获取触发事件类型
     lv_obj_t * event_target = lv_event_get_target(e);  //获取触发事件的对象(控件)
@@ -589,7 +594,7 @@ void ui_HomePage_screen_init(void)
     lv_obj_add_event_cb(ui_NFCButton, home_page_nfc_button_cb, LV_EVENT_ALL, NULL); // NFC按钮事件回调函数
     lv_obj_add_event_cb(ui_BLEButton, home_page_ble_button_cb, LV_EVENT_ALL, NULL); // 蓝牙按钮事件回调函数
     lv_obj_add_event_cb(ui_PowerButton, home_page_power_button_cb, LV_EVENT_ALL, NULL); // 电源按钮事件回调函数
-    lv_obj_add_event_cb(ui_SetButton, hoome_page_set_button_cb, LV_EVENT_ALL, NULL); // 设置按钮事件回调函数
+    lv_obj_add_event_cb(ui_SetButton, home_page_set_button_cb, LV_EVENT_ALL, NULL); // 设置按钮事件回调函数
 	lv_obj_add_event_cb(ui_LightSlider, home_page_light_slider_cb, LV_EVENT_ALL, NULL); // 亮度滑块事件回调函数
 
     ui_HomePageTimer = lv_timer_create(home_page_timer_cb,500,NULL);
@@ -664,8 +669,6 @@ static void home_page_pause()
 	  // 保留：页面切换离开时暂停动画、停止定时器、保存页面状态等。
 }
 
-
-
 page_t page_home = 
 {
 	.page_obj = &ui_HomePage,
@@ -673,4 +676,98 @@ page_t page_home =
 	.deinit = home_page_deinit,
 	.resume = home_page_resume,
 	.pause = home_page_pause,
+};
+
+
+/********************* 关机页面 ***********************/
+static void power_off_page_slider_cb(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+
+    if(event_code == LV_EVENT_VALUE_CHANGED)
+    {
+        if(lv_slider_get_value(target) >= 90)
+        {
+            hw_interface.hw_power_interface->shutdown(); //关机
+        }
+    }
+    else if(event_code == LV_EVENT_RELEASED)
+    {
+        if(lv_slider_get_value(target) < 90)
+        {
+            lv_slider_set_value(target, 0, LV_ANIM_ON); // 回弹
+        }
+    }
+}
+
+void ui_PowerOffPage_screen_init(void)
+{
+    ui_PowerOffPage = lv_obj_create(NULL);
+    lv_obj_clear_flag(ui_PowerOffPage, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+
+    ui_PowerOffSlider = lv_slider_create(ui_PowerOffPage);
+    lv_obj_set_width(ui_PowerOffSlider, 220);
+    lv_obj_set_height(ui_PowerOffSlider, 50);
+    lv_obj_set_align(ui_PowerOffSlider, LV_ALIGN_CENTER);
+    lv_obj_set_style_bg_color(ui_PowerOffSlider, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_PowerOffSlider, 128, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    lv_obj_set_style_bg_color(ui_PowerOffSlider, lv_color_hex(0x800000), LV_PART_INDICATOR | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_PowerOffSlider, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+
+    lv_obj_set_style_bg_color(ui_PowerOffSlider, lv_color_hex(0x800000), LV_PART_KNOB | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_PowerOffSlider, 0, LV_PART_KNOB | LV_STATE_DEFAULT);
+
+    ui_PowerDownLabel = lv_label_create(ui_PowerOffSlider);
+    lv_obj_set_width(ui_PowerDownLabel, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_PowerDownLabel, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_PowerDownLabel, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_PowerDownLabel, "power off");
+    lv_obj_set_style_text_color(ui_PowerDownLabel, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_PowerDownLabel, 200, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_PowerDownLabel, &lv_font_montserrat_14, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+	//events
+	lv_obj_add_event_cb(ui_PowerOffSlider, power_off_page_slider_cb, LV_EVENT_ALL, NULL);
+
+}
+
+void ui_PowerOffPage_screen_destroy(void)
+{
+    if(ui_PowerOffPage) lv_obj_del(ui_PowerOffPage);
+
+    // NULL screen variables
+    ui_PowerOffPage = NULL;
+    ui_PowerOffSlider = NULL;
+    ui_PowerDownLabel = NULL;
+}
+
+static void power_off_page_init()
+{
+	ui_PowerOffPage_screen_init();
+}
+
+static void power_off_page_deinit()
+{
+    ui_PowerOffPage_screen_destroy();
+}
+
+static void power_off_page_resume() 
+{
+    //保留
+}
+
+static void power_off_page_pause()
+{
+    //保留
+}
+
+page_t page_power_off = 
+{
+    .page_obj = &ui_PowerOffPage,
+    .init = power_off_page_init,
+    .deinit = power_off_page_deinit,
+    .resume = power_off_page_resume,
+    .pause = power_off_page_pause,
 };

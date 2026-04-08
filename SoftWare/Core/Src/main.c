@@ -26,9 +26,10 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-
+#include "hw_interface.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "bsp_power.h"
 
 /* USER CODE END Includes */
 
@@ -81,7 +82,6 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
   /* USER CODE END Init */
 
   /* Configure the system clock */
