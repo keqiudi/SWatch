@@ -14,6 +14,7 @@
 #include "lv_port_indev.h"
 #include "lvgl.h"
 #include "ui.h"
+#include "ui_DateTimeMenuPage.h"
 
 #include "device.h"
 #include "hw_interface.h"
@@ -32,7 +33,6 @@ void HwInitTask(void *argument)
 		{
 		Error_Handler();
 		}
-
 
  		/* Systick 初始化才能使用delay */
    		delay_init();
@@ -80,7 +80,32 @@ void HwInitTask(void *argument)
 		eeprom_init();
 		if(!eeprom_check())
 		{
+			uint8_t rBuffer[3];
+	
+			eeprom_read_settings(rBuffer, 0x10, 2); // 从地址0x10读取2字节数据, 0x10:手腕检测设置，0x11:同步APP设置
 			
+			RTC_DateTypeDef nowdate;
+			HAL_RTC_GetDate(&hrtc, &nowdate, RTC_FORMAT_BIN);
+			if((rBuffer[0] !=0 && rBuffer[0] != 1) || (rBuffer[1] != 0 && rBuffer[1] != 1)) // 读取的数据不合法时，使用默认设置
+			{
+				hw_interface.hw_mpu6050_interface->wrist_is_enabled = 0; 
+				app_sync_en = 0; 
+			}
+			else
+			{
+				hw_interface.hw_mpu6050_interface->wrist_is_enabled = rBuffer[0]; // 恢复手腕检测设置
+				app_sync_en = rBuffer[1]; // 恢复同步APP设置
+			}
+
+			eeprom_read_settings(rBuffer, 0x20, 3);
+			if(rBuffer[0] == nowdate.Date) // 如果保存的日期与当前日期一致，说明是同一天，恢复当天的步数数据
+			{
+				uint16_t steps = ((uint16_t)rBuffer[1] << 8) | rBuffer[2];
+				if(hw_interface.hw_mpu6050_interface->state == DEVICE_STATUS_INITED)
+				{
+					hw_interface.hw_mpu6050_interface->set_steps(steps); // 恢复步数数据
+				}
+			}
 		}
 
 		/* BLE KT6328 初始化 */

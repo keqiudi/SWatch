@@ -20,7 +20,7 @@ static uint8_t AHT20_read_status(void)
 	i2c_soft_send_byte(&AHT20_bus,AHT20_CMD_READ);
 	i2c_soft_wait_ack(&AHT20_bus);
 	status = i2c_soft_read_byte(&AHT20_bus);
-  i2c_soft_send_not_ack(&AHT20_bus);
+  	i2c_soft_send_not_ack(&AHT20_bus);
 	i2c_soft_stop(&AHT20_bus);
 	
 	SEGGER_RTT_printf(0,"status: %x\n",status);
@@ -33,7 +33,7 @@ uint8_t AHT20_init(void)
 	
 	delay_ms(40);
 	
-	if((AHT20_read_status() & 0x08) != 0x08) //status的bit[3]�?1
+	if((AHT20_read_status() & 0x08) != 0x08) //status的bit[3]�?1
 	{
 		i2c_soft_start(&AHT20_bus);
 		i2c_soft_send_byte(&AHT20_bus,AHT20_CMD_WRITE);
@@ -85,7 +85,7 @@ uint8_t AHT20_read(float* temperature,float* humidity)
 		{
 			delay_ms(5);
 			timeout_cnt--;
-			if(!timeout_cnt)// 超时直接退�?
+			if(!timeout_cnt)// 超时直接退�?
 					return 1;
 			AHT20_read_status();
 		}

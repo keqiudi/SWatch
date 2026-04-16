@@ -878,6 +878,16 @@
               <FileType>5</FileType>
               <FilePath>..\APP\User\Tasks\Inc\user_runMode_task.h</FilePath>
             </File>
+            <File>
+              <FileName>user_dataSave_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\Tasks\Src\user_dataSave_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>user_dataSave_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\Tasks\Inc\user_dataSave_task.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

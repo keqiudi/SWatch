@@ -124,16 +124,16 @@ void SensorDataUpdateTask(void *argument)
             }
 
 			// 步数更新
-            
             if(hw_interface.hw_mpu6050_interface->state == DEVICE_STATUS_INITED)
             {
                 hw_interface.hw_mpu6050_interface->steps = hw_interface.hw_mpu6050_interface->get_steps();
             }
-
-			// 心率更新
             
-            // 保存数据到EEPROM
+            // 心率更新
 
+            // 保存数据到EEPROM
+            uint8_t save_msg = 0;
+            osMessageQueuePut(DataSaveMsgQueue, &save_msg, 0, 1); // 通过消息队列通知数据保存任务保存数据
 		}
 
 		 /* Environment page: AHT20 */
@@ -164,8 +164,8 @@ void SensorDataUpdateTask(void *argument)
             if(hw_interface.hw_ecompass_interface->state == DEVICE_STATUS_INITED)
             {
                 int16_t ax, ay, az, mx, my, mz;
-                lsm303dlhc_read_accel(&ax, &ay, &az);
-                lsm303dlhc_read_magnetic(&mx, &my, &mz);
+                lsm303dlhc_read_accel(&ax, &ay, &az); // 计算方位角需要加速度计数据做倾斜补偿
+                lsm303dlhc_read_magnetic(&mx, &my, &mz); // 磁力计数据用于计算方位角
 
                 float direction = lsm303dlhc_calc_azimuth_angle(ax, ay, az, mx, my, mz);
                 if(direction < 0)

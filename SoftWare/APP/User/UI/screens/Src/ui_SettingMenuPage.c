@@ -286,8 +286,6 @@ void ui_SettingMenuPage_screen_init(void)
     lv_obj_set_align(ui_WristUpSwitch, LV_ALIGN_RIGHT_MID);
     if(hw_interface.hw_mpu6050_interface->wrist_is_enabled)
         lv_obj_add_state(ui_WristUpSwitch, LV_STATE_CHECKED); // 根据当前设置状态设置开关初始状态
-    else
-        lv_obj_clear_state(ui_WristUpSwitch, LV_STATE_CHECKED);
 
     ui_MenuPwdSetPanel = lv_obj_create(ui_SettingMenuPage);
     lv_obj_set_width(ui_MenuPwdSetPanel, 240);

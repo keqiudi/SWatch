@@ -31,6 +31,7 @@ extern lv_obj_t * ui_PointLabel7;
 // CUSTOM VARIABLES
 
 extern page_t page_date_time_menu;
+extern uint8_t app_sync_en;
 
 #ifdef __cplusplus
 } /*extern "C"*/

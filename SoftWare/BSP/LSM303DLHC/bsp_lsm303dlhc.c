@@ -305,6 +305,7 @@ int lsm303dlhc_calc_x_axis_angle(int16_t ax, int16_t ay, int16_t az)
 	return A*100;
 }
 
+// 用加速度计算俯仰/横滚做倾斜补偿，再用磁力计水平分量算方位角
 float lsm303dlhc_calc_azimuth_angle(int ax,int ay,int az,int mx,int my,int mz)
 {
 	float pitch, roll, Hy, Hx, Azimuth; 

@@ -56,6 +56,7 @@ uint8_t ui_DataWeekdayValue = 2;
 uint8_t ui_BatArcValue = 80;
 uint16_t ui_StepNumValue = 0;
 uint8_t ui_LightSliderValue = 50;
+uint8_t ui_HRNumValue = 75;
 
 uint8_t ui_HomePageBleEnFlag = 0; // 蓝牙按钮事件使能标志，0表示未使能，1表示已使能
 uint8_t ui_HomePageNfcEnFlag = 0; // NFC按钮事件使能标志，0表示未使能，1表示已使能
@@ -127,6 +128,13 @@ static void home_page_timer_cb(lv_timer_t * timer)
             ui_StepNumValue = hw_interface.hw_mpu6050_interface->steps;
             sprintf(value_buffer, "%d",ui_StepNumValue);
             lv_label_set_text(ui_StepNumLabel, value_buffer); // 更新步数显示
+        }
+
+        if(ui_HRNumValue != hw_interface.hw_hrsensor_interface->hr_rate)
+        {
+            ui_HRNumValue = hw_interface.hw_hrsensor_interface->hr_rate;
+            sprintf(value_buffer, "%d",ui_HRNumValue);
+            lv_label_set_text(ui_HRNumLabel, value_buffer); // 更新心率显示
         }
         
     }
@@ -237,7 +245,7 @@ void ui_HomePage_screen_init(void)
     lv_obj_set_style_text_font(ui_StepNumLabel, &ui_font_OpenSasnsItalic15, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_HRNumLabel = lv_label_create(ui_HomePage);
-    lv_obj_set_width(ui_HRNumLabel, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_width(ui_HRNumLabel, LV_SIZE_CONTENT);   /// 1 
     lv_obj_set_height(ui_HRNumLabel, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_HRNumLabel, -30);
     lv_obj_set_y(ui_HRNumLabel, 59);

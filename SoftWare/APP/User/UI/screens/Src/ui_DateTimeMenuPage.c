@@ -23,6 +23,8 @@ lv_obj_t * ui_PointLabel6 = NULL;
 lv_obj_t * ui_PointLabel7 = NULL;
 // event funtions
 
+uint8_t app_sync_en = 0; // 同步APP开关状态标志，0表示关闭，1表示打开
+
 static void dt_menu_page_event_cb(lv_event_t* e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -61,6 +63,23 @@ static void time_set_panel_event_cb(lv_event_t* e)
 
 }
 
+static void sync_app_switch_event_cb(lv_event_t* e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e); // 获取事件
+    lv_obj_t * target = lv_event_get_target(e);
+    
+    if(event_code == LV_EVENT_VALUE_CHANGED)
+    {
+        if(lv_obj_has_state(ui_SyncAppSwitch, LV_STATE_CHECKED))
+        {
+            app_sync_en = 1; // 同步APP开关打开
+        }
+        else
+        {
+            app_sync_en = 0; // 同步APP开关关闭
+        }
+    }
+}
 
 
 // build funtions
@@ -98,6 +117,8 @@ void ui_DateTimeMenuPage_screen_init(void)
     lv_obj_set_width(ui_SyncAppSwitch, 70);
     lv_obj_set_height(ui_SyncAppSwitch, 30);
     lv_obj_set_align(ui_SyncAppSwitch, LV_ALIGN_RIGHT_MID);
+    if(app_sync_en)
+        lv_obj_add_state(ui_SyncAppSwitch, LV_STATE_CHECKED); // 根据当前设置状态设置开关初始状态
 
     ui_MenuDateSetPanel = lv_obj_create(ui_DateTimeMenuPage);
     lv_obj_set_width(ui_MenuDateSetPanel, 240);
@@ -199,8 +220,8 @@ void ui_DateTimeMenuPage_screen_init(void)
 
     lv_obj_add_event_cb(ui_MenuDateSetPanel, date_set_panel_event_cb, LV_EVENT_CLICKED, NULL);
     lv_obj_add_event_cb(ui_MenuTimeSetPanel, time_set_panel_event_cb, LV_EVENT_CLICKED, NULL);
-
     lv_obj_add_event_cb(ui_DateTimeMenuPage, dt_menu_page_event_cb, LV_EVENT_GESTURE, NULL);
+    lv_obj_add_event_cb(ui_SyncAppSwitch,sync_app_switch_event_cb, LV_EVENT_ALL, NULL);
     
 }
 

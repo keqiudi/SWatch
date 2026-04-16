@@ -31,6 +31,6 @@ hw_hrsensor_interface_t hw_em7028_interface = {
     .state = DEVICE_STATUS_UNINIT,
     .hr_rate = 0,
     .spo2 = 0,
-    .init = hw_hrsensor_init, // 这里需要实现初始化函数
-    .diable = hw_hrsensor_disable, // 这里需要实现睡眠函数
+    .init = hw_hrsensor_init, 
+    .diable = hw_hrsensor_disable, 
 };
