@@ -42,7 +42,10 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-extern uint8_t hard_int_charge_flag;
+extern uint8_t uart_int_receive_str[25]; // uart接收缓冲区，存储接收到的数据字符串
+extern uint8_t hard_int_charge_flag; // 充电检测标志位，0表示未检测到充电事件，1表示检测到充电事件
+extern uint8_t hard_int_uart_flag; // uart接收完成标志位，0表示未接收完成，1表示接收完成
+extern uint8_t hard_int_mpu_flag; // mpu中断标志位，0表示未检测到mpu事件，1表示检测到mpu事件
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

@@ -437,9 +437,9 @@ ARM Macro Assembler    Page 7
   174 00000000                 IMPORT           SystemInit
   175 00000000                 IMPORT           __main
   176 00000000         
-  177 00000000 4809            LDR              R0, =SystemInit
+  177 00000000 4806            LDR              R0, =SystemInit
   178 00000002 4780            BLX              R0
-  179 00000004 4809            LDR              R0, =__main
+  179 00000004 4806            LDR              R0, =__main
   180 00000006 4700            BX               R0
   181 00000008                 ENDP
   182 00000008         
@@ -719,37 +719,25 @@ ARM Macro Assembler    Page 11
 ARM Macro Assembler    Page 12 
 
 
-  361 0000001C         
-  362 0000001C                 IMPORT           __use_two_region_memory
-  363 0000001C                 EXPORT           __user_initial_stackheap
-  364 0000001C         
-  365 0000001C         __user_initial_stackheap
-  366 0000001C         
-  367 0000001C 4804            LDR              R0, =  Heap_Mem
-  368 0000001E 4905            LDR              R1, =(Stack_Mem + Stack_Size)
-  369 00000020 4A05            LDR              R2, = (Heap_Mem +  Heap_Size)
-  370 00000022 4B06            LDR              R3, = Stack_Mem
-  371 00000024 4770            BX               LR
-  372 00000026         
-  373 00000026 00 00           ALIGN
-  374 00000028         
-  375 00000028                 ENDIF
-  376 00000028         
-  377 00000028                 END
+  355 0000001C         
+  356 0000001C                 EXPORT           __initial_sp
+  357 0000001C                 EXPORT           __heap_base
+  358 0000001C                 EXPORT           __heap_limit
+  359 0000001C         
+  360 0000001C                 ELSE
+  375                          ENDIF
+  376 0000001C         
+  377 0000001C                 END
               00000000 
-              00000000 
-              00000000 
-              00000400 
-              00000200 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=swatch\startup_stm32f411xe.d -oswatch\startup_stm32f411xe.o -I.
 ./Core/Inc -I../Drivers/CMSIS/Include -I.\RTE\_SWatch -IC:\Users\keqiu\study\so
 ftware\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include -IC:\Users\keqiu\stu
 dy\software\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\
-STM32F4xx\Include --predefine="__UVISION_VERSION SETA 528" --predefine="_RTE_ S
-ETA 1" --predefine="STM32F411xE SETA 1" --list=..\startup_stm32f411xe.lst start
-up_stm32f411xe.s
+STM32F4xx\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSIO
+N SETA 528" --predefine="_RTE_ SETA 1" --predefine="STM32F411xE SETA 1" --list=
+..\startup_stm32f411xe.lst startup_stm32f411xe.s
 
 
 
@@ -770,9 +758,8 @@ Symbol: Stack_Mem
    Definitions
       At line 35 in file startup_stm32f411xe.s
    Uses
-      At line 368 in file startup_stm32f411xe.s
-      At line 370 in file startup_stm32f411xe.s
-
+      None
+Comment: Stack_Mem unused
 __initial_sp 00000400
 
 Symbol: __initial_sp
@@ -780,7 +767,8 @@ Symbol: __initial_sp
       At line 36 in file startup_stm32f411xe.s
    Uses
       At line 60 in file startup_stm32f411xe.s
-Comment: __initial_sp used once
+      At line 356 in file startup_stm32f411xe.s
+
 3 symbols
 
 
@@ -802,25 +790,24 @@ Symbol: Heap_Mem
    Definitions
       At line 47 in file startup_stm32f411xe.s
    Uses
-      At line 367 in file startup_stm32f411xe.s
-      At line 369 in file startup_stm32f411xe.s
-
+      None
+Comment: Heap_Mem unused
 __heap_base 00000000
 
 Symbol: __heap_base
    Definitions
       At line 46 in file startup_stm32f411xe.s
    Uses
-      None
-Comment: __heap_base unused
+      At line 357 in file startup_stm32f411xe.s
+Comment: __heap_base used once
 __heap_limit 00000200
 
 Symbol: __heap_limit
    Definitions
       At line 48 in file startup_stm32f411xe.s
    Uses
-      None
-Comment: __heap_limit unused
+      At line 358 in file startup_stm32f411xe.s
+Comment: __heap_limit used once
 4 symbols
 
 
@@ -1540,15 +1527,7 @@ Symbol: WWDG_IRQHandler
       At line 78 in file startup_stm32f411xe.s
       At line 229 in file startup_stm32f411xe.s
 
-__user_initial_stackheap 0000001C
-
-Symbol: __user_initial_stackheap
-   Definitions
-      At line 365 in file startup_stm32f411xe.s
-   Uses
-      At line 363 in file startup_stm32f411xe.s
-Comment: __user_initial_stackheap used once
-70 symbols
+69 symbols
 
 
 
@@ -1562,8 +1541,7 @@ Symbol: Heap_Size
       At line 43 in file startup_stm32f411xe.s
    Uses
       At line 47 in file startup_stm32f411xe.s
-      At line 369 in file startup_stm32f411xe.s
-
+Comment: Heap_Size used once
 Stack_Size 00000400
 
 Symbol: Stack_Size
@@ -1571,8 +1549,7 @@ Symbol: Stack_Size
       At line 32 in file startup_stm32f411xe.s
    Uses
       At line 35 in file startup_stm32f411xe.s
-      At line 368 in file startup_stm32f411xe.s
-
+Comment: Stack_Size used once
 __Vectors_Size 00000198
 
 Symbol: __Vectors_Size
@@ -1604,13 +1581,5 @@ Symbol: __main
    Uses
       At line 179 in file startup_stm32f411xe.s
 Comment: __main used once
-__use_two_region_memory 00000000
-
-Symbol: __use_two_region_memory
-   Definitions
-      At line 362 in file startup_stm32f411xe.s
-   Uses
-      None
-Comment: __use_two_region_memory unused
-3 symbols
-424 symbols in table
+2 symbols
+421 symbols in table

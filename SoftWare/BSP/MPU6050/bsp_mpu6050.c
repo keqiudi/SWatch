@@ -195,7 +195,7 @@ static void mpu6050_int_pin_init()
 	GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING; //锟斤拷锟斤拷锟斤拷锟斤拷为锟斤拷锟解部锟叫讹拷模式锟斤拷锟铰斤拷锟截达拷锟斤拷
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
 	// GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH; // 锟斤拷锟诫不锟斤拷Speed锟街讹拷锟斤拷效
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); //HAL锟斤拷锟斤拷锟节诧拷锟皆讹拷锟斤拷锟紼XTI锟斤拷锟斤拷锟斤拷茫锟斤拷锟斤拷锟斤拷侄锟斤拷锟斤拷锟紼XTI
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); //HAL锟斤拷锟斤拷锟节诧拷锟皆讹拷锟斤拷锟紼XTI锟斤拷锟斤拷锟斤拷茫锟斤拷锟斤拷锟斤拷侄锟斤拷锟斤拷锟紼XTI
 	
 	// NVIC锟斤拷锟斤拷
 	HAL_NVIC_SetPriority(EXTI15_10_IRQn,2,0); //锟叫讹拷锟斤拷锟饺硷拷

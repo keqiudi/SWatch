@@ -40,8 +40,8 @@ void lv_mem_monitor_task(lv_timer_t * timer)
 void LvglHandlerTask(void *argument)
 {
 	
-   lv_log_register_print_cb(lvgl_log_cb);  
-   lv_timer_create(lv_mem_monitor_task, 1000, NULL); // 输出lvgl内存池占用情况，便于调试
+   //lv_log_register_print_cb(lvgl_log_cb);  
+   //lv_timer_create(lv_mem_monitor_task, 1000, NULL); // 输出lvgl内存池占用情况，便于调试
      uint8_t msg_idle_break = 0;
 	while(1)
 	{

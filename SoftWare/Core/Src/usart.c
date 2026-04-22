@@ -19,9 +19,9 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
-#include "SEGGER_RTT.h"
-/* USER CODE BEGIN 0 */
 
+/* USER CODE BEGIN 0 */
+#include "stdio.h"
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;
@@ -53,7 +53,7 @@ void MX_USART1_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART1_Init 2 */
-    //SEGGER_RTT_printf(0,"ok\r\n");
+	
   /* USER CODE END USART1_Init 2 */
 
 }
@@ -158,6 +158,11 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
-
+// 重定向printf函数，使其通过UART发送数据
+// 请注意！！！使用串口重定向时，一定要在keil打开Use MicroLibrary函数库选项，否则printf函数会调用半主机模式的输出函数，导致无法通过UART发送数据
+int fputc(int ch, FILE *f)
+{
+  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
+  return ch;
+}
 /* USER CODE END 1 */
-

@@ -9,6 +9,7 @@
 #include "user_sensor_task.h"
 #include "user_runMode_task.h"
 #include "user_dataSave_task.h"
+#include "user_messageSend_task.h"
 #include "SEGGER_RTT.h"
 #include "FreeRTOS.h"
 #include "task.h"
@@ -107,6 +108,13 @@ const osThreadAttr_t DataSaveTask_attributes = {
   .priority = (osPriority_t) osPriorityLow2,
 };
 
+// 
+osThreadId_t MessageSendTaskHandle;
+const osThreadAttr_t MessageSendTask_attributes = {
+  .name = "MessageSendTask",
+  .stack_size = 128 * 5,
+  .priority = (osPriority_t) osPriorityLow1,
+};
 
 /* 定时器定义 */
 osTimerId_t IdleTimerHandle;
@@ -147,8 +155,9 @@ void user_tasks_init()
   IdleEnterTaskHandle = osThreadNew(IdleEnterTask, NULL, &IdleEnterTask_attributes); // 进入Idle模式空闲任务
   StopEnterTaskHandle = osThreadNew(StopEnterTask, NULL, &StopEnterTask_attributes); // 进入Stop模式任务
   DataSaveTaskHandle = osThreadNew(DataSaveTask, NULL, &DataSaveTask_attributes); // 数据保存任务
-
-  uint8_t msg_update_home = 0;
+  MessageSendTaskHandle = osThreadNew(MessageSendTask, NULL, &MessageSendTask_attributes); // 消息发送任务
+  
+	uint8_t msg_update_home = 0;
   osMessageQueuePut(HomeUpdataMsgQueue, &msg_update_home, 0, 0); // 启动时先更新一次HOME页面数据
 }	
 

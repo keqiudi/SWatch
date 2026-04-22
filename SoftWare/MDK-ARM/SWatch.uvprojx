@@ -81,7 +81,7 @@
           </BeforeMake>
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
-            <RunUserProg2>1</RunUserProg2>
+            <RunUserProg2>0</RunUserProg2>
             <UserProg1Name></UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
@@ -188,7 +188,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -887,6 +887,16 @@
               <FileName>user_dataSave_task.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\APP\User\Tasks\Inc\user_dataSave_task.h</FilePath>
+            </File>
+            <File>
+              <FileName>user_messageSend_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\User\Tasks\Src\user_messageSend_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>user_messageSend_task.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\User\Tasks\Inc\user_messageSend_task.h</FilePath>
             </File>
           </Files>
         </Group>

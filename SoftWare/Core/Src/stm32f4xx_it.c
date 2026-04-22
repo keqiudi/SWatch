@@ -20,7 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f4xx_it.h"
-//#include "SEGGER_RTT.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -63,7 +63,10 @@ extern DMA_HandleTypeDef hdma_usart1_tx;
 extern UART_HandleTypeDef huart1;
 extern TIM_HandleTypeDef htim1;
 
+uint8_t uart_int_receive_str[25] = {0}; // uart接收缓冲区，存储接收到的数据字符串
+uint8_t hard_int_uart_flag=0; // uart接收完成标志位，0表示未接收完成，1表示接收完成
 uint8_t hard_int_charge_flag=0; // 充电检测标志位，0表示未检测到充电事件，1表示检测到充电事件
+uint8_t hard_int_mpu_flag=0; // mpu中断标志位，0表示未检测到mpu事件，1表示检测到mpu事件
 
 /* USER CODE BEGIN EV */
 
@@ -202,7 +205,14 @@ void TIM1_UP_TIM10_IRQHandler(void)
 void USART1_IRQHandler(void)
 {
   /* USER CODE BEGIN USART1_IRQn 0 */
-
+  // 判断是否是空闲中断，空闲中断表示接收完成
+  if(__HAL_UART_GET_FLAG(&huart1,UART_FLAG_IDLE)!=RESET)
+  {
+    hard_int_uart_flag = 1;
+    __HAL_UART_CLEAR_FLAG(&huart1,UART_FLAG_IDLE);
+    HAL_UART_DMAStop(&huart1); // 停止DMA传输，防止继续接收数据覆盖缓冲区
+    HAL_UART_Receive_DMA(&huart1, uart_int_receive_str, 25); // 重新开启DMA接收，为下一次接收做准备
+  }
   /* USER CODE END USART1_IRQn 0 */
   HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */
@@ -271,7 +281,7 @@ void EXTI4_IRQHandler(void)
 {
 
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
-  
+
 }
 
 
@@ -284,5 +294,15 @@ void EXTI9_5_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
 
 }
+
+// /**
+//   * @brief This function handles EXTI line[15:10] interrupts.MPU Interrupt
+//   */
+// void EXTI15_10_IRQHandler(void)
+// {
+//   hard_int_mpu_flag = 1;
+//   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_12);
+
+// }
 
 /* USER CODE END 1 */

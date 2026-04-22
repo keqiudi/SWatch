@@ -1,7 +1,7 @@
 #include "rtc.h"
 #include "delay.h"
-#include "user_hw_init.h"
-#include "user_task_init.h"
+#include "usart.h"
+#include "stm32f4xx_it.h"
 
 #include "bsp_lcd.h"
 #include "bsp_touch_cst816t.h"
@@ -18,6 +18,8 @@
 
 #include "device.h"
 #include "hw_interface.h"
+#include "user_hw_init.h"
+#include "user_task_init.h"
 
 #include "SEGGER_RTT.h"
 
@@ -33,6 +35,9 @@ void HwInitTask(void *argument)
 		{
 		Error_Handler();
 		}
+
+		HAL_UART_Receive_DMA(&huart1,(uint8_t*)uart_int_receive_str,25); // 开启UART DMA接收，接收数据存储在hard_int_receive_str缓冲区，长度为25字节
+    	__HAL_UART_ENABLE_IT(&huart1,UART_IT_IDLE); // 使能UART空闲中断，空闲中断表示接收完成
 
  		/* Systick 初始化才能使用delay */
    		delay_init();
