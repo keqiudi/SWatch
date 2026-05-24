@@ -16,14 +16,14 @@ uint8_t mpu6050_write_len(uint8_t addr,uint8_t reg_addr,uint8_t len,uint8_t* buf
 {
 	uint8_t i;
 	i2c_soft_start(&mpu6050_bus);
-	i2c_soft_send_byte(&mpu6050_bus,(addr << 1)|0); //鍐欏叆鍦板潃
-	if(i2c_soft_wait_ack(&mpu6050_bus)) // 闈炲簲绛斿�勭悊
+	i2c_soft_send_byte(&mpu6050_bus,(addr << 1)|0); // 写入I2C地址
+	if(i2c_soft_wait_ack(&mpu6050_bus)) // 无应答处理
 	{
 		 i2c_soft_stop(&mpu6050_bus);
 		 return 1;
 	}
 	i2c_soft_send_byte(&mpu6050_bus,reg_addr);
-	if(i2c_soft_wait_ack(&mpu6050_bus)) // 闈炲簲绛斿�勭悊
+	if(i2c_soft_wait_ack(&mpu6050_bus)) // 无应答处理
 	{
 		 i2c_soft_stop(&mpu6050_bus);
 		 return 1;
@@ -31,7 +31,7 @@ uint8_t mpu6050_write_len(uint8_t addr,uint8_t reg_addr,uint8_t len,uint8_t* buf
 	for(i=0;i<len;i++)
 	{
 		i2c_soft_send_byte(&mpu6050_bus,buf[i]);
-		if(i2c_soft_wait_ack(&mpu6050_bus)) // 闈炲簲绛斿�勭悊
+		if(i2c_soft_wait_ack(&mpu6050_bus)) // 无应答处理
 		{
 			 i2c_soft_stop(&mpu6050_bus);
 			 return 1;
@@ -44,22 +44,22 @@ uint8_t mpu6050_write_len(uint8_t addr,uint8_t reg_addr,uint8_t len,uint8_t* buf
 uint8_t mpu6050_read_len(uint8_t addr,uint8_t reg_addr,uint8_t len,uint8_t* buf)
 {
 	i2c_soft_start(&mpu6050_bus);
-	i2c_soft_send_byte(&mpu6050_bus,(addr << 1)|0); //鍐欏叆鍦板潃
-	if(i2c_soft_wait_ack(&mpu6050_bus)) // 闈炲簲绛斿�勭悊
+	i2c_soft_send_byte(&mpu6050_bus,(addr << 1)|0); // 写入I2C地址
+	if(i2c_soft_wait_ack(&mpu6050_bus)) // 无应答处理
 	{
 		 i2c_soft_stop(&mpu6050_bus);
 		 return 1;
 	}
 	i2c_soft_send_byte(&mpu6050_bus,reg_addr);
-	if(i2c_soft_wait_ack(&mpu6050_bus)) // 闈炲簲绛斿�勭悊
+	if(i2c_soft_wait_ack(&mpu6050_bus)) // 无应答处理
 	{
 		 i2c_soft_stop(&mpu6050_bus);
 		 return 1;
 	}    
 	
 	i2c_soft_start(&mpu6050_bus);
-	i2c_soft_send_byte(&mpu6050_bus,(addr << 1)|1); //璇绘搷浣滐紝鍦板潃鏈€鍚庝竴浣嶄负1
-	if(i2c_soft_wait_ack(&mpu6050_bus)) // 闈炲簲绛斿�勭悊
+	i2c_soft_send_byte(&mpu6050_bus,(addr << 1)|1); // 读操作，地址最低位为1
+	if(i2c_soft_wait_ack(&mpu6050_bus)) // 无应答处理
 	{
 		 i2c_soft_stop(&mpu6050_bus);
 		 return 1;
@@ -94,21 +94,21 @@ static uint8_t mpu6050_write_reg(uint8_t reg_addr,uint8_t data)
 	i2c_soft_start(&mpu6050_bus);
 	
 	i2c_soft_send_byte(&mpu6050_bus,MPU6050_I2C_ADDRESS_WRITE);
-	if(i2c_soft_wait_ack(&mpu6050_bus)) // 锟斤拷应锟斤拷锟斤拷
+	if(i2c_soft_wait_ack(&mpu6050_bus)) // 无应答处理
 	{
 		 i2c_soft_stop(&mpu6050_bus);
 		 return 1;
 	}
 	
 	i2c_soft_send_byte(&mpu6050_bus,reg_addr);
-	if(i2c_soft_wait_ack(&mpu6050_bus)) // 锟斤拷应锟斤拷锟斤拷
+	if(i2c_soft_wait_ack(&mpu6050_bus)) // 无应答处理
 	{
 		 i2c_soft_stop(&mpu6050_bus);
 		 return 1;
 	}
 	
 	i2c_soft_send_byte(&mpu6050_bus,data);
-	if(i2c_soft_wait_ack(&mpu6050_bus)) // 锟斤拷应锟斤拷锟斤拷
+	if(i2c_soft_wait_ack(&mpu6050_bus)) // 无应答处理
 	{
 		 i2c_soft_stop(&mpu6050_bus);
 		 return 1;
@@ -185,66 +185,66 @@ void mpu6050_i2c_pin_init()
 
 static void mpu6050_int_pin_init()
 {
-	// 时锟斤拷使锟斤拷
+	// 使能GPIOB时钟
   __HAL_RCC_GPIOB_CLK_ENABLE();
 	
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
 	
-	// 锟斤拷锟斤拷锟斤拷锟斤拷
+	// 配置INT引脚为下降沿触发中断
 	GPIO_InitStruct.Pin = MPU6050_INT_PIN;
-	GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING; //锟斤拷锟斤拷锟斤拷锟斤拷为锟斤拷锟解部锟叫讹拷模式锟斤拷锟铰斤拷锟截达拷锟斤拷
+	GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING; //配置引脚为，外部中断模式，下降沿触发
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	// GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH; // 锟斤拷锟诫不锟斤拷Speed锟街讹拷锟斤拷效
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); //HAL锟斤拷锟斤拷锟节诧拷锟皆讹拷锟斤拷锟紼XTI锟斤拷锟斤拷锟斤拷茫锟斤拷锟斤拷锟斤拷侄锟斤拷锟斤拷锟紼XTI
+	// GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH; // 输入不用Speed字段无效
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); //HAL库在内部自动完成EXTI相关配置，不用手动配置EXTI
 	
-	// NVIC锟斤拷锟斤拷
-	HAL_NVIC_SetPriority(EXTI15_10_IRQn,2,0); //锟叫讹拷锟斤拷锟饺硷拷
-	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn); //PB12, 锟斤拷应锟叫讹拷锟斤拷锟斤拷EXTI15_10
+	// NVIC配置
+	HAL_NVIC_SetPriority(EXTI15_10_IRQn,2,0); //中断优先级
+	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn); // PB12对应EXTI15_10
 }
 
 static void mpu6050_motion_init()
 {
-	mpu6050_write_reg(MPU6050_REG_MOT_THR,0x01); // 锟斤拷锟矫硷拷锟斤拷锟街�, 锟斤拷锟斤拷1LSB锟侥硷拷锟劫度变化锟斤拷锟斤拷锟剿讹拷
-	mpu6050_write_reg(MPU6050_REG_MOT_DUR,0x01); // 锟斤拷锟斤拷锟剿讹拷锟斤拷锟斤拷锟斤拷时锟斤拷为1ms, 锟斤拷锟斤拷1ms锟斤拷为锟剿讹拷锟斤拷
+	mpu6050_write_reg(MPU6050_REG_MOT_THR,0x01); // 设置检测运动阈值, 大于1LSB的加速度变化才算运动
+	mpu6050_write_reg(MPU6050_REG_MOT_DUR,0x01); // 设置运动检测持续时间为1ms, 大于1ms认为运动了
 }
 
 
 uint8_t mpu6050_reset()
 {
 	uint8_t res = 0;
-	res = mpu6050_write_reg(MPU6050_REG_PWR_MGMT_1,0x80);// bit7锟斤拷1锟斤拷锟斤拷位MPU6050,锟斤拷锟斤拷锟斤拷锟叫寄达拷锟斤拷为默锟斤拷值
+	res = mpu6050_write_reg(MPU6050_REG_PWR_MGMT_1,0x80); // bit7置1，复位MPU6050,重置所有寄存器为默认值
 	if(res == 1)
 	{
 		return res;
 	}
-	delay_ms(100); // 锟街诧拷要锟斤拷锟斤拷时100ms,锟饺达拷锟饺讹拷
+	delay_ms(100); // 手册要求延时100ms,等待稳定
 	
 	return res;
 }
 
 uint8_t mpu6050_init()
 {
-	// mpu6050锟斤拷I2C锟斤拷锟斤拷锟斤拷懦锟绞硷拷锟�
+	// 初始化I2C引脚
 	mpu6050_i2c_pin_init(); 
 	
 	//bsp_mpu6050_reset();
 	
-	// 默锟斤拷锟较碉拷睡锟斤拷模式锟斤拷锟饺伙拷锟斤拷锟借备
+	// 默认上电睡眠模式，先唤醒设备
 	mpu6050_write_reg(MPU6050_REG_PWR_MGMT_1,0x00);
 	
-	// 锟斤拷锟斤拷锟饺讹拷时锟斤拷源, 选锟斤拷锟街册建锟斤拷锟絰锟斤拷锟斤拷锟斤拷锟角参匡拷锟斤拷锟脚猴拷通锟斤拷PLL锟斤拷频锟结供时锟斤拷
+	// 设置稳定时钟源, 选择手册建议的x轴陀螺仪参考的信号通过PLL倍频提供时钟
 	mpu6050_write_reg(MPU6050_REG_PWR_MGMT_1,0x01);
 	
-	// 锟斤拷锟矫诧拷锟斤拷锟斤拷50Hz
+	// 采样率设为50Hz
 	mpu6050_set_sample_rate(50);
-	// CONFIG锟侥达拷锟斤拷锟斤拷锟矫ｏ拷
-	// 锟斤拷锟斤拷锟解部同锟斤拷锟斤拷锟杰ｏ拷锟斤拷锟街碉拷通锟剿诧拷锟斤拷锟斤拷锟矫ｏ拷DLPF_CFG = bits 2:0 = 100
-  // 锟斤拷应锟斤拷锟劫度硷拷(Accelerometer)锟斤拷锟斤拷锟斤拷锟斤拷(Gyroscope)锟侥达拷锟斤拷锟街憋拷为21Hz锟斤拷20Hz锟斤拷频锟绞讹拷为1Khz, 锟斤拷锟斤拷锟绞�8.5ms
+	// CONFIG寄存器配置：
+	// 禁用外部同步功能，数字低通滤波器配置：DLPF_CFG = bits 2:0 = 100
+  	// 对应加速度计(Accelerometer)和陀螺仪(Gyroscope)的带宽分别为21Hz和20Hz，频率都为1Khz, 最大延时8.5ms
 	mpu6050_set_dlpf(DLPF_CFG_4); 
 	
-	//锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷为锟斤拷锟斤拷2000 锟斤拷/s
+	// 陀螺仪量程 ±2000 deg/s
 	mpu6050_set_gyro_full_scale(FS_SEL_2000);
-	//锟斤拷锟矫硷拷锟劫度硷拷锟斤拷锟斤拷锟教ｏ拷锟斤拷8g
+	// 加速度计量程 ±8g
 	mpu6050_set_accel_full_scale(AFS_SEL_8G);
 	
 	uint8_t res = mpu6050_get_id();
@@ -253,12 +253,12 @@ uint8_t mpu6050_init()
 		 
 	}
 	
-	//锟斤拷锟斤拷锟叫讹拷锟斤拷锟�
-	mpu6050_write_reg(MPU6050_REG_INT_ENABLE,0x40); //锟剿讹拷锟叫断硷拷锟绞癸拷锟�
-	mpu6050_write_reg(MPU6050_REG_INT_PIN_CFG,0x90); // 锟斤拷锟斤拷INT锟斤拷锟脚低碉拷平锟斤拷效锟斤拷锟轿何讹拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟絀NT_STATUS位
-	mpu6050_int_pin_init(); // mpu6050锟斤拷INT锟斤拷锟脚筹拷始锟斤拷
+	// 使能运动中断
+	mpu6050_write_reg(MPU6050_REG_INT_ENABLE,0x40);
+	mpu6050_write_reg(MPU6050_REG_INT_PIN_CFG,0x90); // 设置INT引脚低电平有效，任何读操作即可清除中INT_STATUS位
+	mpu6050_int_pin_init(); // 初始化INT引脚
 	
-	// mpu6050锟剿讹拷锟斤拷锟斤拷锟截筹拷始锟斤拷
+	// mpu6050运动检测相关初始化
 	mpu6050_motion_init(); 
 	
 	return 0;
@@ -392,6 +392,7 @@ uint8_t mpu6050_read_temperature(float* temperature)
 		raw_temp = (int16_t)(((int16_t)raw_data[0] << 8) | raw_data[1]);
 		* temperature =  raw_temp / 340 + 36.53;
 	}
+	return res;
 }
 
 
@@ -407,12 +408,12 @@ uint8_t mpu6050_gyro_get_angles(float* yaw,float* pitch,float* roll)
 
 	mpu6050_read_gyro(&gx,&gy,&gz);
 
-	// 锟揭碉拷mpu使锟矫碉拷锟斤拷+-2000锟斤拷/s锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷锟斤拷锟角碉拷锟斤拷锟斤拷锟斤拷为16.4 LSB/(锟斤拷/s)锟斤拷锟斤拷原始锟斤拷锟斤拷转锟斤拷为实锟绞的斤拷锟劫度ｏ拷锟斤拷位锟斤拷锟斤拷/s锟斤拷 
+	// 我的mpu使用的是+-2000°/s满量程时，陀螺仪的灵敏度为16.4 LSB/(°/s)，将原始数据转换为实际的角速度（单位：°/s） 
 	gyro_x = (float)gx / 16.4;
 	gyro_y = (float)gy / 16.4;
 	gyro_z = (float)gz / 16.4;
 
-	// 通锟斤拷锟斤拷锟斤拷锟角的诧拷锟斤拷锟斤拷锟斤拷锟斤拷锟脚凤拷锟斤拷锟�, mpu6050锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷200Hz, 也锟斤拷锟斤拷每5ms锟斤拷锟斤拷一锟斤拷, 锟斤拷锟斤拷锟斤拷旨锟斤拷锟角度变化
+	// 通过陀螺仪的测量结果计算欧拉角, mpu6050最大采样率是200Hz, 也就是每5ms采样一次, 这里积分计算角度变化
 	*yaw = *yaw + gyro_z * 0.005; 
 	*pitch = *pitch + gyro_x * 0.005; 
 	*roll = *roll + gyro_y * 0.005; 
@@ -432,8 +433,8 @@ uint8_t mpu6050_accel_get_angles(float* yaw,float* pitch,float* roll)
 	// *roll = atan2f(ax,az) / 3.1415927f * 180; // 
     
 	/*不区分正反面，限制在-90-90°间，无论正反面使水平时角度都在0°左右，而不是-180°左右*/
-	*yaw = 0.0f;
-	*pitch = atan2f((float)ay, sqrtf((float)ax * ax + (float)az * az)) * 57.29578f;
+	*yaw = 0.0f; // 由于加速度计无法测量偏航角，这里暂时设置为0
+	*pitch = atan2f((float)ay, sqrtf((float)ax * ax + (float)az * az)) * 57.29578f;  // 将弧度转换为角度
 	*roll  = atan2f((float)ax, sqrtf((float)ay * ay + (float)az * az)) * 57.29578f;
 	
 	return 0;

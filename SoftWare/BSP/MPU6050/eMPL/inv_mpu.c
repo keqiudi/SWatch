@@ -2988,7 +2988,6 @@ uint8_t mpu_dmp_init(void)
     // }
 
     // 针对手表mpu6050使用的初始化流程
-
     uint8_t res = 0;
     mpu6050_i2c_pin_init(); // 初始化MPU6050的I2C通信引脚
     if(mpu_init() == 0)
