@@ -23,7 +23,7 @@ static uint8_t AHT20_read_status(void)
   	i2c_soft_send_not_ack(&AHT20_bus);
 	i2c_soft_stop(&AHT20_bus);
 	
-	SEGGER_RTT_printf(0,"status: %x\n",status);
+	//SEGGER_RTT_printf(0,"status: %x\n",status);
 	return status;
 }
 

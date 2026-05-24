@@ -74,6 +74,12 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+	// 请在keil的IROM1中同步修改
+  //将中断向量表重定位到 APP 区域（bootloader 在 0x08000000~0x08008000，
+  //APP 起始于 0x0800C000）。VTOR 需要填写相对 0x08000000 的偏移，因此
+  //使用 0x0000C000，确保所有中断/异常（含 SysTick）走 APP 的向量表，
+  //而不是 bootloader 的向量表。该值必须与链接起始地址一致，并在开中断前设置。
+	SCB->VTOR = 0x0000C000U; 
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/

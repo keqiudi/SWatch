@@ -309,11 +309,10 @@ int lsm303dlhc_calc_x_axis_angle(int16_t ax, int16_t ay, int16_t az)
 float lsm303dlhc_calc_azimuth_angle(int ax,int ay,int az,int mx,int my,int mz)
 {
 	float pitch, roll, Hy, Hx, Azimuth; 
-	pitch   = atan2f(ax, sqrtf(ay * ay + az * az));
-	roll    = atan2f(ay, sqrtf(ax * ax + az * az));
-	Hy      = my * cosf(roll) + mx * sinf(roll) * sinf(pitch) - mz * cosf(pitch) * sinf(roll);
-	Hx      = mx * cosf(pitch) + mz * sinf(pitch);
-	Azimuth = atan2f(Hy,Hx)*180.0/PI;
+	pitch   = atan2f(ax, sqrtf(ay * ay + az * az)); // 俯仰角计算，范围约为-90到+90度
+	roll    = atan2f(ay, sqrtf(ax * ax + az * az)); // 横滚角计算，范围约为-90到+90度
+	Hy      = my * cosf(roll) + mx * sinf(roll) * sinf(pitch) - mz * cosf(pitch) * sinf(roll); // 磁力计Y轴分量经过倾斜补偿后的值
+	Hx      = mx * cosf(pitch) + mz * sinf(pitch); // 磁力计X轴分量经过倾斜补偿后的值
+	Azimuth = atan2f(Hy,Hx)*180.0/PI; // 计算方位角，范围约为-180到+180度
 	return Azimuth;
 }
-

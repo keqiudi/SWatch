@@ -23,7 +23,6 @@
 
 #include "SEGGER_RTT.h"
 
-
 /* 保证该任务执行优先级最高，上电最先执行，同时不能在这里面分配堆栈，因为会释放*/
 void HwInitTask(void *argument)
 {

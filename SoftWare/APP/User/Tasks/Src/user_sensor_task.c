@@ -98,6 +98,8 @@ void HRDataTask(void *argument)
 }
 
 
+
+
 void SensorDataUpdateTask(void *argument)
 {
     uint8_t msg_idle_break = 0;
